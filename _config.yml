@@ -1,1 +1,8 @@
+title: Continental Communist
+description: Essays, commentary, and analysis
+url: "https://www.continentalcommunist.com"
+baseurl: ""
 
+theme: minima
+
+permalink: /:year/:month/:day/:title/

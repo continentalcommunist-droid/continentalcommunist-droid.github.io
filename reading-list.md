@@ -10,6 +10,8 @@ It is not intended as a canon or a list of works with which Continental Communis
 
 The purpose of this list is therefore not merely to recommend books sympathetic to socialism. It is to assemble works that help explain the society in which an American socialist politics would have to operate.
 
+Note: The [Marxists Internet Archive](https://www.marxists.org/) is the most important resource ever compiled in digital Marxist education. Much of our reading list on core texts can be found on the site.
+
 ***
 
 ## Where to Start

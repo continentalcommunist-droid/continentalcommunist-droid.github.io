@@ -1,0 +1,343 @@
+---
+---
+
+@import "minima";
+
+/* =========================
+   Continental Communist
+   Dark Editorial Theme
+   ========================= */
+
+:root {
+  --bg: #0b0b0c;
+  --bg-elevated: #131316;
+  --bg-soft: #19191d;
+
+  --text: #f2f0eb;
+  --text-muted: #a6a6ad;
+
+  --accent: #c62828;
+  --accent-bright: #ef4444;
+
+  --border: #2a2a30;
+
+  --max-width: 1100px;
+}
+
+/* ---------- Base ---------- */
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.wrapper {
+  max-width: var(--max-width);
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+/* ---------- Typography ---------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 7vw, 5.8rem);
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  margin-top: 2.5rem;
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.45rem;
+}
+
+p,
+li {
+  color: #d6d4cf;
+}
+
+a {
+  color: var(--text);
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+a:hover,
+a:focus {
+  color: var(--accent-bright);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  min-height: 72px;
+
+  background: rgba(11, 11, 12, 0.96);
+
+  border-top: 5px solid var(--accent);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-title,
+.site-title:visited {
+  color: var(--text);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  letter-spacing: -0.02em;
+}
+
+.site-title:hover {
+  color: var(--accent-bright);
+  text-decoration: none;
+}
+
+.site-nav .page-link {
+  color: var(--text-muted);
+
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-nav .page-link:hover {
+  color: var(--text);
+}
+
+/* ---------- Main Content ---------- */
+
+.page-content {
+  padding-top: 64px;
+  padding-bottom: 80px;
+}
+
+.post-header {
+  margin-bottom: 48px;
+}
+
+.post-title {
+  color: var(--text);
+
+  font-size: clamp(2.8rem, 6vw, 5rem);
+
+  letter-spacing: -0.045em;
+}
+
+.post-meta {
+  color: var(--text-muted);
+
+  font-size: 0.85rem;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.post-content {
+  max-width: 760px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  line-height: 1.85;
+}
+
+.post-content p {
+  color: #ddd9d2;
+}
+
+.post-content h2,
+.post-content h3 {
+  margin-top: 2.6em;
+}
+
+.post-content a {
+  color: var(--accent-bright);
+}
+
+/* ---------- Home / Post List ---------- */
+
+.post-list {
+  margin-left: 0;
+}
+
+.post-list > li {
+  margin-bottom: 0;
+
+  padding: 34px 0;
+
+  border-top: 1px solid var(--border);
+}
+
+.post-list > li:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.post-link {
+  color: var(--text);
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(1.7rem, 4vw, 2.8rem);
+  font-weight: 700;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.025em;
+}
+
+.post-link:hover {
+  color: var(--accent-bright);
+  text-decoration: none;
+}
+
+.post-list .post-meta {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* ---------- Blockquotes ---------- */
+
+blockquote {
+  margin: 2.5rem 0;
+  padding: 18px 28px;
+
+  color: #c8c6c1;
+
+  border-left: 4px solid var(--accent);
+
+  background: var(--bg-elevated);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1.15rem;
+}
+
+/* ---------- Horizontal Rules ---------- */
+
+hr {
+  height: 1px;
+
+  margin: 48px 0;
+
+  background: var(--border);
+
+  border: 0;
+}
+
+/* ---------- Code ---------- */
+
+pre,
+code {
+  background: var(--bg-elevated);
+  color: #efefef;
+
+  border: 1px solid var(--border);
+
+  border-radius: 4px;
+}
+
+pre {
+  padding: 18px;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  background: #080809;
+
+  border-top: 1px solid var(--border);
+}
+
+.footer-heading {
+  color: var(--text);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+}
+
+.footer-col-wrapper {
+  color: var(--text-muted);
+}
+
+.site-footer p,
+.site-footer li {
+  color: var(--text-muted);
+}
+
+/* ---------- Selection ---------- */
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* ---------- Mobile ---------- */
+
+@media screen and (max-width: 600px) {
+
+  body {
+    font-size: 17px;
+  }
+
+  .wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .page-content {
+    padding-top: 42px;
+  }
+
+  .site-nav {
+    background: var(--bg-elevated);
+
+    border: 1px solid var(--border);
+  }
+
+  .site-nav .menu-icon > svg {
+    fill: var(--text);
+  }
+
+  .site-nav .page-link {
+    color: var(--text);
+  }
+
+  .post-content {
+    font-size: 1.05rem;
+  }
+}

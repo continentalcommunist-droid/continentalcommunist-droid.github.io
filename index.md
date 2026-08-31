@@ -3,22 +3,49 @@ layout: default
 title: Home
 ---
 
-# Continental Communist
+<div class="cc-hero">
 
-Essays, commentary, and analysis.
+  <div class="cc-kicker">
+    INDEPENDENT • AMERICAN • SCIENTIFIC SOCIALIST
+  </div>
 
----
+  <h1>Continental<br>Communist</h1>
 
-## Latest Articles
+  <p class="cc-deck">
+    An American perspective on scientific socialism, political economy,
+    history, technology, and the development of modern society.
+  </p>
+
+</div>
+
+<div class="cc-section-heading">
+  Latest
+</div>
 
 {% for post in site.posts %}
 
-### [{{ post.title }}]({{ post.url | relative_url }})
+<article class="cc-article-card">
 
-{{ post.date | date: "%B %-d, %Y" }}
+  <div class="cc-date">
+    {{ post.date | date: "%B %-d, %Y" }}
+  </div>
 
-{{ post.excerpt }}
+  <h2>
+    <a href="{{ post.url | relative_url }}">
+      {{ post.title }}
+    </a>
+  </h2>
 
-[Read more →]({{ post.url | relative_url }})
+  {% if post.excerpt %}
+  <div class="cc-excerpt">
+    {{ post.excerpt }}
+  </div>
+  {% endif %}
+
+  <a class="cc-read-more" href="{{ post.url | relative_url }}">
+    Read article →
+  </a>
+
+</article>
 
 {% endfor %}

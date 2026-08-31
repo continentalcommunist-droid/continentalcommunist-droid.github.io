@@ -3,18 +3,13 @@ layout: default
 title: Home
 ---
 
-<div class="cc-hero">
+<div class="cc-hero cc-hero-image">
 
-  <div class="cc-kicker">
-    INDEPENDENT • AMERICAN • SCIENTIFIC SOCIALIST
-  </div>
-
-  <h1>Continental Communist</h1>
-
-  <p class="cc-deck">
-    An American perspective on scientific socialism, political economy,
-    history, technology, and the development of modern society.
-  </p>
+  <img
+    src="{{ '/assets/images/title.png' | relative_url }}"
+    alt="Continental Communist"
+    class="cc-title-image"
+  >
 
 </div>
 

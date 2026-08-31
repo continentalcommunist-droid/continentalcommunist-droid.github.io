@@ -4,8 +4,6 @@ title: Reading List
 permalink: /reading-list/
 ---
 
-# Reading List
-
 A working bibliography for readers interested in scientific socialism, American political economy, labor history, democratic institutions, and competing interpretations of modern capitalism.
 
 This list is intended as a starting point rather than a canon. It includes primary socialist texts, American historical works, and critical or alternative perspectives that help place the tradition in context.

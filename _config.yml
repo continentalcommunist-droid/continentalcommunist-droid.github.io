@@ -3,8 +3,7 @@ description: Essays, commentary, and analysis.
 url: "https://www.continentalcommunist.com"
 baseurl: ""
 
-author:
-  name: Continental Communist
+author: Continental Communist
 
 theme: minima
 

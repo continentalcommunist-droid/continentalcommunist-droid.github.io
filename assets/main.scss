@@ -257,6 +257,168 @@ h3 {
 
 
 /* =========================================================
+   Featured Articles
+   ========================================================= */
+
+.cc-featured {
+  margin: 0 0 72px;
+}
+
+.cc-featured-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 40px;
+
+  margin-bottom: 26px;
+  padding-bottom: 18px;
+
+  border-bottom: 3px solid var(--accent);
+}
+
+.cc-featured-kicker {
+  margin-bottom: 6px;
+
+  color: var(--accent-bright);
+
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cc-featured-heading h2 {
+  margin: 0;
+
+  color: var(--text);
+
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+
+  letter-spacing: -0.045em;
+}
+
+.cc-featured-heading > p {
+  max-width: 430px;
+
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-size: 0.92rem;
+  line-height: 1.55;
+
+  text-align: right;
+}
+
+.cc-featured-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.cc-featured-card {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 310px;
+
+  padding: 27px;
+
+  background: var(--bg-elevated);
+
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 3px;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.cc-featured-card:hover {
+  transform: translateY(-3px);
+
+  background: var(--bg-soft);
+
+  border-color: #3b3b41;
+  border-top-color: var(--accent-bright);
+}
+
+.cc-featured-card-date {
+  margin-bottom: 16px;
+
+  color: var(--accent-bright);
+
+  font-family: var(--sans);
+  font-size: 0.67rem;
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cc-featured-card h3 {
+  margin: 0 0 17px;
+
+  font-family: var(--sans);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 800;
+
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.cc-featured-card h3 a {
+  color: var(--text);
+
+  text-decoration: none;
+}
+
+.cc-featured-card h3 a:hover {
+  color: var(--accent-bright);
+}
+
+.cc-featured-card-excerpt {
+  margin-bottom: 24px;
+
+  color: var(--text-muted);
+
+  font-family: var(--serif);
+  font-size: 0.96rem;
+  line-height: 1.62;
+}
+
+.cc-featured-card-link {
+  display: inline-block;
+
+  margin-top: auto;
+
+  color: var(--text);
+
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 800;
+
+  letter-spacing: 0.09em;
+
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.cc-featured-card-link:hover {
+  color: var(--accent-bright);
+}
+
+
+/* =========================================================
    Newsletter
    ========================================================= */
 
@@ -352,11 +514,6 @@ h3 {
   width: 100%;
   max-width: 540px;
 
-  /*
-   * Brevo's rendered form is taller than its old
-   * 305px embed default. Giving it a proper viewport
-   * eliminates the internal scrollbar.
-   */
   height: 420px;
 
   margin: 0;
@@ -688,6 +845,23 @@ pre {
 
 @media screen and (max-width: 850px) {
 
+  .cc-featured-heading {
+    align-items: flex-start;
+  }
+
+  .cc-featured-heading > p {
+    max-width: 330px;
+  }
+
+  .cc-featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cc-featured-card:first-child {
+    grid-column: 1 / -1;
+  }
+
+
   .cc-newsletter {
     grid-template-columns: 1fr;
 
@@ -756,6 +930,49 @@ pre {
   }
 
 
+  /* ---------- Featured ---------- */
+
+  .cc-featured {
+    margin-bottom: 56px;
+  }
+
+  .cc-featured-heading {
+    display: block;
+
+    margin-bottom: 20px;
+  }
+
+  .cc-featured-heading > p {
+    max-width: 100%;
+
+    margin-top: 12px;
+
+    font-size: 0.88rem;
+
+    text-align: left;
+  }
+
+  .cc-featured-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .cc-featured-card:first-child {
+    grid-column: auto;
+  }
+
+  .cc-featured-card {
+    min-height: 0;
+
+    padding: 23px 21px;
+  }
+
+  .cc-featured-card h3 {
+    font-size: 1.45rem;
+  }
+
+
   /* ---------- Newsletter ---------- */
 
   .cc-newsletter {
@@ -783,10 +1000,6 @@ pre {
     width: 100%;
     max-width: 100%;
 
-    /*
-     * Brevo's form tends to become taller when
-     * fields wrap on narrow screens.
-     */
     height: 470px;
 
     overflow: hidden;

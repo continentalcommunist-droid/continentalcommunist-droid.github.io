@@ -90,7 +90,7 @@ a:focus {
 
 
 /* =========================================================
-   General Typography
+   All Headings
    ========================================================= */
 
 h1,
@@ -101,14 +101,15 @@ h5,
 h6 {
   color: var(--text);
 
-  font-family: var(--serif);
-  font-weight: 700;
-  line-height: 1.15;
+  font-family: var(--sans);
+  font-weight: 800;
+
+  line-height: 1.08;
+  letter-spacing: -0.035em;
 }
 
 h1 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  letter-spacing: -0.035em;
 }
 
 h2 {
@@ -155,6 +156,7 @@ h3 {
 .site-nav .page-link {
   color: var(--text-muted);
 
+  font-family: var(--sans);
   font-size: 0.8rem;
   font-weight: 750;
 
@@ -199,24 +201,21 @@ h3 {
 }
 
 .cc-hero h1 {
-  max-width: 760px;
+  max-width: none;
 
   margin-top: 0;
   margin-bottom: 26px;
 
   color: var(--text);
 
-  /*
-   * Intentionally modern rather than the old
-   * oversized Georgia masthead.
-   */
   font-family: var(--sans);
-  font-size: clamp(3rem, 5vw, 4.8rem);
+  font-size: clamp(3rem, 5.2vw, 4.5rem);
   font-weight: 850;
 
-  line-height: 0.98;
-
+  line-height: 1;
   letter-spacing: -0.055em;
+
+  white-space: nowrap;
 }
 
 .cc-deck {
@@ -273,15 +272,16 @@ h3 {
 }
 
 .cc-article-card h2 {
-  max-width: 850px;
+  max-width: 900px;
 
   margin: 5px 0 14px;
 
-  font-family: var(--serif);
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-family: var(--sans);
+  font-size: clamp(1.7rem, 3.25vw, 2.65rem);
+  font-weight: 800;
 
-  line-height: 1.12;
-  letter-spacing: -0.03em;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
 }
 
 .cc-article-card h2 a {
@@ -336,7 +336,7 @@ h3 {
    ========================================================= */
 
 .post-header {
-  max-width: 850px;
+  max-width: 900px;
 
   margin-bottom: 42px;
 }
@@ -344,11 +344,12 @@ h3 {
 .post-title {
   color: var(--text);
 
-  font-family: var(--serif);
-  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-family: var(--sans);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 850;
 
-  line-height: 1.05;
-  letter-spacing: -0.045em;
+  line-height: 1.03;
+  letter-spacing: -0.05em;
 }
 
 .post-meta {
@@ -362,6 +363,9 @@ h3 {
   text-transform: uppercase;
 }
 
+
+/* Keep long-form article text serif for readability */
+
 .post-content {
   max-width: 760px;
 
@@ -374,6 +378,16 @@ h3 {
 
 .post-content p {
   color: var(--text-body);
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  font-family: var(--sans);
+  font-weight: 800;
 }
 
 .post-content h2,
@@ -417,12 +431,12 @@ h3 {
 .post-link {
   color: var(--text);
 
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(1.7rem, 3.5vw, 2.6rem);
-  font-weight: 700;
+  font-weight: 800;
 
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
 }
 
 .post-link:hover {
@@ -559,9 +573,14 @@ pre {
     line-height: 1.6;
   }
 
+  /*
+   * Keep the masthead on one line on phones too.
+   * The viewport-based size shrinks with the screen.
+   */
   .cc-hero h1 {
-    font-size: clamp(2.65rem, 14vw, 4rem);
-    line-height: 0.98;
+    font-size: clamp(1.75rem, 7.5vw, 2.75rem);
+
+    white-space: nowrap;
   }
 
   .cc-deck {
@@ -583,7 +602,7 @@ pre {
   }
 
   .post-title {
-    font-size: clamp(2.25rem, 11vw, 3.4rem);
+    font-size: clamp(2.15rem, 10vw, 3.25rem);
   }
 
   .post-content {

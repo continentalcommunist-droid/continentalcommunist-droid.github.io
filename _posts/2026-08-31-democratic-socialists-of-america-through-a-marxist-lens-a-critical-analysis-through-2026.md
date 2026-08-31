@@ -2,7 +2,9 @@
 layout: post
 title: 'Democratic Socialists of America Through a Marxist Lens: A Critical Analysis Through 2026'
 date: 2026-08-31
-categories: []
+categories:
+  - DSA
+  - Reform vs Revolution
 ---
 
 The most important fact for a rigorous Marxist assessment of the Democratic Socialists of America is that **the DSA of 2026 is not adequately described as simply a reformist pressure group seeking a more progressive Democratic Party**. Its official _Workers Deserve More_ program, drafted in 2026 after the 2025 National Convention, explicitly says DSA is “building a party,” identifies the antagonist as the global system of capital and the broader anti-democratic social structure, calls for a new constitution and a “democratic socialist republic,” proposes public ownership of the largest corporations and essential industries, and distinguishes reforms achievable under capitalism from the “complete victory” that would require a new society.  Its National Electoral Commission now declares an objective of an independent mass socialist party, opposition to ruling-class political forces, candidates who are “socialist organizers first, and legislators second,” cadre candidacies, and experimentation with independent ballot lines. 

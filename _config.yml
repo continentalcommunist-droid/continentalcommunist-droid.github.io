@@ -1,8 +1,20 @@
 title: Continental Communist
-description: Essays, commentary, and analysis
+description: Essays, commentary, and analysis.
 url: "https://www.continentalcommunist.com"
 baseurl: ""
+
+author:
+  name: Continental Communist
 
 theme: minima
 
 permalink: /:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+header_pages:
+  - about.md
+
+show_excerpts: true

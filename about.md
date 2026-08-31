@@ -4,8 +4,6 @@ title: About
 permalink: /about/
 ---
 
-# About Continental Communist
-
 **Continental Communist is an independent publication offering an American perspective on scientific socialism.**
 
 The purpose of this site is to examine American society, politics, economics, history, and culture through a materialist lens. Rather than treating socialism as a foreign import or a collection of abstract slogans, Continental Communist approaches it as a living tradition of analysis that must be understood in relation to the particular conditions of the United States.

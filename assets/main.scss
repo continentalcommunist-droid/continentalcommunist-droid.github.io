@@ -3,6 +3,7 @@
 
 @import "minima";
 
+
 /* =========================================================
    Continental Communist
    Dark Editorial Theme
@@ -90,7 +91,7 @@ a:focus {
 
 
 /* =========================================================
-   All Headings
+   Headings
    ========================================================= */
 
 h1,
@@ -124,36 +125,101 @@ h3 {
 
 
 /* =========================================================
-   Site Header
+   Persistent Site Header
    ========================================================= */
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
   min-height: 70px;
 
-  background: rgba(11, 11, 12, 0.97);
+  background: rgba(11, 11, 12, 0.96);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   border-top: 4px solid var(--accent);
   border-bottom: 1px solid var(--border);
 }
 
-.site-title,
-.site-title:visited {
-  color: var(--text);
 
-  font-family: var(--sans);
-  font-size: 1.2rem;
-  font-weight: 800;
+/* =========================================================
+   Header Layout
+   ========================================================= */
 
-  letter-spacing: -0.025em;
+.site-header .cc-header-inner {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 70px;
 }
 
-.site-title:hover {
-  color: var(--accent-bright);
+.site-header .site-logo {
+  display: inline-flex;
+  align-items: center;
+
+  height: 70px;
+
+  flex: 0 0 auto;
+
+  margin-right: auto;
 
   text-decoration: none;
 }
 
-.site-nav .page-link {
+.site-header .site-logo img {
+  display: block;
+
+  width: auto;
+  height: 42px;
+
+  object-fit: contain;
+}
+
+.site-header .cc-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-left: auto;
+
+  gap: 18px;
+}
+
+
+/* ---------- Navigation ---------- */
+
+.site-header .site-nav {
+  position: static;
+
+  display: flex;
+  align-items: center;
+
+  margin-left: auto;
+
+  float: none;
+
+  background: transparent;
+
+  border: 0;
+}
+
+.site-header .site-nav .trigger {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 28px;
+}
+
+.site-header .site-nav .page-link {
+  margin: 0;
+  padding: 0;
+
   color: var(--text-muted);
 
   font-family: var(--sans);
@@ -161,34 +227,74 @@ h3 {
   font-weight: 700;
 
   letter-spacing: 0.1em;
+
+  text-align: right;
   text-transform: uppercase;
 }
 
-.site-nav .page-link:hover {
+.site-header .site-nav .page-link:hover {
   color: var(--text);
 }
 
 
-/* =========================================================
-   Header Logo
-   ========================================================= */
+/* ---------- Header search icon ---------- */
 
-.site-logo {
+.cc-header-search {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
 
-  height: 70px;
+  width: 38px;
+  height: 38px;
+
+  flex: 0 0 38px;
+
+  color: var(--text-muted);
+
+  border-radius: 50%;
+
+  text-decoration: none;
+
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.cc-header-search svg {
+  display: block;
+
+  width: 21px;
+  height: 21px;
+
+  fill: currentColor;
+}
+
+.cc-header-search:hover,
+.cc-header-search:focus {
+  background: var(--bg-soft);
+  color: var(--accent-bright);
 
   text-decoration: none;
 }
 
-.site-logo img {
-  display: block;
 
-  width: auto;
-  height: 42px;
+/* ---------- Accessibility ---------- */
 
-  object-fit: contain;
+.cc-visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+
+  border: 0;
 }
 
 
@@ -203,56 +309,37 @@ h3 {
 
 
 /* =========================================================
-   Homepage Hero
+   Homepage Title Image
    ========================================================= */
 
 .cc-hero {
+  width: 100%;
+
   padding: 48px 0 72px;
 }
 
-.cc-kicker {
-  margin-bottom: 18px;
+.cc-hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  color: var(--accent-bright);
-
-  font-family: var(--sans);
-  font-size: 0.76rem;
-  font-weight: 800;
-
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  width: 100%;
 }
 
-.cc-hero h1 {
-  max-width: none;
+.cc-title-image {
+  display: block;
 
-  margin-top: 0;
-  margin-bottom: 26px;
+  /*
+   * Previous maximum was 900px.
+   * 25% smaller = 675px.
+   */
+  width: 75%;
+  max-width: 675px;
+  height: auto;
 
-  color: var(--text);
+  margin: 0 auto;
 
-  font-family: var(--sans);
-  font-size: clamp(3rem, 5.2vw, 4.5rem);
-  font-weight: 800;
-
-  line-height: 1;
-  letter-spacing: -0.055em;
-
-  white-space: nowrap;
-}
-
-.cc-deck {
-  max-width: 780px;
-
-  margin-bottom: 0;
-
-  color: var(--text-muted);
-
-  font-family: var(--sans);
-  font-size: clamp(1.08rem, 2vw, 1.35rem);
-  font-weight: 400;
-
-  line-height: 1.55;
+  object-fit: contain;
 }
 
 
@@ -498,12 +585,12 @@ h3 {
 /* ---------- Brevo iframe ---------- */
 
 .cc-newsletter-form {
-  width: 100%;
-  min-width: 0;
-
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  width: 100%;
+  min-width: 0;
 
   overflow: hidden;
 }
@@ -513,7 +600,6 @@ h3 {
 
   width: 100%;
   max-width: 540px;
-
   height: 420px;
 
   margin: 0;
@@ -616,6 +702,7 @@ h3 {
   font-weight: 800;
 
   letter-spacing: 0.08em;
+
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -799,250 +886,6 @@ pre {
 
 
 /* =========================================================
-   Footer
-   ========================================================= */
-
-.site-footer {
-  padding-top: 48px;
-  padding-bottom: 48px;
-
-  background: #080809;
-
-  border-top: 1px solid var(--border);
-}
-
-.footer-heading {
-  color: var(--text);
-
-  font-family: var(--sans);
-  font-size: 1rem;
-  font-weight: 800;
-}
-
-.footer-col-wrapper {
-  color: var(--text-muted);
-}
-
-.site-footer p,
-.site-footer li {
-  color: var(--text-muted);
-}
-
-
-/* =========================================================
-   Selection
-   ========================================================= */
-
-::selection {
-  background: var(--accent);
-  color: white;
-}
-
-
-/* =========================================================
-   Tablet
-   ========================================================= */
-
-@media screen and (max-width: 850px) {
-
-  .cc-featured-heading {
-    align-items: flex-start;
-  }
-
-  .cc-featured-heading > p {
-    max-width: 330px;
-  }
-
-  .cc-featured-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .cc-featured-card:first-child {
-    grid-column: 1 / -1;
-  }
-
-
-  .cc-newsletter {
-    grid-template-columns: 1fr;
-
-    gap: 16px;
-
-    padding: 34px 30px;
-  }
-
-  .cc-newsletter-copy {
-    max-width: 620px;
-  }
-
-  .cc-newsletter-form {
-    justify-content: flex-start;
-  }
-
-  .cc-newsletter-form iframe {
-    width: 100%;
-    max-width: 540px;
-    height: 420px;
-  }
-}
-
-
-/* =========================================================
-   Mobile
-   ========================================================= */
-
-@media screen and (max-width: 600px) {
-
-  body {
-    font-size: 17px;
-  }
-
-  .wrapper {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .page-content {
-    padding-top: 36px;
-  }
-
-
-  /* ---------- Hero ---------- */
-
-  .cc-hero {
-    padding: 34px 0 52px;
-  }
-
-  .cc-kicker {
-    max-width: 300px;
-
-    font-size: 0.68rem;
-    line-height: 1.6;
-  }
-
-  .cc-hero h1 {
-    font-size: clamp(1.75rem, 7.5vw, 2.75rem);
-
-    white-space: nowrap;
-  }
-
-  .cc-deck {
-    font-size: 1.05rem;
-  }
-
-
-  /* ---------- Featured ---------- */
-
-  .cc-featured {
-    margin-bottom: 56px;
-  }
-
-  .cc-featured-heading {
-    display: block;
-
-    margin-bottom: 20px;
-  }
-
-  .cc-featured-heading > p {
-    max-width: 100%;
-
-    margin-top: 12px;
-
-    font-size: 0.88rem;
-
-    text-align: left;
-  }
-
-  .cc-featured-grid {
-    grid-template-columns: 1fr;
-
-    gap: 14px;
-  }
-
-  .cc-featured-card:first-child {
-    grid-column: auto;
-  }
-
-  .cc-featured-card {
-    min-height: 0;
-
-    padding: 23px 21px;
-  }
-
-  .cc-featured-card h3 {
-    font-size: 1.45rem;
-  }
-
-
-  /* ---------- Newsletter ---------- */
-
-  .cc-newsletter {
-    gap: 14px;
-
-    margin-bottom: 58px;
-    padding: 28px 18px;
-  }
-
-  .cc-newsletter h2 {
-    font-size: 1.75rem;
-  }
-
-  .cc-newsletter-copy > p {
-    font-size: 0.92rem;
-  }
-
-  .cc-newsletter-form {
-    width: 100%;
-
-    overflow: hidden;
-  }
-
-  .cc-newsletter-form iframe {
-    width: 100%;
-    max-width: 100%;
-
-    height: 470px;
-
-    overflow: hidden;
-  }
-
-
-  /* ---------- Header ---------- */
-
-  .site-logo {
-    height: 60px;
-  }
-
-  .site-logo img {
-    height: 36px;
-  }
-
-  .site-nav {
-    background: var(--bg-elevated);
-
-    border: 1px solid var(--border);
-  }
-
-  .site-nav .menu-icon > svg {
-    fill: var(--text);
-  }
-
-  .site-nav .page-link {
-    color: var(--text);
-  }
-
-
-  /* ---------- Posts ---------- */
-
-  .post-title {
-    font-size: clamp(2.15rem, 10vw, 3.25rem);
-  }
-
-  .post-content {
-    font-size: 1.04rem;
-  }
-}
-
-/* =========================================================
    Search
    ========================================================= */
 
@@ -1177,9 +1020,6 @@ pre {
   color: var(--accent-bright);
 }
 
-
-/* ---------- Search help ---------- */
-
 .cc-search-help {
   margin-top: 10px;
 
@@ -1210,9 +1050,6 @@ pre {
   text-align: center;
 }
 
-
-/* ---------- Status ---------- */
-
 .cc-search-status {
   min-height: 28px;
 
@@ -1233,10 +1070,6 @@ pre {
 
 
 /* ---------- Results ---------- */
-
-.cc-search-results {
-  width: 100%;
-}
 
 .cc-search-result {
   padding: 34px 0;
@@ -1317,6 +1150,7 @@ pre {
   font-weight: 800;
 
   letter-spacing: 0.08em;
+
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -1324,9 +1158,6 @@ pre {
 .cc-search-result-link:hover {
   color: var(--accent-bright);
 }
-
-
-/* ---------- Empty state ---------- */
 
 .cc-search-empty {
   padding: 48px 0;
@@ -1352,10 +1183,333 @@ pre {
 
 
 /* =========================================================
-   Search Mobile
+   Footer
+   ========================================================= */
+
+.site-footer {
+  padding-top: 48px;
+  padding-bottom: 48px;
+
+  background: #080809;
+
+  border-top: 1px solid var(--border);
+}
+
+.footer-heading {
+  color: var(--text);
+
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.footer-col-wrapper {
+  color: var(--text-muted);
+}
+
+.site-footer p,
+.site-footer li {
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   Selection
+   ========================================================= */
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+
+/* =========================================================
+   Tablet
+   ========================================================= */
+
+@media screen and (max-width: 850px) {
+
+  .cc-featured-heading {
+    align-items: flex-start;
+  }
+
+  .cc-featured-heading > p {
+    max-width: 330px;
+  }
+
+  .cc-featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cc-featured-card:first-child {
+    grid-column: 1 / -1;
+  }
+
+
+  .cc-newsletter {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+
+    padding: 34px 30px;
+  }
+
+  .cc-newsletter-copy {
+    max-width: 620px;
+  }
+
+  .cc-newsletter-form {
+    justify-content: flex-start;
+  }
+
+  .cc-newsletter-form iframe {
+    width: 100%;
+    max-width: 540px;
+    height: 420px;
+  }
+}
+
+
+/* =========================================================
+   Mobile
    ========================================================= */
 
 @media screen and (max-width: 600px) {
+
+  body {
+    font-size: 17px;
+  }
+
+  .wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .page-content {
+    padding-top: 36px;
+  }
+
+
+  /* ---------- Header ---------- */
+
+  .site-header .cc-header-inner {
+    min-height: 60px;
+  }
+
+  .site-header .site-logo {
+    height: 60px;
+
+    margin-right: auto;
+  }
+
+  .site-header .site-logo img {
+    height: 36px;
+  }
+
+  .site-header .cc-header-actions {
+    margin-left: auto;
+
+    gap: 8px;
+  }
+
+  .cc-header-search {
+    order: 1;
+
+    width: 38px;
+    height: 38px;
+
+    flex-basis: 38px;
+  }
+
+  .cc-header-search svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .site-header .site-nav {
+    position: relative;
+
+    top: auto;
+    right: auto;
+
+    order: 2;
+
+    margin-left: 0;
+
+    background: transparent;
+
+    border: 0;
+  }
+
+  .site-header .site-nav label[for="nav-trigger"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    float: none;
+
+    background: transparent;
+
+    border: 0;
+  }
+
+  .site-header .site-nav .menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    height: auto;
+
+    padding: 0;
+  }
+
+  .site-header .site-nav .menu-icon > svg {
+    fill: var(--text);
+  }
+
+  .site-header .site-nav .trigger {
+    position: absolute;
+    z-index: 100;
+
+    top: 46px;
+    right: 0;
+    left: auto;
+
+    display: none;
+
+    width: 190px;
+
+    padding: 8px 0;
+
+    background: var(--bg-elevated);
+
+    border: 1px solid var(--border);
+    border-radius: 3px;
+
+    text-align: right;
+  }
+
+  .site-header .site-nav .nav-trigger:checked ~ .trigger {
+    display: block;
+  }
+
+  .site-header .site-nav .page-link {
+    display: block;
+
+    margin: 0;
+    padding: 11px 18px;
+
+    line-height: 1.4;
+
+    text-align: right;
+  }
+
+
+  /* ---------- Homepage Title ---------- */
+
+  .cc-hero {
+    padding: 34px 0 52px;
+  }
+
+  .cc-hero-image {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  .cc-title-image {
+    /*
+     * Keep it centered and comfortably sized
+     * on narrow displays.
+     */
+    width: 75%;
+    max-width: 675px;
+
+    margin: 0 auto;
+  }
+
+
+  /* ---------- Featured ---------- */
+
+  .cc-featured {
+    margin-bottom: 56px;
+  }
+
+  .cc-featured-heading {
+    display: block;
+
+    margin-bottom: 20px;
+  }
+
+  .cc-featured-heading > p {
+    max-width: 100%;
+
+    margin-top: 12px;
+
+    font-size: 0.88rem;
+
+    text-align: left;
+  }
+
+  .cc-featured-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .cc-featured-card:first-child {
+    grid-column: auto;
+  }
+
+  .cc-featured-card {
+    min-height: 0;
+
+    padding: 23px 21px;
+  }
+
+  .cc-featured-card h3 {
+    font-size: 1.45rem;
+  }
+
+
+  /* ---------- Newsletter ---------- */
+
+  .cc-newsletter {
+    gap: 14px;
+
+    margin-bottom: 58px;
+    padding: 28px 18px;
+  }
+
+  .cc-newsletter h2 {
+    font-size: 1.75rem;
+  }
+
+  .cc-newsletter-copy > p {
+    font-size: 0.92rem;
+  }
+
+  .cc-newsletter-form {
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+  .cc-newsletter-form iframe {
+    width: 100%;
+    max-width: 100%;
+    height: 470px;
+
+    overflow: hidden;
+  }
+
+
+  /* ---------- Search ---------- */
 
   .cc-search-intro {
     margin-bottom: 28px;
@@ -1405,385 +1559,15 @@ pre {
   .cc-search-result-snippet {
     font-size: 0.96rem;
   }
-}
-
-/* =========================================================
-   Header Navigation + Search Icon
-   ========================================================= */
-
-.cc-header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  min-height: 70px;
-}
-
-.cc-header-actions {
-  display: flex;
-  align-items: center;
-
-  gap: 18px;
-}
 
 
-/* ---------- Navigation ---------- */
+  /* ---------- Posts ---------- */
 
-.cc-header-actions .site-nav {
-  position: static;
-
-  display: flex;
-  align-items: center;
-
-  float: none;
-
-  background: transparent;
-
-  border: 0;
-}
-
-.cc-header-actions .site-nav .trigger {
-  display: flex;
-  align-items: center;
-
-  gap: 28px;
-}
-
-.cc-header-actions .site-nav .page-link {
-  margin: 0;
-}
-
-
-/* ---------- Search icon ---------- */
-
-.cc-header-search {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 38px;
-  height: 38px;
-
-  flex: 0 0 38px;
-
-  color: var(--text-muted);
-
-  border-radius: 50%;
-
-  text-decoration: none;
-
-  transition:
-    color 0.15s ease,
-    background 0.15s ease;
-}
-
-.cc-header-search svg {
-  display: block;
-
-  width: 21px;
-  height: 21px;
-
-  fill: currentColor;
-}
-
-.cc-header-search:hover,
-.cc-header-search:focus {
-  background: var(--bg-soft);
-  color: var(--accent-bright);
-
-  text-decoration: none;
-}
-
-
-/* ---------- Accessibility ---------- */
-
-.cc-visually-hidden {
-  position: absolute;
-
-  width: 1px;
-  height: 1px;
-
-  padding: 0;
-  margin: -1px;
-
-  overflow: hidden;
-
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-
-  border: 0;
-}
-
-
-/* =========================================================
-   Header Mobile
-   ========================================================= */
-
-@media screen and (max-width: 600px) {
-
-  .cc-header-inner {
-    min-height: 60px;
+  .post-title {
+    font-size: clamp(2.15rem, 10vw, 3.25rem);
   }
 
-  .cc-header-actions {
-    gap: 8px;
+  .post-content {
+    font-size: 1.04rem;
   }
-
-
-  /* ---------- Search ---------- */
-
-  .cc-header-search {
-    order: 1;
-
-    width: 38px;
-    height: 38px;
-
-    flex-basis: 38px;
-  }
-
-  .cc-header-search svg {
-    width: 20px;
-    height: 20px;
-  }
-
-
-  /* ---------- Mobile menu ---------- */
-
-  .cc-header-actions .site-nav {
-    position: relative;
-    top: auto;
-    right: auto;
-
-    order: 2;
-
-    background: transparent;
-
-    border: 0;
-  }
-
-  .cc-header-actions .site-nav label[for="nav-trigger"] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 38px;
-    height: 38px;
-
-    float: none;
-
-    background: transparent;
-
-    border: 0;
-  }
-
-  .cc-header-actions .site-nav .menu-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: auto;
-    height: auto;
-
-    padding: 0;
-  }
-
-  .cc-header-actions .site-nav .menu-icon > svg {
-    fill: var(--text);
-  }
-
-
-  /*
-   * Keep the collapsed menu below the icon buttons.
-   */
-  .cc-header-actions .site-nav .trigger {
-    position: absolute;
-    z-index: 100;
-
-    top: 46px;
-    right: 0;
-
-    display: none;
-
-    width: 190px;
-
-    padding: 8px 0;
-
-    background: var(--bg-elevated);
-
-    border: 1px solid var(--border);
-    border-radius: 3px;
-  }
-
-  .cc-header-actions .site-nav .nav-trigger:checked ~ .trigger {
-    display: block;
-  }
-
-  .cc-header-actions .site-nav .page-link {
-    display: block;
-
-    margin: 0;
-    padding: 11px 18px;
-
-    line-height: 1.4;
-  }
-
-}
-
-/* =========================================================
-   Homepage Title Image
-   ========================================================= */
-
-.cc-hero-image {
-  display: flex;
-  align-items: center;
-
-  padding: 48px 0 72px;
-}
-
-.cc-title-image {
-  display: block;
-
-  width: 100%;
-  max-width: 900px;
-  height: auto;
-
-  object-fit: contain;
-}
-
-
-/* ---------- Mobile ---------- */
-
-@media screen and (max-width: 600px) {
-
-  .cc-hero-image {
-    padding: 34px 0 52px;
-  }
-
-  .cc-title-image {
-    width: 100%;
-    max-width: 100%;
-  }
-
-}
-
-/* =========================================================
-   Persistent Header
-   ========================================================= */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-
-  width: 100%;
-
-  background: rgba(11, 11, 12, 0.96);
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border-top: 4px solid var(--accent);
-  border-bottom: 1px solid var(--border);
-}
-
-
-/* =========================================================
-   Header Alignment
-   ========================================================= */
-
-.site-header .cc-header-inner {
-  display: flex;
-  align-items: center;
-
-  width: 100%;
-  min-height: 70px;
-}
-
-
-/*
- * Logo stays on the left.
- */
-.site-header .site-logo {
-  flex: 0 0 auto;
-
-  margin-right: auto;
-}
-
-
-/*
- * Everything else is pushed to the right.
- */
-.site-header .cc-header-actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  margin-left: auto;
-
-  gap: 18px;
-}
-
-
-/* ---------- Desktop navigation ---------- */
-
-.site-header .site-nav {
-  margin-left: auto;
-}
-
-.site-header .site-nav .trigger {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  gap: 28px;
-}
-
-.site-header .site-nav .page-link {
-  margin: 0;
-  padding: 0;
-
-  text-align: right;
-}
-
-
-/* =========================================================
-   Mobile Header
-   ========================================================= */
-
-@media screen and (max-width: 600px) {
-
-  .site-header .cc-header-inner {
-    min-height: 60px;
-  }
-
-  .site-header .site-logo {
-    margin-right: auto;
-  }
-
-  .site-header .cc-header-actions {
-    margin-left: auto;
-
-    gap: 8px;
-  }
-
-  .site-header .site-nav {
-    margin-left: 0;
-  }
-
-
-  /*
-   * Align the opened mobile navigation menu
-   * against the right edge of the header.
-   */
-  .site-header .site-nav .trigger {
-    right: 0;
-    left: auto;
-
-    text-align: right;
-  }
-
-  .site-header .site-nav .page-link {
-    text-align: right;
-  }
-
 }

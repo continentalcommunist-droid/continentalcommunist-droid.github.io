@@ -16,6 +16,5 @@ plugins:
 header_pages:
   - about.md
   - reading-list.md
-  - search.md
 
 show_excerpts: true

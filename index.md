@@ -1,8 +1,4 @@
 ---
-layout: default
-title: Continental Communist
+layout: home
+title: Home
 ---
-
-# CC Blog
-
-Welcome to Continental Communist.

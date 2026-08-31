@@ -1665,3 +1665,125 @@ pre {
   }
 
 }
+
+/* =========================================================
+   Persistent Header
+   ========================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  background: rgba(11, 11, 12, 0.96);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-top: 4px solid var(--accent);
+  border-bottom: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   Header Alignment
+   ========================================================= */
+
+.site-header .cc-header-inner {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 70px;
+}
+
+
+/*
+ * Logo stays on the left.
+ */
+.site-header .site-logo {
+  flex: 0 0 auto;
+
+  margin-right: auto;
+}
+
+
+/*
+ * Everything else is pushed to the right.
+ */
+.site-header .cc-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-left: auto;
+
+  gap: 18px;
+}
+
+
+/* ---------- Desktop navigation ---------- */
+
+.site-header .site-nav {
+  margin-left: auto;
+}
+
+.site-header .site-nav .trigger {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 28px;
+}
+
+.site-header .site-nav .page-link {
+  margin: 0;
+  padding: 0;
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   Mobile Header
+   ========================================================= */
+
+@media screen and (max-width: 600px) {
+
+  .site-header .cc-header-inner {
+    min-height: 60px;
+  }
+
+  .site-header .site-logo {
+    margin-right: auto;
+  }
+
+  .site-header .cc-header-actions {
+    margin-left: auto;
+
+    gap: 8px;
+  }
+
+  .site-header .site-nav {
+    margin-left: 0;
+  }
+
+
+  /*
+   * Align the opened mobile navigation menu
+   * against the right edge of the header.
+   */
+  .site-header .site-nav .trigger {
+    right: 0;
+    left: auto;
+
+    text-align: right;
+  }
+
+  .site-header .site-nav .page-link {
+    text-align: right;
+  }
+
+}

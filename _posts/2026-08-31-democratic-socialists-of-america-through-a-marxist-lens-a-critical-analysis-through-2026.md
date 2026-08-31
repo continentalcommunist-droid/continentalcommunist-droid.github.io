@@ -63,6 +63,10 @@ On **class composition**, rigor requires rejecting an often-repeated but poorly
 
 For an organization proclaiming itself the nucleus of a working-class party, however, **not having a publicly developed, high-quality class map is itself a strategic deficiency**. Marx's _Brumaire_ distinguishes people who merely occupy similar circumstances from a class capable of asserting a common political interest: organization turns objective location into political agency.  DSA should therefore know not simply the age, race, gender, or dues status of its members, but their industries, occupations, employment relations, union status, workplace concentration, housing tenure, debt relations, supervisory authority, and location in strategically important supply chains. Without this, “working class” risks functioning as an ideological identity rather than an empirically mapped social force.
 
+_
+
+![](/assets/images/uploads/Screenshot%202026-08-31%20at%203.25.19%20AM.png)
+
 The organizational contradiction can be represented schematically. This diagram is an analytical inference derived from DSA's constitutional structure, internal recruitment studies, and current party-building criteria rather than a diagram issued by DSA itself. 
 
 The decisive organizational metric, from this standpoint, should therefore cease to be merely **members acquired, elections won, or policies passed**. It should become the amount of _durable independent working-class organization reproduced by each campaign_.

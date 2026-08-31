@@ -341,3 +341,127 @@ pre {
     font-size: 1.05rem;
   }
 }
+
+/* =========================
+   Custom Homepage
+   ========================= */
+
+.cc-hero {
+  padding: 60px 0 90px;
+}
+
+.cc-kicker {
+  margin-bottom: 24px;
+
+  color: var(--accent-bright);
+
+  font-size: 0.78rem;
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+}
+
+.cc-hero h1 {
+  max-width: 900px;
+
+  margin-bottom: 28px;
+
+  font-size: clamp(4rem, 10vw, 8.5rem);
+
+  line-height: 0.88;
+
+  letter-spacing: -0.065em;
+}
+
+.cc-deck {
+  max-width: 760px;
+
+  color: var(--text-muted);
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.5;
+}
+
+.cc-section-heading {
+  padding-bottom: 12px;
+
+  color: var(--text-muted);
+
+  border-bottom: 3px solid var(--accent);
+
+  font-size: 0.78rem;
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cc-article-card {
+  padding: 42px 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.cc-article-card h2 {
+  max-width: 850px;
+
+  margin: 8px 0 18px;
+
+  font-size: clamp(2rem, 5vw, 3.5rem);
+
+  letter-spacing: -0.035em;
+}
+
+.cc-article-card h2 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.cc-article-card h2 a:hover {
+  color: var(--accent-bright);
+}
+
+.cc-date {
+  color: var(--accent-bright);
+
+  font-size: 0.75rem;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cc-excerpt {
+  max-width: 720px;
+
+  color: var(--text-muted);
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 1.1rem;
+}
+
+.cc-excerpt p {
+  color: var(--text-muted);
+}
+
+.cc-read-more {
+  display: inline-block;
+
+  margin-top: 18px;
+
+  color: var(--text);
+
+  font-size: 0.8rem;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.cc-read-more:hover {
+  color: var(--accent-bright);
+}

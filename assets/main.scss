@@ -3,37 +3,28 @@
 
 @import "minima";
 
-/* =========================
+/* =========================================================
    Continental Communist
    Dark Editorial Theme
-   ========================= */
+   ========================================================= */
 
 :root {
   --bg: #0b0b0c;
-  --bg-elevated: #131316;
-  --bg-soft: #19191d;
+  --bg-elevated: #121214;
+  --bg-soft: #18181b;
 
-  --text: #f2f0eb;
-  --text-muted: #a6a6ad;
+  --text: #f1f0ec;
+  --text-body: #d4d2cd;
+  --text-muted: #9f9fa6;
 
   --accent: #c62828;
   --accent-bright: #ef4444;
 
-  --border: #2a2a30;
+  --border: #29292e;
 
   --max-width: 1100px;
-}
 
-/* ---------- Base ---------- */
-
-html {
-  background: var(--bg);
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family:
+  --sans:
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
@@ -41,51 +32,52 @@ body {
     Arial,
     sans-serif;
 
+  --serif:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+
+/* =========================================================
+   Base
+   ========================================================= */
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+
+  background: var(--bg);
+  color: var(--text-body);
+
+  font-family: var(--sans);
   font-size: 18px;
   line-height: 1.75;
 }
 
 .wrapper {
   max-width: var(--max-width);
+
   padding-left: 28px;
   padding-right: 28px;
 }
 
-/* ---------- Typography ---------- */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--text);
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 700;
-  line-height: 1.15;
-}
-
-h1 {
-  font-size: clamp(2.8rem, 7vw, 5.8rem);
-  letter-spacing: -0.04em;
-}
-
-h2 {
-  margin-top: 2.5rem;
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.45rem;
-}
-
 p,
 li {
-  color: #d6d4cf;
+  color: var(--text-body);
 }
+
+
+/* =========================================================
+   Links
+   ========================================================= */
 
 a {
   color: var(--text);
+
   text-decoration-color: var(--accent);
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
@@ -96,14 +88,50 @@ a:focus {
   color: var(--accent-bright);
 }
 
-/* ---------- Header ---------- */
+
+/* =========================================================
+   General Typography
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text);
+
+  font-family: var(--serif);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  margin-top: 2.5rem;
+
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.45rem;
+}
+
+
+/* =========================================================
+   Site Header
+   ========================================================= */
 
 .site-header {
-  min-height: 72px;
+  min-height: 70px;
 
-  background: rgba(11, 11, 12, 0.96);
+  background: rgba(11, 11, 12, 0.97);
 
-  border-top: 5px solid var(--accent);
+  border-top: 4px solid var(--accent);
   border-bottom: 1px solid var(--border);
 }
 
@@ -111,25 +139,26 @@ a:focus {
 .site-title:visited {
   color: var(--text);
 
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  font-weight: 800;
 
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .site-title:hover {
   color: var(--accent-bright);
+
   text-decoration: none;
 }
 
 .site-nav .page-link {
   color: var(--text-muted);
 
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 750;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -137,29 +166,197 @@ a:focus {
   color: var(--text);
 }
 
-/* ---------- Main Content ---------- */
+
+/* =========================================================
+   Main Content
+   ========================================================= */
 
 .page-content {
-  padding-top: 64px;
-  padding-bottom: 80px;
+  padding-top: 58px;
+  padding-bottom: 90px;
 }
 
+
+/* =========================================================
+   Homepage Hero
+   ========================================================= */
+
+.cc-hero {
+  padding: 48px 0 72px;
+}
+
+.cc-kicker {
+  margin-bottom: 18px;
+
+  color: var(--accent-bright);
+
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.cc-hero h1 {
+  max-width: 760px;
+
+  margin-top: 0;
+  margin-bottom: 26px;
+
+  color: var(--text);
+
+  /*
+   * Intentionally modern rather than the old
+   * oversized Georgia masthead.
+   */
+  font-family: var(--sans);
+  font-size: clamp(3rem, 5vw, 4.8rem);
+  font-weight: 850;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.055em;
+}
+
+.cc-deck {
+  max-width: 780px;
+
+  margin-bottom: 0;
+
+  color: var(--text-muted);
+
+  font-family: var(--sans);
+  font-size: clamp(1.08rem, 2vw, 1.35rem);
+  font-weight: 400;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   Homepage Article Index
+   ========================================================= */
+
+.cc-section-heading {
+  padding-bottom: 11px;
+
+  color: var(--text-muted);
+
+  border-bottom: 3px solid var(--accent);
+
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.cc-article-card {
+  padding: 38px 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.cc-date {
+  margin-bottom: 7px;
+
+  color: var(--accent-bright);
+
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.cc-article-card h2 {
+  max-width: 850px;
+
+  margin: 5px 0 14px;
+
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.cc-article-card h2 a {
+  color: var(--text);
+
+  text-decoration: none;
+}
+
+.cc-article-card h2 a:hover {
+  color: var(--accent-bright);
+}
+
+.cc-excerpt {
+  max-width: 720px;
+
+  color: var(--text-muted);
+
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.cc-excerpt p {
+  margin-bottom: 0;
+
+  color: var(--text-muted);
+}
+
+.cc-read-more {
+  display: inline-block;
+
+  margin-top: 17px;
+
+  color: var(--text);
+
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.cc-read-more:hover {
+  color: var(--accent-bright);
+}
+
+
+/* =========================================================
+   Individual Posts
+   ========================================================= */
+
 .post-header {
-  margin-bottom: 48px;
+  max-width: 850px;
+
+  margin-bottom: 42px;
 }
 
 .post-title {
   color: var(--text);
 
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
 
+  line-height: 1.05;
   letter-spacing: -0.045em;
 }
 
 .post-meta {
   color: var(--text-muted);
 
-  font-size: 0.85rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 700;
 
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -168,25 +365,38 @@ a:focus {
 .post-content {
   max-width: 760px;
 
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.15rem;
+  color: var(--text-body);
+
+  font-family: var(--serif);
+  font-size: 1.13rem;
   line-height: 1.85;
 }
 
 .post-content p {
-  color: #ddd9d2;
+  color: var(--text-body);
 }
 
 .post-content h2,
 .post-content h3 {
-  margin-top: 2.6em;
+  margin-top: 2.5em;
+}
+
+.post-content h2 {
+  font-size: 1.8rem;
+}
+
+.post-content h3 {
+  font-size: 1.4rem;
 }
 
 .post-content a {
   color: var(--accent-bright);
 }
 
-/* ---------- Home / Post List ---------- */
+
+/* =========================================================
+   Minima Post Lists
+   ========================================================= */
 
 .post-list {
   margin-left: 0;
@@ -195,7 +405,7 @@ a:focus {
 .post-list > li {
   margin-bottom: 0;
 
-  padding: 34px 0;
+  padding: 32px 0;
 
   border-top: 1px solid var(--border);
 }
@@ -207,44 +417,47 @@ a:focus {
 .post-link {
   color: var(--text);
 
-  font-family: Georgia, "Times New Roman", serif;
-
-  font-size: clamp(1.7rem, 4vw, 2.8rem);
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 3.5vw, 2.6rem);
   font-weight: 700;
 
   line-height: 1.15;
-
   letter-spacing: -0.025em;
 }
 
 .post-link:hover {
   color: var(--accent-bright);
+
   text-decoration: none;
 }
 
-.post-list .post-meta {
-  display: block;
-  margin-bottom: 10px;
-}
 
-/* ---------- Blockquotes ---------- */
+/* =========================================================
+   Blockquotes
+   ========================================================= */
 
 blockquote {
   margin: 2.5rem 0;
-  padding: 18px 28px;
+  padding: 20px 28px;
 
+  background: var(--bg-elevated);
   color: #c8c6c1;
 
   border-left: 4px solid var(--accent);
 
-  background: var(--bg-elevated);
-
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
+  font-size: 1.12rem;
   font-style: italic;
-  font-size: 1.15rem;
 }
 
-/* ---------- Horizontal Rules ---------- */
+blockquote p {
+  color: #c8c6c1;
+}
+
+
+/* =========================================================
+   Horizontal Rules
+   ========================================================= */
 
 hr {
   height: 1px;
@@ -256,7 +469,10 @@ hr {
   border: 0;
 }
 
-/* ---------- Code ---------- */
+
+/* =========================================================
+   Code
+   ========================================================= */
 
 pre,
 code {
@@ -264,7 +480,6 @@ code {
   color: #efefef;
 
   border: 1px solid var(--border);
-
   border-radius: 4px;
 }
 
@@ -272,11 +487,14 @@ pre {
   padding: 18px;
 }
 
-/* ---------- Footer ---------- */
+
+/* =========================================================
+   Footer
+   ========================================================= */
 
 .site-footer {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 48px;
+  padding-bottom: 48px;
 
   background: #080809;
 
@@ -286,8 +504,9 @@ pre {
 .footer-heading {
   color: var(--text);
 
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 700;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 800;
 }
 
 .footer-col-wrapper {
@@ -299,14 +518,20 @@ pre {
   color: var(--text-muted);
 }
 
-/* ---------- Selection ---------- */
+
+/* =========================================================
+   Selection
+   ========================================================= */
 
 ::selection {
   background: var(--accent);
   color: white;
 }
 
-/* ---------- Mobile ---------- */
+
+/* =========================================================
+   Mobile
+   ========================================================= */
 
 @media screen and (max-width: 600px) {
 
@@ -320,7 +545,27 @@ pre {
   }
 
   .page-content {
-    padding-top: 42px;
+    padding-top: 36px;
+  }
+
+  .cc-hero {
+    padding: 34px 0 56px;
+  }
+
+  .cc-kicker {
+    max-width: 300px;
+
+    font-size: 0.68rem;
+    line-height: 1.6;
+  }
+
+  .cc-hero h1 {
+    font-size: clamp(2.65rem, 14vw, 4rem);
+    line-height: 0.98;
+  }
+
+  .cc-deck {
+    font-size: 1.05rem;
   }
 
   .site-nav {
@@ -337,131 +582,11 @@ pre {
     color: var(--text);
   }
 
-  .post-content {
-    font-size: 1.05rem;
+  .post-title {
+    font-size: clamp(2.25rem, 11vw, 3.4rem);
   }
-}
 
-/* =========================
-   Custom Homepage
-   ========================= */
-
-.cc-hero {
-  padding: 60px 0 90px;
-}
-
-.cc-kicker {
-  margin-bottom: 24px;
-
-  color: var(--accent-bright);
-
-  font-size: 0.78rem;
-  font-weight: 800;
-
-  letter-spacing: 0.16em;
-}
-
-.cc-hero h1 {
-  max-width: 900px;
-
-  margin-bottom: 28px;
-
-  font-size: clamp(4rem, 10vw, 8.5rem);
-
-  line-height: 0.88;
-
-  letter-spacing: -0.065em;
-}
-
-.cc-deck {
-  max-width: 760px;
-
-  color: var(--text-muted);
-
-  font-family: Georgia, "Times New Roman", serif;
-
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  line-height: 1.5;
-}
-
-.cc-section-heading {
-  padding-bottom: 12px;
-
-  color: var(--text-muted);
-
-  border-bottom: 3px solid var(--accent);
-
-  font-size: 0.78rem;
-  font-weight: 800;
-
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.cc-article-card {
-  padding: 42px 0;
-
-  border-bottom: 1px solid var(--border);
-}
-
-.cc-article-card h2 {
-  max-width: 850px;
-
-  margin: 8px 0 18px;
-
-  font-size: clamp(2rem, 5vw, 3.5rem);
-
-  letter-spacing: -0.035em;
-}
-
-.cc-article-card h2 a {
-  color: var(--text);
-  text-decoration: none;
-}
-
-.cc-article-card h2 a:hover {
-  color: var(--accent-bright);
-}
-
-.cc-date {
-  color: var(--accent-bright);
-
-  font-size: 0.75rem;
-  font-weight: 800;
-
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.cc-excerpt {
-  max-width: 720px;
-
-  color: var(--text-muted);
-
-  font-family: Georgia, "Times New Roman", serif;
-
-  font-size: 1.1rem;
-}
-
-.cc-excerpt p {
-  color: var(--text-muted);
-}
-
-.cc-read-more {
-  display: inline-block;
-
-  margin-top: 18px;
-
-  color: var(--text);
-
-  font-size: 0.8rem;
-  font-weight: 800;
-
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.cc-read-more:hover {
-  color: var(--accent-bright);
+  .post-content {
+    font-size: 1.04rem;
+  }
 }

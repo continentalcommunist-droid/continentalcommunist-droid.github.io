@@ -1,0 +1,56 @@
+---
+layout: null
+permalink: /search.json
+---
+
+[
+{% assign first_item = true %}
+
+{% for post in site.posts %}
+
+  {% unless first_item %},{% endunless %}
+
+  {
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | relative_url | jsonify }},
+    "type": "Article",
+    "date": {{ post.date | date: "%B %-d, %Y" | jsonify }},
+    "timestamp": {{ post.date | date: "%s" | jsonify }},
+    "categories": {{ post.categories | join: " " | jsonify }},
+    "excerpt": {{ post.excerpt | strip_html | strip_newlines | jsonify }},
+    "content": {{ post.content | strip_html | strip_newlines | jsonify }}
+  }
+
+  {% assign first_item = false %}
+
+{% endfor %}
+
+
+{% for page in site.pages %}
+
+  {% if page.layout == "page" %}
+
+    {% unless page.search_exclude %}
+
+      {% unless first_item %},{% endunless %}
+
+      {
+        "title": {{ page.title | jsonify }},
+        "url": {{ page.url | relative_url | jsonify }},
+        "type": "Page",
+        "date": "",
+        "timestamp": "0",
+        "categories": "",
+        "excerpt": "",
+        "content": {{ page.content | strip_html | strip_newlines | jsonify }}
+      }
+
+      {% assign first_item = false %}
+
+    {% endunless %}
+
+  {% endif %}
+
+{% endfor %}
+
+]

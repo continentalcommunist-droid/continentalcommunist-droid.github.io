@@ -158,7 +158,7 @@ h3 {
 
   font-family: var(--sans);
   font-size: 0.8rem;
-  font-weight: 750;
+  font-weight: 700;
 
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -233,7 +233,7 @@ h3 {
 
   font-family: var(--sans);
   font-size: clamp(3rem, 5.2vw, 4.5rem);
-  font-weight: 850;
+  font-weight: 800;
 
   line-height: 1;
   letter-spacing: -0.055em;
@@ -262,68 +262,73 @@ h3 {
 
 .cc-newsletter {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(400px, 1.1fr);
-  gap: 48px;
+  grid-template-columns:
+    minmax(260px, 0.8fr)
+    minmax(480px, 1.2fr);
+
+  gap: 52px;
   align-items: center;
 
   margin: 0 0 76px;
-  padding: 38px 42px;
+  padding: 42px;
 
-  background: var(--bg-elevated);
+  background: #f1f2f4;
+  color: #20242d;
 
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
+  border-top: 4px solid var(--accent);
+  border-radius: 3px;
 
-  border-radius: 4px;
+  overflow: hidden;
 }
 
 .cc-newsletter-copy {
-  max-width: 430px;
+  max-width: 390px;
 }
 
 .cc-newsletter-kicker {
-  margin-bottom: 12px;
+  margin-bottom: 13px;
 
-  color: var(--accent-bright);
+  color: var(--accent);
 
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 800;
 
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 .cc-newsletter h2 {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 
-  color: var(--text);
+  color: #20242d;
 
   font-family: var(--sans);
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
   font-weight: 800;
 
-  line-height: 1.08;
-  letter-spacing: -0.04em;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
 }
 
 .cc-newsletter-copy > p {
   margin: 0;
 
-  color: var(--text-muted);
+  color: #525866;
 
   font-family: var(--sans);
-  font-size: 1rem;
+  font-size: 0.98rem;
 
   line-height: 1.6;
 }
 
 .cc-newsletter-copy .cc-newsletter-note {
-  margin-top: 14px;
+  margin-top: 18px;
 
-  color: #77777f;
+  color: #7a808b;
 
-  font-size: 0.78rem;
+  font-size: 0.76rem;
+  font-weight: 500;
 }
 
 .cc-newsletter-form {
@@ -343,9 +348,9 @@ h3 {
 
   margin: 0;
 
-  border: 0;
+  background: #f1f2f4;
 
-  background: transparent;
+  border: 0;
 }
 
 
@@ -462,7 +467,7 @@ h3 {
 
   font-family: var(--sans);
   font-size: clamp(2.4rem, 5vw, 4rem);
-  font-weight: 850;
+  font-weight: 800;
 
   line-height: 1.03;
   letter-spacing: -0.05em;
@@ -480,7 +485,9 @@ h3 {
 }
 
 
-/* Keep long-form article text serif for readability */
+/* =========================================================
+   Long-form Article Text
+   ========================================================= */
 
 .post-content {
   max-width: 760px;
@@ -670,15 +677,19 @@ pre {
 
     gap: 24px;
 
-    padding: 32px;
+    padding: 34px 30px;
   }
 
   .cc-newsletter-copy {
-    max-width: 650px;
+    max-width: 620px;
   }
 
   .cc-newsletter-form {
     justify-content: flex-start;
+  }
+
+  .cc-newsletter-form iframe {
+    max-width: 540px;
   }
 }
 
@@ -701,6 +712,9 @@ pre {
   .page-content {
     padding-top: 36px;
   }
+
+
+  /* Hero */
 
   .cc-hero {
     padding: 34px 0 52px;
@@ -727,19 +741,28 @@ pre {
   /* Newsletter */
 
   .cc-newsletter {
-    gap: 20px;
+    gap: 18px;
 
     margin-bottom: 58px;
-    padding: 26px 20px;
+    padding: 28px 18px;
   }
 
   .cc-newsletter h2 {
-    font-size: 1.65rem;
+    font-size: 1.75rem;
+  }
+
+  .cc-newsletter-copy > p {
+    font-size: 0.92rem;
+  }
+
+  .cc-newsletter-form {
+    width: 100%;
   }
 
   .cc-newsletter-form iframe {
+    width: 100%;
     max-width: 100%;
-    height: 360px;
+    height: 340px;
   }
 
 

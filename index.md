@@ -19,6 +19,106 @@ title: Home
 </div>
 
 
+{% assign featured_posts = site.posts | where: "featured", true %}
+
+<section class="cc-featured" aria-labelledby="featured-title">
+
+  <div class="cc-featured-heading">
+
+    <div>
+      <div class="cc-featured-kicker">
+        SELECTED WRITING
+      </div>
+
+      <h2 id="featured-title">
+        Featured
+      </h2>
+    </div>
+
+    <p>
+      Selected essays and analysis from Continental Communist.
+    </p>
+
+  </div>
+
+
+  <div class="cc-featured-grid">
+
+    {% if featured_posts.size > 0 %}
+
+      {% for post in featured_posts limit: 3 %}
+
+      <article class="cc-featured-card">
+
+        <div class="cc-featured-card-date">
+          {{ post.date | date: "%B %-d, %Y" }}
+        </div>
+
+        <h3>
+          <a href="{{ post.url | relative_url }}">
+            {{ post.title }}
+          </a>
+        </h3>
+
+        {% if post.excerpt %}
+        <div class="cc-featured-card-excerpt">
+          {{ post.excerpt | strip_html | truncate: 190 }}
+        </div>
+        {% endif %}
+
+        <a
+          class="cc-featured-card-link"
+          href="{{ post.url | relative_url }}"
+          aria-label="Read {{ post.title }}"
+        >
+          Read article →
+        </a>
+
+      </article>
+
+      {% endfor %}
+
+    {% else %}
+
+      {% for post in site.posts limit: 3 %}
+
+      <article class="cc-featured-card">
+
+        <div class="cc-featured-card-date">
+          {{ post.date | date: "%B %-d, %Y" }}
+        </div>
+
+        <h3>
+          <a href="{{ post.url | relative_url }}">
+            {{ post.title }}
+          </a>
+        </h3>
+
+        {% if post.excerpt %}
+        <div class="cc-featured-card-excerpt">
+          {{ post.excerpt | strip_html | truncate: 190 }}
+        </div>
+        {% endif %}
+
+        <a
+          class="cc-featured-card-link"
+          href="{{ post.url | relative_url }}"
+          aria-label="Read {{ post.title }}"
+        >
+          Read article →
+        </a>
+
+      </article>
+
+      {% endfor %}
+
+    {% endif %}
+
+  </div>
+
+</section>
+
+
 <section class="cc-newsletter" aria-labelledby="newsletter-title">
 
   <div class="cc-newsletter-copy">

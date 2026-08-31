@@ -1,0 +1,127 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: continentalcommunist-droid/continentalcommunist-droid.github.io
+  branch: main
+
+site_url: https://www.continentalcommunist.com
+display_url: https://www.continentalcommunist.com
+
+media_folder: /assets/images/uploads
+public_folder: /assets/images/uploads
+
+collections:
+
+  # ========================================================
+  # Articles
+  # ========================================================
+
+  - name: posts
+    label: Articles
+    label_singular: Article
+    icon: article
+
+    folder: /_posts
+
+    create: true
+    delete: true
+
+    extension: md
+    format: yaml-frontmatter
+
+    slug: "{{date | date('YYYY-MM-DD')}}-{{slug}}"
+
+    fields:
+
+      - label: Layout
+        name: layout
+        widget: hidden
+        default: post
+
+      - label: Title
+        name: title
+        widget: string
+        hint: The public headline of the article.
+
+      - label: Publication Date
+        name: date
+        widget: datetime
+        type: date
+        format: YYYY-MM-DD
+        default: "{{now}}"
+
+      - label: Categories
+        name: categories
+        widget: list
+        required: false
+        hint: Examples: essays, political-economy, history, theory
+
+      - label: Article
+        name: body
+        widget: richtext
+        hint: Write or paste the article here. Markdown is stored in GitHub.
+
+
+  # ========================================================
+  # Static Pages
+  # ========================================================
+
+  - name: pages
+    label: Pages
+    icon: description
+
+    files:
+
+      - name: about
+        label: About
+        file: /about.md
+        format: yaml-frontmatter
+
+        fields:
+
+          - label: Layout
+            name: layout
+            widget: hidden
+            default: page
+
+          - label: Title
+            name: title
+            widget: hidden
+            default: About
+
+          - label: Permalink
+            name: permalink
+            widget: hidden
+            default: /about/
+
+          - label: Content
+            name: body
+            widget: richtext
+
+
+      - name: reading_list
+        label: Reading List
+        file: /reading-list.md
+        format: yaml-frontmatter
+
+        fields:
+
+          - label: Layout
+            name: layout
+            widget: hidden
+            default: page
+
+          - label: Title
+            name: title
+            widget: hidden
+            default: Reading List
+
+          - label: Permalink
+            name: permalink
+            widget: hidden
+            default: /reading-list/
+
+          - label: Content
+            name: body
+            widget: richtext

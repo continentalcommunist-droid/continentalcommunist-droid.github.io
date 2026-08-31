@@ -12,8 +12,6 @@ search_exclude: true
       ARCHIVE SEARCH
     </div>
 
-    <h1>Search Continental Communist</h1>
-
     <p>
       Search essays, analysis, theory, history, political economy,
       and other writing published on the site.

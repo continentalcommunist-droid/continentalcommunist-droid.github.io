@@ -57,6 +57,13 @@ collections:
         required: false
         hint: "Examples: essays, political-economy, history, theory"
 
+      - label: Feature on Homepage
+        name: featured
+        widget: boolean
+        default: false
+        required: false
+        hint: "Display this article in the Featured section on the homepage. Up to three featured articles are shown, newest first."
+
       - label: Article
         name: body
         widget: richtext

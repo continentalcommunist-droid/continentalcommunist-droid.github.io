@@ -4,6 +4,9 @@ title: Reading List
 permalink: /reading-list/
 ---
 
+![](/assets/images/uploads/figures.png)
+
+
 This is a working bibliography for readers interested in **scientific socialism, American political economy, labor history, democratic institutions, economic development, technology, and the history of socialist thought in the United States**.
 
 It is not intended as a canon or a list of works with which Continental Communist necessarily agrees. A serious materialist analysis benefits from reading primary socialist texts alongside history, economics, liberal theory, conservative criticism, and competing interpretations of capitalism.

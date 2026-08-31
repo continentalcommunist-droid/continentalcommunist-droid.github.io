@@ -609,3 +609,36 @@ pre {
     font-size: 1.04rem;
   }
 }
+
+/* =========================================================
+   Header Logo
+   ========================================================= */
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+
+  height: 70px;
+
+  text-decoration: none;
+}
+
+.site-logo img {
+  display: block;
+
+  width: auto;
+  height: 42px;
+
+  object-fit: contain;
+}
+
+@media screen and (max-width: 600px) {
+
+  .site-logo {
+    height: 60px;
+  }
+
+  .site-logo img {
+    height: 36px;
+  }
+}

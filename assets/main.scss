@@ -1628,3 +1628,40 @@ pre {
   }
 
 }
+
+/* =========================================================
+   Homepage Title Image
+   ========================================================= */
+
+.cc-hero-image {
+  display: flex;
+  align-items: center;
+
+  padding: 48px 0 72px;
+}
+
+.cc-title-image {
+  display: block;
+
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+
+  object-fit: contain;
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media screen and (max-width: 600px) {
+
+  .cc-hero-image {
+    padding: 34px 0 52px;
+  }
+
+  .cc-title-image {
+    width: 100%;
+    max-width: 100%;
+  }
+
+}

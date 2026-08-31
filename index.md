@@ -24,20 +24,20 @@ title: Home
   <div class="cc-newsletter-copy">
 
     <div class="cc-newsletter-kicker">
-      NEW ARTICLES BY EMAIL
+      THE NEWSLETTER
     </div>
 
     <h2 id="newsletter-title">
-      Subscribe to Continental Communist
+      New articles, by email.
     </h2>
 
     <p>
-      Receive new essays and analysis directly in your inbox
-      when they are published.
+      Subscribe to receive new Continental Communist essays
+      and analysis when they are published.
     </p>
 
     <p class="cc-newsletter-note">
-      No spam. Unsubscribe at any time.
+      Free. No spam. Unsubscribe at any time.
     </p>
 
   </div>

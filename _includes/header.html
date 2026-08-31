@@ -1,6 +1,6 @@
 <header class="site-header" role="banner">
 
-  <div class="wrapper">
+  <div class="wrapper cc-header-inner">
 
     <a class="site-logo" rel="author" href="{{ "/" | relative_url }}">
       <img
@@ -9,10 +9,14 @@
       >
     </a>
 
-    {%- if site.header_pages -%}
+
+    <div class="cc-header-actions">
+
+      {%- if site.header_pages -%}
       <nav class="site-nav">
 
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+
         <label for="nav-trigger">
           <span class="menu-icon">
             <svg viewBox="0 0 18 15" width="18px" height="15px">
@@ -24,19 +28,56 @@
         </label>
 
         <div class="trigger">
+
           {%- for path in site.header_pages -%}
+
             {%- assign my_page = site.pages | where: "path", path | first -%}
 
             {%- if my_page.title -%}
-              <a class="page-link" href="{{ my_page.url | relative_url }}">
+
+              <a
+                class="page-link"
+                href="{{ my_page.url | relative_url }}"
+              >
                 {{ my_page.title | escape }}
               </a>
+
             {%- endif -%}
+
           {%- endfor -%}
+
         </div>
 
       </nav>
-    {%- endif -%}
+      {%- endif -%}
+
+
+      <a
+        class="cc-header-search"
+        href="{{ "/search/" | relative_url }}"
+        aria-label="Search"
+        title="Search"
+      >
+
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M10.5 3a7.5 7.5 0 1 0 4.73 13.32l4.72 4.73
+               1.42-1.42-4.73-4.72A7.5 7.5 0 0 0 10.5 3Zm0 2
+               a5.5 5.5 0 1 1 0 11
+               5.5 5.5 0 0 1 0-11Z"
+          />
+        </svg>
+
+        <span class="cc-visually-hidden">
+          Search
+        </span>
+
+      </a>
+
+    </div>
 
   </div>
 

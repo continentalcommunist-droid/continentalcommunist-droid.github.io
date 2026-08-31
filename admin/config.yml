@@ -42,7 +42,7 @@ collections:
       - label: Title
         name: title
         widget: string
-        hint: The public headline of the article.
+        hint: "The public headline of the article."
 
       - label: Publication Date
         name: date
@@ -55,12 +55,12 @@ collections:
         name: categories
         widget: list
         required: false
-        hint: Examples: essays, political-economy, history, theory
+        hint: "Examples: essays, political-economy, history, theory"
 
       - label: Article
         name: body
         widget: richtext
-        hint: Write or paste the article here. Markdown is stored in GitHub.
+        hint: "Write or paste the article here. Markdown is stored in GitHub."
 
 
   # ========================================================

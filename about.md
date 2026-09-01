@@ -102,6 +102,8 @@ The American continent—and the United States in particular—presents its own 
 
 **Continental Communist asks what a socialist analysis rooted in those conditions might look like.**
 
+**_E vinculis occidentis, stella rubra oritur. From the chains of the setting sun, a red star rises._**
+
 ***
 
 _Continental Communist is an independent publication devoted to American political economy, history, and scientific socialist analysis._

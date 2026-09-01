@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require "pathname"
+require "yaml"
 
 ROOT = Pathname.new(__dir__).parent.freeze
 SITE = ROOT / "_site"
@@ -9,7 +10,10 @@ abort "Build the site before validating formatting." unless SITE.directory?
 
 errors = []
 files = SITE.glob("**/*.html").sort
-public_files = files.reject { |file| file.relative_path_from(SITE).to_s == "admin/index.html" }
+config = YAML.safe_load((ROOT / "_config.yml").read, aliases: true)
+verification_file = config["google_site_verification_file"].to_s.strip
+non_page_files = ["admin/index.html", verification_file]
+public_files = files.reject { |file| non_page_files.include?(file.relative_path_from(SITE).to_s) }
 
 public_files.each do |file|
   relative = file.relative_path_from(SITE).to_s

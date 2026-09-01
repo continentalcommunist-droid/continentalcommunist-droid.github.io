@@ -105,6 +105,19 @@ end
 unless config.key?("google_site_verification")
   errors << "_config.yml: google_site_verification hook is missing"
 end
+verification_file = config["google_site_verification_file"].to_s.strip
+expected_verification = "google-site-verification: #{verification_file}"
+if verification_file.empty?
+  errors << "_config.yml: google_site_verification_file is required"
+elsif File.basename(verification_file) != verification_file || !verification_file.match?(/\Agoogle[0-9a-f]+\.html\z/)
+  errors << "_config.yml: google_site_verification_file must be a Google HTML verification filename at the site root"
+else
+  verification_source = ROOT / verification_file
+  errors << "#{verification_file}: missing Google Search Console verification file" unless verification_source.file?
+  if verification_source.file? && verification_source.read.strip != expected_verification
+    errors << "#{verification_file}: verification content does not match its filename"
+  end
+end
 
 %w[robots.txt sitemap.xml news-sitemap.xml].each do |filename|
   errors << "#{filename}: missing SEO endpoint" unless (ROOT / filename).file?
@@ -179,6 +192,9 @@ begin
   sitemap_entries = xml_urls(BUILT_SITE / "sitemap.xml")
   sitemap_urls = sitemap_entries.map(&:first)
   errors << "sitemap.xml: contains duplicate URLs" unless sitemap_urls.uniq.length == sitemap_urls.length
+  if present?(verification_file) && sitemap_urls.include?("#{site_url}/#{verification_file}")
+    errors << "sitemap.xml: must not list the Search Console verification utility"
+  end
 
   sitemap_urls.each do |url|
     begin
@@ -207,7 +223,8 @@ begin
   end
 
   BUILT_SITE.glob("**/*.html").sort.each do |path|
-    next if path.to_s.include?("/_site/admin/")
+    relative = path.relative_path_from(BUILT_SITE).to_s
+    next if relative == "admin/index.html" || relative == verification_file
 
     metadata = html_metadata(path)
     expected_url = expected_url_for_path(site_url, path)
@@ -325,6 +342,12 @@ begin
   elsif verification_tags.none? { |tag| tag.include?(verification) }
     errors << "Search Console: configured verification token is absent from the homepage"
   end
+
+  verification_output = BUILT_SITE / verification_file
+  errors << "#{verification_file}: missing from generated site root" unless verification_output.file?
+  if verification_output.file? && verification_output.read.strip != expected_verification
+    errors << "#{verification_file}: generated verification content does not match Google's token"
+  end
 rescue Errno::ENOENT, JSON::ParserError, REXML::ParseException => error
   errors << error.message
 end
@@ -335,6 +358,6 @@ if errors.any?
   exit 1
 end
 
-verification_status = present?(config["google_site_verification"]) ? "configured" : "ready for owner token"
+verification_status = present?(config["google_site_verification"]) ? "configured" : "unused"
 puts "SEO valid: #{sitemap_urls.length} canonical URLs, #{articles.length} articles, #{people.length} author profiles, #{topics.length} topic hubs, #{news_urls.length} recent news URLs."
-puts "Search Console verification hook: #{verification_status}."
+puts "Search Console verification: HTML file #{verification_file} is ready; meta-tag fallback #{verification_status}."

@@ -17,8 +17,12 @@ publisher:
   alternate_names:
     - continentalcommunist.com
 
-# Search Console supplies this value. Paste only the content value from its
-# HTML verification tag; the head include omits the tag while this is blank.
+# Google Search Console's HTML-file ownership proof. Keep this file at the site
+# root after verification so Google can recheck ownership when necessary.
+google_site_verification_file: googled448df15e8eebf72.html
+
+# Optional HTML-tag fallback. Paste only the content value from Google's meta
+# tag; the head include omits the tag while this is blank.
 google_site_verification: ""
 
 author: Continental Communist

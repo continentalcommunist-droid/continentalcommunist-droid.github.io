@@ -46,19 +46,24 @@ Every article author must resolve to a public `_people/` record. Featured images
 
 ## Search Console handoff
 
-Search Console ownership cannot be completed from repository code because Google issues the verification token to the site owner. To finish the connection:
+Google's issued HTML-file ownership proof is installed for the canonical URL-prefix property:
 
-1. Add the URL-prefix property `https://www.continentalcommunist.com/` in Google Search Console. A Domain property may also be added separately through DNS.
-2. Choose the HTML tag verification method and copy only the value inside the tag's `content` attribute.
-3. Paste that value into `google_site_verification` in `_config.yml`, then deploy the site.
-4. Confirm the verification tag appears on the public homepage and complete verification in Search Console.
-5. Submit `https://www.continentalcommunist.com/sitemap.xml` and `https://www.continentalcommunist.com/news-sitemap.xml` in the Sitemaps report.
-6. Inspect a published article, author profile, and topic hub with URL Inspection. Test article pages with Google's Rich Results Test.
-7. Monitor Page indexing, Sitemaps, and Article enhancement reports after each substantial release.
+- File: `googled448df15e8eebf72.html`
+- Public URL: `https://www.continentalcommunist.com/googled448df15e8eebf72.html`
+- Required response: `google-site-verification: googled448df15e8eebf72.html`
 
-Search Console verification and the first URL Inspection requests are owner-only actions. Repository code can expose a verification tag, but it cannot obtain the Google-issued value or request indexing without access to the verified property.
+To finish the connection:
 
-Do not invent or commit a verification token that Google has not issued for this property. If the token must remain private for operational reasons, inject it during the build instead of committing it to a public repository.
+1. Deploy the verification file and confirm its public URL returns HTTP 200 with the required response above.
+2. Click **Verify** for the URL-prefix property `https://www.continentalcommunist.com/` in Google Search Console. A Domain property may also be added separately through DNS.
+3. Keep the verification file in the site root after verification; Google may check it again later.
+4. Submit `https://www.continentalcommunist.com/sitemap.xml` and `https://www.continentalcommunist.com/news-sitemap.xml` in the Sitemaps report.
+5. Inspect the homepage, a published article, author profile, and topic hub with URL Inspection, then request indexing where appropriate. Test article pages with Google's Rich Results Test.
+6. Monitor Page indexing, Sitemaps, and Article enhancement reports after each substantial release.
+
+The final Search Console verification click and URL Inspection requests are owner-only actions. Repository code can publish and validate the Google-issued proof, but it cannot complete those account actions without access to the property.
+
+Do not rename, remove, redirect, or add page markup to the verification file. It is a public ownership token by design, not a secret credential.
 
 ## Pre-publication check
 
@@ -68,4 +73,4 @@ Build the site, then run:
 ruby scripts/validate_seo.rb
 ```
 
-The validator checks canonical URLs, crawl directives, JSON-LD syntax and entity types, author and topic resolution, sitemap integrity, news eligibility, CMS fields, and the Search Console verification hook.
+The validator checks canonical URLs, crawl directives, JSON-LD syntax and entity types, author and topic resolution, sitemap integrity, news eligibility, CMS fields, and both the source and generated Search Console verification file.

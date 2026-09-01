@@ -1,7 +1,10 @@
 ---
 layout: page
-title: About
+title: About Continental Communist
+description: Learn about Continental Communist, an independent publication applying scientific socialism and materialist analysis to American history, politics, economics, and culture.
 permalink: /about/
+schema_page_type: AboutPage
+updated: 2026-09-01
 ---
 
 **Continental Communist is an independent publication, born "vinculis Occidentis": in the chains of the setting sun.**

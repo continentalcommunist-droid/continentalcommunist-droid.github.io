@@ -1,8 +1,9 @@
 {%- assign seo_page_title = page.seo_title | default: page.title | default: site.title -%}
 {%- if page.url == '/' -%}
-  {%- assign seo_title = site.title | append: ' | ' | append: site.description -%}
-{%- elsif seo_page_title == site.title -%}
-  {%- assign seo_title = site.title -%}
+  {%- assign seo_home_tagline = site.tagline | default: site.description -%}
+  {%- assign seo_title = site.title | append: ' — ' | append: seo_home_tagline -%}
+{%- elsif seo_page_title contains site.title -%}
+  {%- assign seo_title = seo_page_title -%}
 {%- else -%}
   {%- assign seo_title = seo_page_title | append: ' | ' | append: site.title -%}
 {%- endif -%}

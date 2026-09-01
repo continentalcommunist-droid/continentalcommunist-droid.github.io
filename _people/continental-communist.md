@@ -5,7 +5,7 @@ name: Continental Communist
 role: Editorial collective
 profile_type: Editorial identity
 content_type: Person
-description: The editorial identity responsible for Continental Communist's current published work.
+description: Continental Communist is the editorial identity behind this independent publication's Marxist education and materialist analysis of American society.
 active: true
 aliases: []
 ---

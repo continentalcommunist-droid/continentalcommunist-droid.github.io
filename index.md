@@ -1,23 +1,35 @@
 ---
 layout: default
-title: Home
+title: Continental Communist
+description: Continental Communist is an independent publication offering Marxist education, materialist analysis, briefings, and primary-source study from an American perspective.
+updated: 2026-09-01
 ---
 
 <div class="cc-hero cc-hero-image">
-
-  <h1 class="cc-visually-hidden">Continental Communist</h1>
 
   <img
     srcset="{{ '/assets/images/title-800.webp' | relative_url }} 800w, {{ '/assets/images/title-1600.webp' | relative_url }} 1600w"
     sizes="(max-width: 900px) 75vw, 675px"
     src="{{ '/assets/images/title-800.webp' | relative_url }}"
-    alt="Continental Communist"
+    alt=""
     width="800"
     height="699"
     decoding="async"
     fetchpriority="high"
     class="cc-title-image"
   >
+
+  <div class="cc-hero-copy">
+    <h1>Continental Communist</h1>
+    <p>
+      Independent Marxist education and materialist analysis from an American
+      perspective, organized around evidence, history, and serious study.
+    </p>
+    <div class="cc-hero-links">
+      <a href="{{ '/about/' | relative_url }}">About Continental Communist</a>
+      <a href="{{ '/analysis/' | relative_url }}">Read the latest analysis</a>
+    </div>
+  </div>
 
 </div>
 

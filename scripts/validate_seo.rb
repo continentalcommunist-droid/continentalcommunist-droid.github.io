@@ -95,8 +95,12 @@ end
 
 errors << "_config.yml: lang is required" unless present?(config["lang"])
 publisher = config["publisher"] || {}
-%w[name type url logo].each do |field|
+%w[name type url logo description alternate_names].each do |field|
   errors << "_config.yml: publisher.#{field} is required" unless present?(publisher[field])
+end
+canonical_domain = URI.parse(site_url).host.to_s.sub(/\Awww\./, "")
+unless Array(publisher["alternate_names"]).include?(canonical_domain)
+  errors << "_config.yml: publisher.alternate_names must include #{canonical_domain}"
 end
 unless config.key?("google_site_verification")
   errors << "_config.yml: google_site_verification hook is missing"
@@ -278,6 +282,43 @@ begin
 
   verification = config["google_site_verification"].to_s.strip
   homepage = (BUILT_SITE / "index.html").read
+  homepage_metadata = html_metadata(BUILT_SITE / "index.html")
+  homepage_title = homepage[/<title>(.*?)<\/title>/im, 1].to_s.gsub(/\s+/, " ").strip
+  homepage_description = homepage[/<meta\b[^>]*name=["']description["'][^>]*content=["']([^"']*)["']/i, 1].to_s.strip
+  homepage_headings = homepage.scan(/<h1\b[^>]*>(.*?)<\/h1>/im).flatten.map do |heading|
+    heading.gsub(/<[^>]+>/, " ").gsub(/\s+/, " ").strip
+  end
+  website_schema = schema_with_type(homepage_metadata[:schemas], "WebSite")
+  organization_schema = schema_with_type(homepage_metadata[:schemas], publisher["type"])
+
+  errors << "homepage: title must start with the publication name" unless homepage_title.start_with?(config["title"].to_s)
+  errors << "homepage: description must name the publication" unless homepage_description.include?(config["title"].to_s)
+  unless homepage_description.length.between?(80, 180)
+    errors << "homepage: description must be between 80 and 180 characters"
+  end
+  errors << "homepage: visible h1 must be the publication name" unless homepage_headings == [config["title"]]
+  if homepage.match?(/<h1\b[^>]*class=["'][^"']*cc-visually-hidden/i)
+    errors << "homepage: publication h1 must not be visually hidden"
+  end
+  errors << "homepage: WebSite JSON-LD is missing" unless website_schema
+  if website_schema
+    errors << "homepage: WebSite name must match site.title" unless website_schema["name"] == config["title"]
+    unless Array(website_schema["alternateName"]).include?(canonical_domain)
+      errors << "homepage: WebSite alternateName must include #{canonical_domain}"
+    end
+  end
+  errors << "homepage: Organization JSON-LD is missing" unless organization_schema
+  if organization_schema && organization_schema["name"] != publisher["name"]
+    errors << "homepage: Organization name must match publisher.name"
+  end
+
+  homepage_sitemap_entry = sitemap_entries.find { |url, _element| url == "#{site_url}/" }
+  homepage_lastmod = homepage_sitemap_entry&.last&.elements&.find { |element| element.name == "lastmod" }
+  errors << "sitemap.xml: homepage must carry an accurate lastmod" unless present?(homepage_lastmod&.text)
+
+  about_metadata = html_metadata(BUILT_SITE / "about/index.html")
+  errors << "about: AboutPage JSON-LD is missing" unless schema_with_type(about_metadata[:schemas], "AboutPage")
+
   verification_tags = homepage.scan(/<meta\b[^>]*name=["']google-site-verification["'][^>]*>/i)
   if verification.empty?
     errors << "Search Console: blank verification value must not emit a tag" unless verification_tags.empty?

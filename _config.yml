@@ -1,5 +1,6 @@
 title: Continental Communist
-description: An American perspective on scientific socialism.
+tagline: American Marxist education and analysis
+description: Continental Communist is an independent publication offering Marxist education, materialist analysis, briefings, and primary-source study from an American perspective.
 url: "https://www.continentalcommunist.com"
 baseurl: ""
 lang: en-US
@@ -12,6 +13,9 @@ publisher:
   type: Organization
   url: https://www.continentalcommunist.com
   logo: /assets/images/logo.png
+  description: Continental Communist is an independent American publication for Marxist education, materialist analysis, and evidence-led study.
+  alternate_names:
+    - continentalcommunist.com
 
 # Search Console supplies this value. Paste only the content value from its
 # HTML verification tag; the head include omits the tag while this is blank.

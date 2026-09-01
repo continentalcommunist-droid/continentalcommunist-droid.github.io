@@ -2,6 +2,30 @@
 
 The site owns its search metadata in `_includes/seo-meta.html` and `_includes/structured-data.html`. Do not add a second SEO plugin or a second canonical tag. Every public page receives one self-referencing absolute canonical, explicit robots metadata, social preview metadata, Organization and WebSite entities, and a page-specific structured data entity.
 
+## Branded-search strategy
+
+The primary near-term search objective is for the official homepage to appear for the exact query `continental communist`. The baseline on 2026-09-01 found no result from this domain for either the exact-name query or a `site:continentalcommunist.com` query. The domain and repository were only established days earlier, so discovery and indexing—not keyword repetition—is the first constraint.
+
+The implementation establishes one consistent entity and preferred site name:
+
+- The homepage uses `Continental Communist` in its visible `h1`, HTML title, Open Graph title, page description, internal link text, Organization JSON-LD, and WebSite JSON-LD.
+- `continentalcommunist.com` is supplied as the WebSite `alternateName`, giving Google a domain fallback while keeping the publication name primary.
+- The homepage, About page, editorial profile, articles, topics, and learning pathways cross-link with descriptive HTML anchors that crawlers can follow.
+- HTTP and apex-domain variants redirect permanently to the canonical `https://www.continentalcommunist.com/` origin.
+- Accurate `updated` dates place meaningful `lastmod` values on the homepage and About page without falsely changing every URL on every build.
+
+Google does not guarantee indexing or a particular ranking. Judge this work through Search Console over weeks, not repeated public searches over hours.
+
+### Launch sequence
+
+1. Verify the canonical URL-prefix property in Search Console using the handoff below.
+2. Submit `/sitemap.xml`, then inspect and request indexing for the homepage, `/about/`, one published article, `/people/continental-communist/`, and one populated topic hub.
+3. Add `https://www.continentalcommunist.com/` as the website on the official GitHub repository and on any genuine publication-owned social or newsletter profile. These should be identity links for readers, not manufactured backlinks.
+4. Publish useful original material on a consistent schedule. Link each article to its author, controlled topics, relevant pathways, and cited sources; link back from the corresponding hubs.
+5. Review Search Console weekly for indexed pages, crawl errors, sitemap processing, exact-query impressions, average position, and click-through rate. Record a monthly baseline before changing titles again.
+
+Avoid paid links, bulk directory submissions, doorway pages, duplicate brand pages, and repetitions of the target phrase written only for crawlers. They do not solve the new-domain discovery problem and can undermine trust.
+
 ## Content types
 
 - Published articles use `schema_type: Article`.
@@ -31,6 +55,8 @@ Search Console ownership cannot be completed from repository code because Google
 5. Submit `https://www.continentalcommunist.com/sitemap.xml` and `https://www.continentalcommunist.com/news-sitemap.xml` in the Sitemaps report.
 6. Inspect a published article, author profile, and topic hub with URL Inspection. Test article pages with Google's Rich Results Test.
 7. Monitor Page indexing, Sitemaps, and Article enhancement reports after each substantial release.
+
+Search Console verification and the first URL Inspection requests are owner-only actions. Repository code can expose a verification tag, but it cannot obtain the Google-issued value or request indexing without access to the verified property.
 
 Do not invent or commit a verification token that Google has not issued for this property. If the token must remain private for operational reasons, inject it during the build instead of committing it to a public repository.
 

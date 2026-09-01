@@ -11,7 +11,9 @@
     "@type": {{ site.publisher.type | default: 'Organization' | jsonify }},
     "@id": {{ schema_organization_id | jsonify }},
     "name": {{ site.publisher.name | default: site.title | jsonify }},
-    "url": {{ site.publisher.url | default: site.url | jsonify }},
+    "url": {{ site.publisher.url | default: site.url | jsonify }}{% if site.publisher.alternate_names and site.publisher.alternate_names != empty %},
+    "alternateName": {{ site.publisher.alternate_names | jsonify }}{% endif %},
+    "description": {{ site.publisher.description | default: site.description | jsonify }},
     "logo": {
       "@type": "ImageObject",
       "url": {{ schema_logo | jsonify }}
@@ -25,7 +27,8 @@
     "@type": "WebSite",
     "@id": {{ schema_website_id | jsonify }},
     "url": {{ site.url | append: '/' | jsonify }},
-    "name": {{ site.title | jsonify }},
+    "name": {{ site.title | jsonify }}{% if site.publisher.alternate_names and site.publisher.alternate_names != empty %},
+    "alternateName": {{ site.publisher.alternate_names | jsonify }}{% endif %},
     "description": {{ site.description | jsonify }},
     "inLanguage": {{ schema_language | jsonify }},
     "publisher": { "@id": {{ schema_organization_id | jsonify }} }
@@ -166,10 +169,14 @@
   }
   </script>
 {%- else -%}
+  {%- assign schema_page_type = page.schema_page_type | default: 'WebPage' -%}
+  {%- if page.layout == 'taxonomy' -%}
+    {%- assign schema_page_type = 'CollectionPage' -%}
+  {%- endif -%}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": {% if page.layout == 'taxonomy' %}"CollectionPage"{% else %}"WebPage"{% endif %},
+    "@type": {{ schema_page_type | jsonify }},
     "@id": {{ schema_canonical | append: '#webpage' | jsonify }},
     "url": {{ schema_canonical | jsonify }},
     "name": {{ page.title | default: site.title | jsonify }},

@@ -38,7 +38,7 @@ Published content should use `section`, `section_key`, `content_type`, and `topi
 
 ## Search visibility
 
-Public pages emit one absolute canonical URL, explicit robots metadata, and page-specific JSON-LD. Articles use Article or NewsArticle, public author records use ProfilePage, and controlled topic hubs use CollectionPage. Publisher Organization and WebSite identities are stable across the site.
+Public pages emit one absolute canonical URL, explicit robots metadata, and page-specific JSON-LD. Articles use Article or NewsArticle, public author records use ProfilePage, and controlled topic hubs use CollectionPage. Publisher Organization and WebSite identities are stable across the site. The homepage reinforces the exact `Continental Communist` name through its visible heading, title, description, internal anchor text, and WebSite `alternateName` fallback.
 
 The general XML sitemap is published at `/sitemap.xml`; the two-day Google News sitemap is published at `/news-sitemap.xml`. Both are advertised in `/robots.txt`. Search Console verification uses the `google_site_verification` configuration hook and requires a Google-issued property token before it can be completed.
 

@@ -4,10 +4,17 @@ backend:
   name: github
   repo: continentalcommunist-droid/continentalcommunist-droid.github.io
   branch: main
+  # This site uses Sveltia's access-token sign-in and simple workflow. Restrict
+  # the login choices to the configured method so editors do not enter the
+  # unconfigured OAuth flow.
+  auth_methods: [token]
 
-# Each CMS save opens or updates a pull request. Publishing remains a distinct
-# review action, preserving an editorial record before content reaches main.
-publish_mode: editorial_workflow
+# Keep Sveltia's default simple workflow. The previous editorial workflow
+# created a branch, commit, pull request, and issue label for every save. The
+# browser token could write the branch but GitHub rejected the additional
+# pull-request/issue calls, leaving a partial save and surfacing “Resource not
+# accessible by personal access token.” Simple workflow commits entries and
+# uploads directly to main using the token's working Contents permission.
 
 site_url: https://www.continentalcommunist.com
 display_url: https://www.continentalcommunist.com

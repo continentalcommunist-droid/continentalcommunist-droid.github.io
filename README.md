@@ -82,7 +82,9 @@ Completion state is managed by `assets/learning-progress.js` and stored locally 
 
 ## Sveltia CMS content model
 
-The editor at `/admin/` uses Sveltia CMS with GitHub's editorial workflow. CMS saves are isolated on review branches and pull requests until an editor publishes them.
+The editor at `/admin/` uses Sveltia CMS with GitHub's simple workflow. Entry edits and media uploads commit directly to `main`, avoiding the extra pull-request and issue-label permissions that caused saves to end with GitHub's “Resource not accessible by personal access token” response after the content commit had already been created.
+
+Access-token sign-in is the only enabled authentication method. Generate the token from Sveltia's sign-in screen, select `continentalcommunist-droid/continentalcommunist-droid.github.io`, and grant **Contents: Read and write**. If the stored token is replaced or its access changes, sign out of the editor and sign back in so Sveltia stores the new token. Do not restore `publish_mode: editorial_workflow` without also granting the editor **Pull requests: Read and write** and **Issues: Read and write**; editorial saves use both APIs in addition to repository contents.
 
 `admin/config.yml` defines Article, Brief, Course, Lesson, Reading Path, Book/Text, Source, Person, Concept, Topic, Event, and Podcast as distinct product objects. Relation fields connect those objects through controlled topics, reusable source records, authors, concepts, texts, courses, lessons, and pathways. Redirects are managed as a separate operational collection.
 

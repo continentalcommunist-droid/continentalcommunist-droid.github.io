@@ -62,6 +62,7 @@ readings:
 - id: capital-one
   author: Karl Marx
   title: Capital, Volume I
+  text: capital-volume-one
   scope: Read Chapters 1, 4–10, 15, 25, and 26–32; use other chapters as reference
     on the first pass.
   url: "/reading-list/#karl-marx--capital-volume-i"

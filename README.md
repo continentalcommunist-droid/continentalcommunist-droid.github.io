@@ -4,7 +4,7 @@ The Jekyll source for [continentalcommunist.com](https://www.continentalcommunis
 
 ## Performance release gate
 
-Every pull request and push to `main` builds the production site and measures seven representative page types three times with mobile Lighthouse. The median result for every page must pass the Core Web Vitals-aligned thresholds and resource budgets before release. A separate weekly and per-change check evaluates Chrome UX Report field data when an API key is configured.
+Every pull request and push to `main` builds the production site and measures eight representative page types three times with mobile Lighthouse. The median result for every page must pass the Core Web Vitals-aligned thresholds and resource budgets before release. A separate weekly and per-change check evaluates Chrome UX Report field data when an API key is configured.
 
 The dated PageSpeed/CrUX baseline, thresholds, local commands, CI behavior, and GitHub branch-protection handoff are documented in `docs/performance.md`. Run the same checks locally with:
 
@@ -71,6 +71,16 @@ The article template exposes numbered source cards, a transparent uncited state,
 Citation workflow and source-quality rules are documented in docs/citations.md. Validate records and article references before publication:
 
     ruby scripts/validate_citations.rb
+
+## Rights-reviewed primary texts
+
+The Library includes a local primary-text reader backed by an approved Marxists Internet Archive import manifest. Six foundational works are split into 62 fast, searchable sections with exact source URLs, edition statements, license links, and integrity fingerprints. The importer refuses removed MECW pages, explicit copyright or fair-use notices, unverified rights evidence, unreviewed images, and source editions outside the approved public-domain rule.
+
+The edition audit, current corpus, exclusions, and expansion workflow are documented in `docs/text-library.md`. Validate the generated collection without making network requests:
+
+```sh
+npm run validate:texts
+```
 
 ## Learning pathways
 

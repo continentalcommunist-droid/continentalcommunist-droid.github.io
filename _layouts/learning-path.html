@@ -163,6 +163,10 @@ layout: default
 
     <ol class="cc-learning-checklist">
       {% for reading in pathway.readings %}
+      {% assign reading_text = nil %}
+      {% if reading.text and reading.text != empty %}
+        {% assign reading_text = site.books | where: "slug", reading.text | first %}
+      {% endif %}
       <li>
         <input
           id="{{ pathway.slug }}-reading-{{ reading.id }}"
@@ -183,7 +187,9 @@ layout: default
             </span>
           </label>
           <p>{{ reading.scope }}</p>
-          {% if reading.url contains '://' %}
+          {% if reading_text %}
+          <a href="{{ reading_text.url | relative_url }}">Read on site <span aria-hidden="true">→</span></a>
+          {% elsif reading.url contains '://' %}
           <a href="{{ reading.url }}" rel="external">Open assigned text <span aria-hidden="true">↗</span></a>
           {% else %}
           <a href="{{ reading.url | relative_url }}">Find in the full reading list <span aria-hidden="true">→</span></a>

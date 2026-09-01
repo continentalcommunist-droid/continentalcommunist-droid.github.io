@@ -3353,6 +3353,330 @@ h3 {
 
 
 /* =========================================================
+   Primary Text Library
+   ========================================================= */
+
+.cc-book-page,
+.cc-text-page {
+  max-width: var(--max-width);
+
+  margin: 0 auto;
+}
+
+.cc-book-header,
+.cc-text-header {
+  max-width: 940px;
+
+  margin-bottom: 38px;
+  padding-bottom: 30px;
+
+  border-bottom: 3px solid var(--accent);
+}
+
+.cc-book-header h1,
+.cc-text-header h1 {
+  margin: 8px 0 12px;
+
+  font-size: clamp(2.8rem, 7vw, 5.4rem);
+}
+
+.cc-book-header > p:not(.cc-book-byline) {
+  max-width: 790px;
+
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-family: var(--serif);
+  font-size: 1.05rem;
+}
+
+.cc-book-byline {
+  margin: 0 0 14px;
+
+  color: var(--accent-bright);
+
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.cc-book-overview {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1.25fr) minmax(290px, 0.75fr);
+  gap: 50px;
+  align-items: start;
+
+  margin-top: 50px;
+}
+
+.cc-book-overview h2,
+.cc-book-contents h2,
+.cc-text-provenance h2 {
+  margin: 8px 0 20px;
+}
+
+.cc-book-editorial-note {
+  max-width: 720px;
+
+  margin-top: 26px;
+
+  color: var(--text-muted);
+
+  font-family: var(--serif);
+  font-size: 0.9rem;
+}
+
+.cc-book-rights,
+.cc-text-provenance {
+  padding: 24px;
+
+  background: var(--bg-elevated);
+
+  border-top: 3px solid var(--accent);
+}
+
+.cc-book-rights p,
+.cc-book-rights small,
+.cc-text-provenance p {
+  color: var(--text-muted);
+
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.cc-book-rights small {
+  display: block;
+
+  padding-top: 14px;
+
+  border-top: 1px solid var(--border);
+}
+
+.cc-book-contents {
+  margin-top: 72px;
+}
+
+.cc-book-contents ol {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--border);
+}
+
+.cc-book-contents li {
+  margin: 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.cc-book-contents a {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  padding: 18px 4px;
+
+  text-decoration: none;
+}
+
+.cc-book-contents a span:first-child {
+  color: var(--text);
+
+  font-weight: 800;
+}
+
+.cc-book-contents a span:last-child {
+  flex: 0 0 auto;
+
+  color: var(--accent-bright);
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cc-text-header {
+  max-width: 980px;
+}
+
+.cc-text-header h1 {
+  font-size: clamp(2.5rem, 6vw, 4.6rem);
+}
+
+.cc-text-provenance {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 30px;
+  align-items: end;
+
+  max-width: 900px;
+
+  margin: 46px auto 62px;
+}
+
+.cc-text-provenance h2 {
+  font-size: 1.35rem;
+}
+
+.cc-text-provenance p {
+  max-width: 650px;
+
+  margin: 0;
+}
+
+.cc-text-provenance > div:last-child {
+  display: flex;
+
+  gap: 16px;
+
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.cc-imported-text {
+  max-width: 760px;
+
+  margin: 0 auto;
+
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.cc-imported-text > * {
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto 5rem;
+}
+
+.cc-imported-text h2,
+.cc-imported-text h3 {
+  font-family: var(--sans);
+}
+
+.cc-imported-text h2 {
+  margin-top: 3.7rem;
+
+  font-size: 1.8rem;
+}
+
+.cc-imported-text h3 {
+  margin-top: 2.6rem;
+
+  font-size: 1.25rem;
+}
+
+.cc-imported-text blockquote {
+  margin: 2rem 0;
+  padding: 0 0 0 24px;
+
+  border-left: 3px solid var(--accent);
+}
+
+.cc-imported-text table {
+  display: block;
+
+  max-width: 100%;
+
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.cc-imported-text td,
+.cc-imported-text th {
+  padding: 9px 12px;
+
+  border: 1px solid var(--border);
+}
+
+.cc-text-note {
+  margin: 2rem 0;
+  padding: 16px 18px;
+
+  background: var(--bg-elevated);
+
+  color: var(--text-muted);
+
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.cc-text-note-label,
+.cc-text-note-inline {
+  color: var(--text-muted);
+
+  font-size: 0.85em;
+}
+
+.cc-text-indent {
+  margin-left: 1.5rem;
+}
+
+.cc-text-rule {
+  margin: 2.6rem 0;
+
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+.cc-text-pagination {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+
+  max-width: 900px;
+
+  margin: 78px auto 0;
+  padding-top: 28px;
+
+  border-top: 1px solid var(--border);
+}
+
+.cc-text-pagination a {
+  display: flex;
+  flex-direction: column;
+
+  padding: 18px;
+
+  background: var(--bg-elevated);
+
+  text-decoration: none;
+}
+
+.cc-text-pagination a:last-child {
+  text-align: right;
+}
+
+.cc-text-pagination span {
+  color: var(--accent-bright);
+
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cc-text-pagination strong {
+  margin-top: 5px;
+
+  color: var(--text);
+
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
    Minima Post Lists
    ========================================================= */
 
@@ -4230,8 +4554,15 @@ pre {
   }
 
   .cc-evidence-tools,
-  .cc-source-page-grid {
+  .cc-source-page-grid,
+  .cc-book-overview {
     grid-template-columns: 1fr;
+  }
+
+  .cc-text-provenance {
+    grid-template-columns: 1fr;
+
+    align-items: start;
   }
 
   .cc-post-facts {
@@ -4377,6 +4708,39 @@ pre {
     font-size: clamp(2.4rem, 13vw, 3.4rem);
 
     overflow-wrap: anywhere;
+  }
+
+  .cc-book-header h1,
+  .cc-text-header h1 {
+    font-size: clamp(2.35rem, 12vw, 3.4rem);
+
+    overflow-wrap: anywhere;
+  }
+
+  .cc-book-contents a {
+    flex-direction: column;
+
+    gap: 4px;
+  }
+
+  .cc-text-provenance > div:last-child {
+    flex-wrap: wrap;
+  }
+
+  .cc-imported-text {
+    font-size: 1rem;
+  }
+
+  .cc-text-indent {
+    margin-left: 0.75rem;
+  }
+
+  .cc-text-pagination {
+    grid-template-columns: 1fr;
+  }
+
+  .cc-text-pagination a:last-child {
+    text-align: left;
   }
 
   .cc-taxonomy-header h1,

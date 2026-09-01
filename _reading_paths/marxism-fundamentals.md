@@ -47,6 +47,7 @@ readings:
 - id: manifesto
   author: Karl Marx and Friedrich Engels
   title: The Communist Manifesto
+  text: manifesto-of-the-communist-party
   scope: Read the complete text; focus on the historical account of capitalism before
     the immediate political program.
   url: "/reading-list/#karl-marx-and-friedrich-engels--the-communist-manifesto"
@@ -59,11 +60,13 @@ readings:
 - id: wage-labour
   author: Karl Marx
   title: Wage Labour and Capital
+  text: wage-labour-and-capital
   scope: Read the complete text; diagram the exchange between worker and employer.
   url: "/reading-list/#karl-marx--wage-labour-and-capital"
 - id: value-price-profit
   author: Karl Marx
   title: Value, Price and Profit
+  text: value-price-and-profit
   scope: Read the complete text, paying special attention to wages, profit, and trade-union
     struggle.
   url: "/reading-list/#karl-marx--value-price-and-profit"

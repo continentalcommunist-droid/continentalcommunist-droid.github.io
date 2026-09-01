@@ -88,6 +88,9 @@ collections:
   books:
     output: true
     permalink: /library/texts/:name/
+  text_chapters:
+    output: true
+    permalink: /library/texts/:path/
   sources:
     output: true
     permalink: /library/sources/:name/

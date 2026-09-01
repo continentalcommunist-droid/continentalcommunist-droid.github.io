@@ -98,6 +98,62 @@
     ]{% endif %}
   }
   </script>
+{%- elsif page.layout == 'book' -%}
+  {%- assign schema_text_sections = site.text_chapters | where: 'parent_text', page.slug | sort: 'order' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "@id": {{ schema_canonical | append: '#book' | jsonify }},
+    "url": {{ schema_canonical | jsonify }},
+    "name": {{ page.title | jsonify }},
+    "description": {{ schema_description | jsonify }},
+    "datePublished": {{ page.publication_year | jsonify }},
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "author": [
+      {%- for author_name in page.authors -%}
+      { "@type": "Person", "name": {{ author_name | jsonify }} }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ],
+    "license": {{ page.license_url | jsonify }},
+    "isBasedOn": {{ page.source_url | jsonify }},
+    "publisher": { "@id": {{ schema_organization_id | jsonify }} },
+    "hasPart": [
+      {%- for section in schema_text_sections -%}
+      { "@type": "Chapter", "position": {{ section.order }}, "name": {{ section.title | jsonify }}, "url": {{ section.url | absolute_url | jsonify }} }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+{%- elsif page.layout == 'text-chapter' -%}
+  {%- assign schema_parent_book = site.books | where: 'slug', page.parent_text | first -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Chapter",
+    "@id": {{ schema_canonical | append: '#chapter' | jsonify }},
+    "url": {{ schema_canonical | jsonify }},
+    "name": {{ page.title | jsonify }},
+    "description": {{ schema_description | jsonify }},
+    "position": {{ page.order }},
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "author": [
+      {%- for author_name in page.authors -%}
+      { "@type": "Person", "name": {{ author_name | jsonify }} }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ],
+    "license": {{ page.license_url | jsonify }},
+    "isBasedOn": {{ page.source_url | jsonify }},
+    "isPartOf": {
+      "@type": "Book",
+      "name": {{ page.parent_title | jsonify }},
+      "url": {% if schema_parent_book %}{{ schema_parent_book.url | absolute_url | jsonify }}{% else %}{{ page.source_work_url | jsonify }}{% endif %}
+    },
+    "publisher": { "@id": {{ schema_organization_id | jsonify }} }
+  }
+  </script>
 {%- elsif page.layout == 'person' -%}
   {%- assign schema_person_type = 'Person' -%}
   {%- if page.profile_type == 'Organization' or page.profile_type == 'Editorial identity' -%}

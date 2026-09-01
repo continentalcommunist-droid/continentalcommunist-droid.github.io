@@ -8,6 +8,7 @@ sitemap: false
   | concat: site.lessons
   | concat: site.reading_paths
   | concat: site.books
+  | concat: site.text_chapters
   | concat: site.sources
   | concat: site.people
   | concat: site.concepts

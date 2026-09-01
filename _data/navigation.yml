@@ -151,8 +151,10 @@ main:
       - id: primary-sources
         title: Primary Sources
         url: /library/#primary-sources
-        description: A planned index of foundational texts, speeches, documents, and archival material.
-        status: In development
+        description: Six rights-reviewed foundational works in a local, searchable reader with source and license provenance.
+        status: Available
+        target: /library/#primary-sources
+        cta: Read the primary texts
       - id: bibliographies
         title: Bibliographies
         url: /library/#bibliographies

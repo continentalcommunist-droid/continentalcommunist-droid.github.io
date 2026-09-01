@@ -4,6 +4,7 @@ import {createReadStream} from "node:fs";
 import {mkdir, readFile, stat, writeFile} from "node:fs/promises";
 import http from "node:http";
 import path from "node:path";
+import {createGzip} from "node:zlib";
 import {launch} from "chrome-launcher";
 import lighthouse from "lighthouse";
 
@@ -12,6 +13,14 @@ const SITE_DIR = path.join(ROOT, "_site");
 const RESULT_DIR = path.join(ROOT, "performance-results", "lighthouse");
 const RUN_COUNT = Number.parseInt(process.env.LIGHTHOUSE_RUNS || "3", 10);
 const targets = JSON.parse(await readFile(path.join(ROOT, "performance", "targets.json"), "utf8"));
+const requestedTarget = process.env.LIGHTHOUSE_TARGET?.trim().toLowerCase();
+const selectedTargets = requestedTarget
+  ? targets.urls.filter((target) => target.name.toLowerCase() === requestedTarget)
+  : targets.urls;
+
+if (requestedTarget && selectedTargets.length === 0) {
+  throw new Error(`Unknown LIGHTHOUSE_TARGET ${JSON.stringify(process.env.LIGHTHOUSE_TARGET)}.`);
+}
 
 const thresholds = {
   performanceScore: {minimum: 0.9, label: "Performance score"},
@@ -37,6 +46,7 @@ const mimeTypes = {
   ".webp": "image/webp",
   ".xml": "application/xml; charset=utf-8"
 };
+const compressibleExtensions = new Set([".css", ".html", ".js", ".json", ".svg", ".txt", ".xml"]);
 
 function median(values) {
   const sorted = [...values].sort((left, right) => left - right);
@@ -100,11 +110,17 @@ const server = http.createServer(async (request, response) => {
     return;
   }
 
+  const extension = path.extname(filePath).toLowerCase();
+  const useGzip = compressibleExtensions.has(extension) && /\bgzip\b/.test(request.headers["accept-encoding"] || "");
   response.writeHead(200, {
     "Content-Type": mimeTypes[path.extname(filePath).toLowerCase()] || "application/octet-stream",
-    "Cache-Control": "no-store"
+    "Cache-Control": "no-store",
+    "Vary": "Accept-Encoding",
+    ...(useGzip ? {"Content-Encoding": "gzip"} : {})
   });
-  createReadStream(filePath).pipe(response);
+  const stream = createReadStream(filePath);
+  if (useGzip) stream.pipe(createGzip()).pipe(response);
+  else stream.pipe(response);
 });
 
 await new Promise((resolve, reject) => {
@@ -126,7 +142,7 @@ const failures = [];
 let lighthouseVersion = null;
 
 try {
-  for (const target of targets.urls) {
+  for (const target of selectedTargets) {
     const runs = [];
     const runName = safeName(target.name);
     const url = `http://127.0.0.1:${port}${target.path}`;

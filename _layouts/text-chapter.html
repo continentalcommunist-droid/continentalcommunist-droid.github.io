@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+{% assign parent_book = site.books | where: "slug", page.parent_text | first %}
+{% assign text_sections = site.text_chapters | where: "parent_text", page.parent_text | sort: "order" %}
+{% assign previous_order = page.order | minus: 1 %}
+{% assign next_order = page.order | plus: 1 %}
+{% assign previous_section = text_sections | where: "order", previous_order | first %}
+{% assign next_section = text_sections | where: "order", next_order | first %}
+
+<article class="cc-text-page">
+  <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ '/library/' | relative_url }}">Library</a>
+    <span aria-hidden="true">/</span>
+    {% if parent_book %}<a href="{{ parent_book.url | relative_url }}">{{ parent_book.title }}</a>{% endif %}
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ page.title }}</span>
+  </nav>
+
+  <header class="cc-text-header">
+    <div class="cc-hub-kicker">{{ page.parent_title }}</div>
+    <h1>{{ page.title }}</h1>
+    <p class="cc-book-byline">{{ page.authors | join: " and " }}</p>
+  </header>
+
+  {% include learner-tools.html %}
+
+  <aside class="cc-text-provenance" aria-labelledby="section-provenance-title">
+    <div>
+      <div class="cc-section-kicker">Edition and provenance</div>
+      <h2 id="section-provenance-title">A traceable reading copy</h2>
+      <p>{{ page.source_edition }} Text and archive markup are presented under the recorded public-domain and {{ page.license_name }} terms.</p>
+    </div>
+    <div>
+      <a href="{{ page.source_url }}" rel="external noopener">Compare with the source</a>
+      <a href="{{ page.license_url }}" rel="license external noopener">License</a>
+    </div>
+  </aside>
+
+  <div class="cc-imported-text">
+    {{ content }}
+  </div>
+
+  <nav class="cc-text-pagination" aria-label="Text sections">
+    {% if previous_section %}
+    <a rel="prev" href="{{ previous_section.url | relative_url }}">
+      <span>Previous</span>
+      <strong>{{ previous_section.title }}</strong>
+    </a>
+    {% else %}<span></span>{% endif %}
+
+    {% if next_section %}
+    <a rel="next" href="{{ next_section.url | relative_url }}">
+      <span>Next</span>
+      <strong>{{ next_section.title }}</strong>
+    </a>
+    {% endif %}
+  </nav>
+</article>
+
+{% include learner-tools-assets.html %}

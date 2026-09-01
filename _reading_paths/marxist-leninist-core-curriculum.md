@@ -111,6 +111,7 @@ readings:
 - id: theses-feuerbach
   author: Karl Marx
   title: Theses on Feuerbach
+  text: theses-on-feuerbach
   stage: Stage I · Method, practice, and history
   schedule: Week 1
   scope: Read the complete eleven theses twice. On the second pass, write one sentence explaining the problem addressed by each thesis and give special attention to Theses II, III, VIII, and XI.
@@ -139,6 +140,7 @@ readings:
 - id: wage-labour
   author: Karl Marx
   title: Wage Labour and Capital
+  text: wage-labour-and-capital
   stage: Stage II · Capitalist production and accumulation
   schedule: Week 5
   scope: Read the complete text. Reconstruct the wage relation using the distinctions among labor power, wages, commodities, and capital.
@@ -146,6 +148,7 @@ readings:
 - id: value-price-profit
   author: Karl Marx
   title: Value, Price and Profit
+  text: value-price-and-profit
   stage: Stage II · Capitalist production and accumulation
   schedule: Week 6
   scope: Read the complete text. Focus on Marx's argument against the claim that wage increases simply determine general price increases and on the political limits of trade-union struggle.
@@ -153,6 +156,7 @@ readings:
 - id: capital-commodity-labor-power
   author: Karl Marx
   title: Capital, Volume I — Commodity, money, and labor power
+  text: capital-volume-one
   stage: Stage II · Capitalist production and accumulation
   schedule: Week 7
   scope: Read Chapters 1, 3, 4, 6, and 7. Define value, money, the general formula for capital, labor power, the labor process, and valorization in the order Marx introduces them.
@@ -160,6 +164,7 @@ readings:
 - id: capital-working-day-machinery
   author: Karl Marx
   title: Capital, Volume I — The working day and machinery
+  text: capital-volume-one
   stage: Stage II · Capitalist production and accumulation
   schedule: Weeks 8–9
   scope: Read Chapters 10 and 15. Keep separate notes on absolute surplus value, relative surplus value, struggle over working time, machinery, cooperation, deskilling, and resistance.
@@ -167,6 +172,7 @@ readings:
 - id: capital-accumulation
   author: Karl Marx
   title: Capital, Volume I — Accumulation and primitive accumulation
+  text: capital-volume-one
   stage: Stage II · Capitalist production and accumulation
   schedule: Week 10
   scope: Read Chapters 24–25 and Chapters 26–28, 31, and 32. Explain how reproduction, concentration, the reserve army of labor, dispossession, and colonial violence enter Marx's account of capitalist development.
@@ -188,6 +194,7 @@ readings:
 - id: civil-war-france
   author: Karl Marx
   title: The Civil War in France
+  text: the-civil-war-in-france
   stage: Stage III · Class struggle, state, and revolution
   schedule: Week 13
   scope: Read Marx's three addresses and Engels's 1891 introduction. Extract the institutional features attributed to the Commune and distinguish historical description from programmatic conclusion.

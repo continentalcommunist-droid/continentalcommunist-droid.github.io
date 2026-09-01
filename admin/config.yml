@@ -445,7 +445,7 @@ collections:
         widget: relation
         collection: books
         value_field: "{{slug}}"
-        display_fields: [title, authors, date]
+        display_fields: [title, authors, publication_year]
         search_fields: [title, authors, isbn]
         multiple: true
         required: false
@@ -562,7 +562,7 @@ collections:
             widget: relation
             collection: books
             value_field: "{{slug}}"
-            display_fields: [title, authors, date]
+            display_fields: [title, authors, publication_year]
             search_fields: [title, authors, isbn]
             required: false
             hint: Link the reusable record when one exists; legacy display fields remain below.
@@ -610,9 +610,9 @@ collections:
     format: yaml-frontmatter
     identifier_field: title
     summary: "{{title}} — {{authors}}"
-    sortable_fields: [title, date]
+    sortable_fields: [title, publication_year]
     fields:
-      - { label: Layout, name: layout, widget: hidden, default: page }
+      - { label: Layout, name: layout, widget: hidden, default: book }
       - { label: Content Type, name: content_type, widget: hidden, default: Book / Text }
       - { label: Section Key, name: section_key, widget: hidden, default: library }
       - { label: Title, name: title, widget: string }
@@ -624,9 +624,9 @@ collections:
         display_fields: [name, role]
         search_fields: [name, role, description, aliases]
         multiple: true
-      - { label: Publication Date, name: date, widget: string, required: false, hint: Year or full date as printed. }
+      - { label: Publication Year, name: publication_year, widget: number, value_type: int, min: 1400, max: 2100, required: false }
       - { label: Publisher / Publication, name: publication, widget: string, required: false }
-      - { label: URL, name: url, widget: string, required: false }
+      - { label: Source URL, name: source_url, widget: string, required: false }
       - { label: DOI, name: doi, widget: string, required: false }
       - { label: ISBN, name: isbn, widget: string, required: false }
       - { label: Text Type, name: text_type, widget: select, options: [Book, Essay, Speech, Letter, Pamphlet, Report, Primary document, Journal article, Chapter, Other] }
@@ -670,7 +670,12 @@ collections:
         display_fields: [title, authors, date]
         search_fields: [title, authors, isbn, doi]
         required: false
-      - { label: Rights / Provenance, name: rights, widget: text, required: false }
+      - { label: Rights / Provenance, name: rights, widget: text, required: false, hint: Identify the exact edition, public-domain or license basis, archive, and date reviewed. Never assume the original author's public-domain status also covers a modern translation. }
+      - { label: Archive Name, name: archive_name, widget: string, required: false }
+      - { label: Archive URL, name: archive_url, widget: string, required: false }
+      - { label: License Name, name: license_name, widget: string, required: false }
+      - { label: License URL, name: license_url, widget: string, required: false }
+      - { label: Rights Reviewed, name: rights_reviewed, widget: datetime, type: date, format: YYYY-MM-DD, required: false }
       - { label: Summary / Notes, name: body, widget: richtext, required: false }
 
   - name: sources

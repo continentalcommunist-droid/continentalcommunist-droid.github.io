@@ -1,0 +1,66 @@
+---
+layout: default
+---
+
+{% assign text_sections = site.text_chapters | where: "parent_text", page.slug | sort: "order" %}
+
+<article class="cc-book-page">
+  <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ '/library/' | relative_url }}">Library</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ page.title }}</span>
+  </nav>
+
+  <header class="cc-book-header">
+    <div class="cc-hub-kicker">Rights-reviewed primary text</div>
+    <h1>{{ page.title }}</h1>
+    <p class="cc-book-byline">{{ page.authors | join: " and " }}</p>
+    <p>{{ page.description }}</p>
+  </header>
+
+  {% include learner-tools.html %}
+
+  <div class="cc-book-overview">
+    <section aria-labelledby="text-edition-title">
+      <div class="cc-section-kicker">Reading edition</div>
+      <h2 id="text-edition-title">About this text</h2>
+      <dl class="cc-source-record-metadata">
+        <div><dt>Written / first published</dt><dd>{{ page.publication_year }}</dd></div>
+        <div><dt>Format</dt><dd>{{ page.text_type }}</dd></div>
+        <div><dt>Difficulty</dt><dd>{{ page.reading_level }}</dd></div>
+        <div><dt>Language</dt><dd>{{ page.languages | join: ", " }}</dd></div>
+        {% if page.publication and page.publication != empty %}<div><dt>Edition</dt><dd>{{ page.publication }}</dd></div>{% endif %}
+        <div><dt>Sections</dt><dd>{{ text_sections.size }}</dd></div>
+      </dl>
+      <div class="cc-book-editorial-note">{{ content }}</div>
+    </section>
+
+    <aside class="cc-book-rights" aria-labelledby="text-rights-title">
+      <div class="cc-section-kicker">Rights and provenance</div>
+      <h2 id="text-rights-title">Why this edition is hosted here</h2>
+      <p>{{ page.rights }}</p>
+      <p><a href="{{ page.source_url }}" rel="external noopener">View the source edition at {{ page.archive_name }}</a></p>
+      <p><a href="{{ page.license_url }}" rel="license external noopener">{{ page.license_name }}</a></p>
+      <small>Rights reviewed {{ page.rights_reviewed }}. Every section retains its exact source URL and content fingerprint.</small>
+    </aside>
+  </div>
+
+  <section class="cc-book-contents" aria-labelledby="text-contents-title">
+    <div class="cc-section-kicker">Read on site</div>
+    <h2 id="text-contents-title">Table of contents</h2>
+    <ol>
+      {% for section in text_sections %}
+      <li>
+        <a href="{{ section.url | relative_url }}">
+          <span>{{ section.title }}</span>
+          <span aria-hidden="true">Read →</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+</article>
+
+{% include learner-tools-assets.html %}

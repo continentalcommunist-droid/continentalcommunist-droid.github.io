@@ -539,6 +539,17 @@ collections:
         multiple: true
         min: 1
         max: 5
+      - label: Curriculum Stages
+        name: stages
+        widget: list
+        required: false
+        summary: "Stage {{fields.number}} — {{fields.title}} — {{fields.weeks}}"
+        fields:
+          - { label: Stage Number, name: number, widget: string }
+          - { label: Title, name: title, widget: string }
+          - { label: Weeks, name: weeks, widget: string, hint: "Example: Weeks 1–4" }
+          - { label: Focus, name: focus, widget: text }
+          - { label: Stage Objectives, name: objectives, widget: list, required: false }
       - label: Readings
         name: readings
         widget: list
@@ -557,8 +568,10 @@ collections:
             hint: Link the reusable record when one exists; legacy display fields remain below.
           - { label: Author Display, name: author, widget: string }
           - { label: Title Display, name: title, widget: string }
+          - { label: Curriculum Stage, name: stage, widget: string, required: false, hint: "Example: Stage I · Method and materialism" }
+          - { label: Schedule, name: schedule, widget: string, required: false, hint: "Example: Week 2 or Weeks 7–8" }
           - { label: Assigned Scope, name: scope, widget: text }
-          - { label: Reading List URL, name: url, widget: string }
+          - { label: Reading URL, name: url, widget: string, hint: Internal reading-list anchor or canonical external text URL. }
       - label: Lecture Guides
         name: lectures
         widget: list

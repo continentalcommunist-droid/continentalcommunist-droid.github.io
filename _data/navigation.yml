@@ -144,7 +144,7 @@ main:
       - id: reading-list
         title: Reading List
         url: /reading-list/
-        description: The complete working bibliography, now connected to eight structured learning pathways.
+        description: The complete working bibliography, now connected to nine structured learning pathways.
         status: Available
         target: /reading-list/
         cta: Open the reading list

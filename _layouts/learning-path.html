@@ -117,9 +117,40 @@ layout: default
   </section>
   {% endif %}
 
+  {% if pathway.stages and pathway.stages != empty %}
+  <section class="cc-learning-section cc-curriculum-map" aria-labelledby="path-stages-title">
+    <div class="cc-section-kicker">Curriculum map</div>
+    <h2 id="path-stages-title">{{ pathway.stages.size }} stages of study</h2>
+    <p class="cc-learning-section-intro">
+      Follow the stages in order. Each one establishes concepts needed by the
+      next, while the assigned scope keeps the longer works manageable.
+    </p>
+
+    <div class="cc-curriculum-grid">
+      {% for stage in pathway.stages %}
+      <article class="cc-curriculum-stage">
+        <div class="cc-curriculum-stage-meta">
+          <span>Stage {{ stage.number }}</span>
+          <span>{{ stage.weeks }}</span>
+        </div>
+        <h3>{{ stage.title }}</h3>
+        <p>{{ stage.focus }}</p>
+        {% if stage.objectives and stage.objectives != empty %}
+        <ul>
+          {% for objective in stage.objectives %}
+          <li>{{ objective }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   <section class="cc-learning-section" aria-labelledby="path-readings-title">
     <div class="cc-section-kicker">Reading sequence</div>
-    <h2 id="path-readings-title">Six assigned readings</h2>
+    <h2 id="path-readings-title">{{ pathway.readings.size }} assigned readings</h2>
     <p class="cc-learning-section-intro">
       Check off each assignment as you complete it. The scope note tells you
       whether to read the full work or a defined selection.
@@ -138,11 +169,20 @@ layout: default
             <span class="cc-learning-step-number">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
             <span>
               <strong>{{ reading.title }}</strong>
+              {% if reading.stage or reading.schedule %}
+              <small class="cc-learning-assignment-meta">
+                {{ reading.stage }}{% if reading.stage and reading.schedule %} · {% endif %}{{ reading.schedule }}
+              </small>
+              {% endif %}
               <small>{{ reading.author }}</small>
             </span>
           </label>
           <p>{{ reading.scope }}</p>
+          {% if reading.url contains '://' %}
+          <a href="{{ reading.url }}" rel="external">Open assigned text <span aria-hidden="true">↗</span></a>
+          {% else %}
           <a href="{{ reading.url | relative_url }}">Find in the full reading list <span aria-hidden="true">→</span></a>
+          {% endif %}
         </div>
       </li>
       {% endfor %}
@@ -151,7 +191,7 @@ layout: default
 
   <section class="cc-learning-section" aria-labelledby="path-lectures-title">
     <div class="cc-section-kicker">Written lectures</div>
-    <h2 id="path-lectures-title">Three lecture guides</h2>
+    <h2 id="path-lectures-title">{{ pathway.lectures.size }} lecture guides</h2>
     <p class="cc-learning-section-intro">
       These outlines can be used for self-study, a reading group presentation,
       or the structure of a future recorded lecture.
@@ -207,7 +247,7 @@ layout: default
 
   <section class="cc-learning-section cc-path-glossary" aria-labelledby="path-glossary-title">
     <div class="cc-section-kicker">Working glossary</div>
-    <h2 id="path-glossary-title">Six terms to carry forward</h2>
+    <h2 id="path-glossary-title">{{ pathway.glossary.size }} terms to carry forward</h2>
     <dl>
       {% for entry in pathway.glossary %}
       <div>

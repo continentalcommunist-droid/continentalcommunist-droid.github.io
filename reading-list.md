@@ -23,7 +23,7 @@ The purpose of this list is therefore not merely to recommend books sympathetic 
   <div class="cc-section-kicker">Guided study</div>
   <h2 id="reading-pathways-title">Choose a learning pathway</h2>
   <p>
-    The bibliography now supports eight structured routes. Each one includes a
+    The bibliography now supports nine structured routes. Each one includes a
     level, realistic effort estimate, prerequisites, introductions, scoped
     readings, written lecture guides, questions, a glossary, and private
     browser-based progress tracking.
@@ -696,11 +696,11 @@ These documents help locate socialist arguments within the broader development o
 
 ## XXII. Structured Learning Pathways
 
-The former suggested reading sequences have been developed into eight complete [Learning Pathways]({{ '/learn/pathways/' | relative_url }}).
+The former suggested reading sequences have been developed into nine complete [Learning Pathways]({{ '/learn/pathways/' | relative_url }}).
 
 The pathways preserve the breadth of this bibliography while adding a level, estimated effort, prerequisites, introductions, summaries, discussion questions, written lecture guides, contextual glossaries, and progress tracking.
 
-Readers new to the subject should begin with [Marxism Fundamentals]({{ '/learn/pathways/marxism-fundamentals/' | relative_url }}). Readers with prior grounding can choose a pathway by subject and level.
+Readers new to the subject should begin with [Marxism Fundamentals]({{ '/learn/pathways/marxism-fundamentals/' | relative_url }}). Readers who complete it can continue through the 24-week [Marxist-Leninist Core Curriculum]({{ '/learn/pathways/marxist-leninist-core-curriculum/' | relative_url }}). Readers with prior grounding can also choose a pathway by subject and level.
 
 ***
 

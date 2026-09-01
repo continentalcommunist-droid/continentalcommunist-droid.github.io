@@ -176,8 +176,6 @@ title: Home
     <iframe
       src="https://4205196d.sibforms.com/v2/serve/MUIFALjpfba-WPr27UXLllMJhfVUESSJr2h7jY6vcdbZVTesevP-Lh9cXXxlFx1siVGywoEtY0P2zIyfD3xlRaE4ztlmtW3TtbAWpMqhS3Zm9aYEoy-p6vAh3OBdZ0fYxcXw2WQVkJVh8k73Ieks93YDBfuhcxKm3wcBYQoW8KNAXM0cwYsT0iaRVYzG1Iq8HbEYTGxoWa15ciG7Vg=="
       title="Subscribe to Continental Communist"
-      frameborder="0"
-      scrolling="no"
       loading="lazy"
       width="640"
       height="420"

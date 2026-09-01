@@ -48,6 +48,9 @@ jobs:
       - name: Build production site
         run: npm run build
 
+      - name: Validate document formatting
+        run: npm run validate:formatting
+
       - name: Enforce performance budgets
         run: npm run performance:ci
 

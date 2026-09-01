@@ -11,9 +11,12 @@ The dated PageSpeed/CrUX baseline, thresholds, local commands, CI behavior, and 
 ```sh
 npm ci
 npm run build
+npm run validate:formatting
 npm run performance:ci
 npm run performance:crux
 ```
+
+The formatting validator checks every generated public HTML page for a single page-level heading, ordered heading levels, unique IDs, complete image metadata, obsolete embed attributes, and leaked template markup.
 
 ## Information architecture
 

@@ -71,6 +71,11 @@ li {
   color: var(--text-body);
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 
 /* =========================================================
    Links
@@ -610,8 +615,10 @@ h3 {
 
 .cc-breadcrumbs {
   display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
 
-  gap: 9px;
+  gap: 5px 9px;
 
   margin-bottom: 40px;
 
@@ -621,6 +628,17 @@ h3 {
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.cc-breadcrumbs > a,
+.cc-breadcrumbs > span[aria-hidden="true"] {
+  flex: 0 0 auto;
+}
+
+.cc-breadcrumbs > [aria-current="page"] {
+  min-width: 0;
+
+  overflow-wrap: anywhere;
 }
 
 .cc-breadcrumbs a {
@@ -2202,6 +2220,8 @@ h3 {
 .post-content h2,
 .post-content h3 {
   margin-top: 2.5em;
+
+  scroll-margin-top: 100px;
 }
 
 .post-content h2 {
@@ -4200,13 +4220,17 @@ pre {
   }
 
   .cc-source-page-header h1 {
-    font-size: clamp(2.55rem, 15vw, 4rem);
+    font-size: clamp(2.4rem, 13vw, 3.4rem);
+
+    overflow-wrap: anywhere;
   }
 
   .cc-taxonomy-header h1,
   .cc-topic-header h1,
   .cc-person-header h1 {
-    font-size: clamp(2.55rem, 15vw, 4rem);
+    font-size: clamp(2.4rem, 13vw, 3.4rem);
+
+    overflow-wrap: anywhere;
   }
 
   body {
@@ -4770,7 +4794,9 @@ pre {
 
   .cc-pathway-catalog-header h1,
   .cc-learning-path-header h1 {
-    font-size: clamp(2.55rem, 15vw, 4rem);
+    font-size: clamp(2.4rem, 13vw, 3.4rem);
+
+    overflow-wrap: anywhere;
   }
 
   .cc-pathway-grid,

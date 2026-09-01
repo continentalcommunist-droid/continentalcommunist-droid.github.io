@@ -1,17 +1,26 @@
 ---
 layout: post
 title: 'The Numbers Racket: Capitalist Democracy in America'
+description: An argument that American political division obscures the shared capitalist structure of the two-party system and the democratic terrain on which socialist politics must develop.
 date: 2026-08-31
 categories: []
 featured: false
 section: analysis
 section_key: analysis
-content_type: Article
+content_type: Analysis
 author: Continental Communist
+editor: Continental Communist
 topics:
   - American Institutions
   - Democracy
   - Political Economy
+region:
+  - United States
+historical_period:
+  - Contemporary (2008-present)
+reading_level: General
+reading_time: 3
+editorial_stage: Published / monitoring
 ---
 
 “The problem with America is we are so divided.” “It’s always far right or far left.” “We need logical centrists.” “We need solutions, not more problems.”

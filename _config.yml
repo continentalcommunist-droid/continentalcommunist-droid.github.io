@@ -14,3 +14,41 @@ plugins:
   - jekyll-seo-tag
 
 show_excerpts: true
+
+# Structured content managed through Sveltia CMS. Each collection represents a
+# product object in the editorial content model rather than an ad hoc tag group.
+collections:
+  briefs:
+    output: true
+    permalink: /briefings/:name/
+  courses:
+    output: true
+    permalink: /learn/courses/:name/
+  lessons:
+    output: true
+    permalink: /learn/lessons/:name/
+  reading_paths:
+    output: true
+    permalink: /learn/pathways/:name/
+  books:
+    output: true
+    permalink: /library/texts/:name/
+  sources:
+    output: false
+  people:
+    output: true
+    permalink: /people/:name/
+  concepts:
+    output: true
+    permalink: /learn/concepts/:name/
+  topics:
+    output: true
+    permalink: /topics/:name/
+  events:
+    output: true
+    permalink: /multimedia/events/:name/
+  podcasts:
+    output: true
+    permalink: /multimedia/podcast/:name/
+  redirects:
+    output: true

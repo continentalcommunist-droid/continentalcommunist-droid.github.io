@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% assign pathway = site.data.learning_paths | where: "slug", page.pathway_key | first %}
+{% assign pathway = page %}
 {% assign pathway_total = pathway.readings.size | plus: pathway.lectures.size | plus: 1 %}
 
 <article

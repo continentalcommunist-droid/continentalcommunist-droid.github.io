@@ -30,56 +30,35 @@ permalink: /search.json
 
 {% for page in site.pages %}
 
-  {% if page.layout == "page" or page.layout == "hub" or page.layout == "pathway-catalog" or page.layout == "learning-path" %}
+  {% if page.layout == "page" or page.layout == "hub" or page.layout == "pathway-catalog" %}
 
     {% unless page.search_exclude %}
 
       {% unless first_item %},{% endunless %}
 
       {% assign page_hub = nil %}
-      {% assign indexed_pathway = nil %}
       {% for nav_item in site.data.navigation.main %}
         {% if nav_item.key == page.section_key %}
           {% assign page_hub = nav_item %}
         {% endif %}
       {% endfor %}
 
-      {% if page.pathway_key %}
-        {% assign indexed_pathway = site.data.learning_paths | where: "slug", page.pathway_key | first %}
-      {% endif %}
-
       {% capture page_terms %}
         {{ page.topics | join: " " }} {{ page.section }} {{ page.section_key }}
         {% if page_hub %}
           {% for child in page_hub.children %}{{ child.title }} {% endfor %}
-        {% endif %}
-        {% if indexed_pathway %}
-          {{ indexed_pathway.level }} {{ indexed_pathway.prerequisite_summary }}
-          {% for reading in indexed_pathway.readings %}{{ reading.title }} {{ reading.author }} {% endfor %}
-          {% for lecture in indexed_pathway.lectures %}{{ lecture.title }} {% endfor %}
-          {% for entry in indexed_pathway.glossary %}{{ entry.term }} {% endfor %}
-        {% endif %}
-      {% endcapture %}
-
-      {% capture page_search_content %}
-        {{ page.content }}
-        {% if indexed_pathway %}
-          {{ indexed_pathway.introduction }} {{ indexed_pathway.summary }}
-          {% for outcome in indexed_pathway.outcomes %}{{ outcome }} {% endfor %}
-          {% for question in indexed_pathway.questions %}{{ question }} {% endfor %}
-          {% for entry in indexed_pathway.glossary %}{{ entry.term }} {{ entry.definition }} {% endfor %}
         {% endif %}
       {% endcapture %}
 
       {
         "title": {{ page.title | jsonify }},
         "url": {{ page.url | relative_url | jsonify }},
-        "type": {% if page.layout == "hub" %}"Section"{% elsif page.layout == "learning-path" %}"Learning Path"{% elsif page.layout == "pathway-catalog" %}"Learning Catalog"{% else %}"Page"{% endif %},
+        "type": {% if page.layout == "hub" %}"Section"{% elsif page.layout == "pathway-catalog" %}"Learning Catalog"{% else %}"Page"{% endif %},
         "date": "",
         "timestamp": "0",
         "categories": {{ page_terms | strip | jsonify }},
         "excerpt": {{ page.description | default: "" | jsonify }},
-        "content": {{ page_search_content | strip_html | strip_newlines | jsonify }}
+        "content": {{ page.content | strip_html | strip_newlines | jsonify }}
       }
 
       {% assign first_item = false %}
@@ -87,6 +66,59 @@ permalink: /search.json
     {% endunless %}
 
   {% endif %}
+
+{% endfor %}
+
+
+{% assign cms_documents = site.briefs %}
+{% assign cms_documents = cms_documents | concat: site.courses %}
+{% assign cms_documents = cms_documents | concat: site.lessons %}
+{% assign cms_documents = cms_documents | concat: site.reading_paths %}
+{% assign cms_documents = cms_documents | concat: site.books %}
+{% assign cms_documents = cms_documents | concat: site.people %}
+{% assign cms_documents = cms_documents | concat: site.concepts %}
+{% assign cms_documents = cms_documents | concat: site.topics %}
+{% assign cms_documents = cms_documents | concat: site.events %}
+{% assign cms_documents = cms_documents | concat: site.podcasts %}
+
+{% for document in cms_documents %}
+
+  {% unless document.search_exclude %}
+
+    {% unless first_item %},{% endunless %}
+
+    {% capture document_terms %}
+      {{ document.topics | join: " " }}
+      {{ document.region | join: " " }}
+      {{ document.historical_period | join: " " }}
+      {{ document.section_key }} {{ document.level }} {{ document.reading_level }}
+      {{ document.author }} {{ document.editor }}
+      {% for reading in document.readings %}{{ reading.title }} {{ reading.author }} {% endfor %}
+      {% for lecture in document.lectures %}{{ lecture.title }} {% endfor %}
+      {% for entry in document.glossary %}{{ entry.term }} {% endfor %}
+    {% endcapture %}
+
+    {% capture document_search_content %}
+      {{ document.content }} {{ document.introduction }} {{ document.summary }}
+      {% for outcome in document.outcomes %}{{ outcome }} {% endfor %}
+      {% for question in document.questions %}{{ question }} {% endfor %}
+      {% for entry in document.glossary %}{{ entry.term }} {{ entry.definition }} {% endfor %}
+    {% endcapture %}
+
+    {
+      "title": {{ document.title | jsonify }},
+      "url": {{ document.url | relative_url | jsonify }},
+      "type": {{ document.content_type | default: "Page" | jsonify }},
+      "date": {% if document.date %}{{ document.date | date: "%B %-d, %Y" | jsonify }}{% else %}""{% endif %},
+      "timestamp": {% if document.date %}{{ document.date | date: "%s" | jsonify }}{% else %}"0"{% endif %},
+      "categories": {{ document_terms | strip | jsonify }},
+      "excerpt": {{ document.description | default: document.summary | default: "" | jsonify }},
+      "content": {{ document_search_content | strip_html | strip_newlines | jsonify }}
+    }
+
+    {% assign first_item = false %}
+
+  {% endunless %}
 
 {% endfor %}
 

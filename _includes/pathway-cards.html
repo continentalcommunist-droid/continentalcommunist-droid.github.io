@@ -1,5 +1,6 @@
 <div class="cc-pathway-grid{% if include.compact %} is-compact{% endif %}" id="pathways">
-  {% for pathway in site.data.learning_paths %}
+  {% assign sorted_pathways = site.reading_paths | sort: "number" %}
+  {% for pathway in sorted_pathways %}
     {% assign pathway_total = pathway.readings.size | plus: pathway.lectures.size | plus: 1 %}
     <article
       class="cc-pathway-card"

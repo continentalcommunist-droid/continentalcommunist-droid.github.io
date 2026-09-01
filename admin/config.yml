@@ -5,130 +5,842 @@ backend:
   repo: continentalcommunist-droid/continentalcommunist-droid.github.io
   branch: main
 
+# Each CMS save opens or updates a pull request. Publishing remains a distinct
+# review action, preserving an editorial record before content reaches main.
+publish_mode: editorial_workflow
+
 site_url: https://www.continentalcommunist.com
 display_url: https://www.continentalcommunist.com
 
 media_folder: /assets/images/uploads
 public_folder: /assets/images/uploads
 
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
 collections:
 
   # ========================================================
-  # Articles
+  # Editorial publishing
   # ========================================================
 
   - name: posts
     label: Articles
     label_singular: Article
     icon: article
-
     folder: /_posts
-
     create: true
-    delete: true
-
+    delete: false
     extension: md
     format: yaml-frontmatter
-
     slug: "{{date | date('YYYY-MM-DD')}}-{{slug}}"
-
+    identifier_field: title
+    summary: "{{title}} — {{content_type}} — {{date | date('YYYY-MM-DD')}}"
+    sortable_fields:
+      fields: [date, title, content_type, author]
+      default:
+        field: date
+        direction: descending
     fields:
-
-      - label: Layout
-        name: layout
-        widget: hidden
-        default: post
-
-      - label: Title
-        name: title
-        widget: string
-        hint: "The public headline of the article."
-
-      - label: Publication Date
-        name: date
-        widget: datetime
-        type: date
-        format: YYYY-MM-DD
-        default: "{{now}}"
-
-      - label: Categories
-        name: categories
+      - { label: Layout, name: layout, widget: hidden, default: post }
+      - { label: Title, name: title, widget: string, hint: The public headline. }
+      - { label: Summary, name: description, widget: text, hint: A one- or two-sentence standfirst used in cards, search, and metadata. }
+      - { label: Publication Date, name: date, widget: datetime, type: date, format: YYYY-MM-DD, default: "{{now}}" }
+      - { label: Substantive Update Date, name: updated, widget: datetime, type: date, format: YYYY-MM-DD, required: false, hint: Use only when the substance changes, not for typo fixes. }
+      - label: Content Type
+        name: content_type
+        widget: select
+        default: Analysis
+        options: [News, Analysis, Opinion / Debate, Education, Primary Source, Review]
+      - { label: Section, name: section, widget: hidden, default: analysis }
+      - { label: Section Key, name: section_key, widget: hidden, default: analysis }
+      - label: Author
+        name: author
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description]
+      - label: Editor
+        name: editor
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role]
+        required: false
+      - label: Topics
+        name: topics
+        widget: relation
+        collection: topics
+        value_field: name
+        display_fields: [name]
+        search_fields: [name, description, synonyms]
+        multiple: true
+        min: 1
+      - label: Regions
+        name: region
+        widget: select
+        multiple: true
+        required: false
+        options: [United States, North America, Latin America and the Caribbean, Europe, Africa, Middle East and North Africa, South Asia, East and Southeast Asia, Global]
+      - label: Historical Periods
+        name: historical_period
+        widget: select
+        multiple: true
+        required: false
+        options:
+          - Pre-1800
+          - 1800-1865
+          - Reconstruction and Gilded Age (1865-1900)
+          - Progressive Era and World War I (1900-1919)
+          - Interwar and New Deal (1919-1945)
+          - Cold War (1945-1991)
+          - Post-Cold War (1991-2008)
+          - Contemporary (2008-present)
+          - Multiple periods
+      - label: Reading Level
+        name: reading_level
+        widget: select
+        default: General
+        options: [Introductory, General, Intermediate, Advanced, Academic / Technical]
+      - { label: Estimated Reading Time, name: reading_time, widget: number, value_type: int, min: 1, required: false, hint: Minutes. }
+      - { label: Featured Image, name: image, widget: image, required: false }
+      - { label: Feature on Homepage, name: featured, widget: boolean, default: false, required: false }
+      - label: Sources / References
+        name: sources
+        widget: relation
+        collection: sources
+        value_field: "{{slug}}"
+        display_fields: [title, authors, date]
+        search_fields: [title, authors, publication, doi, isbn]
+        multiple: true
+        required: false
+      - label: Related Concepts
+        name: concepts
+        widget: relation
+        collection: concepts
+        value_field: "{{slug}}"
+        display_fields: [title]
+        search_fields: [title, summary, aliases]
+        multiple: true
+        required: false
+      - label: Related People
+        name: people
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description]
+        multiple: true
+        required: false
+      - label: Correction History
+        name: corrections
         widget: list
         required: false
-        hint: "Examples: essays, political-economy, history, theory"
-
-      - label: Feature on Homepage
-        name: featured
-        widget: boolean
-        default: false
+        summary: "{{fields.date}} — {{fields.summary}}"
+        fields:
+          - { label: Date, name: date, widget: datetime, type: date, format: YYYY-MM-DD }
+          - { label: Summary, name: summary, widget: text }
+          - { label: Public Notice, name: public_notice, widget: boolean, default: true }
+      - label: Assignment Brief
+        name: assignment_brief
+        widget: object
         required: false
-        hint: "Display this article in the Featured section on the homepage. Up to three featured articles are shown, newest first."
+        hint: Complete before drafting; this remains editorial metadata.
+        fields:
+          - { label: Factual Question, name: factual_question, widget: text, required: false }
+          - { label: Thesis, name: thesis, widget: text, required: false }
+          - { label: Claims Requiring Primary Evidence, name: primary_evidence, widget: text, required: false }
+          - { label: Reporting vs. Interpretation, name: reporting_vs_interpretation, widget: text, required: false }
+          - { label: Opposing Evidence / Interpretation, name: opposing_evidence, widget: text, required: false }
+          - { label: Legal / Reputational Risk, name: risk, widget: select, options: [Routine, Elevated, Legal review required], default: Routine }
+      - label: Editorial Stage
+        name: editorial_stage
+        widget: select
+        default: Draft
+        options: [Commissioned, Source plan, Draft, Developmental edit, Factual / citation check, Risk / legal review, Copy edit, Accessibility / metadata check, Ready to publish, Published / monitoring]
+      - { label: AI Assistance Disclosure, name: ai_assistance, widget: text, required: false, hint: Record material AI use and the human verification performed. }
+      - { label: Article, name: body, widget: richtext }
 
-      - label: Article
-        name: body
-        widget: richtext
-        hint: "Write or paste the article here. Markdown is stored in GitHub."
+  - name: briefs
+    label: Briefings
+    label_singular: Brief
+    icon: breaking_news
+    folder: /_briefs
+    create: true
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    slug: "{{date | date('YYYY-MM-DD')}}-{{slug}}"
+    identifier_field: title
+    sortable_fields:
+      fields: [date, title, author]
+      default:
+        field: date
+        direction: descending
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: post }
+      - { label: Content Type, name: content_type, widget: hidden, default: Brief }
+      - { label: Section, name: section, widget: hidden, default: briefings }
+      - { label: Section Key, name: section_key, widget: hidden, default: briefings }
+      - { label: Title, name: title, widget: string }
+      - { label: Summary, name: description, widget: text }
+      - { label: Publication Date, name: date, widget: datetime, type: date, format: YYYY-MM-DD, default: "{{now}}" }
+      - { label: Substantive Update Date, name: updated, widget: datetime, type: date, format: YYYY-MM-DD, required: false }
+      - label: Author
+        name: author
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role]
+      - label: Editor
+        name: editor
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role]
+        required: false
+      - label: Topics
+        name: topics
+        widget: relation
+        collection: topics
+        value_field: name
+        display_fields: [name]
+        search_fields: [name, description, synonyms]
+        multiple: true
+        min: 1
+      - { label: Regions, name: region, widget: select, multiple: true, required: false, options: [United States, North America, Latin America and the Caribbean, Europe, Africa, Middle East and North Africa, South Asia, East and Southeast Asia, Global] }
+      - { label: Reading Level, name: reading_level, widget: select, default: General, options: [Introductory, General, Intermediate, Advanced, Academic / Technical] }
+      - { label: Estimated Reading Time, name: reading_time, widget: number, value_type: int, min: 1, required: false, hint: Minutes. }
+      - label: Key Developments
+        name: developments
+        widget: list
+        required: false
+        summary: "{{fields.headline}}"
+        fields:
+          - { label: Headline, name: headline, widget: string }
+          - { label: Materialist Context, name: context, widget: text }
+          - label: Sources
+            name: sources
+            widget: relation
+            collection: sources
+            value_field: "{{slug}}"
+            display_fields: [title, authors, date]
+            search_fields: [title, authors, publication]
+            multiple: true
+      - label: Sources / References
+        name: sources
+        widget: relation
+        collection: sources
+        value_field: "{{slug}}"
+        display_fields: [title, authors, date]
+        search_fields: [title, authors, publication, doi]
+        multiple: true
+        required: false
+      - { label: Editorial Stage, name: editorial_stage, widget: select, default: Draft, options: [Commissioned, Source plan, Draft, Developmental edit, Factual / citation check, Risk / legal review, Copy edit, Accessibility / metadata check, Ready to publish, Published / monitoring] }
+      - { label: Brief, name: body, widget: richtext }
 
+  - divider: true
 
   # ========================================================
-  # Static Pages
+  # Education products
   # ========================================================
+
+  - name: courses
+    label: Courses
+    label_singular: Course
+    icon: school
+    folder: /_courses
+    create: true
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: title
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: page }
+      - { label: Content Type, name: content_type, widget: hidden, default: Course }
+      - { label: Section Key, name: section_key, widget: hidden, default: learn }
+      - { label: Title, name: title, widget: string }
+      - { label: Summary, name: description, widget: text }
+      - { label: Status, name: status, widget: select, default: Planning, options: [Planning, Draft, Enrollment open, Published, Archived] }
+      - { label: Level, name: level, widget: select, options: [Beginner, Beginner-Intermediate, Intermediate, Advanced] }
+      - { label: Estimated Effort, name: effort, widget: string, hint: "Example: 8 weeks · 4–5 hours per week" }
+      - label: Instructors
+        name: instructors
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role]
+        multiple: true
+        required: false
+      - label: Prerequisite Courses
+        name: prerequisites
+        widget: relation
+        collection: courses
+        value_field: "{{slug}}"
+        display_fields: [title, level]
+        search_fields: [title, description]
+        multiple: true
+        required: false
+      - label: Reading Paths
+        name: reading_paths
+        widget: relation
+        collection: reading_paths
+        value_field: slug
+        display_fields: [title, level]
+        search_fields: [title, description, topics]
+        multiple: true
+        required: false
+      - label: Lessons
+        name: lessons
+        widget: relation
+        collection: lessons
+        value_field: "{{slug}}"
+        display_fields: [title, course, order]
+        search_fields: [title, description]
+        multiple: true
+        required: false
+      - label: Topics
+        name: topics
+        widget: relation
+        collection: topics
+        value_field: name
+        display_fields: [name]
+        search_fields: [name, description]
+        multiple: true
+        min: 1
+      - { label: Learning Outcomes, name: outcomes, widget: list }
+      - label: Sources / References
+        name: sources
+        widget: relation
+        collection: sources
+        value_field: "{{slug}}"
+        display_fields: [title, authors, date]
+        search_fields: [title, authors, publication]
+        multiple: true
+        required: false
+      - { label: Course Introduction, name: body, widget: richtext }
+
+  - name: lessons
+    label: Lessons
+    label_singular: Lesson
+    icon: menu_book
+    folder: /_lessons
+    create: true
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: title
+    sortable_fields: [course, order, title]
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: page }
+      - { label: Content Type, name: content_type, widget: hidden, default: Lesson }
+      - { label: Section Key, name: section_key, widget: hidden, default: learn }
+      - { label: Title, name: title, widget: string }
+      - { label: Summary, name: description, widget: text }
+      - label: Course
+        name: course
+        widget: relation
+        collection: courses
+        value_field: "{{slug}}"
+        display_fields: [title]
+        search_fields: [title, description]
+      - { label: Order, name: order, widget: number, value_type: int, min: 1 }
+      - { label: Estimated Minutes, name: estimated_minutes, widget: number, value_type: int, min: 1 }
+      - label: Instructor / Author
+        name: author
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role]
+        required: false
+      - label: Books / Texts
+        name: texts
+        widget: relation
+        collection: books
+        value_field: "{{slug}}"
+        display_fields: [title, authors, date]
+        search_fields: [title, authors, isbn]
+        multiple: true
+        required: false
+      - label: Sources / References
+        name: sources
+        widget: relation
+        collection: sources
+        value_field: "{{slug}}"
+        display_fields: [title, authors, date]
+        search_fields: [title, authors, publication]
+        multiple: true
+        required: false
+      - label: Concepts
+        name: concepts
+        widget: relation
+        collection: concepts
+        value_field: "{{slug}}"
+        display_fields: [title]
+        search_fields: [title, summary, aliases]
+        multiple: true
+        required: false
+      - label: Topics
+        name: topics
+        widget: relation
+        collection: topics
+        value_field: name
+        display_fields: [name]
+        search_fields: [name, description]
+        multiple: true
+        min: 1
+      - { label: Review Questions, name: questions, widget: list, required: false }
+      - { label: Lesson, name: body, widget: richtext }
+
+  - name: reading_paths
+    label: Reading Paths
+    label_singular: Reading Path
+    icon: route
+    folder: /_reading_paths
+    create: true
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    slug: "{{fields.slug}}"
+    identifier_field: title
+    summary: "{{number}} — {{title}} — {{level}}"
+    sortable_fields: [number, title, level]
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: learning-path }
+      - { label: Content Type, name: content_type, widget: hidden, default: Learning Path }
+      - { label: Section, name: section, widget: hidden, default: learn }
+      - { label: Section Key, name: section_key, widget: hidden, default: learn }
+      - { label: Slug, name: slug, widget: string, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Use lowercase letters, numbers, and hyphens.'] }
+      - { label: Number, name: number, widget: string, pattern: ['^[0-9]{2}$', 'Use a two-digit number such as 01.'] }
+      - { label: Title, name: title, widget: string }
+      - { label: Level, name: level, widget: select, options: [Beginner, Beginner–Intermediate, Intermediate, Advanced] }
+      - { label: Estimated Effort, name: effort, widget: string }
+      - { label: Prerequisite Summary, name: prerequisite_summary, widget: string }
+      - { label: Prerequisites, name: prerequisites, widget: list }
+      - { label: Description, name: description, widget: text }
+      - { label: Introduction, name: introduction, widget: text }
+      - { label: Summary, name: summary, widget: text }
+      - { label: Learning Outcomes, name: outcomes, widget: list }
+      - label: Topics
+        name: topics
+        widget: relation
+        collection: topics
+        value_field: name
+        display_fields: [name]
+        search_fields: [name, description]
+        multiple: true
+        min: 1
+      - label: Readings
+        name: readings
+        widget: list
+        min: 1
+        summary: "{{fields.title}} — {{fields.author}}"
+        fields:
+          - { label: ID, name: id, widget: string, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Use lowercase letters, numbers, and hyphens.'] }
+          - label: Book / Text Record
+            name: text
+            widget: relation
+            collection: books
+            value_field: "{{slug}}"
+            display_fields: [title, authors, date]
+            search_fields: [title, authors, isbn]
+            required: false
+            hint: Link the reusable record when one exists; legacy display fields remain below.
+          - { label: Author Display, name: author, widget: string }
+          - { label: Title Display, name: title, widget: string }
+          - { label: Assigned Scope, name: scope, widget: text }
+          - { label: Reading List URL, name: url, widget: string }
+      - label: Lecture Guides
+        name: lectures
+        widget: list
+        min: 1
+        summary: "{{fields.title}} — {{fields.duration}}"
+        fields:
+          - { label: ID, name: id, widget: string, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Use lowercase letters, numbers, and hyphens.'] }
+          - { label: Title, name: title, widget: string }
+          - { label: Duration, name: duration, widget: string }
+          - { label: Summary, name: summary, widget: text }
+          - { label: Outline, name: outline, widget: list, min: 1 }
+      - { label: Discussion Questions, name: questions, widget: list, min: 1 }
+      - label: Glossary
+        name: glossary
+        widget: list
+        min: 1
+        summary: "{{fields.term}}"
+        fields:
+          - { label: Term, name: term, widget: string }
+          - { label: Definition, name: definition, widget: text }
+
+  - divider: true
+
+  # ========================================================
+  # Knowledge graph and reusable references
+  # ========================================================
+
+  - name: books
+    label: Books / Texts
+    label_singular: Book / Text
+    icon: auto_stories
+    folder: /_books
+    create: true
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: title
+    summary: "{{title}} — {{authors}}"
+    sortable_fields: [title, date]
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: page }
+      - { label: Content Type, name: content_type, widget: hidden, default: Book / Text }
+      - { label: Section Key, name: section_key, widget: hidden, default: library }
+      - { label: Title, name: title, widget: string }
+      - { label: Authors / Creators, name: authors, widget: list }
+      - { label: Publication Date, name: date, widget: string, required: false, hint: Year or full date as printed. }
+      - { label: Publisher / Publication, name: publication, widget: string, required: false }
+      - { label: URL, name: url, widget: string, required: false }
+      - { label: DOI, name: doi, widget: string, required: false }
+      - { label: ISBN, name: isbn, widget: string, required: false }
+      - { label: Text Type, name: text_type, widget: select, options: [Book, Essay, Speech, Letter, Pamphlet, Report, Primary document, Journal article, Chapter, Other] }
+      - label: Topics
+        name: topics
+        widget: relation
+        collection: topics
+        value_field: name
+        display_fields: [name]
+        search_fields: [name, description]
+        multiple: true
+        required: false
+      - label: Concepts
+        name: concepts
+        widget: relation
+        collection: concepts
+        value_field: "{{slug}}"
+        display_fields: [title]
+        search_fields: [title, summary, aliases]
+        multiple: true
+        required: false
+      - label: Canonical Source Record
+        name: source
+        widget: relation
+        collection: sources
+        value_field: "{{slug}}"
+        display_fields: [title, authors, date]
+        search_fields: [title, authors, isbn, doi]
+        required: false
+      - { label: Rights / Provenance, name: rights, widget: text, required: false }
+      - { label: Summary / Notes, name: body, widget: richtext, required: false }
+
+  - name: sources
+    label: Sources / References
+    label_singular: Source / Reference
+    icon: source
+    folder: /_sources
+    create: true
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: title
+    summary: "{{title}} — {{authors}} — {{date}}"
+    sortable_fields: [title, date, source_type]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Authors / Creators, name: authors, widget: list }
+      - { label: Publication / Container, name: publication, widget: string, required: false }
+      - { label: Publisher, name: publisher, widget: string, required: false }
+      - { label: Publication Date, name: date, widget: string, required: false }
+      - { label: URL, name: url, widget: string, required: false }
+      - { label: DOI, name: doi, widget: string, required: false }
+      - { label: ISBN, name: isbn, widget: string, required: false }
+      - { label: Access Date, name: access_date, widget: datetime, type: date, format: YYYY-MM-DD, required: false }
+      - { label: Source Type, name: source_type, widget: select, options: [Primary document, Book, Journal article, Government report, Research report, Dataset, News report, Website, Archive, Audio / Video, Other] }
+      - { label: Primary Source, name: primary_source, widget: boolean, default: false }
+      - { label: Rights / Provenance, name: rights, widget: text, required: false, hint: Record ownership, license, public-domain status, archive, or permission. }
+      - { label: Permitted Excerpt, name: excerpt, widget: text, required: false, hint: Include only text permitted under copyright and editorial policy. }
+      - { label: Editorial Notes, name: body, widget: richtext, required: false }
+
+  - name: people
+    label: People / Authors
+    label_singular: Person
+    icon: person
+    folder: /_people
+    create: true
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: name
+    summary: "{{name}} — {{role}}"
+    sortable_fields: [name, role]
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: page }
+      - { label: Content Type, name: content_type, widget: hidden, default: Person }
+      - { label: Page Title, name: title, widget: compute, value: "{{fields.name}}" }
+      - { label: Name, name: name, widget: string }
+      - { label: Role / Byline, name: role, widget: string, required: false }
+      - { label: Credentials / Expertise, name: credentials, widget: text, required: false }
+      - { label: Short Description, name: description, widget: text }
+      - { label: Portrait, name: image, widget: image, required: false }
+      - { label: Website, name: website, widget: string, required: false }
+      - { label: Active Contributor, name: active, widget: boolean, default: true }
+      - label: Public Links
+        name: links
+        widget: list
+        required: false
+        summary: "{{fields.label}}"
+        fields:
+          - { label: Label, name: label, widget: string }
+          - { label: URL, name: url, widget: string }
+      - { label: Biography, name: body, widget: richtext, required: false }
+
+  - name: concepts
+    label: Concepts
+    label_singular: Concept
+    icon: psychology
+    folder: /_concepts
+    create: true
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: title
+    sortable_fields: [title, level]
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: page }
+      - { label: Content Type, name: content_type, widget: hidden, default: Concept }
+      - { label: Section Key, name: section_key, widget: hidden, default: learn }
+      - { label: Term, name: title, widget: string }
+      - { label: Short Definition, name: description, widget: text }
+      - { label: Summary, name: summary, widget: text }
+      - { label: Level, name: level, widget: select, options: [Beginner, Intermediate, Advanced] }
+      - { label: Aliases, name: aliases, widget: list, required: false }
+      - label: Topics
+        name: topics
+        widget: relation
+        collection: topics
+        value_field: name
+        display_fields: [name]
+        search_fields: [name, description]
+        multiple: true
+        required: false
+      - label: Related Concepts
+        name: related_concepts
+        widget: relation
+        collection: concepts
+        value_field: "{{slug}}"
+        display_fields: [title]
+        search_fields: [title, summary, aliases]
+        multiple: true
+        required: false
+      - label: Sources
+        name: sources
+        widget: relation
+        collection: sources
+        value_field: "{{slug}}"
+        display_fields: [title, authors, date]
+        search_fields: [title, authors, publication]
+        multiple: true
+        required: false
+      - { label: Explanation, name: body, widget: richtext }
+
+  - name: topics
+    label: Topics
+    label_singular: Topic
+    icon: topic
+    folder: /_topics
+    create: true
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: name
+    sortable_fields: [name]
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: page }
+      - { label: Content Type, name: content_type, widget: hidden, default: Topic }
+      - { label: Section Key, name: section_key, widget: hidden, default: topics }
+      - { label: Page Title, name: title, widget: compute, value: "{{fields.name}}" }
+      - { label: Name, name: name, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Synonyms / Alternate Terms, name: synonyms, widget: list, required: false }
+      - label: Parent Topic
+        name: parent
+        widget: relation
+        collection: topics
+        value_field: name
+        display_fields: [name]
+        search_fields: [name, description]
+        required: false
+      - label: Related Topics
+        name: related_topics
+        widget: relation
+        collection: topics
+        value_field: name
+        display_fields: [name]
+        search_fields: [name, description]
+        multiple: true
+        required: false
+      - { label: Topic Introduction, name: body, widget: richtext, required: false }
+
+  - divider: true
+
+  # ========================================================
+  # Multimedia and events
+  # ========================================================
+
+  - name: events
+    label: Events
+    label_singular: Event
+    icon: event
+    folder: /_events
+    create: true
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: title
+    sortable_fields:
+      fields: [start, title, status]
+      default:
+        field: start
+        direction: descending
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: page }
+      - { label: Content Type, name: content_type, widget: hidden, default: Event }
+      - { label: Section Key, name: section_key, widget: hidden, default: multimedia }
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Start, name: start, widget: datetime }
+      - { label: End, name: end, widget: datetime, required: false }
+      - { label: Status, name: status, widget: select, default: Scheduled, options: [Draft, Scheduled, Registration open, Completed, Cancelled] }
+      - { label: Format, name: format_type, widget: select, options: [Online, In person, Hybrid] }
+      - { label: Location / Platform, name: location, widget: string, required: false }
+      - { label: Registration URL, name: registration_url, widget: string, required: false }
+      - label: Speakers
+        name: people
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role]
+        multiple: true
+        required: false
+      - label: Topics
+        name: topics
+        widget: relation
+        collection: topics
+        value_field: name
+        display_fields: [name]
+        search_fields: [name, description]
+        multiple: true
+        required: false
+      - { label: Event Details, name: body, widget: richtext }
+
+  - name: podcasts
+    label: Podcasts / Episodes
+    label_singular: Podcast Episode
+    icon: podcasts
+    folder: /_podcasts
+    create: true
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: title
+    sortable_fields:
+      fields: [date, series, episode, title]
+      default:
+        field: date
+        direction: descending
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: page }
+      - { label: Content Type, name: content_type, widget: hidden, default: Podcast }
+      - { label: Section Key, name: section_key, widget: hidden, default: multimedia }
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Series, name: series, widget: string, default: Continental Communist }
+      - { label: Episode Number, name: episode, widget: number, value_type: int, min: 1, required: false }
+      - { label: Publication Date, name: date, widget: datetime, type: date, format: YYYY-MM-DD }
+      - { label: Duration, name: duration, widget: string, required: false }
+      - { label: Audio URL, name: audio_url, widget: string, required: false }
+      - { label: Video URL, name: video_url, widget: string, required: false }
+      - label: Hosts / Guests
+        name: people
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role]
+        multiple: true
+        required: false
+      - label: Topics
+        name: topics
+        widget: relation
+        collection: topics
+        value_field: name
+        display_fields: [name]
+        search_fields: [name, description]
+        multiple: true
+        required: false
+      - label: Sources / References
+        name: sources
+        widget: relation
+        collection: sources
+        value_field: "{{slug}}"
+        display_fields: [title, authors, date]
+        search_fields: [title, authors, publication]
+        multiple: true
+        required: false
+      - { label: Transcript / Show Notes, name: body, widget: richtext }
+
+  - divider: true
+
+  # ========================================================
+  # Site operations
+  # ========================================================
+
+  - name: redirects
+    label: Redirects
+    label_singular: Redirect
+    icon: alt_route
+    folder: /_redirects
+    create: true
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: title
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: redirect }
+      - { label: Internal Label, name: title, widget: string, hint: Used only in the CMS. }
+      - { label: Old Path, name: permalink, widget: string, pattern: ['^/.*', 'Begin with /.'], hint: "Example: /old-article/" }
+      - { label: Destination Path, name: redirect_to, widget: string, pattern: ['^/.*', 'Begin with /.'], hint: "Example: /analysis/new-article/" }
+      - { label: Reason, name: reason, widget: text }
+      - { label: Created, name: date, widget: datetime, type: date, format: YYYY-MM-DD, default: "{{now}}" }
 
   - name: pages
-    label: Pages
+    label: Static Pages
     icon: description
-
     files:
-
       - name: about
         label: About
         file: /about.md
         format: yaml-frontmatter
-
         fields:
-
-          - label: Layout
-            name: layout
-            widget: hidden
-            default: page
-
-          - label: Title
-            name: title
-            widget: hidden
-            default: About
-
-          - label: Permalink
-            name: permalink
-            widget: hidden
-            default: /about/
-
-          - label: Content
-            name: body
-            widget: richtext
-
-
+          - { label: Layout, name: layout, widget: hidden, default: page }
+          - { label: Title, name: title, widget: hidden, default: About }
+          - { label: Permalink, name: permalink, widget: hidden, default: /about/ }
+          - { label: Content, name: body, widget: richtext }
       - name: reading_list
         label: Reading List
         file: /reading-list.md
         format: yaml-frontmatter
-
         fields:
-
-          - label: Layout
-            name: layout
-            widget: hidden
-            default: page
-
-          - label: Title
-            name: title
-            widget: hidden
-            default: Reading List
-
-          - label: Permalink
-            name: permalink
-            widget: hidden
-            default: /reading-list/
-
-          - label: Content
-            name: body
-            widget: richtext
+          - { label: Layout, name: layout, widget: hidden, default: page }
+          - { label: Title, name: title, widget: hidden, default: Reading List }
+          - { label: Permalink, name: permalink, widget: hidden, default: /reading-list/ }
+          - { label: Section, name: section, widget: hidden, default: library }
+          - { label: Section Key, name: section_key, widget: hidden, default: library }
+          - { label: Content Type, name: content_type, widget: hidden, default: Bibliography }
+          - { label: Content, name: body, widget: richtext }

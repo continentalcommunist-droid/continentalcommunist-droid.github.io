@@ -22,8 +22,16 @@ Published content should use `section`, `section_key`, `content_type`, and `topi
 
 ## Learning pathways
 
-The Reading List is organized into guided learning pathways under `/learn/pathways/`. Pathway content is defined in `_data/learning_paths.yml`; the catalog and individual pathway pages are rendered by `_layouts/pathway-catalog.html` and `_layouts/learning-path.html`.
+The Reading List is organized into guided learning pathways under `/learn/pathways/`. Each pathway is a structured document in `_reading_paths/`; the catalog and individual pathway pages are rendered by `_layouts/pathway-catalog.html` and `_layouts/learning-path.html`.
 
 Each pathway includes a level, estimated effort, prerequisites, an introduction, a summary, scoped readings, written lecture guides, discussion questions, and a contextual glossary. The catalog cards are shared through `_includes/pathway-cards.html` so the Learn and Reading List entry points remain consistent.
 
 Completion state is managed by `assets/learning-progress.js` and stored locally in the visitor's browser. Progress does not require an account and is not transmitted to the site.
+
+## Sveltia CMS content model
+
+The editor at `/admin/` uses Sveltia CMS with GitHub's editorial workflow. CMS saves are isolated on review branches and pull requests until an editor publishes them.
+
+`admin/config.yml` defines Article, Brief, Course, Lesson, Reading Path, Book/Text, Source, Person, Concept, Topic, Event, and Podcast as distinct product objects. Relation fields connect those objects through controlled topics, reusable source records, authors, concepts, texts, courses, lessons, and pathways. Redirects are managed as a separate operational collection.
+
+Articles and briefings include standardized publication and update metadata, reading level and time, regions and historical periods, source references, correction history, assignment-brief prompts, editorial stage, and AI-assistance disclosure. Existing pathway content and topic labels were migrated into CMS-managed collections so the editor is the source of truth rather than a parallel interface.

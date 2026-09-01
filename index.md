@@ -8,8 +8,14 @@ title: Home
   <h1 class="cc-visually-hidden">Continental Communist</h1>
 
   <img
-    src="{{ '/assets/images/title.png' | relative_url }}"
+    srcset="{{ '/assets/images/title-800.webp' | relative_url }} 800w, {{ '/assets/images/title-1600.webp' | relative_url }} 1600w"
+    sizes="(max-width: 900px) 75vw, 675px"
+    src="{{ '/assets/images/title-800.webp' | relative_url }}"
     alt="Continental Communist"
+    width="800"
+    height="699"
+    decoding="async"
+    fetchpriority="high"
     class="cc-title-image"
   >
 
@@ -173,6 +179,8 @@ title: Home
       frameborder="0"
       scrolling="no"
       loading="lazy"
+      width="640"
+      height="420"
     ></iframe>
 
   </div>

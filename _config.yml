@@ -28,6 +28,30 @@ plugins:
 
 show_excerpts: true
 
+# Ship the smallest production stylesheet; source maps remain available through
+# the uncompiled SCSS in the repository and do not belong in the public build.
+sass:
+  style: compressed
+  sourcemap: never
+
+# Keep development, validation, and benchmark artifacts out of the published
+# GitHub Pages output. Only production content and runtime assets are copied.
+exclude:
+  - .github
+  - docs
+  - node_modules
+  - performance
+  - scripts
+  - tmp
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - assets/images/title.png
+  - assets/images/uploads/banner2.png
+  - assets/images/uploads/figures.png
+
 # Structured content managed through Sveltia CMS. Each collection represents a
 # product object in the editorial content model rather than an ad hoc tag group.
 collections:

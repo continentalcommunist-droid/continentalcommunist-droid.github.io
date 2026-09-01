@@ -1,0 +1,90 @@
+name: Core Web Vitals
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 8 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: core-web-vitals-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    name: Lighthouse release gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      - name: Install Jekyll build dependencies
+        run: |
+          gem install jekyll --version 4.4.1 --no-document
+          gem install minima --version 2.5.2 --no-document
+          gem install jekyll-feed --version 0.17.0 --no-document
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install performance tooling
+        run: npm ci
+
+      - name: Build production site
+        run: npm run build
+
+      - name: Enforce performance budgets
+        run: npm run performance:ci
+
+      - name: Preserve Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: performance-results/lighthouse/
+          if-no-files-found: ignore
+          retention-days: 14
+
+  crux:
+    name: CrUX field gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      - name: Check real-user Core Web Vitals
+        env:
+          CRUX_API_KEY: ${{ secrets.CRUX_API_KEY }}
+          PERFORMANCE_REQUIRE_CRUX_DATA: ${{ vars.PERFORMANCE_REQUIRE_CRUX_DATA }}
+        run: ruby scripts/check_crux.rb
+
+      - name: Preserve CrUX result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: crux-result
+          path: performance-results/crux.json
+          if-no-files-found: ignore
+          retention-days: 30

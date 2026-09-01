@@ -12,7 +12,7 @@ Scientific socialism begins from the premise that political and social life cann
 
 This publication applies that method to the American experience.
 
-![](/assets/images/uploads/banner2.png)
+<img src="{{ '/assets/images/uploads/banner2-2000.webp' | relative_url }}" alt="Continental Communist red and blue banner with a star emblem" width="2000" height="351" loading="lazy" decoding="async">
 
 ## An American Perspective
 

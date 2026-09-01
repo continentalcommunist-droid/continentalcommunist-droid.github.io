@@ -11,7 +11,7 @@ topics:
   - American History
 ---
 
-![](/assets/images/uploads/figures.png)
+<img srcset="{{ '/assets/images/uploads/figures-800.webp' | relative_url }} 800w, {{ '/assets/images/uploads/figures-1600.webp' | relative_url }} 1600w, {{ '/assets/images/uploads/figures-2400.webp' | relative_url }} 2400w" sizes="(max-width: 850px) calc(100vw - 40px), 800px" src="{{ '/assets/images/uploads/figures-800.webp' | relative_url }}" alt="Portraits of Karl Marx, Friedrich Engels, W. E. B. Du Bois, Eugene V. Debs, and V. I. Lenin" width="800" height="240" decoding="async" fetchpriority="high">
 
 This is a working bibliography for readers interested in **scientific socialism, American political economy, labor history, democratic institutions, economic development, technology, and the history of socialist thought in the United States**.
 
@@ -41,7 +41,7 @@ Note: The [Marxists Internet Archive](https://www.marxists.org/) is the most imp
 
 ***
 
-![](/assets/images/uploads/banner2.png)
+<img src="{{ '/assets/images/uploads/banner2-2000.webp' | relative_url }}" alt="Continental Communist red and blue banner with a star emblem" width="2000" height="351" loading="lazy" decoding="async">
 
 ## Where to Start
 

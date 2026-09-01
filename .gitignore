@@ -2,3 +2,6 @@ _site/
 .jekyll-cache/
 .sass-cache/
 tmp/
+.lighthouseci/
+node_modules/
+performance-results/

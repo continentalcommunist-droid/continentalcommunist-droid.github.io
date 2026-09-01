@@ -1,0 +1,29 @@
+{
+  "minimumFieldPassRate": 0.9,
+  "urls": [
+    {
+      "name": "Homepage",
+      "path": "/"
+    },
+    {
+      "name": "Article",
+      "path": "/2026/08/31/the-numbers-racket-capitalist-democracy-in-america/"
+    },
+    {
+      "name": "Reading list",
+      "path": "/reading-list/"
+    },
+    {
+      "name": "Learning pathway",
+      "path": "/learn/pathways/marxism-fundamentals/"
+    },
+    {
+      "name": "Topic hub",
+      "path": "/topics/democracy/"
+    },
+    {
+      "name": "Faceted search",
+      "path": "/search/"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "capturedAt": "2026-09-01T03:08:39-04:00",
+  "url": "https://www.continentalcommunist.com/",
+  "source": "PageSpeed Insights",
+  "reportUrl": "https://pagespeed.web.dev/analysis/https-www-continentalcommunist-com/whsa72kce5",
+  "crux": {
+    "status": "no-data",
+    "scope": "page and origin",
+    "note": "PageSpeed Insights reported No Data for both mobile and desktop field experience. The site is not yet represented by sufficient eligible real-user traffic in CrUX."
+  },
+  "lab": {
+    "mobile": {
+      "performanceScore": 0.66,
+      "firstContentfulPaintMs": 900,
+      "largestContentfulPaintMs": 8600,
+      "totalBlockingTimeMs": 20,
+      "cumulativeLayoutShift": 0.203,
+      "speedIndexMs": 900,
+      "lighthouseVersion": "13.4.1",
+      "device": "Emulated Moto G Power",
+      "network": "Slow 4G"
+    },
+    "desktop": {
+      "performanceScore": 0.78,
+      "firstContentfulPaintMs": 300,
+      "largestContentfulPaintMs": 1400,
+      "totalBlockingTimeMs": 180,
+      "cumulativeLayoutShift": 0.254,
+      "speedIndexMs": 800,
+      "lighthouseVersion": "13.4.1",
+      "device": "Emulated Desktop",
+      "network": "Custom throttling"
+    }
+  }
+}

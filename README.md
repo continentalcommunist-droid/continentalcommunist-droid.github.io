@@ -2,6 +2,19 @@
 
 The Jekyll source for [continentalcommunist.com](https://www.continentalcommunist.com/).
 
+## Performance release gate
+
+Every pull request and push to `main` builds the production site and measures six representative page types three times with mobile Lighthouse. The median result for every page must pass the Core Web Vitals-aligned thresholds and resource budgets before release. A separate weekly and per-change check evaluates Chrome UX Report field data when an API key is configured.
+
+The dated PageSpeed/CrUX baseline, thresholds, local commands, CI behavior, and GitHub branch-protection handoff are documented in `docs/performance.md`. Run the same checks locally with:
+
+```sh
+npm ci
+npm run build
+npm run performance:ci
+npm run performance:crux
+```
+
 ## Information architecture
 
 The primary site hierarchy is defined once in `_data/navigation.yml` and is used by the header, homepage router, hub pages, footer, and search index.

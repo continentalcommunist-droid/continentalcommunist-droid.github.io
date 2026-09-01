@@ -3,6 +3,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  {%- if page.url == '/' %}
+  <link
+    rel="preload"
+    as="image"
+    href="{{ '/assets/images/title-800.webp' | relative_url }}"
+    type="image/webp"
+    fetchpriority="high"
+    media="(max-width: 900px)"
+  >
+  <link
+    rel="preload"
+    as="image"
+    href="{{ '/assets/images/title-1600.webp' | relative_url }}"
+    type="image/webp"
+    fetchpriority="high"
+    media="(min-width: 901px)"
+  >
+  {%- endif %}
+
   {%- include seo-meta.html -%}
   {%- include structured-data.html -%}
 

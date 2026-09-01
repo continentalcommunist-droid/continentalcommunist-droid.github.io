@@ -6,11 +6,11 @@ main:
     children:
       - id: start-here
         title: Start Here
-        url: /learn/#start-here
-        description: A guided entry point for readers who are new to Marxism and scientific socialism.
+        url: /learn/pathways/marxism-fundamentals/
+        description: A six-week beginner pathway into Marxist method, class, value, exploitation, and political analysis.
         status: Available
-        target: /reading-list/#where-to-start
-        cta: Begin with the reading path
+        target: /learn/pathways/marxism-fundamentals/
+        cta: Begin Marxism Fundamentals
       - id: courses
         title: Courses
         url: /learn/#courses
@@ -18,16 +18,18 @@ main:
         status: Planned
       - id: reading-paths
         title: Reading Paths
-        url: /learn/#reading-paths
-        description: Curated routes through foundational texts and major debates, organized by level and theme.
-        status: In development
-        target: /reading-list/
-        cta: Explore the current reading list
+        url: /learn/pathways/
+        description: Eight structured routes with levels, effort estimates, lecture guides, questions, glossaries, and progress tracking.
+        status: Available
+        target: /learn/pathways/
+        cta: Explore all eight pathways
       - id: glossary
         title: Glossary
-        url: /learn/#glossary
-        description: Plain-language definitions with links to thinkers, texts, and analysis.
-        status: Planned
+        url: /learn/pathways/#pathway-glossaries
+        description: Forty-eight contextual definitions distributed across the eight learning pathways.
+        status: Available
+        target: /learn/pathways/#pathway-glossaries
+        cta: Browse pathway glossaries
       - id: reference-guides
         title: Timelines, Thinkers & Concepts
         url: /learn/#reference-guides
@@ -142,7 +144,7 @@ main:
       - id: reading-list
         title: Reading List
         url: /reading-list/
-        description: The working bibliography and current ten-text starting sequence.
+        description: The complete working bibliography, now connected to eight structured learning pathways.
         status: Available
         target: /reading-list/
         cta: Open the reading list
@@ -179,8 +181,10 @@ main:
       - id: lectures
         title: Lectures
         url: /multimedia/#lectures
-        description: Recorded teaching and presentations connected to courses and reading paths.
-        status: Planned
+        description: Twenty-four written lecture guides connected to readings, questions, and pathway glossaries.
+        status: Available
+        target: /learn/pathways/
+        cta: Open the lecture guides
       - id: events
         title: Events
         url: /multimedia/#events

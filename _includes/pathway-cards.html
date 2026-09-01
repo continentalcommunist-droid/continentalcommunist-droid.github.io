@@ -1,0 +1,60 @@
+<div class="cc-pathway-grid{% if include.compact %} is-compact{% endif %}" id="pathways">
+  {% for pathway in site.data.learning_paths %}
+    {% assign pathway_total = pathway.readings.size | plus: pathway.lectures.size | plus: 1 %}
+    <article
+      class="cc-pathway-card"
+      data-pathway-card="{{ pathway.slug }}"
+      data-total-steps="{{ pathway_total }}"
+    >
+      <div class="cc-pathway-card-topline">
+        <span>{{ pathway.number }}</span>
+        <span>{{ pathway.level }}</span>
+      </div>
+
+      <h3>
+        <a href="{{ '/learn/pathways/' | append: pathway.slug | append: '/' | relative_url }}">
+          {{ pathway.title }}
+        </a>
+      </h3>
+
+      <p>{{ pathway.description }}</p>
+
+      <dl class="cc-pathway-card-facts">
+        <div>
+          <dt>Estimated effort</dt>
+          <dd>{{ pathway.effort }}</dd>
+        </div>
+        {% unless include.compact %}
+        <div>
+          <dt>Prerequisite</dt>
+          <dd>{{ pathway.prerequisite_summary }}</dd>
+        </div>
+        {% endunless %}
+      </dl>
+
+      <div class="cc-pathway-card-progress">
+        <div class="cc-pathway-progress-line">
+          <span>Progress</span>
+          <span data-progress-count>0 of {{ pathway_total }} steps</span>
+        </div>
+        <div
+          class="cc-pathway-progress-track"
+          role="progressbar"
+          aria-label="Progress for {{ pathway.title }}"
+          aria-valuemin="0"
+          aria-valuemax="{{ pathway_total }}"
+          aria-valuenow="0"
+        >
+          <span data-progress-bar></span>
+        </div>
+      </div>
+
+      <a
+        class="cc-pathway-card-link"
+        href="{{ '/learn/pathways/' | append: pathway.slug | append: '/' | relative_url }}"
+      >
+        Open pathway <span aria-hidden="true">→</span>
+      </a>
+    </article>
+  {% endfor %}
+</div>

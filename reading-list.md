@@ -19,6 +19,24 @@ It is not intended as a canon or a list of works with which Continental Communis
 
 The purpose of this list is therefore not merely to recommend books sympathetic to socialism. It is to assemble works that help explain the society in which an American socialist politics would have to operate.
 
+<section class="cc-reading-pathways" aria-labelledby="reading-pathways-title">
+  <div class="cc-section-kicker">Guided study</div>
+  <h2 id="reading-pathways-title">Choose a learning pathway</h2>
+  <p>
+    The bibliography now supports eight structured routes. Each one includes a
+    level, realistic effort estimate, prerequisites, introductions, scoped
+    readings, written lecture guides, questions, a glossary, and private
+    browser-based progress tracking.
+  </p>
+
+  {% include pathway-cards.html compact=true %}
+
+  <p class="cc-reading-pathways-note">
+    Progress stays in your browser. No account is required and no reading data
+    is sent to Continental Communist.
+  </p>
+</section>
+
 Note: The [Marxists Internet Archive](https://www.marxists.org/) is the most important resource ever compiled in digital Marxist education. Much of our reading list on core texts can be found on the site.
 
 ***
@@ -676,61 +694,13 @@ These documents help locate socialist arguments within the broader development o
 
 ***
 
-# XXII. Suggested Reading Paths
+# XXII. Structured Learning Pathways
 
-## If You Want to Understand Marx
+The former suggested reading sequences have been developed into eight complete [Learning Pathways]({{ '/learn/pathways/' | relative_url }}).
 
-1. _The Communist Manifesto_
-2. _Wage Labour and Capital_
-3. _Value, Price and Profit_
-4. _The Eighteenth Brumaire_
-5. _Critique of the Gotha Programme_
-6. _Capital, Volume I_
-7. _Grundrisse_
+The pathways preserve the breadth of this bibliography while adding a level, estimated effort, prerequisites, introductions, summaries, discussion questions, written lecture guides, contextual glossaries, and progress tracking.
 
-## If You Want to Understand American Labor
-
-1. _Black Reconstruction in America_
-2. _The Populist Moment_
-3. Debs's selected writings
-4. _The Fall of the House of Labor_
-5. _We Shall Be All_
-6. _Turbulent Years_
-7. _State of the Union_
-
-## If You Want to Understand American Institutions
-
-1. _The Federalist Papers_
-2. _Democracy in America_
-3. _The Second Founding_
-4. _The Radicalism of the American Revolution_
-5. _The Power Elite_
-
-## If You Want to Understand Markets and Planning
-
-1. _The Wealth of Nations_
-2. _Capital, Volume I_
-3. "The Use of Knowledge in Society"
-4. _On the Economic Theory of Socialism_
-5. _The Economics of Feasible Socialism_
-6. _The Socialist System_
-
-## If You Want to Understand Modern Capitalism
-
-1. _The Great Transformation_
-2. _The Visible Hand_
-3. _Capitalism, Socialism and Democracy_
-4. _Labor and Monopoly Capital_
-5. _Capital in the Twenty-First Century_
-6. _The Long Twentieth Century_
-
-## If You Want to Think About Technology and Socialism
-
-1. Marx's "Fragment on Machines"
-2. _Labor and Monopoly Capital_
-3. _Forces of Production_
-4. _The New Industrial State_
-5. _The Second Machine Age_
+Readers new to the subject should begin with [Marxism Fundamentals]({{ '/learn/pathways/marxism-fundamentals/' | relative_url }}). Readers with prior grounding can choose a pathway by subject and level.
 
 ***
 
@@ -757,3 +727,5 @@ Scientific socialism, if it is to remain scientific, must be capable of confront
 ***
 
 _This bibliography will continue to grow as Continental Communist develops._
+
+<script src="{{ '/assets/learning-progress.js' | relative_url }}" defer></script>

@@ -1,0 +1,82 @@
+---
+layout: default
+---
+
+<article class="cc-pathway-catalog">
+
+  <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ '/learn/' | relative_url }}">Learn</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">Learning Pathways</span>
+  </nav>
+
+  <header class="cc-pathway-catalog-header">
+    <div class="cc-hub-kicker">Guided study</div>
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.description }}</p>
+  </header>
+
+  <div class="cc-pathway-intro">
+    <div>
+      <h2>Eight routes through one library</h2>
+      <p>
+        Each pathway supplies a level, realistic time estimate, prerequisites,
+        scoped readings, written lecture guides, discussion questions, and a
+        working glossary. Longer books use selected chapters unless a complete
+        reading is explicitly assigned.
+      </p>
+    </div>
+
+    <aside class="cc-progress-privacy" aria-label="About progress tracking">
+      <strong>Private by design</strong>
+      <p>
+        Your progress is stored only in this browser. No account is required,
+        and nothing is sent to Continental Communist.
+      </p>
+    </aside>
+  </div>
+
+  {% include pathway-cards.html %}
+
+  <section class="cc-pathway-method" aria-labelledby="pathway-method-title">
+    <div class="cc-section-kicker">How to use a pathway</div>
+    <h2 id="pathway-method-title">Read, interpret, discuss, return.</h2>
+
+    <div class="cc-pathway-method-grid">
+      <article>
+        <span>01</span>
+        <h3>Read with a scope</h3>
+        <p>Assignments identify complete texts or selected chapters so the schedule remains achievable.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Use the lecture guides</h3>
+        <p>Each written outline connects the readings and highlights the argument to reconstruct.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>Test your explanation</h3>
+        <p>Discussion questions and summaries ask you to apply concepts rather than merely recognize terms.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cc-pathway-glossary-note" id="pathway-glossaries">
+    <div class="cc-section-kicker">Pathway glossaries</div>
+    <h2>Terms in the context where they matter.</h2>
+    <p>
+      Every pathway closes with six working definitions tied to its readings.
+      The glossaries are deliberately contextual: the same term can carry a
+      more precise meaning as the level of analysis changes.
+    </p>
+  </section>
+
+  {% if content != empty %}
+  <div class="cc-pathway-catalog-content">{{ content }}</div>
+  {% endif %}
+
+</article>
+
+<script src="{{ '/assets/learning-progress.js' | relative_url }}" defer></script>

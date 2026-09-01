@@ -1,0 +1,751 @@
+- slug: marxism-fundamentals
+  number: "01"
+  title: Marxism Fundamentals
+  level: Beginner
+  effort: 6 weeks · 3–4 hours per week
+  prerequisite_summary: No prior study required
+  prerequisites:
+    - No prior knowledge of Marxism or economics is assumed.
+    - Bring one contemporary political or workplace question you want the pathway to help explain.
+  description: Learn the basic vocabulary and method of historical materialism, class analysis, value, exploitation, and political power.
+  introduction: >-
+    This pathway is an orientation to Marxism as a method of inquiry rather than a collection of conclusions to memorize. It begins with short, accessible texts and moves from historical development and class conflict to wages, surplus value, political institutions, and socialist transition.
+  summary: >-
+    By the end, you should be able to distinguish a materialist explanation from a purely moral or idealist one, explain the relationship between labor power and surplus value, and use class analysis without reducing every political event to a mechanical economic cause.
+  outcomes:
+    - Explain historical materialism in plain language without treating history as predetermined.
+    - Distinguish labor, labor power, value, wages, profit, and surplus value.
+    - Identify how class coalitions, institutions, and ideology shape political outcomes.
+    - Read later Marxist arguments with a working conceptual vocabulary.
+  readings:
+    - id: manifesto
+      author: Karl Marx and Friedrich Engels
+      title: The Communist Manifesto
+      scope: Read the complete text; focus on the historical account of capitalism before the immediate political program.
+      url: "/reading-list/#karl-marx-and-friedrich-engels--the-communist-manifesto"
+    - id: socialism-scientific
+      author: Friedrich Engels
+      title: "Socialism: Utopian and Scientific"
+      scope: Read the complete text and note how Engels distinguishes moral schemes from historical analysis.
+      url: "/reading-list/#friedrich-engels--socialism-utopian-and-scientific"
+    - id: wage-labour
+      author: Karl Marx
+      title: Wage Labour and Capital
+      scope: Read the complete text; diagram the exchange between worker and employer.
+      url: "/reading-list/#karl-marx--wage-labour-and-capital"
+    - id: value-price-profit
+      author: Karl Marx
+      title: Value, Price and Profit
+      scope: Read the complete text, paying special attention to wages, profit, and trade-union struggle.
+      url: "/reading-list/#karl-marx--value-price-and-profit"
+    - id: brumaire
+      author: Karl Marx
+      title: The Eighteenth Brumaire of Louis Bonaparte
+      scope: Read Parts I–III and VII as an example of materialist political analysis.
+      url: "/reading-list/#karl-marx--the-eighteenth-brumaire-of-louis-bonaparte"
+    - id: gotha
+      author: Karl Marx
+      title: Critique of the Gotha Programme
+      scope: Read the complete text; separate Marx's criticism of capitalism from his claims about transition.
+      url: "/reading-list/#karl-marx--critique-of-the-gotha-programme"
+  lectures:
+    - id: materialism-method
+      title: Historical materialism without inevitability
+      duration: 25-minute lecture guide
+      summary: A framework for connecting production, class relations, institutions, ideas, and human agency without turning history into a fixed sequence.
+      outline:
+        - Material conditions, social relations, and forms of consciousness
+        - Why constraints are not the same as automatic outcomes
+        - Testing a materialist claim against historical evidence
+    - id: labor-surplus
+      title: From labor power to surplus value
+      duration: 30-minute lecture guide
+      summary: A guided walk through the wage relation and the distinction between what labor power costs and the value workers produce.
+      outline:
+        - Labor versus labor power
+        - Necessary labor time and surplus labor time
+        - Why exploitation is a social relation, not simply low pay
+    - id: class-state
+      title: Class, coalition, and the political state
+      duration: 30-minute lecture guide
+      summary: An introduction to applying class analysis to real political crises without treating the state as a simple puppet.
+      outline:
+        - Classes, fractions, and political alliances
+        - Relative autonomy and institutional constraints
+        - Lessons from The Eighteenth Brumaire
+  questions:
+    - What makes a materialist explanation different from a moral condemnation of capitalism?
+    - Why does Marx distinguish labor power from labor, and what changes once that distinction is made?
+    - Where does The Eighteenth Brumaire complicate a simple two-class model of politics?
+    - Which claims in these texts are historical arguments, and which are political judgments that require separate evaluation?
+  glossary:
+    - term: Historical materialism
+      definition: A method that explains social development through changing material conditions, productive forces, class relations, institutions, and political struggle.
+    - term: Class
+      definition: A social position shaped by a group's relationship to production, property, labor, and control over surplus.
+    - term: Labor power
+      definition: A worker's capacity to labor, sold for a wage under capitalism rather than the finished labor itself.
+    - term: Surplus value
+      definition: The value produced beyond the value required to reproduce labor power and returned to capital through the production process.
+    - term: Ideology
+      definition: Systems of ideas and practices through which social relations are interpreted, normalized, and contested.
+    - term: State
+      definition: The institutions through which public authority, administration, law, and coercive power are organized.
+
+- slug: capital-political-economy
+  number: "02"
+  title: Capital and Political Economy
+  level: Intermediate
+  effort: 10 weeks · 5–7 hours per week
+  prerequisite_summary: Marxism Fundamentals or equivalent
+  prerequisites:
+    - Complete Marxism Fundamentals or be comfortable with labor power, surplus value, and class.
+    - Basic familiarity with supply, demand, wages, profit, and interest is helpful but not required.
+  description: Move from the commodity and money through exploitation, accumulation, circulation, competition, crisis, and finance.
+  introduction: >-
+    This pathway treats Capital as an investigation of a social system rather than a book of economic slogans. It places Marx in conversation with classical political economy and follows capital from the individual commodity through production, circulation, accumulation, competition, credit, and crisis.
+  summary: >-
+    By the end, you should be able to reconstruct Marx's argument from commodity exchange to capital accumulation, explain why profit can appear to arise from exchange even when surplus originates in production, and identify the different roles of industrial, commercial, and financial capital.
+  outcomes:
+    - Follow the movement from commodity, value, and money to capital and wage labor.
+    - Explain absolute and relative surplus value and their relationship to technology.
+    - Distinguish production, circulation, realization, profit, interest, and rent.
+    - Use Marxian categories to formulate testable questions about a contemporary industry.
+  readings:
+    - id: smith
+      author: Adam Smith
+      title: The Wealth of Nations
+      scope: Read Book I, Chapters 1–8 and 10 to establish the classical political-economy background.
+      url: "/reading-list/#adam-smith--the-wealth-of-nations"
+    - id: ricardo
+      author: David Ricardo
+      title: On the Principles of Political Economy and Taxation
+      scope: Read the Preface and Chapters 1, 5, 6, and 7 on value, wages, profit, and trade.
+      url: "/reading-list/#david-ricardo--on-the-principles-of-political-economy-and-taxation"
+    - id: capital-one
+      author: Karl Marx
+      title: Capital, Volume I
+      scope: Read Chapters 1, 4–10, 15, 25, and 26–32; use other chapters as reference on the first pass.
+      url: "/reading-list/#karl-marx--capital-volume-i"
+    - id: capital-two
+      author: Karl Marx
+      title: Capital, Volume II
+      scope: Read Parts I and III selectively, emphasizing turnover and social reproduction.
+      url: "/reading-list/#karl-marx--capital-volume-ii"
+    - id: capital-three
+      author: Karl Marx
+      title: Capital, Volume III
+      scope: Read Parts I, III, and V selectively on profit, crisis tendencies, interest, and credit.
+      url: "/reading-list/#karl-marx--capital-volume-iii"
+    - id: grundrisse
+      author: Karl Marx
+      title: Grundrisse
+      scope: Read the Introduction and the Fragment on Machines as a bridge to method and technological change.
+      url: "/reading-list/#karl-marx--grundrisse"
+  lectures:
+    - id: reading-capital
+      title: How to read Capital as an argument
+      duration: 35-minute lecture guide
+      summary: A map of Marx's levels of abstraction and the difference between starting from appearances and reconstructing underlying social relations.
+      outline:
+        - Commodity exchange as the analytical starting point
+        - Moving from abstract categories to concrete institutions
+        - Common first-reading traps and how to avoid them
+    - id: exploitation-accumulation
+      title: Value, exploitation, and accumulation
+      duration: 45-minute lecture guide
+      summary: A connected explanation of value production, the working day, machinery, productivity, and the accumulation of capital.
+      outline:
+        - Absolute and relative surplus value
+        - Cooperation, machinery, and the labor process
+        - Accumulation and the reserve army of labor
+    - id: circulation-finance
+      title: Circulation, competition, and finance
+      duration: 40-minute lecture guide
+      summary: Why a complete account of capitalism must move beyond the factory to turnover, realization, profit rates, interest, and credit.
+      outline:
+        - Turnover time and reproduction
+        - Transformation of surplus value into profit
+        - Credit as accelerator, organizer, and source of fragility
+  questions:
+    - Why does Marx begin with the commodity rather than with class struggle or the factory?
+    - How can rising productivity increase material wealth while intensifying pressures on workers and firms?
+    - What is gained by separating the production of surplus value from its realization and distribution?
+    - Choose one industry: which forms of capital, turnover constraints, and competitive pressures organize it?
+  glossary:
+    - term: Commodity
+      definition: A good or service produced for exchange that has both a use value and a socially mediated exchange value.
+    - term: Value
+      definition: The socially necessary labor time represented in commodities under generalized commodity production.
+    - term: Constant capital
+      definition: Value advanced for means of production that is transferred to the output rather than creating new value.
+    - term: Variable capital
+      definition: Value advanced for labor power, called variable because living labor can create value beyond its own reproduction cost.
+    - term: Accumulation
+      definition: The conversion of surplus into additional capital, expanding the scale and changing the organization of production.
+    - term: Social reproduction
+      definition: The recurring material and social processes through which production, households, labor power, and institutions are renewed.
+
+- slug: american-capitalism-state
+  number: "03"
+  title: American Capitalism and the State
+  level: Intermediate
+  effort: 8 weeks · 4–5 hours per week
+  prerequisite_summary: Basic U.S. history recommended
+  prerequisites:
+    - A general survey-level familiarity with United States history is recommended.
+    - Marxism Fundamentals is helpful but not required; institutional and non-Marxist interpretations are central to the pathway.
+  description: Study how constitutional institutions, corporations, infrastructure, public administration, and finance shaped American development.
+  introduction: >-
+    American capitalism developed through a specific constitutional order, continental expansion, public infrastructure, slavery, industrial corporations, and recurring transformations of state capacity. This pathway brings institutional history into conversation with political economy rather than treating the market and the state as separate worlds.
+  summary: >-
+    By the end, you should be able to identify how public authority and private accumulation developed together, compare competing explanations of the American state, and analyze a policy institution in terms of its legal structure, economic constituency, administrative capacity, and historical origin.
+  outcomes:
+    - Explain why markets require legal, political, and infrastructural institutions.
+    - Compare ideological, economic-interest, and institutional accounts of constitutional development.
+    - Trace the rise of the managerial corporation and the administrative state.
+    - Analyze the New Deal as both a response to crisis and a reorganization of political economy.
+  readings:
+    - id: federalist
+      author: Alexander Hamilton, James Madison, and John Jay
+      title: The Federalist Papers
+      scope: Read Nos. 10, 23, 39, 47, 51, 62, 70, and 78 on faction, federal power, representation, and institutional design.
+      url: "/reading-list/#the-federalist-papers"
+    - id: tocqueville
+      author: Alexis de Tocqueville
+      title: Democracy in America
+      scope: Read selected chapters on associations, local government, equality, individualism, and majority rule.
+      url: "/reading-list/#alexis-de-tocqueville--democracy-in-america"
+    - id: second-founding
+      author: Eric Foner
+      title: The Second Founding
+      scope: Read the complete work as a study of constitutional transformation after slavery.
+      url: "/reading-list/#eric-foner--the-second-founding"
+    - id: visible-hand
+      author: Alfred D. Chandler Jr.
+      title: The Visible Hand
+      scope: Read the Introduction, conclusion, and selected industry chapters on managerial coordination.
+      url: "/reading-list/#alfred-d-chandler-jr--the-visible-hand"
+    - id: age-roosevelt
+      author: Arthur M. Schlesinger Jr.
+      title: The Age of Roosevelt
+      scope: Read selected chapters on the crisis of the old order and the construction of New Deal institutions.
+      url: "/reading-list/#arthur-m-schlesinger-jr--the-age-of-roosevelt"
+    - id: power-elite
+      author: C. Wright Mills
+      title: The Power Elite
+      scope: Read Parts I and III, then test Mills's institutional map against the present.
+      url: "/reading-list/#c-wright-mills--the-power-elite"
+  lectures:
+    - id: constitution-development
+      title: Development, property, and the Constitution
+      duration: 35-minute lecture guide
+      summary: A comparison of constitutional design, material interests, public credit, and the political problem of building a continental state.
+      outline:
+        - Competing explanations of the founding
+        - Faction, representation, and federal capacity
+        - How constitutional rules organize economic conflict
+    - id: corporation-administration
+      title: The corporation and the visible hand
+      duration: 35-minute lecture guide
+      summary: How railroads, national markets, managerial hierarchies, and public infrastructure changed the scale of American capitalism.
+      outline:
+        - Coordination inside firms versus coordination through markets
+        - Infrastructure and the geography of accumulation
+        - Corporate power and public regulation
+    - id: new-deal-state
+      title: Crisis and the New Deal state
+      duration: 40-minute lecture guide
+      summary: An institutional account of how economic collapse, organized constituencies, and administrative experimentation reordered the state.
+      outline:
+        - Crisis as a struggle over institutional alternatives
+        - Labor, business, agriculture, and regional coalitions
+        - Capacity, compromise, exclusion, and durability
+  questions:
+    - Which American institutions restrain concentrated power, and which can reproduce it?
+    - How does Chandler's account of planning inside firms complicate a simple market-versus-planning divide?
+    - Was the New Deal primarily a concession to labor, a stabilization of capitalism, a democratic reform, or some combination?
+    - Choose one present institution and map its constitutional authority, administrative capacity, and economic constituency.
+  glossary:
+    - term: Faction
+      definition: In Federalist No. 10, a group united by interests or passions that may conflict with the rights of others or the public good.
+    - term: Federalism
+      definition: A constitutional division of authority between a national government and subnational governments.
+    - term: State capacity
+      definition: The practical ability of public institutions to gather information, raise resources, administer programs, and enforce decisions.
+    - term: Managerial capitalism
+      definition: A form of capitalism in which large enterprises are coordinated through professional administrative hierarchies.
+    - term: Regulatory state
+      definition: Public institutions that shape economic conduct through rules, oversight, adjudication, and standard setting.
+    - term: Power elite
+      definition: Mills's term for interlocking leadership circles across major corporate, political, and military institutions.
+
+- slug: labor-socialist-history
+  number: "04"
+  title: Labor and Socialist History in the United States
+  level: Beginner–Intermediate
+  effort: 8 weeks · 4–5 hours per week
+  prerequisite_summary: No theory prerequisite
+  prerequisites:
+    - No prior Marxist theory is required.
+    - A basic chronological outline of United States history will make the reading easier.
+  description: Follow American labor from emancipation and agrarian revolt through industrial unionism, socialism, the CIO, and neoliberal decline.
+  introduction: >-
+    Labor history is not a steady march from oppression to organization. It is a record of experiments, defeats, coalitions, exclusions, institutional breakthroughs, and changing forms of work. This pathway connects workplace authority to race, region, migration, party politics, and state policy.
+  summary: >-
+    By the end, you should be able to compare major traditions of American labor organization, explain why some moments produced durable institutions while others collapsed, and place contemporary organizing problems within a longer history of work and class formation.
+  outcomes:
+    - Identify major turning points in American labor and socialist history.
+    - Compare craft unionism, industrial unionism, syndicalism, electoral socialism, and worker-control strategies.
+    - Explain how race, migration, gender, region, and state policy shaped class organization.
+    - Use historical analogy carefully when evaluating current labor strategy.
+  readings:
+    - id: black-reconstruction
+      author: W. E. B. Du Bois
+      title: Black Reconstruction in America
+      scope: Read Chapters 1–7 and 17 to frame emancipation and Reconstruction as labor history.
+      url: "/reading-list/#w-e-b-du-bois--black-reconstruction-in-america"
+    - id: populist-moment
+      author: Lawrence Goodwyn
+      title: The Populist Moment
+      scope: Focus on cooperative institutions, political education, and the organizational culture of agrarian revolt.
+      url: "/reading-list/#lawrence-goodwyn--the-populist-moment"
+    - id: debs
+      author: Eugene V. Debs
+      title: Selected Speeches and Writings
+      scope: Read the Canton Speech plus selections on industrial unionism, democracy, and socialism.
+      url: "/reading-list/#eugene-v-debs--selected-speeches-and-writings"
+    - id: house-labor
+      author: David Montgomery
+      title: The Fall of the House of Labor
+      scope: Read the Introduction and selected chapters on workplace control, craft, and management.
+      url: "/reading-list/#david-montgomery--the-fall-of-the-house-of-labor"
+    - id: we-shall-be-all
+      author: Melvyn Dubofsky
+      title: We Shall Be All
+      scope: Follow the IWW's organizational model, social base, repression, and strategic limits.
+      url: "/reading-list/#melvyn-dubofsky--we-shall-be-all"
+    - id: state-union
+      author: Nelson Lichtenstein
+      title: State of the Union
+      scope: Read the complete argument on labor's rise, institutionalization, and decline in the twentieth century.
+      url: "/reading-list/#nelson-lichtenstein--state-of-the-union"
+  lectures:
+    - id: emancipation-labor
+      title: Emancipation and Reconstruction as labor history
+      duration: 40-minute lecture guide
+      summary: A material account of slavery, the withdrawal of labor, emancipation, land, citizenship, and the contested reconstruction of Southern society.
+      outline:
+        - Slavery as a labor regime
+        - The general strike and the destruction of slavery
+        - Land, public power, and the defeat of Reconstruction
+    - id: labor-traditions
+      title: From Debs and the IWW to the CIO
+      duration: 40-minute lecture guide
+      summary: A comparison of electoral, syndicalist, craft, and industrial strategies across changing workplaces and political conditions.
+      outline:
+        - Organization by craft, industry, and class
+        - Political action versus direct industrial action
+        - Why the New Deal era changed what was institutionally possible
+    - id: labor-order
+      title: The postwar labor order and its unraveling
+      duration: 35-minute lecture guide
+      summary: How collective bargaining became institutionalized, what it achieved, whom it excluded, and why it weakened.
+      outline:
+        - The settlement between unions, firms, and the state
+        - Bureaucratization, exclusion, and declining militancy
+        - Deindustrialization, deregulation, and fragmented employment
+  questions:
+    - What organizational capacities did the Populists build before they attempted national electoral power?
+    - How did workplace technology and managerial control change the viable forms of union organization?
+    - Why did some labor victories become durable institutions while others remained episodic rebellions?
+    - Which historical labor strategy is most often misapplied to present conditions, and why?
+  glossary:
+    - term: General strike
+      definition: A broad withdrawal of labor across workplaces or sectors; Du Bois also uses the concept to interpret enslaved people's flight from plantations during the Civil War.
+    - term: Craft unionism
+      definition: Organization based on a specific skilled trade, often controlling entry, standards, and bargaining within that craft.
+    - term: Industrial unionism
+      definition: Organization of workers across occupations within the same industry.
+    - term: Syndicalism
+      definition: A socialist current emphasizing direct worker organization and industrial action as the basis of social transformation.
+    - term: Collective bargaining
+      definition: Institutional negotiation between workers' representatives and employers over wages, conditions, and workplace rules.
+    - term: Labor regime
+      definition: The combined legal, economic, managerial, and political arrangements through which work is organized and controlled.
+
+- slug: race-reconstruction-class
+  number: "05"
+  title: Race, Reconstruction, and Class
+  level: Intermediate
+  effort: 7 weeks · 4–5 hours per week
+  prerequisite_summary: U.S. Civil War overview recommended
+  prerequisites:
+    - Know the basic chronology of slavery, the Civil War, Reconstruction, and Jim Crow.
+    - Marxism Fundamentals or equivalent familiarity with class analysis is recommended.
+  description: Examine slavery, emancipation, Reconstruction, racial ideology, labor, citizenship, and the material reproduction of hierarchy.
+  introduction: >-
+    American class formation cannot be understood apart from slavery, emancipation, land, citizenship, migration, and racial hierarchy. This pathway places Du Bois's account of the Civil War and Reconstruction at its center, then tests and extends it through constitutional, political, and social analysis.
+  summary: >-
+    By the end, you should be able to analyze race as historically produced without treating it as unreal, explain Reconstruction as a conflict over labor and democratic power, and connect legal status, political institutions, property, and everyday practices in the reproduction of hierarchy.
+  outcomes:
+    - Explain the relationship between slavery, capitalism, war, and emancipation in competing historical accounts.
+    - Describe Reconstruction as a struggle over labor, land, citizenship, education, and state power.
+    - Distinguish racial categories from the institutions and practices that reproduce racial inequality.
+    - Evaluate how class solidarity is built, fractured, and reorganized under racial hierarchy.
+  readings:
+    - id: black-reconstruction
+      author: W. E. B. Du Bois
+      title: Black Reconstruction in America
+      scope: Read Chapters 1–7, 9, 14–17, and Du Bois's discussion of the public and psychological wage.
+      url: "/reading-list/#w-e-b-du-bois--black-reconstruction-in-america"
+    - id: reconstruction
+      author: Eric Foner
+      title: Reconstruction
+      scope: Read selected chapters on emancipation, Radical Reconstruction, political economy, and counterrevolution.
+      url: "/reading-list/#eric-foner--reconstruction"
+    - id: second-founding
+      author: Eric Foner
+      title: The Second Founding
+      scope: Read the complete work on the Reconstruction Amendments and contested constitutional meaning.
+      url: "/reading-list/#eric-foner--the-second-founding"
+    - id: jim-crow
+      author: C. Vann Woodward
+      title: The Strange Career of Jim Crow
+      scope: Focus on the historical construction and consolidation of the Jim Crow order.
+      url: "/reading-list/#c-vann-woodward--the-strange-career-of-jim-crow"
+    - id: racecraft
+      author: Barbara J. Fields and Karen E. Fields
+      title: Racecraft
+      scope: Read the opening essays and track the difference between racism as practice and race as its explanation.
+      url: "/reading-list/#barbara-j-fields-and-karen-e-fields--racecraft"
+    - id: fear-itself
+      author: Ira Katznelson
+      title: Fear Itself
+      scope: Read selected chapters on Southern power, the New Deal coalition, labor policy, and racial exclusion.
+      url: "/reading-list/#ira-katznelson--fear-itself"
+  lectures:
+    - id: slavery-general-strike
+      title: Slavery, capital, and the general strike
+      duration: 40-minute lecture guide
+      summary: A reconstruction of Du Bois's argument about enslaved labor, wartime withdrawal, emancipation, and the remaking of state power.
+      outline:
+        - Slavery as property relation and labor system
+        - Self-emancipation and military conflict
+        - The meaning and limits of the general-strike thesis
+    - id: reconstruction-counterrevolution
+      title: Reconstruction and counterrevolution
+      duration: 40-minute lecture guide
+      summary: Why formal emancipation opened struggles over land, schools, voting, public goods, and labor coercion—and why those struggles were defeated.
+      outline:
+        - The Freedmen's Bureau, constitutional change, and state capacity
+        - Multiracial democracy and its social base
+        - Violence, political compromise, and the restoration of planter power
+    - id: racecraft-material-relations
+      title: Racecraft and material social relations
+      duration: 35-minute lecture guide
+      summary: A method for explaining racial categories through repeated practices and institutions without denying their real consequences.
+      outline:
+        - Racism as action and race as retrospective explanation
+        - Law, housing, labor markets, and political institutions
+        - Avoiding both biological essentialism and empty class reductionism
+  questions:
+    - What does Du Bois gain by interpreting the Civil War through labor rather than military leadership alone?
+    - Which institutions made Reconstruction's democratic possibilities material, and which weaknesses made them vulnerable?
+    - How does the concept of racecraft change the evidence we would gather to explain racial inequality?
+    - When can class-based political appeals overcome racial division, and when can they reproduce it?
+  glossary:
+    - term: Racial capitalism
+      definition: A framework emphasizing that capitalist development has historically organized accumulation through differentiated and racialized labor, property, and political status.
+    - term: General strike of the enslaved
+      definition: Du Bois's interpretation of enslaved people withdrawing labor and joining Union lines as a decisive force in destroying slavery.
+    - term: Reconstruction
+      definition: The post-Civil War struggle to rebuild the Union and redefine freedom, citizenship, labor, land, and public authority.
+    - term: Public wage
+      definition: Du Bois's term for the material benefits white workers could receive through preferential access to public institutions and services.
+    - term: Psychological wage
+      definition: Social status and symbolic compensation attached to whiteness that could divide workers despite shared economic interests.
+    - term: Racecraft
+      definition: Practices that produce racial categories and then make those categories appear to be the natural cause of the practices.
+
+- slug: markets-planning-democracy
+  number: "06"
+  title: Markets, Planning, and Socialist Democracy
+  level: Advanced
+  effort: 8 weeks · 5–6 hours per week
+  prerequisite_summary: Political-economy foundation required
+  prerequisites:
+    - Complete Capital and Political Economy or have equivalent grounding in value, firms, prices, and accumulation.
+    - Be willing to read socialist, liberal, and conservative arguments as competing institutional analyses.
+  description: Work through the calculation debate, information problems, institutional design, socialist experience, and democratic coordination.
+  introduction: >-
+    Serious socialist analysis must explain how complex economies coordinate information, investment, production, innovation, and consumption. This pathway stages the strongest versions of the calculation debate and then moves beyond a binary choice between total planning and unregulated markets.
+  summary: >-
+    By the end, you should be able to state the major information and incentive problems facing different coordination systems, compare several models of socialist planning, and evaluate institutional proposals by their ownership rules, decision rights, feedback mechanisms, and democratic accountability.
+  outcomes:
+    - Reconstruct the major arguments in the socialist calculation debate.
+    - Distinguish price signals, accounting, planning, bargaining, and administrative coordination.
+    - Explain how ownership, incentives, information, and political power interact.
+    - Evaluate a coordination proposal without relying on the label market or plan alone.
+  readings:
+    - id: mises
+      author: Ludwig von Mises
+      title: Economic Calculation in the Socialist Commonwealth
+      scope: Read the complete essay and identify the precise institutional assumptions behind the calculation claim.
+      url: "/reading-list/#ludwig-von-mises--economic-calculation-in-the-socialist-commonwealth"
+    - id: hayek-knowledge
+      author: Friedrich Hayek
+      title: The Use of Knowledge in Society
+      scope: Read the complete essay, separating claims about dispersed knowledge from broader political conclusions.
+      url: "/reading-list/#friedrich-hayek--the-use-of-knowledge-in-society"
+    - id: lange
+      author: Oskar Lange
+      title: On the Economic Theory of Socialism
+      scope: Focus on Lange's proposed price-adjustment mechanism and the role of public ownership.
+      url: "/reading-list/#oskar-lange--on-the-economic-theory-of-socialism"
+    - id: nove
+      author: Alec Nove
+      title: The Economics of Feasible Socialism
+      scope: Read the institutional proposal and Nove's criticism of comprehensive central planning.
+      url: "/reading-list/#alec-nove--the-economics-of-feasible-socialism"
+    - id: kornai
+      author: János Kornai
+      title: The Socialist System
+      scope: Read selected chapters on the shortage economy, soft budget constraints, and bureaucratic coordination.
+      url: "/reading-list/#jános-kornai--the-socialist-system"
+    - id: schumpeter
+      author: Joseph A. Schumpeter
+      title: Capitalism, Socialism and Democracy
+      scope: Read Parts II–IV on creative destruction, democracy, bureaucracy, and the viability of socialism.
+      url: "/reading-list/#joseph-a-schumpeter--capitalism-socialism-and-democracy"
+  lectures:
+    - id: calculation-debate
+      title: The socialist calculation debate
+      duration: 45-minute lecture guide
+      summary: A fair reconstruction of the Mises, Hayek, and Lange positions, including what each means by knowledge, price, ownership, and rational calculation.
+      outline:
+        - Calculation, scarcity, and accounting
+        - Dispersed knowledge and price formation
+        - Lange's trial-and-error response and its limits
+    - id: institutions-feedback
+      title: Institutions, incentives, and feedback
+      duration: 40-minute lecture guide
+      summary: Why coordination depends on decision rights, feedback quality, budget constraints, and the ability to correct error.
+      outline:
+        - Hard and soft budget constraints
+        - Principal-agent problems across ownership systems
+        - Innovation, exit, voice, and organizational learning
+    - id: democratic-coordination
+      title: Democratic coordination beyond the binary
+      duration: 40-minute lecture guide
+      summary: A design vocabulary for combining public planning, markets, negotiated coordination, workplace democracy, and universal provision.
+      outline:
+        - Match coordination mechanisms to the type of good and decision
+        - Separate consumer markets, investment allocation, and essential services
+        - Build transparency, participation, revision, and constitutional limits
+  questions:
+    - Which parts of the calculation problem concern ownership, and which concern information or organizational scale?
+    - Does Hayek's dispersed-knowledge argument imply private ownership, competitive markets, or only decentralized feedback?
+    - What institutional conditions produce a soft budget constraint, and can they appear in private firms as well as public ones?
+    - Design a mixed coordination system for housing or energy and explain where planning, prices, rules, and democratic voice belong.
+  glossary:
+    - term: Economic calculation
+      definition: The comparison of alternative uses of scarce resources through some common accounting and decision framework.
+    - term: Dispersed knowledge
+      definition: Context-specific information distributed across many people and organizations rather than available to a single decision maker.
+    - term: Price signal
+      definition: Information communicated through changes in exchange prices, shaped by institutions, market structure, purchasing power, and rules.
+    - term: Soft budget constraint
+      definition: A condition in which an organization expects losses to be covered, weakening the pressure to adjust behavior or exit.
+    - term: Market socialism
+      definition: A family of systems combining social or public ownership with market exchange or market-like allocation mechanisms.
+    - term: Democratic planning
+      definition: Collective coordination of major economic decisions through institutions that include participation, transparency, accountability, and revision.
+
+- slug: technology-automation-ai
+  number: "07"
+  title: Technology, Automation, and Artificial Intelligence
+  level: Intermediate
+  effort: 6 weeks · 4–5 hours per week
+  prerequisite_summary: Labor-process basics recommended
+  prerequisites:
+    - Familiarity with labor power, surplus value, and the labor process is recommended.
+    - No technical background in engineering or artificial intelligence is required.
+  description: Analyze technology as a social relation shaped by ownership, management, skill, labor control, public investment, and political choice.
+  introduction: >-
+    Technology is neither an autonomous force nor a neutral tool whose effects are determined only after invention. This pathway studies how machinery and digital systems reorganize work, skill, management, ownership, and social capacity—and how different institutions can direct the same technical possibilities toward different ends.
+  summary: >-
+    By the end, you should be able to separate technical capability from the labor process in which it is deployed, evaluate automation claims against evidence about tasks and institutions, and frame artificial intelligence as a problem of ownership, control, infrastructure, and distribution rather than destiny.
+  outcomes:
+    - Explain how technology can raise productivity while reorganizing skill and workplace control.
+    - Distinguish automation of tasks from elimination of occupations.
+    - Identify the roles of management, intellectual property, data, infrastructure, and public research.
+    - Evaluate technological change through alternative ownership and governance arrangements.
+  readings:
+    - id: fragment-machines
+      author: Karl Marx
+      title: Fragment on Machines
+      scope: Read the selected Grundrisse fragment on machinery, general intellect, and the social character of production.
+      url: "/reading-list/#karl-marx--fragment-on-machines-in-the-grundrisse"
+    - id: labor-monopoly
+      author: Harry Braverman
+      title: Labor and Monopoly Capital
+      scope: Read Parts I and II on the separation of conception from execution and the transformation of skill.
+      url: "/reading-list/#harry-braverman--labor-and-monopoly-capital"
+    - id: forces-production
+      author: David F. Noble
+      title: Forces of Production
+      scope: Focus on the social choices embedded in industrial automation and numerical control.
+      url: "/reading-list/#david-f-noble--forces-of-production"
+    - id: industrial-state
+      author: John Kenneth Galbraith
+      title: The New Industrial State
+      scope: Read selected chapters on planning, the technostructure, and the requirements of large-scale production.
+      url: "/reading-list/#john-kenneth-galbraith--the-new-industrial-state"
+    - id: smart-machine
+      author: Shoshana Zuboff
+      title: In the Age of the Smart Machine
+      scope: Compare automation that deskills with informatization that can expand knowledge and discretion.
+      url: "/reading-list/#shoshana-zuboff--in-the-age-of-the-smart-machine"
+    - id: second-machine-age
+      author: Erik Brynjolfsson and Andrew McAfee
+      title: The Second Machine Age
+      scope: Read the core argument on digital technologies, productivity, skills, and distribution alongside the pathway's critical texts.
+      url: "/reading-list/#erik-brynjolfsson-and-andrew-mcafee--the-second-machine-age"
+  lectures:
+    - id: machine-question
+      title: The machine question from Marx to digital systems
+      duration: 35-minute lecture guide
+      summary: A history of the recurring claim that machinery will abolish labor, paired with a method for separating technical possibility from social deployment.
+      outline:
+        - Machinery, productivity, and relative surplus value
+        - The general intellect and socialized knowledge
+        - Why technical capacity does not determine distribution
+    - id: labor-process-control
+      title: Skill, management, and labor-process control
+      duration: 40-minute lecture guide
+      summary: How technologies encode managerial choices about knowledge, discretion, measurement, and control.
+      outline:
+        - Conception and execution in the labor process
+        - Deskilling, reskilling, and contested implementation
+        - Worker knowledge as a productive asset and source of power
+    - id: ai-ownership
+      title: AI, productive capacity, and ownership
+      duration: 40-minute lecture guide
+      summary: A political-economy framework for artificial intelligence centered on models, data, compute, energy, firms, public research, and institutional governance.
+      outline:
+        - Tasks, occupations, and complementary labor
+        - Concentration in compute, data, infrastructure, and intellectual property
+        - Public options, worker voice, shared gains, and democratic control
+  questions:
+    - When does technology deskill work, and when can it expand worker knowledge or discretion?
+    - Which claims about AI describe technical capability, and which silently assume a particular labor market or ownership structure?
+    - Who bears the costs and captures the gains when a firm automates a task?
+    - Choose one technology and describe how its design might differ under worker, public, cooperative, or shareholder control.
+  glossary:
+    - term: Productive forces
+      definition: The tools, knowledge, infrastructure, labor capacities, and organizational means available for producing social wealth.
+    - term: Labor process
+      definition: The concrete organization of tasks, knowledge, tools, authority, and cooperation through which work is performed.
+    - term: Deskilling
+      definition: Reorganization of work that transfers knowledge or control away from workers and reduces the discretion required for a task.
+    - term: Automation
+      definition: The transfer of particular tasks or control functions from human labor to technical systems; it does not automatically imply the disappearance of an occupation.
+    - term: General intellect
+      definition: Marx's term for socially accumulated scientific and technical knowledge embodied in production.
+    - term: Technostructure
+      definition: Galbraith's term for the network of managers and specialists who collectively direct large organizations.
+
+- slug: imperialism-global-development
+  number: "08"
+  title: Imperialism and Global Development
+  level: Advanced
+  effort: 8 weeks · 5–6 hours per week
+  prerequisite_summary: Political economy and modern history
+  prerequisites:
+    - Complete Capital and Political Economy or have equivalent familiarity with accumulation, finance, and crisis.
+    - Know the broad chronology of industrialization, colonialism, the world wars, decolonization, and the Cold War.
+  description: Compare theories of imperialism, world systems, finance, states, development, and socialist transformation across regions.
+  introduction: >-
+    Capitalism has always developed through international trade, finance, migration, empire, war, and unequal state power. This pathway compares major theories of imperialism with world-systems and international-political-economy approaches, then asks how development strategies and socialist experiments altered those structures.
+  summary: >-
+    By the end, you should be able to distinguish several mechanisms commonly grouped under imperialism, connect firms and finance to interstate power without collapsing one into the other, and compare development paths using evidence about class structure, state capacity, technology, trade, and geopolitics.
+  outcomes:
+    - Compare underconsumption, monopoly-finance, world-systems, and state-centered theories of imperialism.
+    - Distinguish colonial rule, unequal exchange, financial power, military coercion, and geopolitical rivalry.
+    - Analyze development strategies through domestic institutions as well as external constraints.
+    - Compare socialist experiences without treating any one national path as a universal model.
+  readings:
+    - id: hobson
+      author: J. A. Hobson
+      title: Imperialism
+      scope: Read Parts I and II selectively on finance, underconsumption, and overseas expansion.
+      url: "/reading-list/#j-a-hobson--imperialism"
+    - id: lenin-imperialism
+      author: V. I. Lenin
+      title: Imperialism, the Highest Stage of Capitalism
+      scope: Read the complete text and isolate each proposed mechanism rather than treating the label as one claim.
+      url: "/reading-list/#vladimir-lenin--imperialism-the-highest-stage-of-capitalism-1"
+    - id: arrighi
+      author: Giovanni Arrighi
+      title: The Long Twentieth Century
+      scope: Read the Introduction and selected chapters on systemic cycles of accumulation and financial expansion.
+      url: "/reading-list/#giovanni-arrighi--the-long-twentieth-century"
+    - id: wallerstein
+      author: Immanuel Wallerstein
+      title: The Modern World-System
+      scope: Read the theoretical introduction and selected historical chapters on core, periphery, and the interstate system.
+      url: "/reading-list/#immanuel-wallerstein--the-modern-world-system"
+    - id: gilpin
+      author: Robert Gilpin
+      title: Global Political Economy
+      scope: Read selected chapters on trade, finance, multinational firms, states, and competing theoretical traditions.
+      url: "/reading-list/#robert-gilpin--global-political-economy"
+    - id: mao-china
+      author: Maurice Meisner
+      title: Mao's China and After
+      scope: Read selected chapters on revolution, state formation, industrialization, reform, and changing class relations.
+      url: "/reading-list/#maurice-meisner--maos-china-and-after"
+  lectures:
+    - id: theories-imperialism
+      title: Competing theories of imperialism
+      duration: 45-minute lecture guide
+      summary: A comparison of capital export, monopoly, finance, underconsumption, interstate rivalry, and colonial domination as related but distinct mechanisms.
+      outline:
+        - Hobson, Lenin, and the problem of surplus capital
+        - Firms, finance, states, and military power
+        - What evidence would confirm or weaken each theory
+    - id: world-systems-finance
+      title: World systems and financial expansion
+      duration: 40-minute lecture guide
+      summary: How core-periphery structures and long cycles organize a historical account of trade, production, finance, and hegemonic power.
+      outline:
+        - Core, semiperiphery, and periphery
+        - Productive expansion and financialization
+        - Strengths and limits of systemic abstraction
+    - id: development-comparison
+      title: Comparing development and socialist transformation
+      duration: 45-minute lecture guide
+      summary: A framework for comparing national development paths through agrarian structure, state capacity, technology, external constraint, and political coalition.
+      outline:
+        - Late development, land, class structure, and state formation
+        - Planning, markets, industrial policy, and international pressure
+        - Avoiding both national exceptionalism and one-model universalism
+  questions:
+    - Which mechanisms in classical theories of imperialism remain analytically distinct, and which are often blurred together?
+    - When does financial expansion signal strength, and when might it indicate difficulty in productive accumulation?
+    - How should domestic class relations and institutions be weighed against constraints imposed by the world economy?
+    - Compare two development experiences using the same criteria: land, labor, state capacity, technology, trade, finance, and geopolitics.
+  glossary:
+    - term: Imperialism
+      definition: A contested concept describing forms of domination produced through empire, capital, finance, unequal state power, military coercion, or combinations of these mechanisms.
+    - term: Capital export
+      definition: Investment of capital abroad through lending, ownership, or direct investment rather than the export of commodities alone.
+    - term: Core and periphery
+      definition: World-systems terms for structurally differentiated positions in the international division of labor and distribution of economic power.
+    - term: Unequal exchange
+      definition: A family of theories arguing that trade can systematically transfer value or development capacity across differently positioned economies.
+    - term: Hegemony
+      definition: Leadership or predominance sustained through a combination of material power, institutions, alliances, and consent.
+    - term: Developmental state
+      definition: A state with the capacity and political orientation to coordinate investment, industrial transformation, technology acquisition, and long-term development.

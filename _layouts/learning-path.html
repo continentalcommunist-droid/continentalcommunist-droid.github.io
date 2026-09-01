@@ -1,0 +1,217 @@
+---
+layout: default
+---
+
+{% assign pathway = site.data.learning_paths | where: "slug", page.pathway_key | first %}
+{% assign pathway_total = pathway.readings.size | plus: pathway.lectures.size | plus: 1 %}
+
+<article
+  class="cc-learning-path"
+  data-learning-path="{{ pathway.slug }}"
+  data-total-steps="{{ pathway_total }}"
+>
+
+  <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ '/learn/' | relative_url }}">Learn</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ '/learn/pathways/' | relative_url }}">Pathways</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ pathway.title }}</span>
+  </nav>
+
+  <header class="cc-learning-path-header">
+    <div class="cc-learning-path-number">Pathway {{ pathway.number }}</div>
+    <h1>{{ pathway.title }}</h1>
+    <p class="cc-learning-path-deck">{{ pathway.description }}</p>
+
+    <dl class="cc-learning-path-facts">
+      <div>
+        <dt>Level</dt>
+        <dd>{{ pathway.level }}</dd>
+      </div>
+      <div>
+        <dt>Estimated effort</dt>
+        <dd>{{ pathway.effort }}</dd>
+      </div>
+      <div>
+        <dt>Prerequisite</dt>
+        <dd>{{ pathway.prerequisite_summary }}</dd>
+      </div>
+    </dl>
+  </header>
+
+  <section class="cc-path-progress-panel" aria-labelledby="path-progress-title">
+    <div>
+      <div class="cc-section-kicker">Your progress</div>
+      <h2 id="path-progress-title">Continue where you left off.</h2>
+      <p>Progress is stored only in this browser and is not sent anywhere.</p>
+    </div>
+
+    <div class="cc-path-progress-control">
+      <div class="cc-pathway-progress-line">
+        <span data-progress-percent>0%</span>
+        <span data-progress-count aria-live="polite">0 of {{ pathway_total }} steps</span>
+      </div>
+      <div
+        class="cc-pathway-progress-track"
+        role="progressbar"
+        aria-label="Progress for {{ pathway.title }}"
+        aria-valuemin="0"
+        aria-valuemax="{{ pathway_total }}"
+        aria-valuenow="0"
+      >
+        <span data-progress-bar></span>
+      </div>
+      <button class="cc-path-reset" type="button" data-reset-path>
+        Reset this pathway
+      </button>
+    </div>
+  </section>
+
+  <noscript>
+    <p class="cc-learning-noscript">Enable JavaScript to save pathway progress in this browser.</p>
+  </noscript>
+
+  <section class="cc-learning-overview" aria-labelledby="path-introduction-title">
+    <div>
+      <div class="cc-section-kicker">Introduction</div>
+      <h2 id="path-introduction-title">What this pathway is for</h2>
+      <p>{{ pathway.introduction }}</p>
+    </div>
+
+    <aside>
+      <h3>Prerequisites</h3>
+      <ul>
+        {% for prerequisite in pathway.prerequisites %}
+        <li>{{ prerequisite }}</li>
+        {% endfor %}
+      </ul>
+    </aside>
+  </section>
+
+  <section class="cc-learning-outcomes" aria-labelledby="path-outcomes-title">
+    <div class="cc-section-kicker">Pathway summary</div>
+    <h2 id="path-outcomes-title">What you should be able to explain</h2>
+    <p class="cc-learning-summary">{{ pathway.summary }}</p>
+    <ul>
+      {% for outcome in pathway.outcomes %}
+      <li>{{ outcome }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="cc-learning-section" aria-labelledby="path-readings-title">
+    <div class="cc-section-kicker">Reading sequence</div>
+    <h2 id="path-readings-title">Six assigned readings</h2>
+    <p class="cc-learning-section-intro">
+      Check off each assignment as you complete it. The scope note tells you
+      whether to read the full work or a defined selection.
+    </p>
+
+    <ol class="cc-learning-checklist">
+      {% for reading in pathway.readings %}
+      <li>
+        <input
+          id="{{ pathway.slug }}-reading-{{ reading.id }}"
+          type="checkbox"
+          data-progress-item="reading:{{ reading.id }}"
+        >
+        <div>
+          <label for="{{ pathway.slug }}-reading-{{ reading.id }}">
+            <span class="cc-learning-step-number">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            <span>
+              <strong>{{ reading.title }}</strong>
+              <small>{{ reading.author }}</small>
+            </span>
+          </label>
+          <p>{{ reading.scope }}</p>
+          <a href="{{ reading.url | relative_url }}">Find in the full reading list <span aria-hidden="true">→</span></a>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="cc-learning-section" aria-labelledby="path-lectures-title">
+    <div class="cc-section-kicker">Written lectures</div>
+    <h2 id="path-lectures-title">Three lecture guides</h2>
+    <p class="cc-learning-section-intro">
+      These outlines can be used for self-study, a reading group presentation,
+      or the structure of a future recorded lecture.
+    </p>
+
+    <div class="cc-lecture-grid">
+      {% for lecture in pathway.lectures %}
+      <article class="cc-lecture-card">
+        <div class="cc-lecture-card-header">
+          <input
+            id="{{ pathway.slug }}-lecture-{{ lecture.id }}"
+            type="checkbox"
+            data-progress-item="lecture:{{ lecture.id }}"
+          >
+          <label for="{{ pathway.slug }}-lecture-{{ lecture.id }}">
+            Mark lecture complete
+          </label>
+        </div>
+        <div class="cc-lecture-duration">{{ lecture.duration }}</div>
+        <h3>{{ lecture.title }}</h3>
+        <p>{{ lecture.summary }}</p>
+        <h4>Lecture outline</h4>
+        <ul>
+          {% for point in lecture.outline %}
+          <li>{{ point }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="cc-learning-section cc-discussion-section" aria-labelledby="path-questions-title">
+    <div class="cc-section-kicker">Discussion and review</div>
+    <h2 id="path-questions-title">Questions to test the argument</h2>
+    <ol>
+      {% for question in pathway.questions %}
+      <li>{{ question }}</li>
+      {% endfor %}
+    </ol>
+
+    <div class="cc-reflection-check">
+      <input
+        id="{{ pathway.slug }}-reflection"
+        type="checkbox"
+        data-progress-item="reflection"
+      >
+      <label for="{{ pathway.slug }}-reflection">
+        I wrote or discussed responses to these questions.
+      </label>
+    </div>
+  </section>
+
+  <section class="cc-learning-section cc-path-glossary" aria-labelledby="path-glossary-title">
+    <div class="cc-section-kicker">Working glossary</div>
+    <h2 id="path-glossary-title">Six terms to carry forward</h2>
+    <dl>
+      {% for entry in pathway.glossary %}
+      <div>
+        <dt>{{ entry.term }}</dt>
+        <dd>{{ entry.definition }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+  </section>
+
+  {% if content != empty %}
+  <div class="cc-learning-path-content">{{ content }}</div>
+  {% endif %}
+
+  <nav class="cc-learning-next" aria-label="Continue learning">
+    <a href="{{ '/learn/pathways/' | relative_url }}">← All learning pathways</a>
+    <a href="{{ '/reading-list/' | relative_url }}">Full reading list →</a>
+  </nav>
+
+</article>
+
+<script src="{{ '/assets/learning-progress.js' | relative_url }}" defer></script>

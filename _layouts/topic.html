@@ -5,7 +5,7 @@ layout: default
 {% assign topic_articles = site.posts | where_exp: "item", "item.topics contains page.name" %}
 {% assign learning_items = site.courses | concat: site.lessons | concat: site.reading_paths %}
 {% assign topic_learning = learning_items | where_exp: "item", "item.topics contains page.name" %}
-{% assign reference_items = site.books | concat: site.concepts %}
+{% assign reference_items = site.books | concat: site.concepts | concat: site.sources %}
 {% assign topic_references = reference_items | where_exp: "item", "item.topics contains page.name" %}
 {% assign current_items = site.briefs | concat: site.events | concat: site.podcasts %}
 {% assign topic_current = current_items | where_exp: "item", "item.topics contains page.name" %}

@@ -23,7 +23,7 @@ reading_level: General
 reading_time: null
 image: ''
 featured: true
-sources: []
+references: []
 concepts: []
 people: []
 corrections: []

@@ -120,15 +120,23 @@ collections:
       - { label: Estimated Reading Time, name: reading_time, widget: number, value_type: int, min: 1, required: false, hint: Minutes. }
       - { label: Featured Image, name: image, widget: image, required: false }
       - { label: Feature on Homepage, name: featured, widget: boolean, default: false, required: false }
-      - label: Sources / References
-        name: sources
-        widget: relation
-        collection: sources
-        value_field: "{{slug}}"
-        display_fields: [title, authors, date]
-        search_fields: [title, authors, publication, doi, isbn]
-        multiple: true
+      - label: Structured References
+        name: references
+        widget: list
         required: false
+        summary: "{{fields.source}} — {{fields.evidence_role}}"
+        hint: Add normalized sources in citation order. Explain how each source supports, contextualizes, or challenges the article.
+        fields:
+          - label: Source Record
+            name: source
+            widget: relation
+            collection: sources
+            value_field: "{{slug}}"
+            display_fields: [title, authors, organizational_author, date]
+            search_fields: [title, authors, organizational_author, publication, doi, isbn]
+          - { label: Evidence Role, name: evidence_role, widget: select, options: [Direct evidence, Primary context, Background / context, Counterevidence, Method / data, Further reading] }
+          - { label: Pinpoint / Locator, name: locator, widget: string, required: false, hint: Page, chapter, section, timestamp, table, or dataset field. }
+          - { label: Evidence Note, name: note, widget: text, hint: State what this source establishes and any important limitation. }
       - label: Related Concepts
         name: concepts
         widget: relation
@@ -645,10 +653,14 @@ collections:
     extension: md
     format: yaml-frontmatter
     identifier_field: title
-    summary: "{{title}} — {{authors}} — {{date}}"
+    summary: "{{title}} — {{source_type}} — {{date}}"
     sortable_fields: [title, date, source_type]
     fields:
+      - { label: Layout, name: layout, widget: hidden, default: source }
+      - { label: Content Type, name: content_type, widget: hidden, default: Source / Reference }
+      - { label: Section Key, name: section_key, widget: hidden, default: library }
       - { label: Title, name: title, widget: string }
+      - { label: Citation Key, name: cite_key, widget: string, pattern: ['^[a-z][a-z0-9]+$', 'Use a stable lowercase key such as marx1867capital.'], hint: Never reuse or casually change this key after publication. }
       - label: Authors / Creators
         name: authors
         widget: relation
@@ -657,15 +669,33 @@ collections:
         display_fields: [name, role]
         search_fields: [name, role, description, aliases]
         multiple: true
+        required: false
+      - { label: Organizational Author, name: organizational_author, widget: string, required: false, hint: Use when an institution, agency, or collective is responsible instead of named people. }
+      - { label: Reader Summary, name: description, widget: text }
       - { label: Publication / Container, name: publication, widget: string, required: false }
       - { label: Publisher, name: publisher, widget: string, required: false }
-      - { label: Publication Date, name: date, widget: string, required: false }
-      - { label: URL, name: url, widget: string, required: false }
-      - { label: DOI, name: doi, widget: string, required: false }
+      - { label: Publication Date, name: date, widget: string, hint: Use the date as printed, or n.d. when no date is available. }
+      - { label: Edition, name: edition, widget: string, required: false }
+      - { label: Volume, name: volume, widget: string, required: false }
+      - { label: Issue, name: issue, widget: string, required: false }
+      - { label: Pages, name: pages, widget: string, required: false }
+      - { label: Canonical URL, name: source_url, widget: string, required: false }
+      - { label: DOI, name: doi, widget: string, required: false, hint: Store the bare identifier, not a doi.org URL. }
       - { label: ISBN, name: isbn, widget: string, required: false }
       - { label: Access Date, name: access_date, widget: datetime, type: date, format: YYYY-MM-DD, required: false }
       - { label: Source Type, name: source_type, widget: select, options: [Primary document, Book, Journal article, Government report, Research report, Dataset, News report, Website, Archive, Audio / Video, Other] }
       - { label: Primary Source, name: primary_source, widget: boolean, default: false }
+      - { label: Language, name: language, widget: select, default: English, options: [English, Spanish] }
+      - label: Topics
+        name: topics
+        widget: relation
+        collection: topics
+        value_field: name
+        display_fields: [name]
+        search_fields: [name, description, synonyms]
+        multiple: true
+        required: false
+        max: 5
       - { label: Rights / Provenance, name: rights, widget: text, required: false, hint: Record ownership, license, public-domain status, archive, or permission. }
       - { label: Permitted Excerpt, name: excerpt, widget: text, required: false, hint: Include only text permitted under copyright and editorial policy. }
       - { label: Editorial Notes, name: body, widget: richtext, required: false }

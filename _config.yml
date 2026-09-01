@@ -34,7 +34,8 @@ collections:
     output: true
     permalink: /library/texts/:name/
   sources:
-    output: false
+    output: true
+    permalink: /library/sources/:name/
   people:
     output: true
     permalink: /people/:name/

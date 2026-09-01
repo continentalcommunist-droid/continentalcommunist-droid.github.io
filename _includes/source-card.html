@@ -1,0 +1,37 @@
+{% assign source = include.source %}
+{% assign reference = include.reference %}
+{% assign number = include.number %}
+<article class="cc-source-card" id="reference-{{ number }}" data-reference-card>
+  <header>
+    <div class="cc-source-number" aria-hidden="true">{{ number | prepend: "0" | slice: -2, 2 }}</div>
+    <div>
+      <div class="cc-source-badges">
+        <span>{{ source.source_type | default: "Source" }}</span>
+        {% if source.primary_source %}<span>Primary source</span>{% endif %}
+        {% if reference.evidence_role %}<span>{{ reference.evidence_role }}</span>{% endif %}
+      </div>
+      <h3>
+        {% if source.source_url and source.source_url != empty %}<a href="{{ source.source_url }}" itemprop="citation">{{ source.title }}</a>{% else %}{{ source.title }}{% endif %}
+      </h3>
+      <p class="cc-source-byline">
+        {% if source.authors and source.authors != empty %}{{ source.authors | join: "; " }}{% elsif source.organizational_author %}{{ source.organizational_author }}{% endif %}
+        {% if source.date and source.date != empty %}<span aria-hidden="true">·</span> {{ source.date | date: "%B %-d, %Y" }}{% endif %}
+      </p>
+    </div>
+  </header>
+
+  {% if reference.note and reference.note != empty %}<p class="cc-source-note">{{ reference.note }}</p>{% endif %}
+
+  <dl class="cc-source-metadata">
+    {% if source.publication and source.publication != empty %}<div><dt>Publication</dt><dd>{{ source.publication }}</dd></div>{% endif %}
+    {% if source.publisher and source.publisher != empty %}<div><dt>Publisher</dt><dd>{{ source.publisher }}</dd></div>{% endif %}
+    {% if reference.locator and reference.locator != empty %}<div><dt>Pinpoint</dt><dd>{{ reference.locator }}</dd></div>{% endif %}
+    {% if source.doi and source.doi != empty %}<div><dt>DOI</dt><dd><a href="https://doi.org/{{ source.doi }}">{{ source.doi }}</a></dd></div>{% endif %}
+    {% if source.isbn and source.isbn != empty %}<div><dt>ISBN</dt><dd>{{ source.isbn }}</dd></div>{% endif %}
+    {% if source.access_date and source.access_date != empty %}<div><dt>Accessed</dt><dd>{{ source.access_date | date: "%B %-d, %Y" }}</dd></div>{% endif %}
+  </dl>
+
+  <footer>
+    <a href="{{ source.url | relative_url }}">Full source record <span aria-hidden="true">→</span></a>
+  </footer>
+</article>

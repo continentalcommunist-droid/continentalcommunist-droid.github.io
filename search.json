@@ -112,6 +112,7 @@ permalink: /search.json
 {% assign cms_documents = cms_documents | concat: site.lessons %}
 {% assign cms_documents = cms_documents | concat: site.reading_paths %}
 {% assign cms_documents = cms_documents | concat: site.books %}
+{% assign cms_documents = cms_documents | concat: site.sources %}
 {% assign cms_documents = cms_documents | concat: site.people %}
 {% assign cms_documents = cms_documents | concat: site.concepts %}
 {% assign cms_documents = cms_documents | concat: site.topics %}
@@ -145,6 +146,7 @@ permalink: /search.json
       {% when "Lesson" %}{% assign document_format = "Lesson" %}
       {% when "Learning Path" %}{% assign document_format = "Guided pathway" %}
       {% when "Book / Text" %}{% assign document_format = document.text_type | default: "Text" %}
+      {% when "Source / Reference" %}{% assign document_format = document.source_type | default: "Reference" %}
       {% when "Person" %}{% assign document_format = "Profile" %}
       {% when "Concept" %}{% assign document_format = "Glossary" %}
       {% when "Topic" %}{% assign document_format = "Topic guide" %}
@@ -163,6 +165,8 @@ permalink: /search.json
       {{ document_thinker | join: " " }} {{ document_language | join: " " }}
       {{ document.synonyms | join: " " }} {{ document.aliases | join: " " }}
       {{ document.parent }} {{ document.related_topics | join: " " }}
+      {{ document.cite_key }} {{ document.doi }} {{ document.isbn }}
+      {{ document.source_url }} {{ document.organizational_author }}
       {% for reading in document.readings %}{{ reading.title }} {{ reading.author }} {% endfor %}
       {% for lecture in document.lectures %}{{ lecture.title }} {% endfor %}
       {% for entry in document.glossary %}{{ entry.term }} {% endfor %}

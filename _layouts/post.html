@@ -3,6 +3,7 @@ layout: default
 ---
 
 {% assign author_record = site.people | where: "name", page.author | first %}
+{% capture article_cite_key %}{{ page.author | slugify }}-{{ page.date | date: "%Y" }}-{{ page.title | slugify }}{% endcapture %}
 
 <article class="post h-entry cc-post" itemscope itemtype="https://schema.org/Article">
   <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
@@ -68,6 +69,62 @@ layout: default
     {{ content }}
   </div>
 
+  <section class="cc-evidence" aria-labelledby="evidence-title">
+    <header class="cc-evidence-header">
+      <div>
+        <div class="cc-section-kicker">Citations and evidence</div>
+        <h2 id="evidence-title">Follow the evidence.</h2>
+        <p>References are normalized records with provenance, stable metadata, and reusable exports. Evidence roles and notes describe how each source is being used.</p>
+      </div>
+      <div class="cc-evidence-count">
+        <strong>{{ page.references.size | default: 0 }}</strong>
+        <span>{% if page.references.size == 1 %}reference{% else %}references{% endif %}</span>
+      </div>
+    </header>
+
+    <div class="cc-evidence-tools">
+      <section class="cc-citation-panel" aria-labelledby="cite-article-title">
+        <div class="cc-section-kicker">Cite this article</div>
+        <h3 id="cite-article-title">Reusable article metadata</h3>
+        <p>Copy a readable citation or download a record for a reference manager.</p>
+        <div class="cc-citation-actions" data-citation-tools hidden>
+          <button type="button" data-citation-action="copy" data-citation-scope="work" data-citation-format="text">Copy citation</button>
+          <button type="button" data-citation-action="download" data-citation-scope="work" data-citation-format="bibtex">BibTeX</button>
+          <button type="button" data-citation-action="download" data-citation-scope="work" data-citation-format="ris">RIS</button>
+        </div>
+        <p class="cc-citation-status" data-citation-status aria-live="polite"></p>
+      </section>
+
+      {% if page.references and page.references != empty %}
+      <section class="cc-citation-panel" aria-labelledby="export-references-title">
+        <div class="cc-section-kicker">Export the evidence</div>
+        <h3 id="export-references-title">Download all references</h3>
+        <p>Export this article's complete source list without reconstructing footnotes by hand.</p>
+        <div class="cc-citation-actions" data-citation-tools hidden>
+          <button type="button" data-citation-action="copy" data-citation-scope="references" data-citation-format="text">Copy bibliography</button>
+          <button type="button" data-citation-action="download" data-citation-scope="references" data-citation-format="text">Text file</button>
+          <button type="button" data-citation-action="download" data-citation-scope="references" data-citation-format="bibtex">BibTeX</button>
+          <button type="button" data-citation-action="download" data-citation-scope="references" data-citation-format="ris">RIS</button>
+        </div>
+      </section>
+      {% endif %}
+    </div>
+
+    {% if page.references and page.references != empty %}
+    <div class="cc-source-list" aria-label="Article references">
+      {% for reference in page.references %}
+        {% assign source = site.sources | where: "slug", reference.source | first %}
+        {% if source %}{% include source-card.html source=source reference=reference number=forloop.index %}{% endif %}
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="cc-evidence-empty">
+      <strong>No external references are listed.</strong>
+      <p>This is shown explicitly so readers can distinguish an uncited essay or first-person account from source-supported reporting and research.</p>
+    </div>
+    {% endif %}
+  </section>
+
   <section class="cc-post-related" aria-labelledby="post-related-title">
     <div class="cc-section-kicker">Continue exploring</div>
     <h2 id="post-related-title">Related through the controlled taxonomy</h2>
@@ -114,3 +171,55 @@ layout: default
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
+
+<script id="cc-citation-data" type="application/json">
+{
+  "work": {
+    "kind": "article",
+    "cite_key": {{ article_cite_key | strip | jsonify }},
+    "source_type": "Website",
+    "title": {{ page.title | jsonify }},
+    "authors": [{{ page.author | jsonify }}],
+    "organizational_author": null,
+    "publication": {{ site.title | jsonify }},
+    "publisher": {{ site.title | jsonify }},
+    "date": {{ page.date | date: "%Y-%m-%d" | jsonify }},
+    "url": {{ page.url | absolute_url | jsonify }},
+    "doi": null,
+    "isbn": null,
+    "access_date": null,
+    "edition": null,
+    "volume": null,
+    "issue": null,
+    "pages": null
+  },
+  "references": [
+    {% for reference in page.references %}
+      {% assign source = site.sources | where: "slug", reference.source | first %}
+      {
+        "kind": "source",
+        "cite_key": {{ source.cite_key | jsonify }},
+        "source_type": {{ source.source_type | jsonify }},
+        "title": {{ source.title | jsonify }},
+        "authors": {{ source.authors | jsonify }},
+        "organizational_author": {{ source.organizational_author | jsonify }},
+        "publication": {{ source.publication | jsonify }},
+        "publisher": {{ source.publisher | jsonify }},
+        "date": {{ source.date | date: "%Y-%m-%d" | jsonify }},
+        "url": {{ source.source_url | jsonify }},
+        "doi": {{ source.doi | jsonify }},
+        "isbn": {{ source.isbn | jsonify }},
+        "access_date": {{ source.access_date | jsonify }},
+        "edition": {{ source.edition | jsonify }},
+        "volume": {{ source.volume | jsonify }},
+        "issue": {{ source.issue | jsonify }},
+        "pages": {{ source.pages | jsonify }},
+        "evidence_role": {{ reference.evidence_role | jsonify }},
+        "locator": {{ reference.locator | jsonify }},
+        "note": {{ reference.note | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+<script src="{{ '/assets/citations.js' | relative_url }}" defer></script>

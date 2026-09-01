@@ -34,6 +34,16 @@ ruby scripts/validate_taxonomy.rb
 
 The validator rejects unknown terms, duplicate topics, broken parent relationships, hierarchy cycles, uncontrolled people references, and content with more than five topics.
 
+## Citations and evidence
+
+Reusable source metadata lives in _sources/ and publishes as public records under /library/sources/. Articles attach those records through ordered references with an evidence role, optional pinpoint locator, and a required note explaining what the source establishes.
+
+The article template exposes numbered source cards, a transparent uncited state, readable citation copying, BibTeX and RIS downloads, and a downloadable bibliography. Inline citation numbers use _includes/cite.html, while assets/citations.js generates exports entirely in the visitor's browser.
+
+Citation workflow and source-quality rules are documented in docs/citations.md. Validate records and article references before publication:
+
+    ruby scripts/validate_citations.rb
+
 ## Learning pathways
 
 The Reading List is organized into guided learning pathways under `/learn/pathways/`. Each pathway is a structured document in `_reading_paths/`; the catalog and individual pathway pages are rendered by `_layouts/pathway-catalog.html` and `_layouts/learning-path.html`.

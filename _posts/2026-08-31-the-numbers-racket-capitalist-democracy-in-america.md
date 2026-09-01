@@ -23,7 +23,11 @@ reading_level: General
 reading_time: 3
 image: ''
 featured: true
-sources: []
+references:
+  - source: federalist-number-10
+    evidence_role: Primary context
+    locator: Passages on unequal property, creditor and debtor interests, and faction
+    note: Madison's account supplies historical context for the relationship among unequal property, factions, and political parties; it does not by itself establish the article's contemporary argument.
 concepts: []
 people: []
 corrections: []
@@ -40,7 +44,7 @@ You see, democracy doesn’t erase the need for power to attach itself to myth. 
 
 Democracy plays on a deeper level. The myths (God, country, capitalism) are now like an ice cream flavor rather than a monolithic force. And just like an ice cream shop, you are far more likely to stick with what you know than try something new. Why do you know what you know, though?
 
-The Republican Party is a great illustration of the mythmaking of politics. From the Fox News pulpit cries of “replacement” are heard. The fundamental argument is that progressives have hijacked democracy, that they alone are playing the numbers racket, funneling more voters to the continent in order to preserve power.
+The Republican Party is a great illustration of the mythmaking of politics. From the Fox News pulpit cries of “replacement” are heard. The fundamental argument is that progressives have hijacked democracy, that they alone are playing the numbers racket, funneling more voters to the continent in order to preserve power. Even Madison's canonical account of faction connected durable political divisions to unequal property and creditor-debtor interests.{% include cite.html source="federalist-number-10" %}
 
 Five minutes later, they complain about how “woke colleges” are teaching students about how the first European colonists committed atrocities in order to increase the European population. The contradiction? They hate the fact that BOTH SIDES ARE IN ON THE NUMBERS RACKET! Both sides, that is, of the capitalist political machine. A party duopoly controlled by the capitalists, the bankers; in short, the ruling class. That is the problem we face in America. Without a vision of the future, a powerful vision that sees democracy not as God or Satan, but as a development that occurred under a flawed economic system but that nonetheless provides a more scientific structure for human society.
 

@@ -132,6 +132,7 @@ managed_patterns = %w[
   _lessons/*.md
   _reading_paths/*.md
   _books/*.md
+  _sources/*.md
   _concepts/*.md
   _events/*.md
   _podcasts/*.md

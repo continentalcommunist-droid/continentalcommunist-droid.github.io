@@ -1,0 +1,115 @@
+---
+layout: default
+---
+
+{% assign source_author = page.authors | join: "; " %}
+{% if source_author == empty %}{% assign source_author = page.organizational_author %}{% endif %}
+
+<article class="cc-source-page">
+  <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ '/library/' | relative_url }}">Library</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ page.title }}</span>
+  </nav>
+
+  <header class="cc-source-page-header">
+    <div class="cc-hub-kicker">{{ page.source_type | default: "Source / Reference" }}</div>
+    <h1>{{ page.title }}</h1>
+    {% if source_author and source_author != empty %}<p class="cc-source-page-author">{{ source_author }}</p>{% endif %}
+    {% if page.description and page.description != empty %}<p>{{ page.description }}</p>{% endif %}
+  </header>
+
+  <div class="cc-source-page-grid">
+    <section aria-labelledby="source-metadata-title">
+      <div class="cc-section-kicker">Normalized record</div>
+      <h2 id="source-metadata-title">Source metadata</h2>
+      <dl class="cc-source-record-metadata">
+        {% if page.publication and page.publication != empty %}<div><dt>Publication</dt><dd>{{ page.publication }}</dd></div>{% endif %}
+        {% if page.publisher and page.publisher != empty %}<div><dt>Publisher</dt><dd>{{ page.publisher }}</dd></div>{% endif %}
+        {% if page.date and page.date != empty %}<div><dt>Publication date</dt><dd>{{ page.date | date: "%B %-d, %Y" }}</dd></div>{% endif %}
+        {% if page.edition and page.edition != empty %}<div><dt>Edition</dt><dd>{{ page.edition }}</dd></div>{% endif %}
+        {% if page.volume and page.volume != empty %}<div><dt>Volume</dt><dd>{{ page.volume }}</dd></div>{% endif %}
+        {% if page.issue and page.issue != empty %}<div><dt>Issue</dt><dd>{{ page.issue }}</dd></div>{% endif %}
+        {% if page.pages and page.pages != empty %}<div><dt>Pages</dt><dd>{{ page.pages }}</dd></div>{% endif %}
+        {% if page.doi and page.doi != empty %}<div><dt>DOI</dt><dd><a href="https://doi.org/{{ page.doi }}">{{ page.doi }}</a></dd></div>{% endif %}
+        {% if page.isbn and page.isbn != empty %}<div><dt>ISBN</dt><dd>{{ page.isbn }}</dd></div>{% endif %}
+        {% if page.source_url and page.source_url != empty %}<div><dt>Canonical URL</dt><dd><a href="{{ page.source_url }}">Open original</a></dd></div>{% endif %}
+        {% if page.access_date and page.access_date != empty %}<div><dt>Accessed</dt><dd>{{ page.access_date | date: "%B %-d, %Y" }}</dd></div>{% endif %}
+        {% if page.language and page.language != empty %}<div><dt>Language</dt><dd>{{ page.language }}</dd></div>{% endif %}
+        <div><dt>Primary source</dt><dd>{% if page.primary_source %}Yes{% else %}No{% endif %}</dd></div>
+        {% if page.rights and page.rights != empty %}<div><dt>Rights / provenance</dt><dd>{{ page.rights }}</dd></div>{% endif %}
+      </dl>
+    </section>
+
+    <aside class="cc-citation-panel" aria-labelledby="source-export-title">
+      <div class="cc-section-kicker">Use this record</div>
+      <h2 id="source-export-title">Citation exports</h2>
+      <p>Copy a readable citation or download this normalized record for a reference manager.</p>
+      <div class="cc-citation-actions" data-citation-tools hidden>
+        <button type="button" data-citation-action="copy" data-citation-scope="work" data-citation-format="text">Copy citation</button>
+        <button type="button" data-citation-action="download" data-citation-scope="work" data-citation-format="bibtex">BibTeX</button>
+        <button type="button" data-citation-action="download" data-citation-scope="work" data-citation-format="ris">RIS</button>
+      </div>
+      <p class="cc-citation-status" data-citation-status aria-live="polite"></p>
+    </aside>
+  </div>
+
+  {% if page.excerpt and page.excerpt != empty %}
+  <section class="cc-source-excerpt" aria-labelledby="source-excerpt-title">
+    <div class="cc-section-kicker">Permitted excerpt</div>
+    <h2 id="source-excerpt-title">Excerpt</h2>
+    <blockquote>{{ page.excerpt }}</blockquote>
+  </section>
+  {% endif %}
+
+  {% if content != empty %}<section class="cc-source-notes">{{ content }}</section>{% endif %}
+
+  <section class="cc-source-cited-by" aria-labelledby="source-cited-by-title">
+    <div class="cc-section-kicker">Knowledge graph</div>
+    <h2 id="source-cited-by-title">Cited by</h2>
+    {% assign citation_count = 0 %}
+    <div class="cc-person-connection-grid">
+      {% for item in site.posts %}
+        {% for reference in item.references %}
+          {% if reference.source == page.slug %}
+          <article>
+            <div>{{ reference.evidence_role | default: "Reference" }}</div>
+            <h3><a href="{{ item.url | relative_url }}#reference-{{ forloop.index }}">{{ item.title }}</a></h3>
+            <p>{{ reference.note | default: item.description | truncate: 170 }}</p>
+          </article>
+          {% assign citation_count = citation_count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+    {% if citation_count == 0 %}<p class="cc-topic-empty">No published article currently cites this record.</p>{% endif %}
+  </section>
+</article>
+
+<script id="cc-citation-data" type="application/json">
+{
+  "work": {
+    "kind": "source",
+    "cite_key": {{ page.cite_key | jsonify }},
+    "source_type": {{ page.source_type | jsonify }},
+    "title": {{ page.title | jsonify }},
+    "authors": {{ page.authors | jsonify }},
+    "organizational_author": {{ page.organizational_author | jsonify }},
+    "publication": {{ page.publication | jsonify }},
+    "publisher": {{ page.publisher | jsonify }},
+    "date": {{ page.date | date: "%Y-%m-%d" | jsonify }},
+    "url": {{ page.source_url | jsonify }},
+    "doi": {{ page.doi | jsonify }},
+    "isbn": {{ page.isbn | jsonify }},
+    "access_date": {{ page.access_date | jsonify }},
+    "edition": {{ page.edition | jsonify }},
+    "volume": {{ page.volume | jsonify }},
+    "issue": {{ page.issue | jsonify }},
+    "pages": {{ page.pages | jsonify }}
+  },
+  "references": []
+}
+</script>
+<script src="{{ '/assets/citations.js' | relative_url }}" defer></script>

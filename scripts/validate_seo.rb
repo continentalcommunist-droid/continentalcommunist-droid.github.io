@@ -303,7 +303,9 @@ begin
   homepage_title = homepage[/<title>(.*?)<\/title>/im, 1].to_s.gsub(/\s+/, " ").strip
   homepage_description = homepage[/<meta\b[^>]*name=["']description["'][^>]*content=["']([^"']*)["']/i, 1].to_s.strip
   homepage_headings = homepage.scan(/<h1\b[^>]*>(.*?)<\/h1>/im).flatten.map do |heading|
-    heading.gsub(/<[^>]+>/, " ").gsub(/\s+/, " ").strip
+    text = heading.gsub(/<[^>]+>/, " ").gsub(/\s+/, " ").strip
+    image_alts = heading.scan(/<img\b[^>]*\balt=["']([^"']*)["'][^>]*>/im).flatten
+    ([text] + image_alts).reject(&:empty?).join(" ")
   end
   website_schema = schema_with_type(homepage_metadata[:schemas], "WebSite")
   organization_schema = schema_with_type(homepage_metadata[:schemas], publisher["type"])
@@ -313,7 +315,7 @@ begin
   unless homepage_description.length.between?(80, 180)
     errors << "homepage: description must be between 80 and 180 characters"
   end
-  errors << "homepage: visible h1 must be the publication name" unless homepage_headings == [config["title"]]
+  errors << "homepage: h1 must expose the publication name as text or image alt text" unless homepage_headings == [config["title"]]
   if homepage.match?(/<h1\b[^>]*class=["'][^"']*cc-visually-hidden/i)
     errors << "homepage: publication h1 must not be visually hidden"
   end

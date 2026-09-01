@@ -1,0 +1,65 @@
+{% assign cc_learner_content_type = page.content_type | default: page.collection | default: "Page" %}
+<aside
+  class="cc-learner-tools"
+  data-learner-tools
+  data-content-key="{{ page.url | escape }}"
+  data-content-url="{{ page.url | relative_url | escape }}"
+  data-content-title="{{ page.title | escape }}"
+  data-content-type="{{ cc_learner_content_type | escape }}"
+  aria-labelledby="learner-tools-title"
+>
+  <div class="cc-learner-tools-heading">
+    <div>
+      <div class="cc-section-kicker">Private study tools</div>
+      <h2 id="learner-tools-title">Save this for your study.</h2>
+    </div>
+    <a href="{{ '/account/' | relative_url }}#saved-material" data-learner-tools-dashboard hidden>
+      Open dashboard →
+    </a>
+  </div>
+
+  <div class="cc-learner-tools-user" data-learner-tools-user hidden>
+    <div class="cc-learner-tool-actions">
+      <button type="button" data-bookmark-toggle aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 3h12v18l-6-3.8L6 21V3Zm2 2v12.4l4-2.5 4 2.5V5H8Z"/>
+        </svg>
+        <span data-bookmark-label>Save bookmark</span>
+      </button>
+      <button type="button" data-note-toggle aria-expanded="false" aria-controls="private-note-form">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 3h14v14l-4 4H5V3Zm2 2v14h7v-3h3V5H7Zm2 3h6v2H9V8Zm0 4h6v2H9v-2Z"/>
+        </svg>
+        <span data-note-toggle-label>Add private note</span>
+      </button>
+    </div>
+
+    <form class="cc-private-note-form" id="private-note-form" data-note-form hidden>
+      <label for="private-note-body">Your private note</label>
+      <textarea
+        id="private-note-body"
+        name="note_body"
+        rows="7"
+        maxlength="10000"
+        placeholder="Record an argument, question, quotation locator, or connection to revisit."
+        aria-describedby="private-note-help private-note-count"
+        required
+      ></textarea>
+      <div class="cc-private-note-meta">
+        <small id="private-note-help">Visible only inside your learner account.</small>
+        <small id="private-note-count" data-note-count>0 / 10,000</small>
+      </div>
+      <div class="cc-private-note-actions">
+        <button type="submit">Save note</button>
+        <button class="cc-learner-tool-secondary" type="button" data-note-delete hidden>Delete note</button>
+      </div>
+    </form>
+  </div>
+
+  <p class="cc-learner-tools-guest" data-learner-tools-guest>
+    <a href="{{ '/account/' | relative_url }}">Sign in or create an account</a>
+    to bookmark material and keep private notes across devices.
+  </p>
+  <p class="cc-learner-tool-status" data-learner-tool-status role="status" aria-live="polite"></p>
+  <noscript><p class="cc-learner-tools-noscript">JavaScript is required for private study tools.</p></noscript>
+</aside>

@@ -1,9 +1,9 @@
 ---
 layout: account
-title: My Learning
+title: Learner Dashboard
 permalink: /account/
 section_key: learn
-description: Sign in to synchronize learning pathway progress and manage your private learner profile.
+description: Synchronize learning progress, build a reading queue, and keep private notes across devices.
 robots: noindex,follow
 search_exclude: true
 ---

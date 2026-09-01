@@ -27,6 +27,8 @@ layout: default
     {% endif %}
   </header>
 
+  {% include learner-tools.html %}
+
   {% if content != empty %}
   <div class="cc-person-biography">{{ content }}</div>
   {% endif %}
@@ -75,3 +77,5 @@ layout: default
     {% endif %}
   </section>
 </article>
+
+{% include learner-tools-assets.html %}

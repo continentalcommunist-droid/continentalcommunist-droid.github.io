@@ -2,7 +2,7 @@
 ---
 
 .cc-account {
-  max-width: 1060px;
+  max-width: 1120px;
   margin: 0 auto;
   padding-bottom: 40px;
 }
@@ -140,7 +140,8 @@
 }
 
 .cc-auth-card h3,
-.cc-account-panel h3 {
+.cc-account-panel h3,
+.cc-account-panel h4 {
   margin: 0 0 22px;
   font-size: 1.35rem;
 }
@@ -157,7 +158,8 @@
 }
 
 .cc-auth-card input,
-.cc-account-panel input {
+.cc-account-panel input,
+.cc-account-panel textarea {
   width: 100%;
   box-sizing: border-box;
   padding: 11px 12px;
@@ -171,7 +173,8 @@
 }
 
 .cc-auth-card input:focus,
-.cc-account-panel input:focus {
+.cc-account-panel input:focus,
+.cc-account-panel textarea:focus {
   border-color: var(--accent-bright);
   outline: 2px solid rgba(239, 68, 68, 0.18);
   outline-offset: 1px;
@@ -286,7 +289,7 @@
 }
 
 .cc-account-grid {
-  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .cc-account-panel-heading > span {
@@ -338,8 +341,217 @@
 }
 
 .cc-password-update {
-  max-width: 480px;
-  margin-top: 16px;
+  margin: 0;
+}
+
+.cc-dashboard-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 16px;
+  padding: 8px;
+  background: #101012;
+  border: 1px solid var(--border);
+}
+
+.cc-dashboard-nav a {
+  padding: 8px 12px;
+  color: var(--text-muted);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.075em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.cc-dashboard-nav a:hover,
+.cc-dashboard-nav a:focus {
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
+.cc-dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.cc-dashboard-stats > div {
+  min-width: 0;
+  padding: 18px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+}
+
+.cc-dashboard-stats strong,
+.cc-dashboard-stats span {
+  display: block;
+}
+
+.cc-dashboard-stats strong {
+  color: var(--text);
+  font-size: clamp(1.7rem, 4vw, 2.45rem);
+  line-height: 1;
+}
+
+.cc-dashboard-stats span {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 0.59rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.cc-dashboard-section {
+  margin: 16px 0 0;
+  padding: 28px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+}
+
+.cc-dashboard-section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.cc-dashboard-section-heading h3,
+.cc-dashboard-section > h3 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.cc-dashboard-section-heading > span {
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-align: right;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cc-dashboard-pathways {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cc-saved-material-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.cc-saved-material-grid .cc-account-panel {
+  padding: 20px;
+  background: #0e0e10;
+}
+
+.cc-account-panel-heading h4 {
+  margin: 2px 0 0;
+}
+
+.cc-dashboard-saved-list {
+  display: grid;
+  gap: 10px;
+}
+
+.cc-dashboard-saved-item {
+  padding: 15px;
+  background: #121214;
+  border: 1px solid var(--border);
+}
+
+.cc-dashboard-saved-item header {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.cc-dashboard-saved-item h5 {
+  margin: 3px 0 0;
+  font-size: 0.9rem;
+  letter-spacing: -0.015em;
+}
+
+.cc-dashboard-saved-item h5 a {
+  text-decoration: none;
+}
+
+.cc-dashboard-saved-meta {
+  color: #85858d;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.cc-dashboard-remove {
+  flex: 0 0 auto;
+  margin: 0 !important;
+  padding: 4px 0 !important;
+  background: transparent !important;
+  color: var(--text-muted) !important;
+  border: 0 !important;
+  font-size: 0.57rem !important;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+
+.cc-dashboard-remove:hover,
+.cc-dashboard-remove:focus {
+  color: var(--accent-bright) !important;
+}
+
+.cc-dashboard-note-text {
+  width: 100%;
+  min-height: 126px;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-top: 13px;
+  padding: 11px 12px;
+  background: #0a0a0c;
+  color: var(--text-body);
+  border: 1px solid #34343a;
+  border-radius: 2px;
+  font: 0.8rem/1.55 var(--serif);
+}
+
+.cc-dashboard-note-text:focus {
+  border-color: var(--accent-bright);
+  outline: 2px solid rgba(239, 68, 68, 0.18);
+  outline-offset: 1px;
+}
+
+.cc-dashboard-note-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-top: 9px;
+}
+
+.cc-dashboard-note-actions small {
+  margin: 0;
+}
+
+.cc-dashboard-note-actions button {
+  margin: 0;
+  padding: 8px 11px;
+}
+
+#account-settings > .cc-section-kicker {
+  margin-bottom: 6px;
+}
+
+#account-settings > h3 {
+  margin-bottom: 22px;
 }
 
 .cc-account-privacy {
@@ -365,7 +577,8 @@
 
 @media screen and (max-width: 850px) {
   .cc-auth-guest,
-  .cc-account-grid {
+  .cc-account-grid,
+  .cc-saved-material-grid {
     grid-template-columns: 1fr;
   }
 
@@ -375,6 +588,10 @@
 
   .cc-auth-reset {
     grid-column: 1;
+  }
+
+  .cc-dashboard-pathways {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -399,13 +616,42 @@
   }
 
   .cc-dashboard-heading,
-  .cc-account-panel-heading {
+  .cc-account-panel-heading,
+  .cc-dashboard-section-heading {
     display: block;
   }
 
   .cc-dashboard-heading .cc-auth-secondary-button,
-  .cc-account-panel-heading > span {
+  .cc-account-panel-heading > span,
+  .cc-dashboard-section-heading > span {
     display: inline-block;
     margin-top: 12px;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .cc-dashboard-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cc-dashboard-section {
+    padding: 21px 19px;
+  }
+
+  .cc-dashboard-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cc-dashboard-nav a {
+    text-align: center;
+  }
+
+  .cc-dashboard-saved-item header {
+    display: block;
+  }
+
+  .cc-dashboard-remove {
+    margin-top: 8px !important;
   }
 }

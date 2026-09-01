@@ -31,11 +31,45 @@ function setHidden(element, hidden) {
 
 
 function setFormBusy(form, busy) {
-  form.querySelectorAll("button, input").forEach(function (control) {
+  form.querySelectorAll("button, input, textarea").forEach(function (control) {
     control.disabled = busy;
   });
 
   form.setAttribute("aria-busy", String(busy));
+}
+
+
+function safeContentUrl(value) {
+  try {
+    const url = new URL(String(value || "/"), window.location.origin);
+
+    if (url.origin !== window.location.origin) {
+      return "/";
+    }
+
+    return url.pathname + url.search + url.hash;
+  } catch (error) {
+    return "/";
+  }
+}
+
+
+function readableDate(value) {
+  if (!value) {
+    return "";
+  }
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return "";
+  }
+
+  return new Intl.DateTimeFormat(undefined, {
+    month: "short",
+    day: "numeric",
+    year: "numeric"
+  }).format(date);
 }
 
 
@@ -60,6 +94,28 @@ function initializeAccount(accountRoot) {
   function showGuest() {
     setHidden(guest, false);
     setHidden(dashboard, true);
+    accountRoot.querySelectorAll(
+      "[data-dashboard-pathways], [data-dashboard-bookmarks], [data-dashboard-notes]"
+    ).forEach(function (container) {
+      container.replaceChildren();
+    });
+    accountRoot.querySelectorAll(
+      "[data-stat-active-pathways], [data-stat-complete-pathways], "
+        + "[data-stat-bookmarks], [data-stat-notes]"
+    ).forEach(function (stat) {
+      stat.textContent = "—";
+    });
+    accountRoot.querySelector("[data-profile-form]").reset();
+    accountRoot.querySelector("[data-learner-name]").textContent = "Learner";
+    accountRoot.querySelector("[data-learner-email]").textContent = "";
+  }
+
+  function isCurrentUser(user) {
+    return Boolean(
+      currentSession
+        && currentSession.user
+        && currentSession.user.id === user.id
+    );
   }
 
   async function loadProfile(user) {
@@ -98,6 +154,10 @@ function initializeAccount(accountRoot) {
       }
 
       profile = created.data;
+    }
+
+    if (!isCurrentUser(user)) {
+      return;
     }
 
     displayName.value = profile.display_name;
@@ -179,6 +239,10 @@ function initializeAccount(accountRoot) {
       return enrollments.has(pathway.slug) || counts[pathway.slug];
     });
 
+    if (!isCurrentUser(user)) {
+      return;
+    }
+
     container.replaceChildren();
 
     if (!activePathways.length) {
@@ -201,8 +265,240 @@ function initializeAccount(accountRoot) {
     const completedPathways = pathwaysResponse.data.filter(function (pathway) {
       return Boolean(pathway.completed_at);
     }).length;
-    summary.textContent = activePathways.length + " active · "
+    const inProgressPathways = Math.max(activePathways.length - completedPathways, 0);
+    summary.textContent = inProgressPathways + " active · "
       + completedPathways + " complete";
+    accountRoot.querySelector("[data-stat-active-pathways]").textContent = String(inProgressPathways);
+    accountRoot.querySelector("[data-stat-complete-pathways]").textContent = String(completedPathways);
+  }
+
+  function createSavedItemHeader(record, dateValue, actionLabel, onAction) {
+    const header = document.createElement("header");
+    const details = document.createElement("div");
+    const meta = document.createElement("div");
+    const heading = document.createElement("h5");
+    const link = document.createElement("a");
+    const action = document.createElement("button");
+    const date = readableDate(dateValue);
+
+    meta.className = "cc-dashboard-saved-meta";
+    meta.textContent = record.content_type + (date ? " · " + date : "");
+    link.href = safeContentUrl(record.content_url);
+    link.textContent = record.content_title;
+    heading.appendChild(link);
+    details.appendChild(meta);
+    details.appendChild(heading);
+
+    action.className = "cc-dashboard-remove";
+    action.type = "button";
+    action.textContent = actionLabel;
+    action.addEventListener("click", function () {
+      onAction(action);
+    });
+
+    header.appendChild(details);
+    header.appendChild(action);
+    return header;
+  }
+
+  function createEmptySavedState(messageText) {
+    const empty = document.createElement("p");
+    empty.className = "cc-dashboard-empty";
+    empty.textContent = messageText;
+    return empty;
+  }
+
+  async function refreshSavedMaterial() {
+    if (!currentSession) {
+      return;
+    }
+
+    await loadSavedMaterial(currentSession.user);
+  }
+
+  function createBookmarkRow(record) {
+    const article = document.createElement("article");
+    article.className = "cc-dashboard-saved-item";
+    article.appendChild(
+      createSavedItemHeader(record, record.bookmarked_at, "Remove", async function (button) {
+        if (!currentSession) {
+          return;
+        }
+
+        const userId = currentSession.user.id;
+        button.disabled = true;
+        const response = await client
+          .from("learner_bookmarks")
+          .delete()
+          .eq("user_id", userId)
+          .eq("content_key", record.content_key);
+
+        if (response.error) {
+          button.disabled = false;
+          announce("The bookmark could not be removed. Please try again.", "error");
+          return;
+        }
+
+        announce("Bookmark removed.", "success");
+        await refreshSavedMaterial();
+      })
+    );
+    return article;
+  }
+
+  function createNoteRow(record) {
+    const article = document.createElement("article");
+    const textarea = document.createElement("textarea");
+    const actions = document.createElement("div");
+    const counter = document.createElement("small");
+    const save = document.createElement("button");
+
+    article.className = "cc-dashboard-saved-item";
+    article.appendChild(
+      createSavedItemHeader(record, record.updated_at, "Delete", async function (button) {
+        if (!currentSession) {
+          return;
+        }
+
+        if (!window.confirm("Delete this private note?")) {
+          return;
+        }
+
+        const userId = currentSession.user.id;
+        button.disabled = true;
+        const response = await client
+          .from("learner_notes")
+          .delete()
+          .eq("user_id", userId)
+          .eq("content_key", record.content_key);
+
+        if (response.error) {
+          button.disabled = false;
+          announce("The private note could not be deleted. Please try again.", "error");
+          return;
+        }
+
+        announce("Private note deleted.", "success");
+        await refreshSavedMaterial();
+      })
+    );
+
+    textarea.className = "cc-dashboard-note-text";
+    textarea.value = record.note_body;
+    textarea.maxLength = 10000;
+    textarea.setAttribute("aria-label", "Private note for " + record.content_title);
+
+    function updateCounter() {
+      counter.textContent = textarea.value.length.toLocaleString() + " / 10,000";
+    }
+
+    textarea.addEventListener("input", updateCounter);
+    updateCounter();
+
+    actions.className = "cc-dashboard-note-actions";
+    save.type = "button";
+    save.textContent = "Save changes";
+    save.addEventListener("click", async function () {
+      if (!currentSession) {
+        return;
+      }
+
+      const noteBody = textarea.value.trim();
+
+      if (!noteBody) {
+        announce("A private note cannot be empty. Delete it if you no longer need it.", "error");
+        textarea.focus();
+        return;
+      }
+
+      const userId = currentSession.user.id;
+      setFormBusy(article, true);
+      const response = await client
+        .from("learner_notes")
+        .update({ note_body: noteBody })
+        .eq("user_id", userId)
+        .eq("content_key", record.content_key);
+      setFormBusy(article, false);
+
+      if (response.error) {
+        announce("The private note could not be saved. Please try again.", "error");
+        return;
+      }
+
+      textarea.value = noteBody;
+      updateCounter();
+      announce("Private note saved.", "success");
+    });
+
+    actions.appendChild(counter);
+    actions.appendChild(save);
+    article.appendChild(textarea);
+    article.appendChild(actions);
+    return article;
+  }
+
+  async function loadSavedMaterial(user) {
+    const bookmarksContainer = accountRoot.querySelector("[data-dashboard-bookmarks]");
+    const notesContainer = accountRoot.querySelector("[data-dashboard-notes]");
+    const [bookmarksResponse, notesResponse] = await Promise.all([
+      client
+        .from("learner_bookmarks")
+        .select("content_key,content_url,content_title,content_type,bookmarked_at")
+        .eq("user_id", user.id)
+        .order("bookmarked_at", { ascending: false })
+        .limit(100),
+      client
+        .from("learner_notes")
+        .select("content_key,content_url,content_title,content_type,note_body,updated_at")
+        .eq("user_id", user.id)
+        .order("updated_at", { ascending: false })
+        .limit(100)
+    ]);
+
+    if (bookmarksResponse.error) {
+      throw bookmarksResponse.error;
+    }
+
+    if (notesResponse.error) {
+      throw notesResponse.error;
+    }
+
+    const bookmarks = bookmarksResponse.data || [];
+    const notes = notesResponse.data || [];
+
+    if (!isCurrentUser(user)) {
+      return;
+    }
+
+    bookmarksContainer.replaceChildren();
+    notesContainer.replaceChildren();
+
+    if (bookmarks.length) {
+      bookmarks.forEach(function (bookmark) {
+        bookmarksContainer.appendChild(createBookmarkRow(bookmark));
+      });
+    } else {
+      bookmarksContainer.appendChild(
+        createEmptySavedState("No bookmarks yet. Save material from any article, pathway, topic, thinker, or source page.")
+      );
+    }
+
+    if (notes.length) {
+      notes.forEach(function (note) {
+        notesContainer.appendChild(createNoteRow(note));
+      });
+    } else {
+      notesContainer.appendChild(
+        createEmptySavedState("No private notes yet. Open the study tools on a content page to begin your notebook.")
+      );
+    }
+
+    accountRoot.querySelector("[data-bookmark-summary]").textContent = bookmarks.length
+      + (bookmarks.length === 1 ? " item" : " items");
+    accountRoot.querySelector("[data-note-summary]").textContent = notes.length
+      + (notes.length === 1 ? " note" : " notes");
+    accountRoot.querySelector("[data-stat-bookmarks]").textContent = String(bookmarks.length);
+    accountRoot.querySelector("[data-stat-notes]").textContent = String(notes.length);
   }
 
   async function showDashboard(session) {
@@ -218,7 +514,8 @@ function initializeAccount(accountRoot) {
     try {
       await Promise.all([
         loadProfile(session.user),
-        loadProgress(session.user)
+        loadProgress(session.user),
+        loadSavedMaterial(session.user)
       ]);
 
       if (sequence !== renderSequence) {
@@ -227,7 +524,7 @@ function initializeAccount(accountRoot) {
     } catch (error) {
       announce(
         "Your account is signed in, but learner data could not be loaded. "
-          + "Confirm that the database migration has been applied.",
+          + "Confirm that the learner database migrations have been applied.",
         "error"
       );
     }
@@ -297,7 +594,7 @@ function initializeAccount(accountRoot) {
     }
 
     form.reset();
-    announce("Signed in. Your browser progress will synchronize automatically.", "success");
+    announce("Signed in. Your progress, bookmarks, and notes are synchronized.", "success");
   });
 
   accountRoot.querySelector("[data-sign-up-form]").addEventListener("submit", async function (event) {
@@ -328,7 +625,7 @@ function initializeAccount(accountRoot) {
     form.reset();
     announce(
       response.data.session
-        ? "Account created. Your progress can now synchronize."
+        ? "Account created. Your learner dashboard is ready."
         : "Check your email to confirm the account, then return here to sign in.",
       "success"
     );
@@ -378,7 +675,7 @@ function initializeAccount(accountRoot) {
       return;
     }
 
-    announce("Signed out. New progress will remain in this browser.", "success");
+    announce("Signed out. New pathway progress will remain in this browser.", "success");
   });
 
   accountRoot.querySelector("[data-profile-form]").addEventListener("submit", async function (event) {

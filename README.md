@@ -95,12 +95,12 @@ Articles and briefings include standardized publication and update metadata, rea
 Supabase authentication adds optional email/password learner accounts while
 leaving all reading and browser-based progress available without registration.
 Signed-in learners receive a private profile, cross-device pathway progress,
-password recovery, and a dashboard at `/account/`.
+password recovery, bookmarks, private notes, and a dashboard at `/account/`.
 
 The database migration in `supabase/migrations/` creates profiles, pathway
-enrollments, and completion records with owner-only row-level security. Public
-project values stay blank in `_config.yml` until the migration and Auth redirect
-settings are in place; a service-role key must never be committed. The complete
+enrollments, completion records, bookmarks, and notes with owner-only row-level
+security. Public project values in `_config.yml` must always use the browser-safe
+publishable key; a service-role key must never be committed. The complete
 connection and test checklist is documented in `docs/learner-platform.md`.
 
 Validate the schema and integration contract with:

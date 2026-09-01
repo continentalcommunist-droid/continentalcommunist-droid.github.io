@@ -42,6 +42,8 @@ layout: default
     </dl>
   </header>
 
+  {% include learner-tools.html %}
+
   <section class="cc-path-progress-panel" aria-labelledby="path-progress-title">
     <div>
       <div class="cc-section-kicker">Your progress</div>
@@ -272,6 +274,6 @@ layout: default
 
 </article>
 
-{% include supabase-config.html %}
+{% include learner-tools-assets.html %}
 {% include pathway-catalog-data.html %}
 <script type="module" src="{{ '/assets/learning-progress.js' | relative_url }}"></script>

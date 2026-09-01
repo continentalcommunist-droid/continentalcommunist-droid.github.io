@@ -17,7 +17,7 @@ layout: default
   </nav>
 
   <header class="cc-account-header">
-    <div class="cc-section-kicker">Learner account</div>
+    <div class="cc-section-kicker">Learner dashboard</div>
     <h1>{{ page.title }}</h1>
     <p>{{ page.description }}</p>
   </header>
@@ -48,12 +48,13 @@ layout: default
       <div class="cc-section-kicker">Optional synchronization</div>
       <h2 id="account-access-title">Take your study record across devices.</h2>
       <p>
-        An account synchronizes pathway completion and keeps your learner
-        profile private. Reading remains public and an account is never required.
+        An account synchronizes pathway completion, bookmarks, and private
+        notes. Reading remains public and an account is never required.
       </p>
       <ul>
         <li>Resume a pathway on another browser or device.</li>
-        <li>See every pathway in one private dashboard.</li>
+        <li>Collect articles, pathways, topics, thinkers, and sources.</li>
+        <li>Keep private notes beside the material you are studying.</li>
         <li>Keep browser progress if you prefer not to register.</li>
       </ul>
     </div>
@@ -155,75 +156,128 @@ layout: default
       <button class="cc-auth-secondary-button" type="button" data-sign-out>Sign out</button>
     </div>
 
-    <div class="cc-account-grid">
-      <section class="cc-account-panel" aria-labelledby="learner-progress-title">
-        <div class="cc-account-panel-heading">
-          <div>
-            <div class="cc-section-kicker">Synced progress</div>
-            <h3 id="learner-progress-title">Your pathways</h3>
-          </div>
-          <span data-sync-summary>Loading…</span>
-        </div>
-        <div class="cc-dashboard-pathways" data-dashboard-pathways></div>
-        <a class="cc-account-panel-link" href="{{ '/learn/pathways/' | relative_url }}">
-          Explore all pathways →
-        </a>
-      </section>
+    <nav class="cc-dashboard-nav" aria-label="Learner dashboard sections">
+      <a href="#study-progress">Pathways</a>
+      <a href="#bookmarks">Bookmarks</a>
+      <a href="#private-notes">Private notes</a>
+      <a href="#account-settings">Account</a>
+    </nav>
 
-      <section class="cc-account-panel" aria-labelledby="learner-profile-title">
-        <div class="cc-section-kicker">Private profile</div>
-        <h3 id="learner-profile-title">Account details</h3>
-        <form data-profile-form>
-          <label for="learner-display-name">Display name</label>
-          <input
-            id="learner-display-name"
-            name="display_name"
-            type="text"
-            minlength="1"
-            maxlength="80"
-            required
-          >
-
-          <label for="learner-timezone">Time zone</label>
-          <input
-            id="learner-timezone"
-            name="timezone"
-            type="text"
-            minlength="1"
-            maxlength="80"
-            aria-describedby="learner-timezone-help"
-            required
-          >
-          <small id="learner-timezone-help">Used for future study schedules and reminders.</small>
-
-          <button type="submit">Save profile</button>
-        </form>
-      </section>
+    <div class="cc-dashboard-stats" aria-label="Learning summary">
+      <div><strong data-stat-active-pathways>—</strong><span>Active pathways</span></div>
+      <div><strong data-stat-complete-pathways>—</strong><span>Completed pathways</span></div>
+      <div><strong data-stat-bookmarks>—</strong><span>Bookmarks</span></div>
+      <div><strong data-stat-notes>—</strong><span>Private notes</span></div>
     </div>
 
-    <form class="cc-account-panel cc-password-update" data-password-update-form hidden>
-      <div class="cc-section-kicker">Account recovery</div>
-      <h3>Choose a new password</h3>
-      <label for="account-new-password">New password</label>
-      <input
-        id="account-new-password"
-        name="password"
-        type="password"
-        autocomplete="new-password"
-        minlength="10"
-        required
-      >
-      <button type="submit">Update password</button>
-    </form>
+    <section class="cc-dashboard-section" id="study-progress" aria-labelledby="learner-progress-title">
+      <div class="cc-dashboard-section-heading">
+        <div>
+          <div class="cc-section-kicker">Synced progress</div>
+          <h3 id="learner-progress-title">Continue your pathways</h3>
+        </div>
+        <span data-sync-summary>Loading…</span>
+      </div>
+      <div class="cc-dashboard-pathways" data-dashboard-pathways></div>
+      <a class="cc-account-panel-link" href="{{ '/learn/pathways/' | relative_url }}">
+        Explore all pathways →
+      </a>
+    </section>
+
+    <section class="cc-dashboard-section" id="saved-material" aria-labelledby="saved-material-title">
+      <div class="cc-dashboard-section-heading">
+        <div>
+          <div class="cc-section-kicker">Saved material</div>
+          <h3 id="saved-material-title">Build a private study archive</h3>
+        </div>
+        <span>Only you can access these records</span>
+      </div>
+
+      <div class="cc-saved-material-grid">
+        <section class="cc-account-panel" id="bookmarks" aria-labelledby="learner-bookmarks-title">
+          <div class="cc-account-panel-heading">
+            <div>
+              <div class="cc-section-kicker">Reading queue</div>
+              <h4 id="learner-bookmarks-title">Bookmarks</h4>
+            </div>
+            <span data-bookmark-summary>Loading…</span>
+          </div>
+          <div class="cc-dashboard-saved-list" data-dashboard-bookmarks></div>
+        </section>
+
+        <section class="cc-account-panel" id="private-notes" aria-labelledby="learner-notes-title">
+          <div class="cc-account-panel-heading">
+            <div>
+              <div class="cc-section-kicker">Research notebook</div>
+              <h4 id="learner-notes-title">Private notes</h4>
+            </div>
+            <span data-note-summary>Loading…</span>
+          </div>
+          <div class="cc-dashboard-saved-list" data-dashboard-notes></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="cc-dashboard-section" id="account-settings" aria-labelledby="learner-profile-title">
+      <div class="cc-section-kicker">Account settings</div>
+      <h3 id="learner-profile-title">Your private profile</h3>
+
+      <div class="cc-account-grid">
+        <section class="cc-account-panel">
+          <h4>Profile details</h4>
+          <form data-profile-form>
+            <label for="learner-display-name">Display name</label>
+            <input
+              id="learner-display-name"
+              name="display_name"
+              type="text"
+              minlength="1"
+              maxlength="80"
+              required
+            >
+
+            <label for="learner-timezone">Time zone</label>
+            <input
+              id="learner-timezone"
+              name="timezone"
+              type="text"
+              minlength="1"
+              maxlength="80"
+              aria-describedby="learner-timezone-help"
+              required
+            >
+            <small id="learner-timezone-help">Used for future study schedules and reminders.</small>
+
+            <button type="submit">Save profile</button>
+          </form>
+        </section>
+
+        <form class="cc-account-panel cc-password-update" data-password-update-form hidden>
+          <div class="cc-section-kicker">Account recovery</div>
+          <h4>Choose a new password</h4>
+          <label for="account-new-password">New password</label>
+          <input
+            id="account-new-password"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            minlength="10"
+            required
+          >
+          <button type="submit">Update password</button>
+        </form>
+      </div>
+    </section>
   </section>
 
   <aside class="cc-account-privacy">
     <strong>Privacy boundary</strong>
     <p>
       The learner database stores an account identifier, display name, time
-      zone, pathway enrollments, and completed step identifiers. It does not
-      store reading notes, browsing history, political opinions, or public
-      profile data. Database policies restrict every learner record to its owner.
+      zone, pathway enrollments, completed step identifiers, bookmarks, and
+      notes you deliberately save. It does not collect browsing history or
+      create public profile data. Database policies restrict every learner
+      record, bookmark, and note to its owner.
     </p>
   </aside>
 </article>

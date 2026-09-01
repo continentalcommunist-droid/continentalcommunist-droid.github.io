@@ -67,6 +67,8 @@ layout: default
     </dl>
   </header>
 
+  {% include learner-tools.html %}
+
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
@@ -225,3 +227,4 @@ layout: default
 }
 </script>
 <script src="{{ '/assets/citations.js' | relative_url }}" defer></script>
+{% include learner-tools-assets.html %}

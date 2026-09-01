@@ -6,18 +6,20 @@ require "yaml"
 
 ROOT = Pathname.new(__dir__).parent
 CONFIG_PATH = ROOT.join("_config.yml")
-MIGRATION_PATH = ROOT.join(
-  "supabase/migrations/20260901090000_create_learner_platform.sql"
-)
+MIGRATION_PATHS = ROOT.glob("supabase/migrations/*.sql").sort
 ACCOUNT_PATH = ROOT.join("account.md")
 CLIENT_PATH = ROOT.join("assets/supabase-client.js")
 PROGRESS_PATH = ROOT.join("assets/learning-progress.js")
+TOOLS_PATH = ROOT.join("assets/learner-tools.js")
+TOOLS_INCLUDE_PATH = ROOT.join("_includes/learner-tools.html")
 
 errors = []
 
-[CONFIG_PATH, MIGRATION_PATH, ACCOUNT_PATH, CLIENT_PATH, PROGRESS_PATH].each do |path|
+[CONFIG_PATH, ACCOUNT_PATH, CLIENT_PATH, PROGRESS_PATH, TOOLS_PATH, TOOLS_INCLUDE_PATH].each do |path|
   errors << "missing required file: #{path.relative_path_from(ROOT)}" unless path.file?
 end
+
+errors << "missing learner database migrations" if MIGRATION_PATHS.empty?
 
 if errors.empty?
   config = YAML.safe_load_file(CONFIG_PATH, aliases: true) || {}
@@ -25,10 +27,12 @@ if errors.empty?
   url = supabase.fetch("url", "").to_s.strip
   key = supabase.fetch("publishable_key", "").to_s.strip
   version = supabase.fetch("javascript_version", "").to_s.strip
-  migration = MIGRATION_PATH.read
+  migrations = MIGRATION_PATHS.map(&:read).join("\n")
   account = ACCOUNT_PATH.read
   client = CLIENT_PATH.read
   progress = PROGRESS_PATH.read
+  tools = TOOLS_PATH.read
+  tools_include = TOOLS_INCLUDE_PATH.read
 
   if url.empty? ^ key.empty?
     errors << "configure both supabase.url and supabase.publishable_key, or leave both blank"
@@ -46,19 +50,22 @@ if errors.empty?
     errors << "supabase.javascript_version must be an exact semantic version"
   end
 
-  %w[learner_profiles learner_pathways learner_progress].each do |table|
-    errors << "migration does not create #{table}" unless migration.include?("create table public.#{table}")
-    errors << "migration does not enable RLS for #{table}" unless migration.include?("alter table public.#{table} enable row level security")
-    errors << "migration does not revoke anonymous access to #{table}" unless migration.include?("revoke all on table public.#{table} from anon, authenticated")
+  %w[learner_profiles learner_pathways learner_progress learner_bookmarks learner_notes].each do |table|
+    errors << "migration does not create #{table}" unless migrations.include?("create table public.#{table}")
+    errors << "migration does not enable RLS for #{table}" unless migrations.include?("alter table public.#{table} enable row level security")
+    errors << "migration does not revoke anonymous access to #{table}" unless migrations.include?("revoke all on table public.#{table} from anon, authenticated")
   end
 
-  policy_count = migration.scan(/^create policy /).length
-  errors << "expected 11 explicit learner RLS policies, found #{policy_count}" unless policy_count == 11
+  policy_count = migrations.scan(/^create policy /).length
+  errors << "expected 19 explicit learner RLS policies, found #{policy_count}" unless policy_count == 19
 
   errors << "account page must remain out of search indexes" unless account.include?("robots: noindex,follow")
   errors << "client must reject service-role keys" unless client.include?(%q{=== "service_role"})
   errors << "progress sync must preserve anonymous storage" unless progress.include?("ANONYMOUS_STATE_KEY")
   errors << "progress sync must use per-user cache keys" unless progress.include?("USER_STATE_PREFIX")
+  errors << "learner tools must use the private bookmarks table" unless tools.include?(%q{from("learner_bookmarks")})
+  errors << "learner tools must use the private notes table" unless tools.include?(%q{from("learner_notes")})
+  errors << "learner tools must offer a dashboard link" unless tools_include.include?("data-learner-tools-dashboard")
 end
 
 if errors.any?
@@ -69,4 +76,4 @@ end
 
 config = YAML.safe_load_file(CONFIG_PATH, aliases: true) || {}
 connected = !config.dig("supabase", "url").to_s.strip.empty?
-puts "Learner platform valid: 3 private tables, 11 owner-only RLS policies, Supabase #{connected ? 'configured' : 'awaiting public project values'}."
+puts "Learner platform valid: 5 private tables, 19 owner-only RLS policies, Supabase #{connected ? 'configured' : 'awaiting public project values'}."

@@ -12,6 +12,8 @@ Scientific socialism begins from the premise that political and social life cann
 
 This publication applies that method to the American experience.
 
+![](/assets/images/uploads/banner2.png)
+
 ## An American Perspective
 
 The United States has its own history of class conflict, democratic struggle, industrial development, racial division, labor organization, technological transformation, and political contradiction.
@@ -100,6 +102,6 @@ The American continent—and the United States in particular—presents its own 
 
 **Continental Communist asks what a socialist analysis rooted in those conditions might look like.**
 
----
+***
 
-*Continental Communist is an independent publication devoted to American political economy, history, and scientific socialist analysis.*
+_Continental Communist is an independent publication devoted to American political economy, history, and scientific socialist analysis._

@@ -2,6 +2,13 @@
 layout: page
 title: Reading List
 permalink: /reading-list/
+section_key: library
+section: library
+content_type: Bibliography
+topics:
+  - Marxist Theory
+  - Political Economy
+  - American History
 ---
 
 ![](/assets/images/uploads/figures.png)

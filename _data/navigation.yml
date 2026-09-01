@@ -1,0 +1,211 @@
+main:
+  - key: learn
+    title: Learn
+    url: /learn/
+    description: Structured introductions, guided study, and reference tools for learning Marxist political economy.
+    children:
+      - id: start-here
+        title: Start Here
+        url: /learn/#start-here
+        description: A guided entry point for readers who are new to Marxism and scientific socialism.
+        status: Available
+        target: /reading-list/#where-to-start
+        cta: Begin with the reading path
+      - id: courses
+        title: Courses
+        url: /learn/#courses
+        description: Structured sequences that connect lessons, texts, concepts, and contemporary examples.
+        status: Planned
+      - id: reading-paths
+        title: Reading Paths
+        url: /learn/#reading-paths
+        description: Curated routes through foundational texts and major debates, organized by level and theme.
+        status: In development
+        target: /reading-list/
+        cta: Explore the current reading list
+      - id: glossary
+        title: Glossary
+        url: /learn/#glossary
+        description: Plain-language definitions with links to thinkers, texts, and analysis.
+        status: Planned
+      - id: reference-guides
+        title: Timelines, Thinkers & Concepts
+        url: /learn/#reference-guides
+        description: Reference guides that place ideas, people, and events in historical context.
+        status: Planned
+
+  - key: analysis
+    title: Analysis
+    url: /analysis/
+    description: Evidence-rich essays that use political economy and historical inquiry to interpret American society.
+    children:
+      - id: political-economy
+        title: Political Economy
+        url: /analysis/#political-economy
+        description: Class, ownership, finance, production, and the organization of economic power.
+        status: Active
+      - id: labor
+        title: Labor
+        url: /analysis/#labor
+        description: Work, unions, workplace power, labor history, and class formation.
+        status: Active
+      - id: american-institutions
+        title: American Institutions
+        url: /analysis/#american-institutions
+        description: Democracy, constitutional government, parties, and the state.
+        status: Active
+      - id: technology
+        title: Technology
+        url: /analysis/#technology
+        description: Automation, artificial intelligence, industrial change, and productive capacity.
+        status: Active
+      - id: social-infrastructure
+        title: Housing, Health & Infrastructure
+        url: /analysis/#social-infrastructure
+        description: The material systems that organize everyday life and social reproduction.
+        status: Active
+      - id: international
+        title: International
+        url: /analysis/#international
+        description: Foreign policy, imperialism, development, and the world economy.
+        status: Active
+
+  - key: briefings
+    title: Briefings
+    url: /briefings/
+    description: Concise, contextual updates for following events without losing the longer historical view.
+    children:
+      - id: latest
+        title: Latest
+        url: /briefings/#latest
+        description: Timely explainers and annotated updates from Continental Communist.
+        status: In development
+      - id: weekly
+        title: Weekly Continental Briefing
+        url: /briefings/#weekly
+        description: A planned weekly synthesis of the events, evidence, and ideas worth following.
+        status: Planned
+
+  - key: topics
+    title: Topics
+    url: /topics/
+    description: Durable subject hubs connecting analysis, learning, sources, and current briefings.
+    children:
+      - id: political-economy
+        title: Political Economy
+        url: /topics/#political-economy
+        description: Value, class, ownership, production, money, finance, and crisis.
+        status: Foundation
+        target: /analysis/#political-economy
+        cta: Browse related analysis
+      - id: labor-class
+        title: Labor & Class
+        url: /topics/#labor-class
+        description: Work, organization, industrial conflict, and the history of the American working class.
+        status: Foundation
+        target: /analysis/#labor
+        cta: Browse related analysis
+      - id: institutions
+        title: American Institutions
+        url: /topics/#institutions
+        description: The Constitution, democracy, parties, public administration, and state power.
+        status: Foundation
+        target: /analysis/#american-institutions
+        cta: Browse related analysis
+      - id: technology-industry
+        title: Technology & Industry
+        url: /topics/#technology-industry
+        description: Automation, industrial policy, infrastructure, and technological change.
+        status: Foundation
+        target: /analysis/#technology
+        cta: Browse related analysis
+      - id: social-provision
+        title: Housing, Health & Infrastructure
+        url: /topics/#social-provision
+        description: Housing, healthcare, public goods, and the built systems of collective life.
+        status: Foundation
+        target: /analysis/#social-infrastructure
+        cta: Browse related analysis
+      - id: international
+        title: International Political Economy
+        url: /topics/#international
+        description: Imperialism, development, trade, foreign policy, and socialist experiences abroad.
+        status: Foundation
+        target: /analysis/#international
+        cta: Browse related analysis
+
+  - key: library
+    title: Library
+    url: /library/
+    description: Reading lists, primary sources, bibliographies, and search across the growing archive.
+    children:
+      - id: reading-list
+        title: Reading List
+        url: /reading-list/
+        description: The working bibliography and current ten-text starting sequence.
+        status: Available
+        target: /reading-list/
+        cta: Open the reading list
+      - id: primary-sources
+        title: Primary Sources
+        url: /library/#primary-sources
+        description: A planned index of foundational texts, speeches, documents, and archival material.
+        status: In development
+      - id: bibliographies
+        title: Bibliographies
+        url: /library/#bibliographies
+        description: Source-rich guides organized around key questions, debates, and historical periods.
+        status: In development
+        target: /reading-list/
+        cta: Browse the working bibliography
+      - id: archive-search
+        title: Archive Search
+        url: /search/
+        description: Search articles and reference pages across Continental Communist.
+        status: Available
+        target: /search/
+        cta: Search the archive
+
+  - key: multimedia
+    title: Multimedia
+    url: /multimedia/
+    description: Lectures, conversations, audio, video, and events that extend the written platform.
+    children:
+      - id: podcast
+        title: Podcast
+        url: /multimedia/#podcast
+        description: A planned audio program for interviews, analysis, and guided discussion.
+        status: Planned
+      - id: lectures
+        title: Lectures
+        url: /multimedia/#lectures
+        description: Recorded teaching and presentations connected to courses and reading paths.
+        status: Planned
+      - id: events
+        title: Events
+        url: /multimedia/#events
+        description: Public talks, seminars, and event recordings as the program develops.
+        status: Planned
+
+  - key: community
+    title: Community
+    url: /community/
+    description: The future home for carefully moderated study, discussion, and participation.
+    children:
+      - id: reading-groups
+        title: Reading Groups
+        url: /community/#reading-groups
+        description: Facilitated study groups organized around shared texts and learning paths.
+        status: Planned
+      - id: seminars
+        title: Seminars
+        url: /community/#seminars
+        description: Live sessions connecting writers, teachers, researchers, and readers.
+        status: Planned
+      - id: principles
+        title: Community Principles
+        url: /community/#principles
+        description: The standards that will govern good-faith disagreement and responsible participation.
+        status: Foundation
+        target: /about/#intellectual-independence
+        cta: Read about intellectual independence

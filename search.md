@@ -13,8 +13,8 @@ search_exclude: true
     </div>
 
     <p>
-      Search essays, analysis, theory, history, political economy,
-      and other writing published on the site.
+      Search analysis, learning pages, topics, bibliographies,
+      and other material published on the site.
     </p>
   </div>
 
@@ -39,7 +39,7 @@ search_exclude: true
       id="cc-search-input"
       class="cc-search-input"
       type="search"
-      placeholder="Search articles..."
+      placeholder="Search the platform..."
       aria-label="Search Continental Communist"
       autocomplete="off"
       spellcheck="false"

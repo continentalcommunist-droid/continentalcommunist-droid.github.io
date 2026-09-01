@@ -1,0 +1,27 @@
+<footer class="site-footer h-card">
+  <div class="wrapper">
+    <div class="cc-footer-main">
+      <div class="cc-footer-brand">
+        <a class="cc-footer-title" rel="author" href="{{ '/' | relative_url }}">
+          {{ site.title | escape }}
+        </a>
+        <p>{{ site.description | escape }}</p>
+      </div>
+
+      <nav class="cc-footer-nav" aria-label="Footer navigation">
+        {% for item in site.data.navigation.main %}
+        <a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+
+    <div class="cc-footer-bottom">
+      <span>© {{ site.time | date: "%Y" }} {{ site.title | escape }}</span>
+      <div>
+        <a href="{{ '/about/' | relative_url }}">About</a>
+        <a href="{{ '/search/' | relative_url }}">Search</a>
+        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      </div>
+    </div>
+  </div>
+</footer>

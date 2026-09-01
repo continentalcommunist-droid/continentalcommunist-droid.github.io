@@ -5,6 +5,8 @@ title: Home
 
 <div class="cc-hero cc-hero-image">
 
+  <h1 class="cc-visually-hidden">Continental Communist</h1>
+
   <img
     src="{{ '/assets/images/title.png' | relative_url }}"
     alt="Continental Communist"
@@ -12,6 +14,32 @@ title: Home
   >
 
 </div>
+
+
+<section class="cc-platform" aria-labelledby="platform-title">
+  <div class="cc-platform-heading">
+    <div>
+      <div class="cc-platform-kicker">EXPLORE THE PLATFORM</div>
+      <h2 id="platform-title">Choose your path.</h2>
+    </div>
+
+    <p>
+      Learn systematically, interpret events, follow the evidence,
+      and go deeper through one connected knowledge base.
+    </p>
+  </div>
+
+  <div class="cc-platform-grid">
+    {% for item in site.data.navigation.main %}
+    <a class="cc-platform-card" href="{{ item.url | relative_url }}">
+      <span class="cc-platform-card-number">0{{ forloop.index }}</span>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+      <span class="cc-platform-card-link">Explore <span aria-hidden="true">→</span></span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
 
 
 {% assign featured_posts = site.posts | where: "featured", true %}
@@ -114,7 +142,7 @@ title: Home
 </section>
 
 
-<section class="cc-newsletter" aria-labelledby="newsletter-title">
+<section class="cc-newsletter" id="newsletter" aria-labelledby="newsletter-title">
 
   <div class="cc-newsletter-copy">
 

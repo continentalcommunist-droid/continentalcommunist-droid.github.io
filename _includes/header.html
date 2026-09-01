@@ -12,12 +12,12 @@
 
     <div class="cc-header-actions">
 
-      {%- if site.header_pages -%}
-      <nav class="site-nav">
+      {%- if site.data.navigation.main -%}
+      <nav class="site-nav" aria-label="Primary navigation">
 
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
 
-        <label for="nav-trigger">
+        <label for="nav-trigger" aria-label="Toggle navigation">
           <span class="menu-icon">
             <svg viewBox="0 0 18 15" width="18px" height="15px">
               <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484S0.665,0,1.484,0h15.032C17.335,0,18,0.665,18,1.484z"/>
@@ -27,25 +27,32 @@
           </span>
         </label>
 
-        <div class="trigger">
-
-          {%- for path in site.header_pages -%}
-
-            {%- assign my_page = site.pages | where: "path", path | first -%}
-
-            {%- if my_page.title -%}
-
+        <div class="trigger" id="primary-navigation">
+          <ul class="cc-primary-nav">
+            {%- for item in site.data.navigation.main -%}
+            <li class="cc-nav-item{% if page.section_key == item.key %} is-active{% endif %}">
               <a
-                class="page-link"
-                href="{{ my_page.url | relative_url }}"
+                class="cc-nav-link"
+                href="{{ item.url | relative_url }}"
+                {% if page.section_key == item.key %}aria-current="page"{% endif %}
               >
-                {{ my_page.title | escape }}
+                {{ item.title | escape }}
               </a>
 
-            {%- endif -%}
-
-          {%- endfor -%}
-
+              {%- if item.children -%}
+              <ul class="cc-nav-submenu" aria-label="{{ item.title | escape }} sections">
+                {%- for child in item.children -%}
+                <li>
+                  <a href="{{ child.url | relative_url }}">
+                    {{ child.title | escape }}
+                  </a>
+                </li>
+                {%- endfor -%}
+              </ul>
+              {%- endif -%}
+            </li>
+            {%- endfor -%}
+          </ul>
         </div>
 
       </nav>

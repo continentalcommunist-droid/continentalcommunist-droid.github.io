@@ -8,6 +8,8 @@ permalink: /search.json
 
 {% for post in site.posts %}
 
+  {% capture post_terms %}{{ post.categories | join: " " }} {{ post.topics | join: " " }} {{ post.section }}{% endcapture %}
+
   {% unless first_item %},{% endunless %}
 
   {
@@ -16,7 +18,7 @@ permalink: /search.json
     "type": "Article",
     "date": {{ post.date | date: "%B %-d, %Y" | jsonify }},
     "timestamp": {{ post.date | date: "%s" | jsonify }},
-    "categories": {{ post.categories | join: " " | jsonify }},
+    "categories": {{ post_terms | strip | jsonify }},
     "excerpt": {{ post.excerpt | strip_html | strip_newlines | jsonify }},
     "content": {{ post.content | strip_html | strip_newlines | jsonify }}
   }
@@ -28,20 +30,34 @@ permalink: /search.json
 
 {% for page in site.pages %}
 
-  {% if page.layout == "page" %}
+  {% if page.layout == "page" or page.layout == "hub" %}
 
     {% unless page.search_exclude %}
 
       {% unless first_item %},{% endunless %}
 
+      {% assign page_hub = nil %}
+      {% for nav_item in site.data.navigation.main %}
+        {% if nav_item.key == page.section_key %}
+          {% assign page_hub = nav_item %}
+        {% endif %}
+      {% endfor %}
+
+      {% capture page_terms %}
+        {{ page.topics | join: " " }} {{ page.section }} {{ page.section_key }}
+        {% if page_hub %}
+          {% for child in page_hub.children %}{{ child.title }} {% endfor %}
+        {% endif %}
+      {% endcapture %}
+
       {
         "title": {{ page.title | jsonify }},
         "url": {{ page.url | relative_url | jsonify }},
-        "type": "Page",
+        "type": {% if page.layout == "hub" %}"Section"{% else %}"Page"{% endif %},
         "date": "",
         "timestamp": "0",
-        "categories": "",
-        "excerpt": "",
+        "categories": {{ page_terms | strip | jsonify }},
+        "excerpt": {{ page.description | default: "" | jsonify }},
         "content": {{ page.content | strip_html | strip_newlines | jsonify }}
       }
 

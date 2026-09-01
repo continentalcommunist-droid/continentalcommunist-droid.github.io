@@ -4,6 +4,14 @@ title: 'The Numbers Racket: Capitalist Democracy in America'
 date: 2026-08-31
 categories: []
 featured: false
+section: analysis
+section_key: analysis
+content_type: Article
+author: Continental Communist
+topics:
+  - American Institutions
+  - Democracy
+  - Political Economy
 ---
 
 “The problem with America is we are so divided.” “It’s always far right or far left.” “We need logical centrists.” “We need solutions, not more problems.”

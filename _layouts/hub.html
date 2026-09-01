@@ -1,0 +1,59 @@
+---
+layout: default
+---
+
+{% assign hub = nil %}
+{% for item in site.data.navigation.main %}
+  {% if item.key == page.section_key %}
+    {% assign hub = item %}
+  {% endif %}
+{% endfor %}
+
+<article class="cc-hub">
+
+  <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ page.title }}</span>
+  </nav>
+
+  <header class="cc-hub-header">
+    {% if page.kicker %}
+    <div class="cc-hub-kicker">{{ page.kicker }}</div>
+    {% endif %}
+
+    <h1>{{ page.title }}</h1>
+
+    {% if page.description %}
+    <p class="cc-hub-deck">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  {% if hub.children %}
+  <div class="cc-hub-grid" aria-label="{{ page.title }} sections">
+    {% for child in hub.children %}
+    <section class="cc-hub-card" id="{{ child.id }}">
+      {% if child.status %}
+      <div class="cc-hub-card-meta">{{ child.status }}</div>
+      {% endif %}
+
+      <h2>{{ child.title }}</h2>
+      <p>{{ child.description }}</p>
+
+      {% if child.target %}
+      <a class="cc-hub-card-link" href="{{ child.target | relative_url }}">
+        {{ child.cta | default: "Explore" }} <span aria-hidden="true">→</span>
+      </a>
+      {% endif %}
+    </section>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if content != empty %}
+  <div class="cc-hub-content">
+    {{ content }}
+  </div>
+  {% endif %}
+
+</article>

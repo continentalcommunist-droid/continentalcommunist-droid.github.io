@@ -5,6 +5,20 @@ permalink: "/learn/pathways/imperialism-global-development/"
 section_key: learn
 section: learn
 content_type: Learning Path
+author: Continental Communist
+thinkers:
+- J. A. Hobson
+- V. I. Lenin
+- Giovanni Arrighi
+- Immanuel Wallerstein
+- Robert Gilpin
+- Maurice Meisner
+region:
+- Global
+historical_period:
+- Multiple periods
+languages:
+- English
 description: Compare theories of imperialism, world systems, finance, states, development,
   and socialist transformation across regions.
 topics:

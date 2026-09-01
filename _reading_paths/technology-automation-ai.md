@@ -5,6 +5,22 @@ permalink: "/learn/pathways/technology-automation-ai/"
 section_key: learn
 section: learn
 content_type: Learning Path
+author: Continental Communist
+thinkers:
+- Karl Marx
+- Harry Braverman
+- David F. Noble
+- John Kenneth Galbraith
+- Shoshana Zuboff
+- Erik Brynjolfsson
+- Andrew McAfee
+region:
+- Global
+historical_period:
+- Multiple periods
+- Contemporary (2008-present)
+languages:
+- English
 description: Analyze technology as a social relation shaped by ownership, management,
   skill, labor control, public investment, and political choice.
 topics:

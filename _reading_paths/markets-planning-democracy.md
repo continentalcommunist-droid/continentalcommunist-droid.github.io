@@ -5,6 +5,20 @@ permalink: "/learn/pathways/markets-planning-democracy/"
 section_key: learn
 section: learn
 content_type: Learning Path
+author: Continental Communist
+thinkers:
+- Ludwig von Mises
+- Friedrich Hayek
+- Oskar Lange
+- Alec Nove
+- János Kornai
+- Joseph A. Schumpeter
+region:
+- Global
+historical_period:
+- Multiple periods
+languages:
+- English
 description: Work through the calculation debate, information problems, institutional
   design, socialist experience, and democratic coordination.
 topics:

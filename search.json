@@ -8,19 +8,34 @@ permalink: /search.json
 
 {% for post in site.posts %}
 
-  {% capture post_terms %}{{ post.categories | join: " " }} {{ post.topics | join: " " }} {{ post.section }}{% endcapture %}
+  {% capture post_terms %}
+    {{ post.categories | join: " " }} {{ post.topics | join: " " }}
+    {{ post.section }} {{ post.content_type }} {{ post.author }}
+    {{ post.thinkers | join: " " }} {{ post.people | join: " " }}
+    {{ post.region | join: " " }} {{ post.historical_period | join: " " }}
+    {{ post.reading_level }} {{ post.languages | join: " " }}
+  {% endcapture %}
 
   {% unless first_item %},{% endunless %}
 
   {
     "title": {{ post.title | jsonify }},
     "url": {{ post.url | relative_url | jsonify }},
-    "type": "Article",
+    "type": {{ post.content_type | default: "Article" | jsonify }},
     "date": {{ post.date | date: "%B %-d, %Y" | jsonify }},
     "timestamp": {{ post.date | date: "%s" | jsonify }},
     "categories": {{ post_terms | strip | jsonify }},
-    "excerpt": {{ post.excerpt | strip_html | strip_newlines | jsonify }},
-    "content": {{ post.content | strip_html | strip_newlines | jsonify }}
+    "excerpt": {{ post.description | default: post.excerpt | strip_html | strip_newlines | jsonify }},
+    "content": {{ post.content | strip_html | strip_newlines | jsonify }},
+    "content_type": {{ post.content_type | default: "Article" | jsonify }},
+    "topic": {{ post.topics | default: post.categories | jsonify }},
+    "author": {{ post.author | default: site.author | jsonify }},
+    "thinker": {{ post.thinkers | default: post.people | jsonify }},
+    "geographic_region": {{ post.region | jsonify }},
+    "historical_period": {{ post.historical_period | jsonify }},
+    "difficulty": {{ post.reading_level | jsonify }},
+    "format": "Article",
+    "language": {{ post.languages | default: post.language | default: "English" | jsonify }}
   }
 
   {% assign first_item = false %}
@@ -45,20 +60,42 @@ permalink: /search.json
 
       {% capture page_terms %}
         {{ page.topics | join: " " }} {{ page.section }} {{ page.section_key }}
+        {{ page.thinkers | join: " " }} {{ page.people | join: " " }}
+        {{ page.region | join: " " }} {{ page.historical_period | join: " " }}
         {% if page_hub %}
           {% for child in page_hub.children %}{{ child.title }} {% endfor %}
         {% endif %}
       {% endcapture %}
 
+      {% if page.layout == "hub" %}
+        {% assign page_type = "Section" %}
+        {% assign page_format = "Section hub" %}
+      {% elsif page.layout == "pathway-catalog" %}
+        {% assign page_type = "Learning Catalog" %}
+        {% assign page_format = "Catalog" %}
+      {% else %}
+        {% assign page_type = page.content_type | default: "Page" %}
+        {% assign page_format = "Page" %}
+      {% endif %}
+
       {
         "title": {{ page.title | jsonify }},
         "url": {{ page.url | relative_url | jsonify }},
-        "type": {% if page.layout == "hub" %}"Section"{% elsif page.layout == "pathway-catalog" %}"Learning Catalog"{% else %}"Page"{% endif %},
+        "type": {{ page_type | jsonify }},
         "date": "",
         "timestamp": "0",
         "categories": {{ page_terms | strip | jsonify }},
         "excerpt": {{ page.description | default: "" | jsonify }},
-        "content": {{ page.content | strip_html | strip_newlines | jsonify }}
+        "content": {{ page.content | strip_html | strip_newlines | jsonify }},
+        "content_type": {{ page_type | jsonify }},
+        "topic": {{ page.topics | jsonify }},
+        "author": {{ page.author | default: site.author | jsonify }},
+        "thinker": {{ page.thinkers | default: page.people | jsonify }},
+        "geographic_region": {{ page.region | jsonify }},
+        "historical_period": {{ page.historical_period | jsonify }},
+        "difficulty": {{ page.reading_level | default: page.level | jsonify }},
+        "format": {{ page_format | jsonify }},
+        "language": {{ page.languages | default: page.language | default: "English" | jsonify }}
       }
 
       {% assign first_item = false %}
@@ -87,12 +124,43 @@ permalink: /search.json
 
     {% unless first_item %},{% endunless %}
 
+    {% assign document_type = document.content_type | default: "Page" %}
+    {% assign document_topic = document.topics %}
+    {% if document_type == "Topic" %}
+      {% assign document_topic = document.name | default: document.title %}
+    {% endif %}
+
+    {% assign document_author = document.author | default: document.authors | default: document.instructors %}
+    {% assign document_thinker = document.thinkers | default: document.people %}
+    {% assign document_difficulty = document.reading_level | default: document.level %}
+    {% assign document_language = document.languages | default: document.language | default: "English" %}
+    {% assign document_has_publication_date = false %}
+    {% if document_type == "Brief" or document_type == "Podcast" %}
+      {% assign document_has_publication_date = true %}
+    {% endif %}
+
+    {% case document_type %}
+      {% when "Brief" %}{% assign document_format = "Briefing" %}
+      {% when "Course" %}{% assign document_format = "Course" %}
+      {% when "Lesson" %}{% assign document_format = "Lesson" %}
+      {% when "Learning Path" %}{% assign document_format = "Guided pathway" %}
+      {% when "Book / Text" %}{% assign document_format = document.text_type | default: "Text" %}
+      {% when "Person" %}{% assign document_format = "Profile" %}
+      {% when "Concept" %}{% assign document_format = "Glossary" %}
+      {% when "Topic" %}{% assign document_format = "Topic guide" %}
+      {% when "Event" %}{% assign document_format = document.format_type | default: "Event" %}
+      {% when "Podcast" %}{% assign document_format = "Audio" %}
+      {% else %}{% assign document_format = "Page" %}
+    {% endcase %}
+
     {% capture document_terms %}
-      {{ document.topics | join: " " }}
+      {{ document_topic | join: " " }}
       {{ document.region | join: " " }}
       {{ document.historical_period | join: " " }}
-      {{ document.section_key }} {{ document.level }} {{ document.reading_level }}
-      {{ document.author }} {{ document.editor }}
+      {{ document.section_key }} {{ document_type }} {{ document_format }}
+      {{ document.level }} {{ document.reading_level }}
+      {{ document_author | join: " " }} {{ document.editor }}
+      {{ document_thinker | join: " " }} {{ document_language | join: " " }}
       {% for reading in document.readings %}{{ reading.title }} {{ reading.author }} {% endfor %}
       {% for lecture in document.lectures %}{{ lecture.title }} {% endfor %}
       {% for entry in document.glossary %}{{ entry.term }} {% endfor %}
@@ -108,12 +176,21 @@ permalink: /search.json
     {
       "title": {{ document.title | jsonify }},
       "url": {{ document.url | relative_url | jsonify }},
-      "type": {{ document.content_type | default: "Page" | jsonify }},
-      "date": {% if document.date %}{{ document.date | date: "%B %-d, %Y" | jsonify }}{% else %}""{% endif %},
-      "timestamp": {% if document.date %}{{ document.date | date: "%s" | jsonify }}{% else %}"0"{% endif %},
+      "type": {{ document_type | jsonify }},
+      "date": {% if document_has_publication_date and document.date %}{{ document.date | date: "%B %-d, %Y" | jsonify }}{% else %}""{% endif %},
+      "timestamp": {% if document_has_publication_date and document.date %}{{ document.date | date: "%s" | jsonify }}{% else %}"0"{% endif %},
       "categories": {{ document_terms | strip | jsonify }},
       "excerpt": {{ document.description | default: document.summary | default: "" | jsonify }},
-      "content": {{ document_search_content | strip_html | strip_newlines | jsonify }}
+      "content": {{ document_search_content | strip_html | strip_newlines | jsonify }},
+      "content_type": {{ document_type | jsonify }},
+      "topic": {{ document_topic | jsonify }},
+      "author": {{ document_author | jsonify }},
+      "thinker": {{ document_thinker | jsonify }},
+      "geographic_region": {{ document.region | jsonify }},
+      "historical_period": {{ document.historical_period | jsonify }},
+      "difficulty": {{ document_difficulty | jsonify }},
+      "format": {{ document_format | jsonify }},
+      "language": {{ document_language | jsonify }}
     }
 
     {% assign first_item = false %}

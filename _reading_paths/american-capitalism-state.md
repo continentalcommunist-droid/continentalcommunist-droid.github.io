@@ -5,6 +5,22 @@ permalink: "/learn/pathways/american-capitalism-state/"
 section_key: learn
 section: learn
 content_type: Learning Path
+author: Continental Communist
+thinkers:
+- Alexander Hamilton
+- James Madison
+- John Jay
+- Alexis de Tocqueville
+- Eric Foner
+- Alfred D. Chandler Jr.
+- Arthur M. Schlesinger Jr.
+- C. Wright Mills
+region:
+- United States
+historical_period:
+- Multiple periods
+languages:
+- English
 description: Study how constitutional institutions, corporations, infrastructure,
   public administration, and finance shaped American development.
 topics:

@@ -5,6 +5,17 @@ permalink: "/learn/pathways/capital-political-economy/"
 section_key: learn
 section: learn
 content_type: Learning Path
+author: Continental Communist
+thinkers:
+- Adam Smith
+- David Ricardo
+- Karl Marx
+region:
+- Global
+historical_period:
+- Multiple periods
+languages:
+- English
 description: Move from the commodity and money through exploitation, accumulation,
   circulation, competition, crisis, and finance.
 topics:

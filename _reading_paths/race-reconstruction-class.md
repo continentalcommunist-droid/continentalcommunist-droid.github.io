@@ -5,6 +5,22 @@ permalink: "/learn/pathways/race-reconstruction-class/"
 section_key: learn
 section: learn
 content_type: Learning Path
+author: Continental Communist
+thinkers:
+- W. E. B. Du Bois
+- Eric Foner
+- C. Vann Woodward
+- Barbara J. Fields
+- Karen E. Fields
+- Ira Katznelson
+region:
+- United States
+historical_period:
+- 1800-1865
+- Reconstruction and Gilded Age (1865-1900)
+- Interwar and New Deal (1919-1945)
+languages:
+- English
 description: Examine slavery, emancipation, Reconstruction, racial ideology, labor,
   citizenship, and the material reproduction of hierarchy.
 topics:

@@ -17,6 +17,8 @@ region:
   - United States
 historical_period:
   - Contemporary (2008-present)
+languages:
+  - English
 reading_level: General
 reading_time: 3
 image: ''

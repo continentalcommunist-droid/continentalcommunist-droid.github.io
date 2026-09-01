@@ -2316,7 +2316,7 @@ pre {
    ========================================================= */
 
 .cc-search {
-  max-width: 920px;
+  max-width: var(--max-width);
 
   margin: 0 auto;
 }
@@ -2476,10 +2476,231 @@ pre {
   text-align: center;
 }
 
+
+/* ---------- Faceted archive layout ---------- */
+
+.cc-search-layout {
+  display: grid;
+
+  grid-template-columns: 260px minmax(0, 1fr);
+
+  gap: 48px;
+
+  margin-top: 38px;
+}
+
+.cc-search-facets {
+  align-self: start;
+
+  background: var(--bg-elevated);
+
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 3px;
+}
+
+.cc-search-facets-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 14px;
+
+  padding: 18px 17px 15px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.cc-search-facets-heading h2 {
+  margin: 0;
+
+  font-size: 0.82rem;
+
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cc-search-clear-filters {
+  padding: 0;
+
+  background: transparent;
+  color: var(--accent-bright);
+
+  border: 0;
+
+  cursor: pointer;
+
+  font-family: var(--sans);
+  font-size: 0.64rem;
+  font-weight: 800;
+
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cc-search-clear-filters:hover,
+.cc-search-clear-filters:focus {
+  color: var(--text);
+}
+
+.cc-search-clear-filters:disabled {
+  color: #66666d;
+
+  cursor: default;
+}
+
+.cc-search-facet-panel {
+  border-bottom: 1px solid var(--border);
+}
+
+.cc-search-facet-panel:last-child {
+  border-bottom: 0;
+}
+
+.cc-search-facet-panel > summary {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr) auto;
+
+  gap: 10px;
+
+  padding: 15px 17px;
+
+  color: var(--text);
+
+  cursor: pointer;
+
+  font-family: var(--sans);
+  font-size: 0.73rem;
+  font-weight: 800;
+
+  letter-spacing: 0.04em;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.cc-search-facet-panel > summary::-webkit-details-marker {
+  display: none;
+}
+
+.cc-search-facet-panel > summary::before {
+  content: "+";
+
+  grid-column: 2;
+  grid-row: 1;
+
+  color: var(--text-muted);
+
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.cc-search-facet-panel[open] > summary::before {
+  content: "−";
+}
+
+.cc-search-facet-panel > summary:hover,
+.cc-search-facet-panel > summary:focus {
+  background: var(--bg-soft);
+}
+
+.cc-search-facet-label {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.cc-search-facet-selected {
+  grid-column: 2;
+  grid-row: 1;
+
+  min-width: 18px;
+
+  margin-right: 20px;
+
+  color: var(--accent-bright);
+
+  text-align: right;
+}
+
+.cc-search-facet-options {
+  max-height: 270px;
+
+  margin: 0;
+  padding: 0 9px 12px;
+
+  overflow-y: auto;
+
+  border: 0;
+}
+
+.cc-search-facet-option {
+  display: grid;
+  align-items: start;
+
+  grid-template-columns: 17px minmax(0, 1fr) auto;
+
+  gap: 8px;
+
+  padding: 7px 8px;
+
+  border-radius: 3px;
+
+  cursor: pointer;
+
+  font-family: var(--sans);
+  font-size: 0.75rem;
+
+  line-height: 1.35;
+}
+
+.cc-search-facet-option:hover {
+  background: var(--bg-soft);
+}
+
+.cc-search-facet-option input {
+  width: 15px;
+  height: 15px;
+
+  margin: 2px 0 0;
+
+  accent-color: var(--accent-bright);
+}
+
+.cc-search-facet-option-label {
+  color: var(--text-body);
+}
+
+.cc-search-facet-count {
+  color: #74747c;
+
+  font-size: 0.66rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.cc-search-facet-option.is-unavailable {
+  cursor: default;
+
+  opacity: 0.38;
+}
+
+.cc-search-facet-unavailable {
+  margin: 0;
+  padding: 7px 8px;
+
+  color: var(--text-muted);
+
+  font-family: var(--sans);
+  font-size: 0.72rem;
+}
+
+.cc-search-results-column {
+  min-width: 0;
+}
+
 .cc-search-status {
   min-height: 28px;
 
-  margin-top: 34px;
+  margin-top: 0;
   padding-bottom: 10px;
 
   color: var(--text-muted);
@@ -2492,6 +2713,60 @@ pre {
 
   letter-spacing: 0.11em;
   text-transform: uppercase;
+}
+
+.cc-search-active-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  padding: 16px 0 2px;
+}
+
+.cc-search-active-filters[hidden] {
+  display: none;
+}
+
+.cc-search-active-label {
+  margin-right: 3px;
+
+  color: var(--text-muted);
+
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 800;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cc-search-filter-chip {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 6px 9px;
+
+  background: rgba(198, 40, 40, 0.12);
+  color: var(--text);
+
+  border: 1px solid rgba(239, 68, 68, 0.38);
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.cc-search-filter-chip:hover,
+.cc-search-filter-chip:focus {
+  background: rgba(198, 40, 40, 0.24);
+  border-color: var(--accent-bright);
 }
 
 
@@ -2564,6 +2839,34 @@ pre {
   line-height: 1.7;
 }
 
+.cc-search-result-facets {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin: -2px 0 14px;
+  padding: 0;
+
+  list-style: none;
+}
+
+.cc-search-result-facets li {
+  padding: 4px 8px;
+
+  background: var(--bg-soft);
+  color: var(--text-muted);
+
+  border: 1px solid var(--border);
+  border-radius: 2px;
+
+  font-family: var(--sans);
+  font-size: 0.64rem;
+  font-weight: 700;
+
+  line-height: 1.25;
+}
+
 .cc-search-result-link {
   display: inline-block;
 
@@ -2605,6 +2908,43 @@ pre {
   color: var(--text-muted);
 
   font-family: var(--serif);
+}
+
+.cc-search-reset {
+  margin-top: 22px;
+  padding: 10px 14px;
+
+  background: var(--accent);
+  color: white;
+
+  border: 0;
+  border-radius: 3px;
+
+  cursor: pointer;
+
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 800;
+
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.cc-search-reset:hover,
+.cc-search-reset:focus {
+  background: var(--accent-bright);
+}
+
+.cc-search-noscript {
+  margin-top: 28px;
+  padding: 16px;
+
+  background: var(--bg-elevated);
+
+  border-left: 3px solid var(--accent);
+
+  font-family: var(--sans);
+  font-size: 0.85rem;
 }
 
 
@@ -2744,6 +3084,12 @@ pre {
    ========================================================= */
 
 @media screen and (max-width: 850px) {
+
+  .cc-search-layout {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
 
   .cc-platform-heading {
     align-items: flex-start;
@@ -3153,7 +3499,21 @@ pre {
   }
 
   .cc-search-status {
-    margin-top: 28px;
+    margin-top: 0;
+  }
+
+  .cc-search-layout {
+    margin-top: 30px;
+  }
+
+  .cc-search-facets-heading {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .cc-search-facet-panel > summary {
+    padding-right: 14px;
+    padding-left: 14px;
   }
 
   .cc-search-result {

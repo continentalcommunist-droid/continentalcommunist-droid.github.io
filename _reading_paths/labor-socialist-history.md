@@ -5,6 +5,20 @@ permalink: "/learn/pathways/labor-socialist-history/"
 section_key: learn
 section: learn
 content_type: Learning Path
+author: Continental Communist
+thinkers:
+- W. E. B. Du Bois
+- Lawrence Goodwyn
+- Eugene V. Debs
+- David Montgomery
+- Melvyn Dubofsky
+- Nelson Lichtenstein
+region:
+- United States
+historical_period:
+- Multiple periods
+languages:
+- English
 description: Follow American labor from emancipation and agrarian revolt through industrial
   unionism, socialism, the CIO, and neoliberal decline.
 topics:

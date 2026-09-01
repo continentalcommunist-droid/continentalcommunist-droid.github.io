@@ -5,6 +5,16 @@ permalink: "/learn/pathways/marxism-fundamentals/"
 section_key: learn
 section: learn
 content_type: Learning Path
+author: Continental Communist
+thinkers:
+- Karl Marx
+- Friedrich Engels
+region:
+- Global
+historical_period:
+- Multiple periods
+languages:
+- English
 description: Learn the basic vocabulary and method of historical materialism, class
   analysis, value, exploitation, and political power.
 topics:

@@ -30,7 +30,6 @@ corrections: []
 assignment_brief: null
 editorial_stage: Published / monitoring
 ai_assistance: ''
-categories: []
 ---
 
 “The problem with America is we are so divided.” “It’s always far right or far left.” “We need logical centrists.” “We need solutions, not more problems.”

@@ -20,6 +20,20 @@ Each destination has a durable hub page in its matching directory. The shared `_
 
 Published content should use `section`, `section_key`, `content_type`, and `topics` front matter where applicable. These fields connect articles and pages to navigation state and archive search.
 
+## Controlled taxonomy
+
+The canonical topic hierarchy lives in `_topics/`, with its seven top-level families and fixed facet vocabularies documented in `_data/taxonomy.yml`. People and thinkers are canonical records in `_people/`; content links to their exact `name` values rather than creating new spellings in front matter.
+
+Editors select one to five topics in Sveltia CMS. Ad hoc Jekyll `tags` and `categories` are not used. New terms must follow the naming, hierarchy, and review rules in `docs/taxonomy.md`.
+
+Before publishing taxonomy changes, run:
+
+```sh
+ruby scripts/validate_taxonomy.rb
+```
+
+The validator rejects unknown terms, duplicate topics, broken parent relationships, hierarchy cycles, uncontrolled people references, and content with more than five topics.
+
 ## Learning pathways
 
 The Reading List is organized into guided learning pathways under `/learn/pathways/`. Each pathway is a structured document in `_reading_paths/`; the catalog and individual pathway pages are rendered by `_layouts/pathway-catalog.html` and `_layouts/learning-path.html`.

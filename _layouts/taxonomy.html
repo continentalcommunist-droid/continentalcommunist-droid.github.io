@@ -1,0 +1,77 @@
+---
+layout: default
+---
+
+<article class="cc-taxonomy">
+  <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">Topics</span>
+  </nav>
+
+  <header class="cc-taxonomy-header">
+    <div class="cc-hub-kicker">{{ page.kicker | default: "Controlled vocabulary" }}</div>
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.description }}</p>
+
+    <dl class="cc-taxonomy-summary">
+      <div>
+        <dt>Canonical topics</dt>
+        <dd>{{ site.topics.size }}</dd>
+      </div>
+      <div>
+        <dt>Topic families</dt>
+        <dd>{{ site.data.taxonomy.topic_families.size }}</dd>
+      </div>
+      <div>
+        <dt>Vocabulary review</dt>
+        <dd>{{ site.data.taxonomy.governance.review_interval }}</dd>
+      </div>
+    </dl>
+  </header>
+
+  {% if content != empty %}
+  <div class="cc-taxonomy-introduction">{{ content }}</div>
+  {% endif %}
+
+  <div class="cc-taxonomy-families">
+    {% for family in site.data.taxonomy.topic_families %}
+      {% assign root_topic = site.topics | where: "name", family.name | first %}
+      {% assign child_topics = site.topics | where: "parent", family.name | sort: "name" %}
+
+      <section class="cc-taxonomy-family" id="{{ family.name | slugify }}">
+        <header>
+          <div class="cc-section-kicker">Topic family {{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+          <h2>
+            {% if root_topic %}
+            <a href="{{ root_topic.url | relative_url }}">{{ family.name }}</a>
+            {% else %}
+            {{ family.name }}
+            {% endif %}
+          </h2>
+          <p>{{ family.description }}</p>
+        </header>
+
+        {% if child_topics.size > 0 %}
+        <ul class="cc-taxonomy-topic-list">
+          {% for topic in child_topics %}
+          <li>
+            <a href="{{ topic.url | relative_url }}">{{ topic.name }}</a>
+            <span>{{ topic.description }}</span>
+
+            {% assign grandchild_topics = site.topics | where: "parent", topic.name | sort: "name" %}
+            {% if grandchild_topics.size > 0 %}
+            <ul>
+              {% for grandchild in grandchild_topics %}
+              <li><a href="{{ grandchild.url | relative_url }}">{{ grandchild.name }}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </section>
+    {% endfor %}
+  </div>
+</article>

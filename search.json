@@ -9,7 +9,7 @@ permalink: /search.json
 {% for post in site.posts %}
 
   {% capture post_terms %}
-    {{ post.categories | join: " " }} {{ post.topics | join: " " }}
+    {{ post.topics | join: " " }}
     {{ post.section }} {{ post.content_type }} {{ post.author }}
     {{ post.thinkers | join: " " }} {{ post.people | join: " " }}
     {{ post.region | join: " " }} {{ post.historical_period | join: " " }}
@@ -28,7 +28,7 @@ permalink: /search.json
     "excerpt": {{ post.description | default: post.excerpt | strip_html | strip_newlines | jsonify }},
     "content": {{ post.content | strip_html | strip_newlines | jsonify }},
     "content_type": {{ post.content_type | default: "Article" | jsonify }},
-    "topic": {{ post.topics | default: post.categories | jsonify }},
+    "topic": {{ post.topics | jsonify }},
     "author": {{ post.author | default: site.author | jsonify }},
     "thinker": {{ post.thinkers | default: post.people | jsonify }},
     "geographic_region": {{ post.region | jsonify }},
@@ -161,6 +161,8 @@ permalink: /search.json
       {{ document.level }} {{ document.reading_level }}
       {{ document_author | join: " " }} {{ document.editor }}
       {{ document_thinker | join: " " }} {{ document_language | join: " " }}
+      {{ document.synonyms | join: " " }} {{ document.aliases | join: " " }}
+      {{ document.parent }} {{ document.related_topics | join: " " }}
       {% for reading in document.readings %}{{ reading.title }} {{ reading.author }} {% endfor %}
       {% for lecture in document.lectures %}{{ lecture.title }} {% endfor %}
       {% for entry in document.glossary %}{{ entry.term }} {% endfor %}

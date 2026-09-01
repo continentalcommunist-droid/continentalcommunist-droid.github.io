@@ -1,0 +1,97 @@
+version: 1
+
+governance:
+  max_topics_per_item: 5
+  review_interval: Quarterly
+  steward: Editorial team
+
+topic_families:
+  - name: Marxist Theory
+    description: Method, value, class, socialism, and traditions of Marxist analysis.
+  - name: Political Economy
+    description: Production, markets, planning, finance, development, and the world economy.
+  - name: American History
+    description: Institutions, constitutional development, reconstruction, and political transformation in the United States.
+  - name: Labor
+    description: Work, unions, class formation, workplace power, and labor movements.
+  - name: Race
+    description: Racial formation, citizenship, hierarchy, labor, and political economy.
+  - name: Democracy
+    description: Participation, representation, institutions, accountability, and political power.
+  - name: Technology
+    description: Technical change, automation, artificial intelligence, ownership, and control.
+
+vocabularies:
+  content_types:
+    - News
+    - Analysis
+    - Opinion / Debate
+    - Education
+    - Primary Source
+    - Review
+    - Brief
+    - Course
+    - Lesson
+    - Learning Path
+    - Book / Text
+    - Person
+    - Concept
+    - Topic
+    - Event
+    - Podcast
+    - Bibliography
+  regions:
+    - United States
+    - North America
+    - Latin America and the Caribbean
+    - Europe
+    - Africa
+    - Middle East and North Africa
+    - South Asia
+    - East and Southeast Asia
+    - Global
+  historical_periods:
+    - Pre-1800
+    - 1800-1865
+    - Reconstruction and Gilded Age (1865-1900)
+    - Progressive Era and World War I (1900-1919)
+    - Interwar and New Deal (1919-1945)
+    - Cold War (1945-1991)
+    - Post-Cold War (1991-2008)
+    - Contemporary (2008-present)
+    - Multiple periods
+  difficulties:
+    - Introductory
+    - General
+    - Intermediate
+    - Advanced
+    - Academic / Technical
+  formats:
+    - Article
+    - Briefing
+    - Course
+    - Lesson
+    - Guided pathway
+    - Book
+    - Essay
+    - Speech
+    - Letter
+    - Pamphlet
+    - Report
+    - Primary document
+    - Journal article
+    - Chapter
+    - Profile
+    - Glossary
+    - Topic guide
+    - Online
+    - In person
+    - Hybrid
+    - Audio
+    - Video
+    - Page
+    - Section hub
+    - Catalog
+  languages:
+    - English
+    - Spanish

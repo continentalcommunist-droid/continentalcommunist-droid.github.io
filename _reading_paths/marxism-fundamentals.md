@@ -23,7 +23,7 @@ topics:
 - Political Economy
 slug: marxism-fundamentals
 number: '01'
-level: Beginner
+level: Introductory
 effort: 6 weeks · 3–4 hours per week
 prerequisite_summary: No prior study required
 prerequisites:

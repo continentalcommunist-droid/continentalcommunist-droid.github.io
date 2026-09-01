@@ -1,0 +1,77 @@
+---
+layout: default
+---
+
+{% assign authored_posts = site.posts | where: "author", page.name %}
+{% assign authored_paths = site.reading_paths | where: "author", page.name %}
+{% assign thinker_paths = site.reading_paths | where_exp: "item", "item.thinkers contains page.name" %}
+{% assign authored_books = site.books | where_exp: "item", "item.authors contains page.name" %}
+
+<article class="cc-person-page">
+  <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ '/topics/' | relative_url }}">Knowledge base</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ page.name }}</span>
+  </nav>
+
+  <header class="cc-person-header">
+    <div class="cc-hub-kicker">{{ page.profile_type | default: "Person" }}</div>
+    <h1>{{ page.name }}</h1>
+    {% if page.role %}<div class="cc-person-role">{{ page.role }}</div>{% endif %}
+    <p>{{ page.description }}</p>
+
+    {% if page.aliases %}
+    <div class="cc-person-aliases"><strong>Alternate names:</strong> {{ page.aliases | join: ", " }}</div>
+    {% endif %}
+  </header>
+
+  {% if content != empty %}
+  <div class="cc-person-biography">{{ content }}</div>
+  {% endif %}
+
+  <section class="cc-person-connections" aria-labelledby="person-connections-title">
+    <div class="cc-section-kicker">Knowledge graph</div>
+    <h2 id="person-connections-title">Connected material</h2>
+
+    {% assign connection_total = authored_posts.size | plus: authored_paths.size | plus: thinker_paths.size | plus: authored_books.size %}
+    {% if connection_total == 0 %}
+    <p class="cc-topic-empty">This canonical record is ready to connect future articles, texts, and learning products without creating duplicate names.</p>
+    {% else %}
+    <div class="cc-person-connection-grid">
+      {% for item in authored_posts %}
+      <article>
+        <div>Author</div>
+        <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+        <p>{{ item.description | truncate: 170 }}</p>
+      </article>
+      {% endfor %}
+
+      {% for item in authored_paths %}
+      <article>
+        <div>Curator</div>
+        <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+        <p>{{ item.description | truncate: 170 }}</p>
+      </article>
+      {% endfor %}
+
+      {% for item in thinker_paths %}
+      <article>
+        <div>Assigned thinker</div>
+        <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+        <p>{{ item.description | truncate: 170 }}</p>
+      </article>
+      {% endfor %}
+
+      {% for item in authored_books %}
+      <article>
+        <div>Author / creator</div>
+        <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+        <p>{{ item.description | default: item.content | strip_html | truncate: 170 }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </section>
+</article>

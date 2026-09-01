@@ -13,8 +13,12 @@ topics:
   - Unions
   - Democracy
   - Socialism
-region: []
-historical_period: []
+region:
+  - United States
+historical_period:
+  - Contemporary (2008-present)
+languages:
+  - English
 reading_level: General
 reading_time: null
 image: ''

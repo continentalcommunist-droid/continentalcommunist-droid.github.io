@@ -1,0 +1,147 @@
+---
+layout: default
+---
+
+{% assign topic_articles = site.posts | where_exp: "item", "item.topics contains page.name" %}
+{% assign learning_items = site.courses | concat: site.lessons | concat: site.reading_paths %}
+{% assign topic_learning = learning_items | where_exp: "item", "item.topics contains page.name" %}
+{% assign reference_items = site.books | concat: site.concepts %}
+{% assign topic_references = reference_items | where_exp: "item", "item.topics contains page.name" %}
+{% assign current_items = site.briefs | concat: site.events | concat: site.podcasts %}
+{% assign topic_current = current_items | where_exp: "item", "item.topics contains page.name" %}
+{% assign child_topics = site.topics | where: "parent", page.name | sort: "name" %}
+
+<article class="cc-topic-page">
+  <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ '/topics/' | relative_url }}">Topics</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ page.name }}</span>
+  </nav>
+
+  <header class="cc-topic-header">
+    <div class="cc-hub-kicker">{{ page.taxonomy_status | default: "Active" }} topic</div>
+    <h1>{{ page.name }}</h1>
+    <p>{{ page.description }}</p>
+
+    {% if page.parent or page.synonyms %}
+    <dl class="cc-topic-context">
+      {% if page.parent %}
+      {% assign parent_topic = site.topics | where: "name", page.parent | first %}
+      <div>
+        <dt>Parent topic</dt>
+        <dd><a href="{{ parent_topic.url | relative_url }}">{{ page.parent }}</a></dd>
+      </div>
+      {% endif %}
+      {% if page.synonyms %}
+      <div>
+        <dt>Also known as</dt>
+        <dd>{{ page.synonyms | join: ", " }}</dd>
+      </div>
+      {% endif %}
+    </dl>
+    {% endif %}
+  </header>
+
+  {% if content != empty %}
+  <div class="cc-topic-introduction">{{ content }}</div>
+  {% endif %}
+
+  {% if child_topics.size > 0 or page.related_topics %}
+  <section class="cc-topic-connections" aria-labelledby="topic-connections-title">
+    <div class="cc-section-kicker">Vocabulary connections</div>
+    <h2 id="topic-connections-title">Explore adjacent topics</h2>
+
+    <div class="cc-topic-connection-grid">
+      {% for child in child_topics %}
+      <a href="{{ child.url | relative_url }}">
+        <strong>{{ child.name }}</strong>
+        <span>Subtopic</span>
+      </a>
+      {% endfor %}
+
+      {% for related_name in page.related_topics %}
+        {% assign related_topic = site.topics | where: "name", related_name | first %}
+        {% if related_topic and related_topic.parent != page.name and related_topic.name != page.parent %}
+        <a href="{{ related_topic.url | relative_url }}">
+          <strong>{{ related_topic.name }}</strong>
+          <span>Related topic</span>
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="cc-topic-archive" aria-labelledby="topic-archive-title">
+    <div class="cc-section-kicker">Connected archive</div>
+    <h2 id="topic-archive-title">Material classified under {{ page.name }}</h2>
+
+    {% assign connected_total = topic_articles.size | plus: topic_learning.size | plus: topic_references.size | plus: topic_current.size %}
+
+    {% if connected_total == 0 %}
+    <p class="cc-topic-empty">No published material is assigned to this topic yet. The canonical topic remains available for commissioned work.</p>
+    {% endif %}
+
+    {% if topic_articles.size > 0 %}
+    <div class="cc-topic-group">
+      <h3>Analysis and articles</h3>
+      <div class="cc-topic-content-grid">
+        {% for item in topic_articles %}
+        <article>
+          <div>{{ item.content_type | default: "Article" }}</div>
+          <h4><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h4>
+          <p>{{ item.description | default: item.excerpt | strip_html | truncate: 180 }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if topic_learning.size > 0 %}
+    <div class="cc-topic-group">
+      <h3>Learning</h3>
+      <div class="cc-topic-content-grid">
+        {% for item in topic_learning %}
+        <article>
+          <div>{{ item.content_type }}</div>
+          <h4><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h4>
+          <p>{{ item.description | truncate: 180 }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if topic_references.size > 0 %}
+    <div class="cc-topic-group">
+      <h3>Library and reference</h3>
+      <div class="cc-topic-content-grid">
+        {% for item in topic_references %}
+        <article>
+          <div>{{ item.content_type }}</div>
+          <h4><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h4>
+          <p>{{ item.description | default: item.summary | truncate: 180 }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if topic_current.size > 0 %}
+    <div class="cc-topic-group">
+      <h3>Briefings and multimedia</h3>
+      <div class="cc-topic-content-grid">
+        {% for item in topic_current %}
+        <article>
+          <div>{{ item.content_type }}</div>
+          <h4><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h4>
+          <p>{{ item.description | truncate: 180 }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </section>
+</article>

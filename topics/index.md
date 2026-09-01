@@ -1,5 +1,5 @@
 ---
-layout: hub
+layout: taxonomy
 title: Topics
 permalink: /topics/
 section_key: topics

@@ -71,7 +71,15 @@ collections:
         display_fields: [name, role]
         search_fields: [name, role]
         required: false
-      - { label: Thinkers Discussed, name: thinkers, widget: list, required: false, hint: Use a consistent public name for each theorist or historical figure discussed. }
+      - label: Thinkers Discussed
+        name: thinkers
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description, aliases]
+        multiple: true
+        required: false
       - label: Topics
         name: topics
         widget: relation
@@ -81,6 +89,7 @@ collections:
         search_fields: [name, description, synonyms]
         multiple: true
         min: 1
+        max: 5
       - label: Regions
         name: region
         widget: select
@@ -207,7 +216,15 @@ collections:
         display_fields: [name, role]
         search_fields: [name, role]
         required: false
-      - { label: Thinkers Discussed, name: thinkers, widget: list, required: false, hint: Use a consistent public name for each theorist or historical figure discussed. }
+      - label: Thinkers Discussed
+        name: thinkers
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description, aliases]
+        multiple: true
+        required: false
       - label: Topics
         name: topics
         widget: relation
@@ -217,6 +234,7 @@ collections:
         search_fields: [name, description, synonyms]
         multiple: true
         min: 1
+        max: 5
       - { label: Regions, name: region, widget: select, multiple: true, required: false, options: [United States, North America, Latin America and the Caribbean, Europe, Africa, Middle East and North Africa, South Asia, East and Southeast Asia, Global] }
       - label: Historical Periods
         name: historical_period
@@ -278,7 +296,7 @@ collections:
       - { label: Title, name: title, widget: string }
       - { label: Summary, name: description, widget: text }
       - { label: Status, name: status, widget: select, default: Planning, options: [Planning, Draft, Enrollment open, Published, Archived] }
-      - { label: Level, name: level, widget: select, options: [Beginner, Beginner-Intermediate, Intermediate, Advanced] }
+      - { label: Level, name: level, widget: select, options: [Introductory, General, Intermediate, Advanced, Academic / Technical] }
       - { label: Regions, name: region, widget: select, multiple: true, required: false, options: [United States, North America, Latin America and the Caribbean, Europe, Africa, Middle East and North Africa, South Asia, East and Southeast Asia, Global] }
       - { label: Historical Periods, name: historical_period, widget: select, multiple: true, required: false, options: [Pre-1800, 1800-1865, Reconstruction and Gilded Age (1865-1900), Progressive Era and World War I (1900-1919), Interwar and New Deal (1919-1945), Cold War (1945-1991), Post-Cold War (1991-2008), Contemporary (2008-present), Multiple periods] }
       - { label: Languages, name: languages, widget: select, multiple: true, default: [English], options: [English, Spanish] }
@@ -292,7 +310,15 @@ collections:
         search_fields: [name, role]
         multiple: true
         required: false
-      - { label: Thinkers Discussed, name: thinkers, widget: list, required: false }
+      - label: Thinkers Discussed
+        name: thinkers
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description, aliases]
+        multiple: true
+        required: false
       - label: Prerequisite Courses
         name: prerequisites
         widget: relation
@@ -329,6 +355,7 @@ collections:
         search_fields: [name, description]
         multiple: true
         min: 1
+        max: 5
       - { label: Learning Outcomes, name: outcomes, widget: list }
       - label: Sources / References
         name: sources
@@ -379,7 +406,15 @@ collections:
         display_fields: [name, role]
         search_fields: [name, role]
         required: false
-      - { label: Thinkers Discussed, name: thinkers, widget: list, required: false }
+      - label: Thinkers Discussed
+        name: thinkers
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description, aliases]
+        multiple: true
+        required: false
       - label: Books / Texts
         name: texts
         widget: relation
@@ -416,6 +451,7 @@ collections:
         search_fields: [name, description]
         multiple: true
         min: 1
+        max: 5
       - { label: Review Questions, name: questions, widget: list, required: false }
       - { label: Lesson, name: body, widget: richtext }
 
@@ -440,7 +476,7 @@ collections:
       - { label: Slug, name: slug, widget: string, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Use lowercase letters, numbers, and hyphens.'] }
       - { label: Number, name: number, widget: string, pattern: ['^[0-9]{2}$', 'Use a two-digit number such as 01.'] }
       - { label: Title, name: title, widget: string }
-      - { label: Level, name: level, widget: select, options: [Beginner, Beginner–Intermediate, Intermediate, Advanced] }
+      - { label: Level, name: level, widget: select, options: [Introductory, General, Intermediate, Advanced, Academic / Technical] }
       - label: Author / Curator
         name: author
         widget: relation
@@ -448,7 +484,16 @@ collections:
         value_field: name
         display_fields: [name, role]
         search_fields: [name, role]
-      - { label: Thinkers Included, name: thinkers, widget: list, required: false, hint: List each thinker separately, including coauthors. }
+      - label: Thinkers Included
+        name: thinkers
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description, aliases]
+        multiple: true
+        required: false
+        hint: Select each thinker separately, including coauthors.
       - { label: Regions, name: region, widget: select, multiple: true, required: false, options: [United States, North America, Latin America and the Caribbean, Europe, Africa, Middle East and North Africa, South Asia, East and Southeast Asia, Global] }
       - { label: Historical Periods, name: historical_period, widget: select, multiple: true, required: false, options: [Pre-1800, 1800-1865, Reconstruction and Gilded Age (1865-1900), Progressive Era and World War I (1900-1919), Interwar and New Deal (1919-1945), Cold War (1945-1991), Post-Cold War (1991-2008), Contemporary (2008-present), Multiple periods] }
       - { label: Languages, name: languages, widget: select, multiple: true, default: [English], options: [English, Spanish] }
@@ -468,6 +513,7 @@ collections:
         search_fields: [name, description]
         multiple: true
         min: 1
+        max: 5
       - label: Readings
         name: readings
         widget: list
@@ -532,7 +578,14 @@ collections:
       - { label: Content Type, name: content_type, widget: hidden, default: Book / Text }
       - { label: Section Key, name: section_key, widget: hidden, default: library }
       - { label: Title, name: title, widget: string }
-      - { label: Authors / Creators, name: authors, widget: list }
+      - label: Authors / Creators
+        name: authors
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description, aliases]
+        multiple: true
       - { label: Publication Date, name: date, widget: string, required: false, hint: Year or full date as printed. }
       - { label: Publisher / Publication, name: publication, widget: string, required: false }
       - { label: URL, name: url, widget: string, required: false }
@@ -540,7 +593,15 @@ collections:
       - { label: ISBN, name: isbn, widget: string, required: false }
       - { label: Text Type, name: text_type, widget: select, options: [Book, Essay, Speech, Letter, Pamphlet, Report, Primary document, Journal article, Chapter, Other] }
       - { label: Difficulty, name: reading_level, widget: select, required: false, options: [Introductory, General, Intermediate, Advanced, Academic / Technical] }
-      - { label: Thinkers Discussed, name: thinkers, widget: list, required: false }
+      - label: Thinkers Discussed
+        name: thinkers
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description, aliases]
+        multiple: true
+        required: false
       - { label: Regions, name: region, widget: select, multiple: true, required: false, options: [United States, North America, Latin America and the Caribbean, Europe, Africa, Middle East and North Africa, South Asia, East and Southeast Asia, Global] }
       - { label: Historical Periods, name: historical_period, widget: select, multiple: true, required: false, options: [Pre-1800, 1800-1865, Reconstruction and Gilded Age (1865-1900), Progressive Era and World War I (1900-1919), Interwar and New Deal (1919-1945), Cold War (1945-1991), Post-Cold War (1991-2008), Contemporary (2008-present), Multiple periods] }
       - { label: Languages, name: languages, widget: select, multiple: true, default: [English], options: [English, Spanish] }
@@ -553,6 +614,7 @@ collections:
         search_fields: [name, description]
         multiple: true
         required: false
+        max: 5
       - label: Concepts
         name: concepts
         widget: relation
@@ -587,7 +649,14 @@ collections:
     sortable_fields: [title, date, source_type]
     fields:
       - { label: Title, name: title, widget: string }
-      - { label: Authors / Creators, name: authors, widget: list }
+      - label: Authors / Creators
+        name: authors
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description, aliases]
+        multiple: true
       - { label: Publication / Container, name: publication, widget: string, required: false }
       - { label: Publisher, name: publisher, widget: string, required: false }
       - { label: Publication Date, name: date, widget: string, required: false }
@@ -614,11 +683,13 @@ collections:
     summary: "{{name}} — {{role}}"
     sortable_fields: [name, role]
     fields:
-      - { label: Layout, name: layout, widget: hidden, default: page }
+      - { label: Layout, name: layout, widget: hidden, default: person }
       - { label: Content Type, name: content_type, widget: hidden, default: Person }
       - { label: Page Title, name: title, widget: compute, value: "{{fields.name}}" }
       - { label: Name, name: name, widget: string }
       - { label: Role / Byline, name: role, widget: string, required: false }
+      - { label: Profile Type, name: profile_type, widget: select, default: Thinker, options: [Contributor, Thinker, Historical figure, Organization, Editorial identity] }
+      - { label: Aliases / Alternate Names, name: aliases, widget: list, required: false }
       - { label: Credentials / Expertise, name: credentials, widget: text, required: false }
       - { label: Short Description, name: description, widget: text }
       - { label: Portrait, name: image, widget: image, required: false }
@@ -652,8 +723,16 @@ collections:
       - { label: Term, name: title, widget: string }
       - { label: Short Definition, name: description, widget: text }
       - { label: Summary, name: summary, widget: text }
-      - { label: Level, name: level, widget: select, options: [Beginner, Intermediate, Advanced] }
-      - { label: Thinkers Associated, name: thinkers, widget: list, required: false }
+      - { label: Level, name: level, widget: select, options: [Introductory, General, Intermediate, Advanced, Academic / Technical] }
+      - label: Thinkers Associated
+        name: thinkers
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description, aliases]
+        multiple: true
+        required: false
       - { label: Regions, name: region, widget: select, multiple: true, required: false, options: [United States, North America, Latin America and the Caribbean, Europe, Africa, Middle East and North Africa, South Asia, East and Southeast Asia, Global] }
       - { label: Historical Periods, name: historical_period, widget: select, multiple: true, required: false, options: [Pre-1800, 1800-1865, Reconstruction and Gilded Age (1865-1900), Progressive Era and World War I (1900-1919), Interwar and New Deal (1919-1945), Cold War (1945-1991), Post-Cold War (1991-2008), Contemporary (2008-present), Multiple periods] }
       - { label: Languages, name: languages, widget: select, multiple: true, default: [English], options: [English, Spanish] }
@@ -667,6 +746,7 @@ collections:
         search_fields: [name, description]
         multiple: true
         required: false
+        max: 5
       - label: Related Concepts
         name: related_concepts
         widget: relation
@@ -699,13 +779,22 @@ collections:
     identifier_field: name
     sortable_fields: [name]
     fields:
-      - { label: Layout, name: layout, widget: hidden, default: page }
+      - { label: Layout, name: layout, widget: hidden, default: topic }
       - { label: Content Type, name: content_type, widget: hidden, default: Topic }
       - { label: Section Key, name: section_key, widget: hidden, default: topics }
       - { label: Page Title, name: title, widget: compute, value: "{{fields.name}}" }
       - { label: Name, name: name, widget: string }
       - { label: Description, name: description, widget: text }
-      - { label: Thinkers Associated, name: thinkers, widget: list, required: false }
+      - { label: Taxonomy Status, name: taxonomy_status, widget: select, default: Active, options: [Core, Active, Proposed, Retired] }
+      - label: Thinkers Associated
+        name: thinkers
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description, aliases]
+        multiple: true
+        required: false
       - { label: Regions, name: region, widget: select, multiple: true, required: false, options: [United States, North America, Latin America and the Caribbean, Europe, Africa, Middle East and North Africa, South Asia, East and Southeast Asia, Global] }
       - { label: Historical Periods, name: historical_period, widget: select, multiple: true, required: false, options: [Pre-1800, 1800-1865, Reconstruction and Gilded Age (1865-1900), Progressive Era and World War I (1900-1919), Interwar and New Deal (1919-1945), Cold War (1945-1991), Post-Cold War (1991-2008), Contemporary (2008-present), Multiple periods] }
       - { label: Languages, name: languages, widget: select, multiple: true, default: [English], options: [English, Spanish] }
@@ -760,7 +849,15 @@ collections:
       - { label: End, name: end, widget: datetime, required: false }
       - { label: Status, name: status, widget: select, default: Scheduled, options: [Draft, Scheduled, Registration open, Completed, Cancelled] }
       - { label: Format, name: format_type, widget: select, options: [Online, In person, Hybrid] }
-      - { label: Thinkers Discussed, name: thinkers, widget: list, required: false }
+      - label: Thinkers Discussed
+        name: thinkers
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description, aliases]
+        multiple: true
+        required: false
       - { label: Regions, name: region, widget: select, multiple: true, required: false, options: [United States, North America, Latin America and the Caribbean, Europe, Africa, Middle East and North Africa, South Asia, East and Southeast Asia, Global] }
       - { label: Historical Periods, name: historical_period, widget: select, multiple: true, required: false, options: [Pre-1800, 1800-1865, Reconstruction and Gilded Age (1865-1900), Progressive Era and World War I (1900-1919), Interwar and New Deal (1919-1945), Cold War (1945-1991), Post-Cold War (1991-2008), Contemporary (2008-present), Multiple periods] }
       - { label: Languages, name: languages, widget: select, multiple: true, default: [English], options: [English, Spanish] }
@@ -784,6 +881,7 @@ collections:
         search_fields: [name, description]
         multiple: true
         required: false
+        max: 5
       - { label: Event Details, name: body, widget: richtext }
 
   - name: podcasts
@@ -814,7 +912,15 @@ collections:
       - { label: Audio URL, name: audio_url, widget: string, required: false }
       - { label: Video URL, name: video_url, widget: string, required: false }
       - { label: Difficulty, name: reading_level, widget: select, required: false, options: [Introductory, General, Intermediate, Advanced, Academic / Technical] }
-      - { label: Thinkers Discussed, name: thinkers, widget: list, required: false }
+      - label: Thinkers Discussed
+        name: thinkers
+        widget: relation
+        collection: people
+        value_field: name
+        display_fields: [name, role]
+        search_fields: [name, role, description, aliases]
+        multiple: true
+        required: false
       - { label: Regions, name: region, widget: select, multiple: true, required: false, options: [United States, North America, Latin America and the Caribbean, Europe, Africa, Middle East and North Africa, South Asia, East and Southeast Asia, Global] }
       - { label: Historical Periods, name: historical_period, widget: select, multiple: true, required: false, options: [Pre-1800, 1800-1865, Reconstruction and Gilded Age (1865-1900), Progressive Era and World War I (1900-1919), Interwar and New Deal (1919-1945), Cold War (1945-1991), Post-Cold War (1991-2008), Contemporary (2008-present), Multiple periods] }
       - { label: Languages, name: languages, widget: select, multiple: true, default: [English], options: [English, Spanish] }
@@ -836,6 +942,7 @@ collections:
         search_fields: [name, description]
         multiple: true
         required: false
+        max: 5
       - label: Sources / References
         name: sources
         widget: relation

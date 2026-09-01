@@ -2216,6 +2216,512 @@ h3 {
   color: var(--accent-bright);
 }
 
+.cc-post-header {
+  max-width: 960px;
+}
+
+.cc-post-deck {
+  max-width: 820px;
+
+  margin: 0 0 22px;
+
+  color: var(--text-muted);
+
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  line-height: 1.65;
+}
+
+.cc-post .post-meta a {
+  color: var(--text);
+}
+
+.cc-post-topics {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 22px;
+}
+
+.cc-post-topics a {
+  padding: 7px 10px;
+
+  background: rgba(198, 40, 40, 0.12);
+  color: var(--text);
+
+  border: 1px solid rgba(239, 68, 68, 0.34);
+  border-radius: 999px;
+
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 800;
+
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.cc-post-topics a:hover,
+.cc-post-topics a:focus {
+  background: rgba(198, 40, 40, 0.24);
+  border-color: var(--accent-bright);
+}
+
+.cc-post-facts,
+.cc-topic-context,
+.cc-taxonomy-summary {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  margin: 24px 0 0;
+
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.cc-post-facts > div,
+.cc-topic-context > div,
+.cc-taxonomy-summary > div {
+  padding: 13px 16px 14px 0;
+}
+
+.cc-post-facts dt,
+.cc-topic-context dt,
+.cc-taxonomy-summary dt {
+  margin-bottom: 3px;
+
+  color: var(--text-muted);
+
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cc-post-facts dd,
+.cc-topic-context dd,
+.cc-taxonomy-summary dd {
+  margin: 0;
+
+  color: var(--text);
+
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  line-height: 1.4;
+}
+
+.cc-post-related {
+  margin-top: 86px;
+  padding-top: 34px;
+
+  border-top: 3px solid var(--accent);
+}
+
+.cc-post-related h2 {
+  max-width: 720px;
+
+  margin: 8px 0 28px;
+}
+
+.cc-post-related-grid,
+.cc-person-connection-grid,
+.cc-topic-content-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.cc-post-related-grid article,
+.cc-person-connection-grid article,
+.cc-topic-content-grid article {
+  padding: 22px;
+
+  background: var(--bg-elevated);
+
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 3px;
+}
+
+.cc-post-related-grid article > div,
+.cc-person-connection-grid article > div,
+.cc-topic-content-grid article > div {
+  color: var(--accent-bright);
+
+  font-family: var(--sans);
+  font-size: 0.64rem;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cc-post-related-grid h3,
+.cc-person-connection-grid h3,
+.cc-topic-content-grid h4 {
+  margin: 9px 0 10px;
+
+  font-size: 1.18rem;
+}
+
+.cc-post-related-grid h3 a,
+.cc-person-connection-grid h3 a,
+.cc-topic-content-grid h4 a {
+  color: var(--text);
+
+  text-decoration: none;
+}
+
+.cc-post-related-grid p,
+.cc-person-connection-grid p,
+.cc-topic-content-grid p {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-family: var(--serif);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   Controlled Taxonomy and Knowledge Graph
+   ========================================================= */
+
+.cc-taxonomy,
+.cc-topic-page,
+.cc-person-page {
+  max-width: var(--max-width);
+
+  margin: 0 auto;
+}
+
+.cc-taxonomy-header,
+.cc-topic-header,
+.cc-person-header {
+  max-width: 920px;
+
+  margin-bottom: 44px;
+  padding-bottom: 34px;
+
+  border-bottom: 3px solid var(--accent);
+}
+
+.cc-taxonomy-header h1,
+.cc-topic-header h1,
+.cc-person-header h1 {
+  margin: 8px 0 18px;
+
+  font-size: clamp(3rem, 7vw, 5.5rem);
+}
+
+.cc-taxonomy-header > p,
+.cc-topic-header > p,
+.cc-person-header > p {
+  max-width: 780px;
+
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.65;
+}
+
+.cc-person-role {
+  margin: -8px 0 14px;
+
+  color: var(--accent-bright);
+
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 800;
+
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.cc-person-aliases {
+  margin-top: 18px;
+
+  color: var(--text-muted);
+
+  font-family: var(--sans);
+  font-size: 0.76rem;
+}
+
+.cc-topic-context {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  max-width: 620px;
+}
+
+.cc-taxonomy-summary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  max-width: 720px;
+}
+
+.cc-taxonomy-summary dd {
+  font-size: 1rem;
+}
+
+.cc-taxonomy-introduction,
+.cc-topic-introduction,
+.cc-person-biography {
+  max-width: 790px;
+
+  margin-bottom: 54px;
+
+  font-family: var(--serif);
+  font-size: 1.04rem;
+}
+
+.cc-taxonomy-introduction h2 {
+  font-size: 1.8rem;
+}
+
+.cc-taxonomy-families {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.cc-taxonomy-family {
+  padding: 28px;
+
+  background: var(--bg-elevated);
+
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 3px;
+}
+
+.cc-taxonomy-family header h2 {
+  margin: 8px 0 9px;
+
+  font-size: 1.7rem;
+}
+
+.cc-taxonomy-family header h2 a {
+  color: var(--text);
+
+  text-decoration: none;
+}
+
+.cc-taxonomy-family header > p {
+  margin: 0 0 22px;
+
+  color: var(--text-muted);
+
+  font-family: var(--serif);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.cc-taxonomy-topic-list {
+  margin: 0;
+  padding: 0;
+
+  border-top: 1px solid var(--border);
+
+  list-style: none;
+}
+
+.cc-taxonomy-topic-list > li {
+  padding: 14px 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.cc-taxonomy-topic-list > li > a {
+  display: block;
+
+  color: var(--text);
+
+  font-family: var(--sans);
+  font-size: 0.87rem;
+  font-weight: 800;
+
+  text-decoration: none;
+}
+
+.cc-taxonomy-topic-list > li > span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--text-muted);
+
+  font-family: var(--serif);
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.cc-taxonomy-topic-list ul {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin: 10px 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.cc-taxonomy-topic-list ul a {
+  display: block;
+
+  padding: 4px 7px;
+
+  background: var(--bg-soft);
+  color: var(--text-muted);
+
+  border: 1px solid var(--border);
+  border-radius: 2px;
+
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.cc-topic-connections,
+.cc-topic-archive,
+.cc-person-connections {
+  margin-top: 62px;
+}
+
+.cc-topic-connections h2,
+.cc-topic-archive > h2,
+.cc-person-connections h2 {
+  max-width: 780px;
+
+  margin: 8px 0 26px;
+}
+
+.cc-topic-connection-grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 9px;
+}
+
+.cc-topic-connection-grid a {
+  min-width: 180px;
+
+  padding: 13px 15px;
+
+  background: var(--bg-elevated);
+  color: var(--text);
+
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 3px;
+
+  text-decoration: none;
+}
+
+.cc-topic-connection-grid a strong,
+.cc-topic-connection-grid a span {
+  display: block;
+}
+
+.cc-topic-connection-grid a strong {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+}
+
+.cc-topic-connection-grid a span {
+  margin-top: 3px;
+
+  color: var(--text-muted);
+
+  font-family: var(--sans);
+  font-size: 0.61rem;
+  font-weight: 700;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cc-topic-group {
+  margin-top: 42px;
+}
+
+.cc-topic-group > h3 {
+  margin: 0 0 16px;
+
+  font-size: 1.25rem;
+}
+
+.cc-topic-empty {
+  max-width: 680px;
+
+  padding: 20px;
+
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+
+  border-left: 3px solid var(--accent);
+
+  font-family: var(--serif);
+}
+
+.cc-path-thinkers {
+  margin: -26px 0 66px;
+}
+
+.cc-path-thinkers h2 {
+  margin: 0 0 18px;
+
+  font-size: 1.55rem;
+}
+
+.cc-path-thinkers ul {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.cc-path-thinkers a {
+  display: block;
+
+  padding: 8px 11px;
+
+  background: var(--bg-elevated);
+  color: var(--text);
+
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 2px;
+
+  font-family: var(--sans);
+  font-size: 0.71rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
 
 /* =========================================================
    Minima Post Lists
@@ -3085,6 +3591,17 @@ pre {
 
 @media screen and (max-width: 850px) {
 
+  .cc-taxonomy-families,
+  .cc-post-related-grid,
+  .cc-person-connection-grid,
+  .cc-topic-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cc-post-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .cc-search-layout {
     grid-template-columns: 1fr;
 
@@ -3163,6 +3680,25 @@ pre {
    ========================================================= */
 
 @media screen and (max-width: 600px) {
+
+  .cc-post-facts,
+  .cc-topic-context,
+  .cc-taxonomy-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .cc-taxonomy-family,
+  .cc-post-related-grid article,
+  .cc-person-connection-grid article,
+  .cc-topic-content-grid article {
+    padding: 20px;
+  }
+
+  .cc-taxonomy-header h1,
+  .cc-topic-header h1,
+  .cc-person-header h1 {
+    font-size: clamp(2.55rem, 15vw, 4rem);
+  }
 
   body {
     font-size: 17px;

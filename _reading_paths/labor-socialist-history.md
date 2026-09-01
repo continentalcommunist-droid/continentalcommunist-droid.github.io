@@ -28,7 +28,7 @@ topics:
 - Unions
 slug: labor-socialist-history
 number: '04'
-level: Beginner–Intermediate
+level: General
 effort: 8 weeks · 4–5 hours per week
 prerequisite_summary: No theory prerequisite
 prerequisites:

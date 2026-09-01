@@ -102,6 +102,21 @@ layout: default
     </ul>
   </section>
 
+  {% if pathway.thinkers and pathway.thinkers != empty %}
+  <section class="cc-path-thinkers" aria-labelledby="path-thinkers-title">
+    <div class="cc-section-kicker">Controlled references</div>
+    <h2 id="path-thinkers-title">Thinkers in this pathway</h2>
+    <ul>
+      {% for thinker_name in pathway.thinkers %}
+        {% assign thinker = site.people | where: "name", thinker_name | first %}
+        {% if thinker %}
+        <li><a href="{{ thinker.url | relative_url }}">{{ thinker.name }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
   <section class="cc-learning-section" aria-labelledby="path-readings-title">
     <div class="cc-section-kicker">Reading sequence</div>
     <h2 id="path-readings-title">Six assigned readings</h2>

@@ -1,0 +1,11 @@
+---
+layout: null
+permalink: /robots.txt
+sitemap: false
+---
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: {{ '/sitemap.xml' | absolute_url }}
+Sitemap: {{ '/news-sitemap.xml' | absolute_url }}

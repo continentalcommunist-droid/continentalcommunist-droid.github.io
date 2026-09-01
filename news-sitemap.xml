@@ -1,0 +1,55 @@
+---
+layout: null
+permalink: /news-sitemap.xml
+sitemap: false
+---
+{%- assign news_now = site.time | date: '%s' | plus: 0 -%}
+{%- assign news_cutoff = news_now | minus: 172800 -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  {%- for candidate in site.posts -%}
+    {%- assign news_published = candidate.date | date: '%s' | plus: 0 -%}
+    {%- if candidate.schema_type == 'NewsArticle' and news_published >= news_cutoff and news_published <= news_now -%}
+      {%- assign news_language = 'en' -%}
+      {%- if candidate.languages contains 'Spanish' -%}
+        {%- unless candidate.languages contains 'English' -%}
+          {%- assign news_language = 'es' -%}
+        {%- endunless -%}
+      {%- endif -%}
+  <url>
+    <loc>{{ candidate.url | absolute_url | xml_escape }}</loc>
+    <news:news>
+      <news:publication>
+        <news:name>{{ site.title | xml_escape }}</news:name>
+        <news:language>{{ news_language }}</news:language>
+      </news:publication>
+      <news:publication_date>{{ candidate.date | date_to_xmlschema }}</news:publication_date>
+      <news:title>{{ candidate.title | xml_escape }}</news:title>
+    </news:news>
+  </url>
+    {%- endif -%}
+  {%- endfor -%}
+  {%- for candidate in site.briefs -%}
+    {%- assign news_published = candidate.date | date: '%s' | plus: 0 -%}
+    {%- if news_published >= news_cutoff and news_published <= news_now -%}
+      {%- assign news_language = 'en' -%}
+      {%- if candidate.languages contains 'Spanish' -%}
+        {%- unless candidate.languages contains 'English' -%}
+          {%- assign news_language = 'es' -%}
+        {%- endunless -%}
+      {%- endif -%}
+  <url>
+    <loc>{{ candidate.url | absolute_url | xml_escape }}</loc>
+    <news:news>
+      <news:publication>
+        <news:name>{{ site.title | xml_escape }}</news:name>
+        <news:language>{{ news_language }}</news:language>
+      </news:publication>
+      <news:publication_date>{{ candidate.date | date_to_xmlschema }}</news:publication_date>
+      <news:title>{{ candidate.title | xml_escape }}</news:title>
+    </news:news>
+  </url>
+    {%- endif -%}
+  {%- endfor -%}
+</urlset>

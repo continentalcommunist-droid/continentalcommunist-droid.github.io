@@ -54,6 +54,12 @@ collections:
         widget: select
         default: Analysis
         options: [News, Analysis, Opinion / Debate, Education, Primary Source, Review]
+      - label: Search Schema Type
+        name: schema_type
+        widget: select
+        default: Article
+        options: [Article, NewsArticle]
+        hint: Use NewsArticle only for timely, reported news. Analysis, opinion, education, primary sources, and reviews use Article.
       - { label: Section, name: section, widget: hidden, default: analysis }
       - { label: Section Key, name: section_key, widget: hidden, default: analysis }
       - label: Author
@@ -119,6 +125,7 @@ collections:
       - { label: Languages, name: languages, widget: select, multiple: true, default: [English], options: [English, Spanish] }
       - { label: Estimated Reading Time, name: reading_time, widget: number, value_type: int, min: 1, required: false, hint: Minutes. }
       - { label: Featured Image, name: image, widget: image, required: false }
+      - { label: Featured Image Description, name: image_alt, widget: string, required: false, hint: Required when a featured image is supplied. Describe the image for readers who cannot see it. }
       - { label: Feature on Homepage, name: featured, widget: boolean, default: false, required: false }
       - label: Structured References
         name: references
@@ -203,6 +210,7 @@ collections:
     fields:
       - { label: Layout, name: layout, widget: hidden, default: post }
       - { label: Content Type, name: content_type, widget: hidden, default: Brief }
+      - { label: Search Schema Type, name: schema_type, widget: hidden, default: NewsArticle }
       - { label: Section, name: section, widget: hidden, default: briefings }
       - { label: Section Key, name: section_key, widget: hidden, default: briefings }
       - { label: Title, name: title, widget: string }
@@ -253,6 +261,8 @@ collections:
       - { label: Reading Level, name: reading_level, widget: select, default: General, options: [Introductory, General, Intermediate, Advanced, Academic / Technical] }
       - { label: Languages, name: languages, widget: select, multiple: true, default: [English], options: [English, Spanish] }
       - { label: Estimated Reading Time, name: reading_time, widget: number, value_type: int, min: 1, required: false, hint: Minutes. }
+      - { label: Featured Image, name: image, widget: image, required: false }
+      - { label: Featured Image Description, name: image_alt, widget: string, required: false, hint: Required when a featured image is supplied. }
       - label: Key Developments
         name: developments
         widget: list

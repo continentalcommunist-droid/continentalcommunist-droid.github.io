@@ -1,0 +1,181 @@
+{%- assign schema_canonical = page.canonical_url | default: page.url | absolute_url -%}
+{%- assign schema_description = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | normalize_whitespace | truncate: 300 -%}
+{%- assign schema_language = site.lang | default: 'en-US' -%}
+{%- assign schema_logo = site.publisher.logo | default: site.logo | absolute_url -%}
+{%- capture schema_organization_id -%}{{ site.url }}/#organization{%- endcapture -%}
+{%- capture schema_website_id -%}{{ site.url }}/#website{%- endcapture -%}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": {{ site.publisher.type | default: 'Organization' | jsonify }},
+    "@id": {{ schema_organization_id | jsonify }},
+    "name": {{ site.publisher.name | default: site.title | jsonify }},
+    "url": {{ site.publisher.url | default: site.url | jsonify }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ schema_logo | jsonify }}
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": {{ schema_website_id | jsonify }},
+    "url": {{ site.url | append: '/' | jsonify }},
+    "name": {{ site.title | jsonify }},
+    "description": {{ site.description | jsonify }},
+    "inLanguage": {{ schema_language | jsonify }},
+    "publisher": { "@id": {{ schema_organization_id | jsonify }} }
+  }
+  </script>
+
+{%- if page.layout == 'post' -%}
+  {%- assign schema_article_type = page.schema_type | default: 'Article' -%}
+  {%- if page.collection == 'briefs' -%}
+    {%- assign schema_article_type = 'NewsArticle' -%}
+  {%- endif -%}
+  {%- assign schema_modified = page.updated -%}
+  {%- if schema_modified == nil or schema_modified == '' -%}
+    {%- assign schema_modified = page.date -%}
+  {%- endif -%}
+  {%- assign schema_author = site.people | where: 'name', page.author | first -%}
+  {%- assign schema_author_type = 'Person' -%}
+  {%- if schema_author.profile_type == 'Organization' or schema_author.profile_type == 'Editorial identity' -%}
+    {%- assign schema_author_type = 'Organization' -%}
+  {%- endif -%}
+  {%- capture schema_author_url -%}{% if schema_author %}{{ schema_author.url | absolute_url }}{% endif %}{%- endcapture -%}
+  {%- assign schema_image = page.image | default: page.featured_image -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": {{ schema_article_type | jsonify }},
+    "@id": {{ schema_canonical | append: '#article' | jsonify }},
+    "url": {{ schema_canonical | jsonify }},
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ schema_canonical | jsonify }}
+    },
+    "headline": {{ page.title | jsonify }},
+    "description": {{ schema_description | jsonify }},
+    "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+    "dateModified": {{ schema_modified | date_to_xmlschema | jsonify }},
+    "inLanguage": {{ schema_language | jsonify }},
+    "isAccessibleForFree": true,
+    "wordCount": {{ page.content | number_of_words }},
+    "author": {
+      "@type": {{ schema_author_type | jsonify }},
+      "name": {{ page.author | jsonify }}{% if schema_author_url != '' %},
+      "@id": {{ schema_author_url | append: '#identity' | jsonify }},
+      "url": {{ schema_author_url | jsonify }}{% endif %}
+    },
+    "publisher": {
+      "@type": {{ site.publisher.type | default: 'Organization' | jsonify }},
+      "@id": {{ schema_organization_id | jsonify }},
+      "name": {{ site.publisher.name | default: site.title | jsonify }},
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ schema_logo | jsonify }}
+      }
+    }{% if page.content_type and page.content_type != '' %},
+    "articleSection": {{ page.content_type | jsonify }}{% endif %}{% if page.topics and page.topics != empty %},
+    "keywords": {{ page.topics | jsonify }}{% endif %}{% if schema_image and schema_image != '' %},
+    "image": {
+      "@type": "ImageObject",
+      "url": {{ schema_image | absolute_url | jsonify }}{% if page.image_alt and page.image_alt != '' %},
+      "caption": {{ page.image_alt | jsonify }}{% endif %}
+    }{% endif %}{% if page.references and page.references != empty %},
+    "citation": [
+      {%- for reference in page.references -%}
+        {%- capture schema_citation_url -%}/library/sources/{{ reference.source }}/{%- endcapture -%}
+        {{ schema_citation_url | absolute_url | jsonify }}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]{% endif %}
+  }
+  </script>
+{%- elsif page.layout == 'person' -%}
+  {%- assign schema_person_type = 'Person' -%}
+  {%- if page.profile_type == 'Organization' or page.profile_type == 'Editorial identity' -%}
+    {%- assign schema_person_type = 'Organization' -%}
+  {%- endif -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": {{ schema_canonical | append: '#profile' | jsonify }},
+    "url": {{ schema_canonical | jsonify }},
+    "name": {{ page.title | jsonify }},
+    "description": {{ schema_description | jsonify }},
+    "inLanguage": {{ schema_language | jsonify }},
+    "isPartOf": { "@id": {{ schema_website_id | jsonify }} },
+    "mainEntity": {
+      "@type": {{ schema_person_type | jsonify }},
+      "@id": {{ schema_canonical | append: '#identity' | jsonify }},
+      "name": {{ page.name | default: page.title | jsonify }},
+      "url": {{ schema_canonical | jsonify }}{% if schema_person_type == 'Person' and page.role and page.role != '' %},
+      "jobTitle": {{ page.role | jsonify }}{% endif %}{% if page.description and page.description != '' %},
+      "description": {{ page.description | jsonify }}{% endif %}{% if page.aliases and page.aliases != empty %},
+      "alternateName": {{ page.aliases | jsonify }}{% endif %}{% if page.image and page.image != '' %},
+      "image": {{ page.image | absolute_url | jsonify }}{% endif %}{% if page.website and page.website != '' %},
+      "sameAs": {{ page.website | jsonify }}{% endif %}
+    }
+  }
+  </script>
+{%- elsif page.layout == 'topic' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": {{ schema_canonical | append: '#collection' | jsonify }},
+    "url": {{ schema_canonical | jsonify }},
+    "name": {{ page.title | jsonify }},
+    "description": {{ schema_description | jsonify }},
+    "inLanguage": {{ schema_language | jsonify }},
+    "isPartOf": { "@id": {{ schema_website_id | jsonify }} },
+    "about": {
+      "@type": "Thing",
+      "name": {{ page.name | default: page.title | jsonify }},
+      "description": {{ page.description | jsonify }}
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": {{ page.title | append: ' resources' | jsonify }},
+      "itemListElement": [
+        {%- assign schema_item_position = 0 -%}
+        {%- assign schema_topic_children = site.topics | where: 'parent', page.name | sort: 'name' -%}
+        {%- for item in schema_topic_children -%}
+          {%- assign schema_item_position = schema_item_position | plus: 1 -%}
+          {% if schema_item_position > 1 %},{% endif %}{ "@type": "ListItem", "position": {{ schema_item_position }}, "url": {{ item.url | absolute_url | jsonify }}, "name": {{ item.title | jsonify }} }
+        {%- endfor -%}
+        {%- for item in site.posts -%}
+          {%- if item.topics contains page.name -%}
+            {%- assign schema_item_position = schema_item_position | plus: 1 -%}
+            {% if schema_item_position > 1 %},{% endif %}{ "@type": "ListItem", "position": {{ schema_item_position }}, "url": {{ item.url | absolute_url | jsonify }}, "name": {{ item.title | jsonify }} }
+          {%- endif -%}
+        {%- endfor -%}
+        {%- for item in site.reading_paths -%}
+          {%- if item.topics contains page.name -%}
+            {%- assign schema_item_position = schema_item_position | plus: 1 -%}
+            {% if schema_item_position > 1 %},{% endif %}{ "@type": "ListItem", "position": {{ schema_item_position }}, "url": {{ item.url | absolute_url | jsonify }}, "name": {{ item.title | jsonify }} }
+          {%- endif -%}
+        {%- endfor -%}
+      ]
+    }
+  }
+  </script>
+{%- else -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": {% if page.layout == 'taxonomy' %}"CollectionPage"{% else %}"WebPage"{% endif %},
+    "@id": {{ schema_canonical | append: '#webpage' | jsonify }},
+    "url": {{ schema_canonical | jsonify }},
+    "name": {{ page.title | default: site.title | jsonify }},
+    "description": {{ schema_description | jsonify }},
+    "inLanguage": {{ schema_language | jsonify }},
+    "isPartOf": { "@id": {{ schema_website_id | jsonify }} }
+  }
+  </script>
+{%- endif -%}

@@ -1,0 +1,49 @@
+---
+layout: null
+permalink: /sitemap.xml
+sitemap: false
+---
+{%- assign sitemap_documents = site.briefs
+  | concat: site.courses
+  | concat: site.lessons
+  | concat: site.reading_paths
+  | concat: site.books
+  | concat: site.sources
+  | concat: site.people
+  | concat: site.concepts
+  | concat: site.topics
+  | concat: site.events
+  | concat: site.podcasts -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {%- for candidate in site.html_pages -%}
+    {%- unless candidate.sitemap == false or candidate.search_exclude or candidate.layout == 'redirect' or candidate.robots contains 'noindex' -%}
+  <url>
+    <loc>{{ candidate.url | absolute_url | xml_escape }}</loc>
+    {%- if candidate.updated and candidate.updated != '' %}
+    <lastmod>{{ candidate.updated | date_to_xmlschema }}</lastmod>
+    {%- endif %}
+  </url>
+    {%- endunless -%}
+  {%- endfor -%}
+  {%- for candidate in site.posts -%}
+    {%- unless candidate.sitemap == false or candidate.search_exclude or candidate.robots contains 'noindex' -%}
+  <url>
+    <loc>{{ candidate.url | absolute_url | xml_escape }}</loc>
+    <lastmod>{% if candidate.updated and candidate.updated != '' %}{{ candidate.updated | date_to_xmlschema }}{% else %}{{ candidate.date | date_to_xmlschema }}{% endif %}</lastmod>
+  </url>
+    {%- endunless -%}
+  {%- endfor -%}
+  {%- for candidate in sitemap_documents -%}
+    {%- unless candidate.sitemap == false or candidate.search_exclude or candidate.layout == 'redirect' or candidate.robots contains 'noindex' -%}
+  <url>
+    <loc>{{ candidate.url | absolute_url | xml_escape }}</loc>
+    {%- if candidate.updated and candidate.updated != '' %}
+    <lastmod>{{ candidate.updated | date_to_xmlschema }}</lastmod>
+    {%- elsif candidate.collection == 'briefs' and candidate.date %}
+    <lastmod>{{ candidate.date | date_to_xmlschema }}</lastmod>
+    {%- endif %}
+  </url>
+    {%- endunless -%}
+  {%- endfor -%}
+</urlset>

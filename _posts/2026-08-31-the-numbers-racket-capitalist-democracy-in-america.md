@@ -5,6 +5,7 @@ description: An argument that American political division obscures the shared ca
 date: 2026-08-31
 updated: ''
 content_type: Analysis
+schema_type: Article
 section: analysis
 section_key: analysis
 author: Continental Communist
@@ -22,6 +23,7 @@ languages:
 reading_level: General
 reading_time: 3
 image: ''
+image_alt: ''
 featured: true
 references:
   - source: federalist-number-10

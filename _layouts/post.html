@@ -4,8 +4,10 @@ layout: default
 
 {% assign author_record = site.people | where: "name", page.author | first %}
 {% capture article_cite_key %}{{ page.author | slugify }}-{{ page.date | date: "%Y" }}-{{ page.title | slugify }}{% endcapture %}
+{% assign article_schema_type = page.schema_type | default: "Article" %}
+{% if page.collection == "briefs" %}{% assign article_schema_type = "NewsArticle" %}{% endif %}
 
-<article class="post h-entry cc-post" itemscope itemtype="https://schema.org/Article">
+<article class="post h-entry cc-post" itemscope itemtype="https://schema.org/{{ article_schema_type }}">
   <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
     <a href="{{ '/' | relative_url }}">Home</a>
     <span aria-hidden="true">/</span>

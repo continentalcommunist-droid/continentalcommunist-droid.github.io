@@ -20,6 +20,18 @@ Each destination has a durable hub page in its matching directory. The shared `_
 
 Published content should use `section`, `section_key`, `content_type`, and `topics` front matter where applicable. These fields connect articles and pages to navigation state and archive search.
 
+## Search visibility
+
+Public pages emit one absolute canonical URL, explicit robots metadata, and page-specific JSON-LD. Articles use Article or NewsArticle, public author records use ProfilePage, and controlled topic hubs use CollectionPage. Publisher Organization and WebSite identities are stable across the site.
+
+The general XML sitemap is published at `/sitemap.xml`; the two-day Google News sitemap is published at `/news-sitemap.xml`. Both are advertised in `/robots.txt`. Search Console verification uses the `google_site_verification` configuration hook and requires a Google-issued property token before it can be completed.
+
+The publishing rules and Search Console handoff are documented in `docs/seo.md`. After building the site, validate the generated output with:
+
+```sh
+ruby scripts/validate_seo.rb
+```
+
 ## Controlled taxonomy
 
 The canonical topic hierarchy lives in `_topics/`, with its seven top-level families and fixed facet vocabularies documented in `_data/taxonomy.yml`. People and thinkers are canonical records in `_people/`; content links to their exact `name` values rather than creating new spellings in front matter.

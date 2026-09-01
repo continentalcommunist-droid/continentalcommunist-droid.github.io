@@ -5,6 +5,7 @@ description: An account of my time in Washington, D.C. committed to the struggle
 date: 2026-09-01
 updated: ''
 content_type: Analysis
+schema_type: Article
 section: analysis
 section_key: analysis
 author: Continental Communist
@@ -22,6 +23,7 @@ languages:
 reading_level: General
 reading_time: null
 image: ''
+image_alt: ''
 featured: true
 references: []
 concepts: []

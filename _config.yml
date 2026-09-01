@@ -2,6 +2,20 @@ title: Continental Communist
 description: An American perspective on scientific socialism.
 url: "https://www.continentalcommunist.com"
 baseurl: ""
+lang: en-US
+timezone: America/New_York
+logo: /assets/images/logo.png
+
+# This organization node is reused by page and article structured data.
+publisher:
+  name: Continental Communist
+  type: Organization
+  url: https://www.continentalcommunist.com
+  logo: /assets/images/logo.png
+
+# Search Console supplies this value. Paste only the content value from its
+# HTML verification tag; the head include omits the tag while this is blank.
+google_site_verification: ""
 
 author: Continental Communist
 
@@ -11,7 +25,6 @@ permalink: /:year/:month/:day/:title/
 
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
 
 show_excerpts: true
 

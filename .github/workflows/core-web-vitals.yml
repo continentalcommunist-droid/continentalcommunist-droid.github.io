@@ -51,6 +51,9 @@ jobs:
       - name: Validate document formatting
         run: npm run validate:formatting
 
+      - name: Validate learner platform security contract
+        run: npm run validate:learner
+
       - name: Enforce performance budgets
         run: npm run performance:ci
 

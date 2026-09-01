@@ -367,7 +367,8 @@ h3 {
 
 /* ---------- Header search icon ---------- */
 
-.cc-header-search {
+.cc-header-search,
+.cc-header-account {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -388,7 +389,8 @@ h3 {
     background 0.15s ease;
 }
 
-.cc-header-search svg {
+.cc-header-search svg,
+.cc-header-account svg {
   display: block;
 
   width: 21px;
@@ -398,7 +400,9 @@ h3 {
 }
 
 .cc-header-search:hover,
-.cc-header-search:focus {
+.cc-header-search:focus,
+.cc-header-account:hover,
+.cc-header-account:focus {
   background: var(--bg-soft);
   color: var(--accent-bright);
 
@@ -1354,6 +1358,25 @@ h3 {
   font-size: 0.82rem;
   line-height: 1.55;
 }
+
+.cc-path-progress-panel p a {
+  margin-left: 3px;
+
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+[data-progress-storage][data-sync-state="synced"] {
+  color: #b7cfb1;
+}
+
+[data-progress-storage][data-sync-state="error"] {
+  color: #e7b0a7;
+}
+
 
 .cc-path-reset {
   margin-top: 13px;
@@ -4400,7 +4423,8 @@ pre {
     gap: 8px;
   }
 
-  .cc-header-search {
+  .cc-header-search,
+  .cc-header-account {
     order: 1;
 
     width: 38px;
@@ -4409,7 +4433,8 @@ pre {
     flex-basis: 38px;
   }
 
-  .cc-header-search svg {
+  .cc-header-search svg,
+  .cc-header-account svg {
     width: 20px;
     height: 20px;
   }

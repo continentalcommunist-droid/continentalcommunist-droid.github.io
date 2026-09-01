@@ -26,14 +26,14 @@ The purpose of this list is therefore not merely to recommend books sympathetic 
     The bibliography now supports nine structured routes. Each one includes a
     level, realistic effort estimate, prerequisites, introductions, scoped
     readings, written lecture guides, questions, a glossary, and private
-    browser-based progress tracking.
+    progress tracking with optional account sync.
   </p>
 
   {% include pathway-cards.html compact=true %}
 
   <p class="cc-reading-pathways-note">
-    Progress stays in your browser. No account is required and no reading data
-    is sent to Continental Communist.
+    Progress stays in your browser by default. A private learner account can
+    synchronize it across devices, but no account is required.
   </p>
 </section>
 
@@ -728,4 +728,6 @@ Scientific socialism, if it is to remain scientific, must be capable of confront
 
 _This bibliography will continue to grow as Continental Communist develops._
 
-<script src="{{ '/assets/learning-progress.js' | relative_url }}" defer></script>
+{% include supabase-config.html %}
+{% include pathway-catalog-data.html %}
+<script type="module" src="{{ '/assets/learning-progress.js' | relative_url }}"></script>

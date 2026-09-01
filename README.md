@@ -4,7 +4,7 @@ The Jekyll source for [continentalcommunist.com](https://www.continentalcommunis
 
 ## Performance release gate
 
-Every pull request and push to `main` builds the production site and measures six representative page types three times with mobile Lighthouse. The median result for every page must pass the Core Web Vitals-aligned thresholds and resource budgets before release. A separate weekly and per-change check evaluates Chrome UX Report field data when an API key is configured.
+Every pull request and push to `main` builds the production site and measures seven representative page types three times with mobile Lighthouse. The median result for every page must pass the Core Web Vitals-aligned thresholds and resource budgets before release. A separate weekly and per-change check evaluates Chrome UX Report field data when an API key is configured.
 
 The dated PageSpeed/CrUX baseline, thresholds, local commands, CI behavior, and GitHub branch-protection handoff are documented in `docs/performance.md`. Run the same checks locally with:
 
@@ -89,3 +89,22 @@ Access-token sign-in is the only enabled authentication method. Generate the tok
 `admin/config.yml` defines Article, Brief, Course, Lesson, Reading Path, Book/Text, Source, Person, Concept, Topic, Event, and Podcast as distinct product objects. Relation fields connect those objects through controlled topics, reusable source records, authors, concepts, texts, courses, lessons, and pathways. Redirects are managed as a separate operational collection.
 
 Articles and briefings include standardized publication and update metadata, reading level and time, regions and historical periods, source references, correction history, assignment-brief prompts, editorial stage, and AI-assistance disclosure. Existing pathway content and topic labels were migrated into CMS-managed collections so the editor is the source of truth rather than a parallel interface.
+
+## Learner accounts
+
+Supabase authentication adds optional email/password learner accounts while
+leaving all reading and browser-based progress available without registration.
+Signed-in learners receive a private profile, cross-device pathway progress,
+password recovery, and a dashboard at `/account/`.
+
+The database migration in `supabase/migrations/` creates profiles, pathway
+enrollments, and completion records with owner-only row-level security. Public
+project values stay blank in `_config.yml` until the migration and Auth redirect
+settings are in place; a service-role key must never be committed. The complete
+connection and test checklist is documented in `docs/learner-platform.md`.
+
+Validate the schema and integration contract with:
+
+```sh
+npm run validate:learner
+```

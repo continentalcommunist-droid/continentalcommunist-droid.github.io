@@ -43,6 +43,13 @@
     href="{{ '/assets/main.css' | relative_url }}"
   >
 
+  {%- if page.layout == 'account' %}
+  <link
+    rel="stylesheet"
+    href="{{ '/assets/account.css' | relative_url }}"
+  >
+  {%- endif %}
+
   {%- feed_meta -%}
 
   {%- if jekyll.environment == 'production' and site.google_analytics -%}

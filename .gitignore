@@ -5,3 +5,4 @@ tmp/
 .lighthouseci/
 node_modules/
 performance-results/
+supabase/.temp/

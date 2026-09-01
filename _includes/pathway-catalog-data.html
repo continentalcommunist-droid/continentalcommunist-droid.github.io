@@ -1,0 +1,14 @@
+<script id="cc-pathway-catalog-data" type="application/json">
+[
+  {% assign cc_sorted_pathways = site.reading_paths | sort: "number" %}
+  {% for cc_pathway in cc_sorted_pathways %}
+    {% assign cc_pathway_total = cc_pathway.readings.size | plus: cc_pathway.lectures.size | plus: 1 %}
+    {
+      "slug": {{ cc_pathway.slug | jsonify }},
+      "title": {{ cc_pathway.title | jsonify }},
+      "url": {{ '/learn/pathways/' | append: cc_pathway.slug | append: '/' | relative_url | jsonify }},
+      "totalSteps": {{ cc_pathway_total | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+</script>

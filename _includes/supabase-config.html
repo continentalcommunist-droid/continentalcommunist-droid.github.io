@@ -1,0 +1,7 @@
+<script id="cc-supabase-config" type="application/json">
+{
+  "url": {{ site.supabase.url | default: '' | jsonify }},
+  "publishableKey": {{ site.supabase.publishable_key | default: '' | jsonify }},
+  "libraryVersion": {{ site.supabase.javascript_version | default: '2.112.4' | jsonify }}
+}
+</script>

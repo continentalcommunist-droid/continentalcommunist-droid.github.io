@@ -11,7 +11,7 @@ description: Build understanding step by step through guided reading, courses, c
 
 The Reading List is now organized into nine guided pathways covering Marxist fundamentals, an intensive Marxist-Leninist core curriculum, political economy, American institutions, labor history, race and Reconstruction, markets and planning, technology, and global development.
 
-Each pathway includes a level, estimated effort, prerequisites, scoped readings, written lecture guides, discussion questions, a working glossary, and private browser-based progress tracking.
+Each pathway includes a level, estimated effort, prerequisites, scoped readings, written lecture guides, discussion questions, a working glossary, and private progress tracking. An optional learner account synchronizes progress across devices; study without an account remains available.
 
 [Explore all learning pathways →]({{ '/learn/pathways/' | relative_url }})
 

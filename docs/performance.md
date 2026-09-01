@@ -47,7 +47,7 @@ The field gate requires both measured origin form factors to pass. It also requi
 
 ## Representative coverage
 
-`performance/targets.json` covers the homepage, a long-form article, Reading List, a learning pathway, a controlled topic hub, and faceted search. Add a target whenever a new layout, rendering strategy, or materially different interactive experience ships.
+`performance/targets.json` covers the homepage, a long-form article, Reading List, a learning pathway, the learner account, a controlled topic hub, and faceted search. Add a target whenever a new layout, rendering strategy, or materially different interactive experience ships.
 
 ## Local verification
 

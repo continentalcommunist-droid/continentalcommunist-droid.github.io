@@ -1,0 +1,234 @@
+---
+layout: default
+---
+
+{% assign cc_supabase_configured = false %}
+{% if site.supabase.url and site.supabase.url != '' and site.supabase.publishable_key and site.supabase.publishable_key != '' %}
+  {% assign cc_supabase_configured = true %}
+{% endif %}
+
+<article class="cc-account" data-account-root>
+  <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ '/learn/' | relative_url }}">Learn</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ page.title }}</span>
+  </nav>
+
+  <header class="cc-account-header">
+    <div class="cc-section-kicker">Learner account</div>
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.description }}</p>
+  </header>
+
+  <div
+    class="cc-account-message"
+    data-account-message
+    role="status"
+    aria-live="polite"
+    hidden
+  ></div>
+
+  <section class="cc-account-setup" data-account-unconfigured{% if cc_supabase_configured %} hidden{% endif %}>
+    <div>
+      <div class="cc-section-kicker">Connection required</div>
+      <h2>The learner database is ready to connect.</h2>
+      <p>
+        Account controls remain disabled until the Supabase migration is applied
+        and the project's public URL and publishable key are added to the site
+        configuration. Anonymous pathway progress continues to work normally.
+      </p>
+    </div>
+    <a href="{{ '/learn/pathways/' | relative_url }}">Continue without an account →</a>
+  </section>
+
+  <section class="cc-auth-guest" data-auth-guest{% unless cc_supabase_configured %} hidden{% endunless %} aria-labelledby="account-access-title">
+    <div class="cc-auth-intro">
+      <div class="cc-section-kicker">Optional synchronization</div>
+      <h2 id="account-access-title">Take your study record across devices.</h2>
+      <p>
+        An account synchronizes pathway completion and keeps your learner
+        profile private. Reading remains public and an account is never required.
+      </p>
+      <ul>
+        <li>Resume a pathway on another browser or device.</li>
+        <li>See every pathway in one private dashboard.</li>
+        <li>Keep browser progress if you prefer not to register.</li>
+      </ul>
+    </div>
+
+    <div class="cc-auth-forms">
+      <form class="cc-auth-card" data-sign-in-form>
+        <h3>Sign in</h3>
+        <label for="account-sign-in-email">Email</label>
+        <input
+          id="account-sign-in-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          inputmode="email"
+          required
+        >
+
+        <label for="account-sign-in-password">Password</label>
+        <input
+          id="account-sign-in-password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          minlength="10"
+          required
+        >
+
+        <button type="submit">Sign in</button>
+        <button class="cc-auth-text-button" type="button" data-show-reset>
+          Forgot your password?
+        </button>
+      </form>
+
+      <form class="cc-auth-card" data-sign-up-form>
+        <h3>Create an account</h3>
+        <label for="account-sign-up-name">Display name</label>
+        <input
+          id="account-sign-up-name"
+          name="display_name"
+          type="text"
+          autocomplete="name"
+          minlength="1"
+          maxlength="80"
+          required
+        >
+
+        <label for="account-sign-up-email">Email</label>
+        <input
+          id="account-sign-up-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          inputmode="email"
+          required
+        >
+
+        <label for="account-sign-up-password">Password</label>
+        <input
+          id="account-sign-up-password"
+          name="password"
+          type="password"
+          autocomplete="new-password"
+          minlength="10"
+          aria-describedby="account-password-help"
+          required
+        >
+        <small id="account-password-help">Use at least 10 characters.</small>
+
+        <button type="submit">Create account</button>
+      </form>
+    </div>
+
+    <form class="cc-auth-card cc-auth-reset" data-reset-request-form hidden>
+      <h3>Reset your password</h3>
+      <p>We will email you a secure recovery link.</p>
+      <label for="account-reset-email">Email</label>
+      <input
+        id="account-reset-email"
+        name="email"
+        type="email"
+        autocomplete="email"
+        inputmode="email"
+        required
+      >
+      <div class="cc-auth-inline-actions">
+        <button type="submit">Send recovery link</button>
+        <button class="cc-auth-text-button" type="button" data-hide-reset>Cancel</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="cc-account-dashboard" data-auth-user hidden aria-labelledby="learner-dashboard-title">
+    <div class="cc-dashboard-heading">
+      <div>
+        <div class="cc-section-kicker">Signed in</div>
+        <h2 id="learner-dashboard-title">Welcome back, <span data-learner-name>Learner</span>.</h2>
+        <p data-learner-email></p>
+      </div>
+      <button class="cc-auth-secondary-button" type="button" data-sign-out>Sign out</button>
+    </div>
+
+    <div class="cc-account-grid">
+      <section class="cc-account-panel" aria-labelledby="learner-progress-title">
+        <div class="cc-account-panel-heading">
+          <div>
+            <div class="cc-section-kicker">Synced progress</div>
+            <h3 id="learner-progress-title">Your pathways</h3>
+          </div>
+          <span data-sync-summary>Loading…</span>
+        </div>
+        <div class="cc-dashboard-pathways" data-dashboard-pathways></div>
+        <a class="cc-account-panel-link" href="{{ '/learn/pathways/' | relative_url }}">
+          Explore all pathways →
+        </a>
+      </section>
+
+      <section class="cc-account-panel" aria-labelledby="learner-profile-title">
+        <div class="cc-section-kicker">Private profile</div>
+        <h3 id="learner-profile-title">Account details</h3>
+        <form data-profile-form>
+          <label for="learner-display-name">Display name</label>
+          <input
+            id="learner-display-name"
+            name="display_name"
+            type="text"
+            minlength="1"
+            maxlength="80"
+            required
+          >
+
+          <label for="learner-timezone">Time zone</label>
+          <input
+            id="learner-timezone"
+            name="timezone"
+            type="text"
+            minlength="1"
+            maxlength="80"
+            aria-describedby="learner-timezone-help"
+            required
+          >
+          <small id="learner-timezone-help">Used for future study schedules and reminders.</small>
+
+          <button type="submit">Save profile</button>
+        </form>
+      </section>
+    </div>
+
+    <form class="cc-account-panel cc-password-update" data-password-update-form hidden>
+      <div class="cc-section-kicker">Account recovery</div>
+      <h3>Choose a new password</h3>
+      <label for="account-new-password">New password</label>
+      <input
+        id="account-new-password"
+        name="password"
+        type="password"
+        autocomplete="new-password"
+        minlength="10"
+        required
+      >
+      <button type="submit">Update password</button>
+    </form>
+  </section>
+
+  <aside class="cc-account-privacy">
+    <strong>Privacy boundary</strong>
+    <p>
+      The learner database stores an account identifier, display name, time
+      zone, pathway enrollments, and completed step identifiers. It does not
+      store reading notes, browsing history, political opinions, or public
+      profile data. Database policies restrict every learner record to its owner.
+    </p>
+  </aside>
+</article>
+
+{% include supabase-config.html %}
+{% include pathway-catalog-data.html %}
+<script type="module" src="{{ '/assets/account.js' | relative_url }}"></script>
+<script type="module" src="{{ '/assets/learning-progress.js' | relative_url }}"></script>

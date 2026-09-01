@@ -32,9 +32,10 @@ layout: default
     <aside class="cc-progress-privacy" aria-label="About progress tracking">
       <strong>Private by design</strong>
       <p>
-        Your progress is stored only in this browser. No account is required,
-        and nothing is sent to Continental Communist.
+        Progress stays in this browser by default. A private learner account
+        can synchronize it across devices, but no account is required.
       </p>
+      <a href="{{ '/account/' | relative_url }}">My learning →</a>
     </aside>
   </div>
 
@@ -80,4 +81,6 @@ layout: default
 
 </article>
 
-<script src="{{ '/assets/learning-progress.js' | relative_url }}" defer></script>
+{% include supabase-config.html %}
+{% include pathway-catalog-data.html %}
+<script type="module" src="{{ '/assets/learning-progress.js' | relative_url }}"></script>

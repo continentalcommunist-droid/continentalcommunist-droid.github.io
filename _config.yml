@@ -27,6 +27,15 @@ google_site_verification: ""
 
 author: Continental Communist
 
+# Public Supabase browser configuration. These values are intentionally blank
+# until a project is created and its migration is applied. The publishable key
+# is safe to expose in a browser only because every learner table is protected
+# by the row-level security policies in supabase/migrations/.
+supabase:
+  url: "https://ginfntjdmehgpjlsccni.supabase.co"
+  publishable_key: "sb_publishable_4mZVpheO4wqKwHa9ym6MVw_VCkIk4A8"
+  javascript_version: "2.112.4"
+
 theme: minima
 
 permalink: /:year/:month/:day/:title/
@@ -50,6 +59,7 @@ exclude:
   - node_modules
   - performance
   - scripts
+  - supabase
   - tmp
   - vendor
   - Gemfile

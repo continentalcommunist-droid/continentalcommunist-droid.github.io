@@ -46,7 +46,10 @@ layout: default
     <div>
       <div class="cc-section-kicker">Your progress</div>
       <h2 id="path-progress-title">Continue where you left off.</h2>
-      <p>Progress is stored only in this browser and is not sent anywhere.</p>
+      <p>
+        <span data-progress-storage>Progress saved privately in this browser.</span>
+        <a href="{{ '/account/' | relative_url }}" data-progress-account-link>Sign in to sync</a>.
+      </p>
     </div>
 
     <div class="cc-path-progress-control">
@@ -269,4 +272,6 @@ layout: default
 
 </article>
 
-<script src="{{ '/assets/learning-progress.js' | relative_url }}" defer></script>
+{% include supabase-config.html %}
+{% include pathway-catalog-data.html %}
+<script type="module" src="{{ '/assets/learning-progress.js' | relative_url }}"></script>

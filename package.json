@@ -7,6 +7,7 @@
   },
   "scripts": {
     "build": "ruby scripts/build_site.rb build",
+    "validate:learner": "ruby scripts/validate_learner_platform.rb",
     "performance:ci": "node scripts/run_lighthouse.mjs",
     "performance:crux": "ruby scripts/check_crux.rb",
     "validate:formatting": "ruby scripts/validate_formatting.rb"

@@ -1,0 +1,411 @@
+---
+---
+
+.cc-account {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+.cc-account [hidden] {
+  display: none !important;
+}
+
+.cc-account-header {
+  max-width: 830px;
+  margin: 30px 0 52px;
+}
+
+.cc-account-header h1 {
+  margin: 0 0 18px;
+}
+
+.cc-account-header p {
+  max-width: 750px;
+  margin: 0;
+  color: var(--text-muted);
+  font-family: var(--serif);
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+.cc-account-message {
+  margin-bottom: 28px;
+  padding: 14px 18px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 4px solid #777780;
+  color: var(--text-body);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.cc-account-message[data-message-type="success"] {
+  border-left-color: #66945c;
+}
+
+.cc-account-message[data-message-type="error"] {
+  border-left-color: var(--accent-bright);
+}
+
+.cc-account-setup,
+.cc-auth-guest {
+  margin-bottom: 48px;
+}
+
+.cc-account-setup {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 40px;
+  align-items: end;
+  padding: 30px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+}
+
+.cc-account-setup h2,
+.cc-auth-intro h2,
+.cc-dashboard-heading h2 {
+  margin: 0 0 13px;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+}
+
+.cc-account-setup p,
+.cc-auth-intro > p,
+.cc-account-privacy p {
+  margin: 0;
+  color: var(--text-muted);
+  font-family: var(--serif);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.cc-account-setup > a {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cc-auth-guest {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.65fr) minmax(0, 1.35fr);
+  gap: 42px;
+  align-items: start;
+}
+
+.cc-auth-intro {
+  position: sticky;
+  top: 110px;
+}
+
+.cc-auth-intro ul {
+  margin: 25px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-auth-intro li {
+  position: relative;
+  margin: 0 0 12px;
+  padding-left: 22px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.cc-auth-intro li::before {
+  position: absolute;
+  left: 0;
+  color: var(--accent-bright);
+  content: "→";
+}
+
+.cc-auth-forms,
+.cc-account-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.cc-auth-card,
+.cc-account-panel {
+  margin: 0;
+  padding: 25px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+}
+
+.cc-auth-card h3,
+.cc-account-panel h3 {
+  margin: 0 0 22px;
+  font-size: 1.35rem;
+}
+
+.cc-auth-card label,
+.cc-account-panel label {
+  display: block;
+  margin: 16px 0 6px;
+  color: var(--text-muted);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cc-auth-card input,
+.cc-account-panel input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  background: #0d0d0f;
+  color: var(--text);
+  border: 1px solid #3a3a41;
+  border-radius: 2px;
+  font: inherit;
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.cc-auth-card input:focus,
+.cc-account-panel input:focus {
+  border-color: var(--accent-bright);
+  outline: 2px solid rgba(239, 68, 68, 0.18);
+  outline-offset: 1px;
+}
+
+.cc-auth-card small,
+.cc-account-panel small {
+  display: block;
+  margin-top: 7px;
+  color: #777780;
+  font-size: 0.67rem;
+  line-height: 1.45;
+}
+
+.cc-auth-card button,
+.cc-account-panel button,
+.cc-auth-secondary-button {
+  margin-top: 22px;
+  padding: 11px 15px;
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.cc-auth-card button:hover,
+.cc-auth-card button:focus,
+.cc-account-panel button:hover,
+.cc-account-panel button:focus,
+.cc-auth-secondary-button:hover,
+.cc-auth-secondary-button:focus {
+  background: var(--accent-bright);
+  border-color: var(--accent-bright);
+}
+
+.cc-auth-card button:disabled,
+.cc-account-panel button:disabled,
+.cc-auth-secondary-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.cc-auth-card .cc-auth-text-button {
+  display: block;
+  margin-top: 14px;
+  padding: 0;
+  background: transparent;
+  color: var(--text-muted);
+  border: 0;
+  font-size: 0.62rem;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 4px;
+}
+
+.cc-auth-card .cc-auth-text-button:hover,
+.cc-auth-card .cc-auth-text-button:focus {
+  background: transparent;
+  color: var(--accent-bright);
+}
+
+.cc-auth-reset {
+  grid-column: 2;
+  margin-top: 16px;
+}
+
+.cc-auth-reset p {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.cc-auth-inline-actions,
+.cc-dashboard-heading,
+.cc-account-panel-heading {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.cc-auth-inline-actions {
+  align-items: baseline;
+}
+
+.cc-dashboard-heading,
+.cc-account-panel-heading {
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.cc-dashboard-heading {
+  margin-bottom: 30px;
+}
+
+.cc-dashboard-heading p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.cc-auth-secondary-button {
+  margin: 0;
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.cc-account-grid {
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+}
+
+.cc-account-panel-heading > span {
+  color: var(--text-muted);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cc-dashboard-pathways {
+  display: grid;
+  gap: 12px;
+}
+
+.cc-dashboard-pathway,
+.cc-dashboard-empty {
+  padding: 16px;
+  background: #0e0e10;
+  border: 1px solid var(--border);
+}
+
+.cc-dashboard-pathway h4 {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+}
+
+.cc-dashboard-pathway h4 a {
+  text-decoration: none;
+}
+
+.cc-dashboard-empty {
+  margin: 0;
+  padding: 20px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.cc-account-panel-link {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.cc-password-update {
+  max-width: 480px;
+  margin-top: 16px;
+}
+
+.cc-account-privacy {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.cc-account-privacy strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-size: 0.67rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.cc-account-privacy p {
+  max-width: 840px;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+}
+
+@media screen and (max-width: 850px) {
+  .cc-auth-guest,
+  .cc-account-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cc-auth-intro {
+    position: static;
+  }
+
+  .cc-auth-reset {
+    grid-column: 1;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cc-account-header h1 {
+    font-size: clamp(2.4rem, 13vw, 3.4rem);
+  }
+
+  .cc-account-setup,
+  .cc-auth-forms {
+    grid-template-columns: 1fr;
+  }
+
+  .cc-account-setup {
+    gap: 22px;
+    padding: 22px 20px;
+  }
+
+  .cc-auth-card,
+  .cc-account-panel {
+    padding: 21px 19px;
+  }
+
+  .cc-dashboard-heading,
+  .cc-account-panel-heading {
+    display: block;
+  }
+
+  .cc-dashboard-heading .cc-auth-secondary-button,
+  .cc-account-panel-heading > span {
+    display: inline-block;
+    margin-top: 12px;
+  }
+}

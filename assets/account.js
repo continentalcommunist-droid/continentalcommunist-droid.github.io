@@ -579,6 +579,12 @@ function initializeAccount(accountRoot) {
       if (oauthError && !result.data.session) {
         announce(decodeURIComponent(oauthError).replace(/\+/g, " "), "error");
       }
+
+      const returnTo = safeContentUrl(searchParams.get("return_to"));
+      if (result.data.session && returnTo && returnTo !== "/" && returnTo !== "/account/") {
+        window.location.replace(returnTo);
+        return;
+      }
     } catch (error) {
       setHidden(unconfigured, false);
       setHidden(guest, true);
@@ -601,11 +607,14 @@ function initializeAccount(accountRoot) {
       });
       announce("Redirecting to Google…", "info");
 
+      const returnTo = safeContentUrl(new URLSearchParams(window.location.search).get("return_to"));
+      const redirectParams = returnTo && returnTo !== "/" && returnTo !== "/account/" ? { return_to: returnTo } : {};
+
       try {
         const response = await client.auth.signInWithOAuth({
           provider: "google",
           options: {
-            redirectTo: accountRedirectUrl()
+            redirectTo: accountRedirectUrl(redirectParams)
           }
         });
 
@@ -647,6 +656,15 @@ function initializeAccount(accountRoot) {
     }
 
     form.reset();
+    const returnTo = safeContentUrl(new URLSearchParams(window.location.search).get("return_to"));
+    if (returnTo && returnTo !== "/" && returnTo !== "/account/") {
+      announce("Signed in. Redirecting to your reading…", "success");
+      window.setTimeout(function () {
+        window.location.assign(returnTo);
+      }, 350);
+      return;
+    }
+
     announce("Signed in. Your progress, bookmarks, and notes are synchronized.", "success");
   });
 
@@ -676,6 +694,14 @@ function initializeAccount(accountRoot) {
     }
 
     form.reset();
+    const returnTo = safeContentUrl(new URLSearchParams(window.location.search).get("return_to"));
+    if (response.data.session && returnTo && returnTo !== "/" && returnTo !== "/account/") {
+      announce("Account created. Redirecting to your reading…", "success");
+      window.setTimeout(function () {
+        window.location.assign(returnTo);
+      }, 350);
+      return;
+    }
     announce(
       response.data.session
         ? "Account created. Your learner dashboard is ready."

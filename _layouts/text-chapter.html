@@ -40,11 +40,15 @@ layout: default
     </div>
   </aside>
 
-  <div class="cc-imported-text">
-    {{ content }}
+  <div class="cc-gated-reading" data-gated-content>
+    <div class="cc-imported-text cc-gated-body">
+      {{ content }}
+    </div>
+
+    {% include reading-gate.html type="book" %}
   </div>
 
-  <nav class="cc-text-pagination" aria-label="Text sections">
+  <nav class="cc-text-pagination" data-gated-pagination hidden aria-label="Text sections">
     {% if previous_section %}
     <a rel="prev" href="{{ previous_section.url | relative_url }}">
       <span>Previous</span>
@@ -62,3 +66,4 @@ layout: default
 </article>
 
 {% include learner-tools-assets.html %}
+<script type="module" src="{{ '/assets/reading-gate.js' | relative_url }}"></script>

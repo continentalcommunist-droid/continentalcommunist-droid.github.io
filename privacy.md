@@ -13,7 +13,7 @@ This Privacy Policy explains what information is collected when you visit [conti
 
 ## Principles
 
-1. **Reading is public and unrestricted.** You can read all articles, primary texts, historical documents, curricula, and multimedia without creating an account or providing personal details.
+1. **Free and open curriculum.** All learning pathways, lecture guides, discussion prompts, syllabi, bibliographies, and reference glossaries are 100% free and open without requiring an account. Reading full published analytical articles and accessing on-site digital library books requires creating a free learner account.
 2. **No surveillance advertising.** We do not sell user data, run third-party advertising networks, deploy tracking pixels, or monetize your reading habits.
 3. **Private by design.** Educational progress and personal notes belong to the learner. Features that track pathway completion store data locally on your device by default. Cloud synchronization is entirely optional.
 4. **Owner-only database policies.** When you choose to create a learner account, strict row-level security policies ensure your records, bookmarks, and private study notes can only be accessed by you.
@@ -22,15 +22,16 @@ This Privacy Policy explains what information is collected when you visit [conti
 
 ### 1. Anonymous Browsing and Local Storage
 
-When you explore the site without creating an account:
+When you explore the site and study learning pathways without creating an account:
 
 - We do not require registration, email addresses, or personal identifiers.
+- You can freely access course overviews, syllabi, lecture guides, discussion questions, timelines, and glossary references.
 - If you check off completed steps in learning pathways, this progress is stored directly in your browser's local storage (`localStorage`). This data stays on your machine and is never transmitted to our servers or third parties.
 - You can clear your local progress at any time through your browser settings.
 
-### 2. Learner Accounts (Optional)
+### 2. Learner Accounts
 
-If you deliberately choose to create a learner account to synchronize your study record across devices, we collect only the minimal data required to provide this service:
+Creating a free learner account unlocks access to full analytical articles, primary source texts, and digital library book editions, while enabling optional cross-device synchronization for pathway progress, bookmarks, and private research notes. We collect only the minimal data required to provide this service:
 
 - **Account credentials:** Your email address and a cryptographically hashed password (managed securely through our authentication provider, Supabase).
 - **Profile information:** A chosen display name and optional time zone for study schedules and reminders.

@@ -69,11 +69,15 @@ layout: default
 
   {% include learner-tools.html %}
 
-  <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
+  <div class="cc-gated-reading" data-gated-content>
+    <div class="post-content e-content cc-gated-body" itemprop="articleBody">
+      {{ content }}
+    </div>
+
+    {% include reading-gate.html type="article" %}
   </div>
 
-  <section class="cc-evidence" aria-labelledby="evidence-title">
+  <section class="cc-evidence" data-gated-evidence hidden aria-labelledby="evidence-title">
     <header class="cc-evidence-header">
       <div>
         <div class="cc-section-kicker">Citations and evidence</div>
@@ -228,3 +232,4 @@ layout: default
 </script>
 <script src="{{ '/assets/citations.js' | relative_url }}" defer></script>
 {% include learner-tools-assets.html %}
+<script type="module" src="{{ '/assets/reading-gate.js' | relative_url }}"></script>

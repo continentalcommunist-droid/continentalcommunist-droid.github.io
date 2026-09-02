@@ -1,3 +1,8 @@
+import {
+  accountRedirectUrl,
+  getSupabaseClient
+} from "./supabase-client.js";
+
 (function () {
   "use strict";
 
@@ -26,7 +31,7 @@
     requestedId = booksById["anwar-shaikh-capitalism-competition-conflict-crise"] ? "anwar-shaikh-capitalism-competition-conflict-crise" : allBooks[0].id;
   }
 
-  const currentBook = booksById[requestedId];
+  let currentBook = booksById[requestedId];
 
   const titleEl = document.querySelector("[data-reader-title]");
   const breadcrumbEl = document.querySelector("[data-reader-breadcrumb-title]");
@@ -42,9 +47,42 @@
   const fullscreenBtn = document.querySelector("[data-reader-fullscreen]");
   const copyCiteBtn = document.querySelector("[data-reader-copy-cite]");
   const citeStatusEl = document.querySelector("[data-reader-cite-status]");
+  const authGateEl = document.querySelector("[data-reader-auth-gate]");
+  const googleAuthBtn = document.querySelector("[data-reader-google-auth]");
+  const emailAuthLink = document.querySelector("[data-reader-auth-email-link]");
+
+  let isAuthenticated = false;
+
+  function checkLocalStorageToken() {
+    try {
+      for (let i = 0; i < window.localStorage.length; i++) {
+        const key = window.localStorage.key(i);
+        if (key && key.startsWith("sb-") && key.endsWith("-auth-token")) {
+          const val = window.localStorage.getItem(key);
+          if (val && val.indexOf("access_token") !== -1) {
+            return true;
+          }
+        }
+      }
+    } catch (e) {
+      /* ignore storage access error */
+    }
+    return false;
+  }
+
+  if (checkLocalStorageToken()) {
+    isAuthenticated = true;
+  }
+
+  function setHidden(el, hidden) {
+    if (el) {
+      el.hidden = hidden;
+    }
+  }
 
   function populateBook(book) {
     if (!book) return;
+    currentBook = book;
 
     const authorStr = (book.authors || []).join(", ");
     document.title = book.title + " — Continental Communist Library";
@@ -65,10 +103,35 @@
       metaDl.innerHTML = metaHtml;
     }
 
-    if (iframeEl) iframeEl.src = book.file_url;
-    if (fallbackLinkEl) fallbackLinkEl.href = book.file_url;
-    if (downloadLinkEl) downloadLinkEl.href = book.file_url;
-    if (openTabLinkEl) openTabLinkEl.href = book.file_url;
+    const currentUrl = window.location.pathname + "?book=" + encodeURIComponent(book.id);
+
+    if (isAuthenticated) {
+      setHidden(authGateEl, true);
+      setHidden(iframeEl, false);
+      if (iframeEl) iframeEl.src = book.file_url;
+      if (fallbackLinkEl) fallbackLinkEl.href = book.file_url;
+      if (downloadLinkEl) {
+        downloadLinkEl.href = book.file_url;
+        downloadLinkEl.removeAttribute("aria-disabled");
+      }
+      if (openTabLinkEl) {
+        openTabLinkEl.href = book.file_url;
+        openTabLinkEl.removeAttribute("aria-disabled");
+      }
+    } else {
+      setHidden(authGateEl, false);
+      setHidden(iframeEl, true);
+      if (iframeEl) iframeEl.src = "about:blank";
+
+      const authUrl = accountRedirectUrl({ return_to: currentUrl });
+      if (emailAuthLink) emailAuthLink.href = authUrl;
+      if (downloadLinkEl) {
+        downloadLinkEl.href = authUrl;
+      }
+      if (openTabLinkEl) {
+        openTabLinkEl.href = authUrl;
+      }
+    }
 
     if (volumeSelectEl) {
       let related = allBooks.filter((b) => b.category === book.category || b.collection === book.collection);
@@ -98,7 +161,7 @@
     });
   }
 
-  window.addEventListener("popstate", function (e) {
+  window.addEventListener("popstate", function () {
     const p = new URLSearchParams(window.location.search);
     const id = p.get("book") || allBooks[0].id;
     if (booksById[id]) {
@@ -108,6 +171,12 @@
 
   if (fullscreenBtn) {
     fullscreenBtn.addEventListener("click", function () {
+      if (!isAuthenticated) {
+        const currentUrl = window.location.pathname + window.location.search;
+        window.location.assign(accountRedirectUrl({ return_to: currentUrl }));
+        return;
+      }
+
       const frameContainer = document.querySelector(".cc-pdf-frame-wrapper");
       if (!frameContainer) return;
 
@@ -152,4 +221,50 @@
       );
     });
   }
+
+  // Supabase Authentication Check
+  getSupabaseClient().then(function (client) {
+    if (!client) return;
+
+    client.auth.getSession().then(function ({ data }) {
+      const isAuthed = Boolean(data && data.session && data.session.user);
+      if (isAuthed !== isAuthenticated) {
+        isAuthenticated = isAuthed;
+        populateBook(currentBook);
+      }
+    });
+
+    client.auth.onAuthStateChange(function (event, session) {
+      const isAuthed = Boolean(session && session.user);
+      if (isAuthed !== isAuthenticated) {
+        isAuthenticated = isAuthed;
+        populateBook(currentBook);
+      }
+    });
+
+    if (googleAuthBtn) {
+      googleAuthBtn.addEventListener("click", async function (e) {
+        e.preventDefault();
+        googleAuthBtn.disabled = true;
+        const currentPath = window.location.pathname + window.location.search;
+
+        try {
+          const response = await client.auth.signInWithOAuth({
+            provider: "google",
+            options: {
+              redirectTo: accountRedirectUrl({ return_to: currentPath })
+            }
+          });
+
+          if (response.error) {
+            googleAuthBtn.disabled = false;
+            console.error("Google OAuth error:", response.error);
+          }
+        } catch (err) {
+          googleAuthBtn.disabled = false;
+          console.error("Google OAuth error:", err);
+        }
+      });
+    }
+  });
 })();

@@ -50,6 +50,10 @@ layout: default
   <section class="cc-book-contents" aria-labelledby="text-contents-title">
     <div class="cc-section-kicker">Read on site</div>
     <h2 id="text-contents-title">Table of contents</h2>
+    <p class="cc-book-access-note">
+      Reading chapters on site requires a free learner account.
+      <a href="{{ '/account/' | relative_url }}?return_to={{ page.url | relative_url | url_encode }}">Sign in or create an account</a> to access all reading editions.
+    </p>
     <ol>
       {% for section in text_sections %}
       <li>

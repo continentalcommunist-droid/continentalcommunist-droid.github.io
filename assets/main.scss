@@ -6081,3 +6081,227 @@ pre {
     display: block;
   }
 }
+
+/* =========================================================
+   Gated Reading & Learner Authentication Gate
+   ========================================================= */
+
+.cc-gated-reading {
+  position: relative;
+}
+
+.cc-gated-reading:not(.is-unlocked) .cc-gated-body {
+  position: relative;
+  max-height: 220px;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 100%);
+}
+
+.cc-gated-reading:not(.is-unlocked) .cc-gated-body > *:nth-child(n+3) {
+  display: none !important;
+}
+
+.cc-gated-reading.is-unlocked .cc-gated-body {
+  max-height: none;
+  overflow: visible;
+  mask-image: none;
+  -webkit-mask-image: none;
+  user-select: auto;
+  -webkit-user-select: auto;
+}
+
+.cc-gated-reading.is-unlocked .cc-reading-gate,
+[data-reading-gate][hidden] {
+  display: none !important;
+}
+
+.cc-reading-gate {
+  position: relative;
+  z-index: 10;
+  margin: -32px auto 44px;
+  max-width: 620px;
+}
+
+.cc-reading-gate-card {
+  padding: 34px 28px;
+  background: var(--bg-elevated, #121214);
+  border: 1px solid var(--border, #29292e);
+  border-radius: 2px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+.cc-reading-gate-card .cc-section-kicker {
+  margin-bottom: 8px;
+}
+
+.cc-reading-gate-title {
+  margin: 0 0 12px;
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text, #f1f0ec);
+  line-height: 1.25;
+}
+
+.cc-reading-gate-desc {
+  max-width: 480px;
+  margin: 0 auto 22px;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--text-body, #d4d2cd);
+}
+
+.cc-reading-gate-actions {
+  max-width: 320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.cc-reading-gate-actions .cc-auth-oauth-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 0;
+  padding: 10px 16px;
+  background: #18181b;
+  color: var(--text, #f1f0ec);
+  border: 1px solid var(--border, #29292e);
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  text-transform: none;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.cc-reading-gate-actions .cc-auth-oauth-button:hover,
+.cc-reading-gate-actions .cc-auth-oauth-button:focus {
+  background: #232327;
+  border-color: #3a3a41;
+  color: #ffffff;
+}
+
+.cc-reading-gate-actions .cc-auth-oauth-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.cc-reading-gate-actions .cc-auth-divider {
+  display: flex;
+  align-items: center;
+  margin: 6px 0;
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cc-reading-gate-actions .cc-auth-divider::before,
+.cc-reading-gate-actions .cc-auth-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid var(--border);
+}
+
+.cc-reading-gate-actions .cc-auth-divider:not(:empty)::before {
+  margin-right: 12px;
+}
+
+.cc-reading-gate-actions .cc-auth-divider:not(:empty)::after {
+  margin-left: 12px;
+}
+
+.cc-reading-gate-email-link {
+  display: inline-block;
+  padding: 11px 16px;
+  background: var(--accent, #c62828);
+  color: #fff;
+  border: 1px solid var(--accent, #c62828);
+  border-radius: 2px;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.cc-reading-gate-email-link:hover,
+.cc-reading-gate-email-link:focus {
+  background: var(--accent-bright, #ef4444);
+  border-color: var(--accent-bright, #ef4444);
+  color: #fff;
+}
+
+.cc-reading-gate-footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border, #29292e);
+  font-size: 0.74rem;
+}
+
+.cc-reading-gate-footer a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+
+.cc-reading-gate-footer a:hover,
+.cc-reading-gate-footer a:focus {
+  color: var(--accent-bright);
+}
+
+.cc-book-access-note {
+  padding: 12px 16px;
+  margin-bottom: 22px;
+  background: rgba(198, 40, 40, 0.08);
+  border-left: 3px solid var(--accent);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+
+.cc-book-access-note a {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cc-book-access-note a:hover {
+  color: var(--accent-bright);
+}
+
+.cc-reader-auth-gate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 480px;
+  padding: 24px;
+  background: #0d0d0f;
+}
+
+.cc-reader-auth-gate .cc-reading-gate-card {
+  max-width: 520px;
+  width: 100%;
+}
+

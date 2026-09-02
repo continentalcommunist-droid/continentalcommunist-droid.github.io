@@ -11,17 +11,17 @@ updated: 2026-09-02
 
 If you do not agree to these terms, please discontinue use of the site.
 
-## 1. Educational Purpose and Public Access
+## 1. Educational Purpose, Curriculum and Access Levels
 
 Continental Communist is an independent publication dedicated to Marxist education, materialist analysis, historical study, and political economy.
 
-- **Public Reading:** Articles, learning pathways, reading lists, multimedia briefings, and digital library texts are provided free of charge for study, research, and non-commercial educational use.
-- **No Paywalls:** An account is never required to access our core reading library or educational materials.
+- **Free Learning Pathways:** Learning pathways, course guides, syllabi, lecture guides, discussion questions, glossaries, and study bibliographies are provided completely free of charge and do not require an account.
+- **Free Learner Accounts for Reading:** Access to full published analytical articles, primary source text chapters, and digital library books requires creating a free learner account.
 - **Informational Content:** All commentary, historical analyses, reading pathways, and educational materials are published for scholarly, informational, and critical discussion purposes.
 
 ## 2. Learner Accounts and Security
 
-You may optionally create a learner account to synchronize your study record, reading pathways, bookmarks, and private research notes across devices.
+Creating a free learner account unlocks access to published articles and digital library reading editions, while enabling you to synchronize your study record, reading pathways, bookmarks, and private research notes across devices.
 
 - **Eligibility:** You must provide accurate and lawful information when creating an account.
 - **Credential Protection:** You are responsible for safeguarding your password and managing any third-party credentials (such as Google OAuth) used to access your account. You agree not to share your account credentials with others.

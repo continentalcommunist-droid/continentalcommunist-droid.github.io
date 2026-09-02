@@ -50,6 +50,8 @@ Money capital, likewise, is not as easily pinned down by Marx as capitalists wou
 
 However, when a self proclaimed champion of the American working class is found in a hack of Twitch to make six figures a month, it calls into question the willingness of this individual to meaningfully engage in the dangerous realities of revolutionary organizing. It does not mean they are evil, but it shines light on ulterior motives for their use of capitalist live-streaming technologies.
 
+Quoting again from the Communist Manifesto: "Bourgeois Socialism attains adequate expression when, and only when, it becomes a mere figure of speech... This is the last word and the only seriously meant word of bourgeois socialism. It is summed up in the phrase: the bourgeois is a bourgeois – for the benefit of the working class."
+
 Working men have no nation. Communists are the voice of the workers of the world. The vanguard of the proletarian class to whom the future belongs. The communists of the American continent form the tip of the spear of the new world revolution. 
 
 E vinculis occidentis, stella rubra oritur. From the chains of the setting sun, a red star rises.

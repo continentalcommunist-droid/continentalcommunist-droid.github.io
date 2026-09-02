@@ -26,7 +26,7 @@ languages:
 reading_time: null
 image: /assets/images/uploads/240923-hasan-piker-vl-1024a-16c31c.jpg
 image_alt: ''
-featured: false
+featured: true
 references: []
 concepts: []
 people: []

@@ -1693,6 +1693,44 @@ h3 {
   line-height: 1.6;
 }
 
+.cc-reading-questions {
+  max-width: 790px;
+  margin: 10px 0 12px 38px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 2px solid var(--accent, #c62828);
+  border-radius: 0 2px 2px 0;
+}
+
+.cc-reading-questions-label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.cc-reading-questions ul {
+  margin: 0;
+  padding-left: 18px;
+  list-style: disc;
+}
+
+.cc-reading-questions li {
+  margin-bottom: 4px;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-body, #d4d2cd);
+}
+
+.cc-reading-questions li:last-child {
+  margin-bottom: 0;
+}
+
 .cc-learning-checklist a {
   margin-left: 38px;
 
@@ -5372,6 +5410,7 @@ pre {
   }
 
   .cc-learning-checklist p,
+  .cc-reading-questions,
   .cc-learning-checklist a {
     margin-left: 0;
   }

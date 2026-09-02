@@ -115,6 +115,9 @@ readings:
   stage: Stage I · Method, practice, and history
   schedule: Week 1
   scope: Read the complete eleven theses twice. On the second pass, write one sentence explaining the problem addressed by each thesis and give special attention to Theses II, III, VIII, and XI.
+  guiding_questions:
+  - How does Marx critique earlier materialism for viewing reality only as an "object of contemplation" rather than as sensuous human activity (praxis)?
+  - What is the significance of Thesis XI ("philosophers have only interpreted the world; the point is to change it") for materialist epistemology?
   url: "https://www.marxists.org/archive/marx/works/1845/theses/"
 - id: german-ideology
   author: Karl Marx and Friedrich Engels
@@ -122,6 +125,9 @@ readings:
   stage: Stage I · Method, practice, and history
   schedule: Week 2
   scope: Read Part I, sections A and B. Track the movement from real individuals and material production to division of labor, property, the state, ideology, and world history.
+  guiding_questions:
+  - What are the "first premises" of the materialist conception of history set forth by Marx and Engels?
+  - How do the division of labor, private property, and the state generate alienation and ideological mystification?
   url: "https://www.marxists.org/archive/marx/works/1845/german-ideology/"
 - id: critique-political-economy-preface
   author: Karl Marx
@@ -129,6 +135,9 @@ readings:
   stage: Stage I · Method, practice, and history
   schedule: Week 3
   scope: Read the complete preface. Diagram the relationship Marx proposes among productive forces, relations of production, legal and political forms, and social consciousness; then list what the passage does not claim.
+  guiding_questions:
+  - How does Marx formulate the relationship between the economic base (productive forces and relations of production) and the legal, political, and ideological superstructure?
+  - Under what material conditions does an epoch of social revolution begin, according to Marx's formula?
   url: "https://www.marxists.org/archive/marx/works/1859/critique-pol-economy/preface.htm"
 - id: ludwig-feuerbach
   author: Friedrich Engels
@@ -136,6 +145,9 @@ readings:
   stage: Stage I · Method, practice, and history
   schedule: Week 4
   scope: Read the complete text, concentrating on Parts II–IV and Engels's account of the break with Hegel, philosophical materialism, dialectics, and historical materialism.
+  guiding_questions:
+  - How did Marx and Engels extract the "rational kernel" of Hegelian dialectics while discarding its idealist philosophical shell?
+  - What does Engels mean by the transition from classical philosophy to the working-class movement as the heir to philosophical inquiry?
   url: "https://www.marxists.org/archive/marx/works/1886/ludwig-feuerbach/"
 - id: wage-labour
   author: Karl Marx
@@ -144,6 +156,9 @@ readings:
   stage: Stage II · Capitalist production and accumulation
   schedule: Week 5
   scope: Read the complete text. Reconstruct the wage relation using the distinctions among labor power, wages, commodities, and capital.
+  guiding_questions:
+  - Why is the commodity sold by the worker on the labor market "labor power" rather than "labor"?
+  - How does capital accumulate by continually reinvesting surplus value extracted from living labor?
   url: "https://www.marxists.org/archive/marx/works/1847/wage-labour/"
 - id: value-price-profit
   author: Karl Marx
@@ -152,6 +167,9 @@ readings:
   stage: Stage II · Capitalist production and accumulation
   schedule: Week 6
   scope: Read the complete text. Focus on Marx's argument against the claim that wage increases simply determine general price increases and on the political limits of trade-union struggle.
+  guiding_questions:
+  - How does Marx refute Citizen Weston's claim that wage increases simply determine general price increases?
+  - What is the distinction between the value of labor power (cost of subsistence) and the value created by the expenditure of that labor power?
   url: "https://www.marxists.org/archive/marx/works/1865/value-price-profit/"
 - id: capital-commodity-labor-power
   author: Karl Marx
@@ -160,6 +178,9 @@ readings:
   stage: Stage II · Capitalist production and accumulation
   schedule: Week 7
   scope: Read Chapters 1, 3, 4, 6, and 7. Define value, money, the general formula for capital, labor power, the labor process, and valorization in the order Marx introduces them.
+  guiding_questions:
+  - What is the "fetishism of commodities," and how does private exchange conceal social relations between producers as material relations between things?
+  - How does money transform into capital through the circuit M–C–M', and why must surplus value originate within the sphere of production?
   url: "https://www.marxists.org/archive/marx/works/1867-c1/"
 - id: capital-working-day-machinery
   author: Karl Marx
@@ -168,6 +189,9 @@ readings:
   stage: Stage II · Capitalist production and accumulation
   schedule: Weeks 8–9
   scope: Read Chapters 10 and 15. Keep separate notes on absolute surplus value, relative surplus value, struggle over working time, machinery, cooperation, deskilling, and resistance.
+  guiding_questions:
+  - Why is the length of the working day the result of a protracted struggle between collective capital and collective labor?
+  - How does machinery revolutionize production to extract relative surplus value while intensifying labor and subordinating the worker to the technical apparatus?
   url: "https://www.marxists.org/archive/marx/works/1867-c1/"
 - id: capital-accumulation
   author: Karl Marx
@@ -176,6 +200,9 @@ readings:
   stage: Stage II · Capitalist production and accumulation
   schedule: Week 10
   scope: Read Chapters 24–25 and Chapters 26–28, 31, and 32. Explain how reproduction, concentration, the reserve army of labor, dispossession, and colonial violence enter Marx's account of capitalist development.
+  guiding_questions:
+  - What is the "general law of capitalist accumulation," and why does capital accumulation inevitably generate an industrial reserve army of labor?
+  - What was the historical role of "primitive accumulation" (enclosures, colonial conquest, enslavement) in separating direct producers from their means of subsistence?
   url: "https://www.marxists.org/archive/marx/works/1867-c1/"
 - id: class-struggles-france
   author: Karl Marx
@@ -183,6 +210,9 @@ readings:
   stage: Stage III · Class struggle, state, and revolution
   schedule: Week 11
   scope: Read Parts I–III and Engels's 1895 introduction. List the classes and fractions Marx identifies, their political representatives, and the shifts in alliance across the sequence.
+  guiding_questions:
+  - How does Marx trace the real material interests behind the shifting parties and class fractions of the 1848 French Revolution?
+  - Why was the defeat of the June insurrection of the Paris proletariat a pivotal turning point for European class struggle?
   url: "https://www.marxists.org/archive/marx/works/1850/class-struggles-france/"
 - id: eighteenth-brumaire
   author: Karl Marx
@@ -190,6 +220,9 @@ readings:
   stage: Stage III · Class struggle, state, and revolution
   schedule: Week 12
   scope: Read the complete text. Track how class fractions, parties, inherited institutions, peasant isolation, ideology, and executive power combine in Marx's explanation of Bonapartism.
+  guiding_questions:
+  - What is "Bonapartism," and how can the executive state apparatus achieve relative autonomy when parliamentary parties represent deadlocked class fractions?
+  - How did the parcelized property of the French peasantry lead them to seek salvation in an imperial executive authority?
   url: "https://www.marxists.org/archive/marx/works/1852/18th-brumaire/"
 - id: civil-war-france
   author: Karl Marx
@@ -198,6 +231,9 @@ readings:
   stage: Stage III · Class struggle, state, and revolution
   schedule: Week 13
   scope: Read Marx's three addresses and Engels's 1891 introduction. Extract the institutional features attributed to the Commune and distinguish historical description from programmatic conclusion.
+  guiding_questions:
+  - Why does Marx declare that "the working class cannot simply lay hold of the ready-made state machinery, and wield it for its own purposes"?
+  - What structural measures adopted by the Paris Commune (recallable delegates, average workers' wages, suppression of the standing army) characterized a proletarian democracy?
   url: "https://www.marxists.org/archive/marx/works/1871/civil-war-france/"
 - id: state-revolution
   author: V. I. Lenin
@@ -205,6 +241,9 @@ readings:
   stage: Stage III · Class struggle, state, and revolution
   schedule: Weeks 13–14
   scope: Read the complete six chapters and postscript. Build a source table showing how Lenin uses specific passages from Marx and Engels to argue about the state, revolution, democracy, transition, and administration.
+  guiding_questions:
+  - How does Lenin define the state as an organ of class rule and an instrument for the reconciliation or suppression of class antagonisms?
+  - What distinguishes the revolutionary "smashing" of the bourgeois state apparatus from the eventual "withering away" of the proletarian transitional state?
   url: "https://www.marxists.org/archive/lenin/works/1917/staterev/"
 - id: gotha-programme
   author: Karl Marx
@@ -212,6 +251,9 @@ readings:
   stage: Stage III · Class struggle, state, and revolution
   schedule: Week 14 companion
   scope: Read the complete text with attention to labor, distribution, the lower and higher phases of communist society, the political transition period, and Marx's criticism of programmatic ambiguity.
+  guiding_questions:
+  - Why does Marx reject Lassalle's notion of an "undiminished proceeds of labor" and show what economic deductions must be made for social reproduction?
+  - What characterizes the political transition period between capitalist and communist society as the "revolutionary dictatorship of the proletariat"?
   url: "https://www.marxists.org/archive/marx/works/1875/gotha/"
 - id: communist-league-address
   author: Karl Marx and Friedrich Engels
@@ -219,6 +261,9 @@ readings:
   stage: Stage IV · Party, organization, and tactics
   schedule: Week 15
   scope: Read the complete March 1850 address. Identify its arguments for independent working-class organization, temporary alliances, permanent revolution, and an autonomous political program.
+  guiding_questions:
+  - Why did Marx and Engels warn against subordinating independent working-class organization to democratic petty-bourgeois reformists?
+  - What is the strategic meaning of their call for the revolution to be made "permanent"?
   url: "https://www.marxists.org/archive/marx/works/1847/communist-league/1850-ad1.htm"
 - id: what-is-to-be-done
   author: V. I. Lenin
@@ -226,6 +271,9 @@ readings:
   stage: Stage IV · Party, organization, and tactics
   schedule: Weeks 15–16
   scope: Read the preface and Chapters II–IV in full, then the conclusion. Reconstruct Lenin's polemic against Economism in its historical setting before generalizing claims about consciousness or organization.
+  guiding_questions:
+  - What is Lenin's critique of "Economism" and the worshipping of the "spontaneous" trade-union consciousness of the working class?
+  - Why is a disciplined party of professional revolutionaries necessary to bring socialist political consciousness to the mass movement?
   url: "https://www.marxists.org/archive/lenin/works/1901/witbd/"
 - id: two-tactics
   author: V. I. Lenin
@@ -233,6 +281,9 @@ readings:
   stage: Stage IV · Party, organization, and tactics
   schedule: Week 17
   scope: Read Chapters 1–6 and 12–13. Focus on class alliances, bourgeois and proletarian leadership in a democratic revolution, provisional government, and the relationship between stages of struggle.
+  guiding_questions:
+  - What was the divergence between Bolshevik and Menshevik perspectives on proletarian leadership in the 1905 bourgeois-democratic revolution?
+  - What did Lenin mean by the "revolutionary-democratic dictatorship of the proletariat and the peasantry"?
   url: "https://www.marxists.org/archive/lenin/works/1905/tactics/"
 - id: april-theses
   author: V. I. Lenin
@@ -240,6 +291,9 @@ readings:
   stage: Stage IV · Party, organization, and tactics
   schedule: Week 17 companion
   scope: Read the complete theses. Compare the concrete political judgments of April 1917 with the framework of Two Tactics and identify what changed in the situation and in Lenin's strategic conclusion.
+  guiding_questions:
+  - Why did Lenin conclude upon returning to Russia in April 1917 that the democratic revolution had passed into its socialist stage?
+  - What was the practical significance of the slogan "All Power to the Soviets" in relation to the state of dual power?
   url: "https://www.marxists.org/archive/lenin/works/1917/apr/04.htm"
 - id: left-wing-communism
   author: V. I. Lenin
@@ -247,6 +301,9 @@ readings:
   stage: Stage IV · Party, organization, and tactics
   schedule: Week 18
   scope: Read the complete text, including the chapters on trade unions, parliament, compromise, and the relation of leaders, parties, classes, and masses. Record each tactical claim together with the condition attached to it.
+  guiding_questions:
+  - Why does Lenin argue against dogmatic refusal to work inside reactionary trade unions or participate in bourgeois parliaments?
+  - How does Lenin define the dialectical relationship among leaders, party, class, and the masses?
   url: "https://www.marxists.org/archive/lenin/works/1920/lwc/"
 - id: imperialism
   author: V. I. Lenin
@@ -254,6 +311,9 @@ readings:
   stage: Stage V · Imperialism and the national-colonial question
   schedule: Weeks 19–20
   scope: Read both prefaces and all ten chapters. Summarize the empirical evidence for concentration, monopoly, banking, finance capital, capital export, world division, and inter-imperialist rivalry before evaluating the synthesis.
+  guiding_questions:
+  - How did the transition from free competition to monopoly capitalism and finance capital fundamentally transform world politics?
+  - Why does Lenin define imperialism as the "highest" and final stage of capitalism, characterized by decay, parasitism, and uneven development?
   url: "https://www.marxists.org/archive/lenin/works/1916/imp-hsc/"
 - id: socialism-war
   author: V. I. Lenin and G. Zinoviev
@@ -261,6 +321,9 @@ readings:
   stage: Stage V · Imperialism and the national-colonial question
   schedule: Week 20 companion
   scope: Read Chapters I–II and the conclusion. Distinguish the class analysis of a war from moral opposition to war in general and identify Lenin's criteria for different kinds of war.
+  guiding_questions:
+  - What criteria distinguish predatory imperialist wars from legitimate wars of national liberation or defense?
+  - What was the socialist principle of "revolutionary defeatism" in the context of inter-imperialist conflict?
   url: "https://www.marxists.org/archive/lenin/works/1915/s-w/"
 - id: right-self-determination
   author: V. I. Lenin
@@ -268,6 +331,9 @@ readings:
   stage: Stage V · Imperialism and the national-colonial question
   schedule: Week 21
   scope: Read Sections 1, 4, 8, and 10. Define the right to self-determination precisely and distinguish recognition of that right from endorsing every demand made by a national bourgeoisie.
+  guiding_questions:
+  - Why is the political right of oppressed nations to self-determination (including secession) essential for genuine proletarian internationalism?
+  - How does defending the right to self-determination differ from supporting the nationalist demands of the local bourgeoisie?
   url: "https://www.marxists.org/archive/lenin/works/1914/self-det/"
 - id: national-colonial-theses
   author: V. I. Lenin
@@ -275,6 +341,9 @@ readings:
   stage: Stage V · Imperialism and the national-colonial question
   schedule: Week 21 companion
   scope: Read the complete draft. Note Lenin's distinctions between oppressor and oppressed nations, formal equality and class abolition, proletarian internationalism and national prejudice, and alliance and political subordination.
+  guiding_questions:
+  - Why did the Communist International emphasize the strategic alliance between the Western industrial proletariat and anti-colonial liberation movements?
+  - How should communists maintain their organizational and ideological independence when participating in anti-imperialist united fronts?
   url: "https://www.marxists.org/archive/lenin/works/1920/jun/05.htm"
 - id: immediate-tasks-soviet-government
   author: V. I. Lenin
@@ -282,6 +351,9 @@ readings:
   stage: Stage VI · Socialist transition and systematization
   schedule: Week 22
   scope: Read the complete text. Track the problems of accounting, labor discipline, administration, productivity, specialist knowledge, and popular control that Lenin identifies after the seizure of power.
+  guiding_questions:
+  - How did early Soviet policy balance the technical necessity of specialist administrators and accounting with the development of workers' control?
+  - Why did Lenin stress labor discipline and productivity as the decisive factors for the victory of the new social order?
   url: "https://www.marxists.org/archive/lenin/works/1918/mar/x03.htm"
 - id: economics-politics-dictatorship
   author: V. I. Lenin
@@ -289,6 +361,9 @@ readings:
   stage: Stage VI · Socialist transition and systematization
   schedule: Week 22 companion
   scope: Read the complete short text. List the economic forms and classes Lenin argues continue to coexist during transition and explain why political struggle does not end with a change of state power.
+  guiding_questions:
+  - What coexisting economic forms (capitalism, small commodity production, socialism) did Lenin identify during the transitional dictatorship of the proletariat?
+  - Why does class struggle continue, rather than disappear, after the conquest of political power?
   url: "https://www.marxists.org/archive/lenin/works/1919/oct/30.htm"
 - id: foundations-leninism
   author: J. V. Stalin
@@ -296,6 +371,9 @@ readings:
   stage: Stage VI · Socialist transition and systematization
   schedule: Week 23
   scope: Read all nine lectures. For each section, identify the Lenin text or revolutionary problem being summarized, then mark where the formulation sharpens, compresses, or changes the earlier argument.
+  guiding_questions:
+  - How does Stalin define Leninism as "Marxism of the era of imperialism and the proletarian revolution"?
+  - What distinct contributions of Lenin on the party, peasant alliance, national question, and strategy does Stalin synthesize?
   url: "https://www.marxists.org/reference/archive/stalin/works/1924/foundations-leninism/"
 - id: dialectical-historical-materialism
   author: J. V. Stalin
@@ -303,6 +381,9 @@ readings:
   stage: Stage VI · Socialist transition and systematization
   schedule: Week 24
   scope: Read the complete text alongside your notes from Theses on Feuerbach, The German Ideology, the 1859 Preface, and Ludwig Feuerbach. Identify what is preserved, what is formalized into propositions, and what complexity is lost.
+  guiding_questions:
+  - How does this text formalize the principles of dialectical and historical materialism into distinct philosophical propositions?
+  - What aspects of Marx's open-ended method are codified or simplified in this systematization?
   url: "https://www.marxists.org/reference/archive/stalin/works/1938/09.htm"
 lectures:
 - id: praxis-history

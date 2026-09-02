@@ -56,36 +56,54 @@ readings:
   title: Economic Calculation in the Socialist Commonwealth
   scope: Read the complete essay and identify the precise institutional assumptions
     behind the calculation claim.
+  guiding_questions:
+  - What is Mises's argument that rational economic calculation is impossible without private ownership of the means of production?
+  - Why does Mises claim that markets in consumer goods cannot solve the valuation and allocation problem for capital and producer goods?
   url: "/reading-list/#ludwig-von-mises--economic-calculation-in-the-socialist-commonwealth"
 - id: hayek-knowledge
   author: Friedrich Hayek
   title: The Use of Knowledge in Society
   scope: Read the complete essay, separating claims about dispersed knowledge from
     broader political conclusions.
+  guiding_questions:
+  - How does Hayek distinguish scientific/statistical knowledge from the "knowledge of the particular circumstances of time and place"?
+  - Why does Hayek view the price system as a mechanism for communicating dispersed information, and what limits does this place on centralized planning?
   url: "/reading-list/#friedrich-hayek--the-use-of-knowledge-in-society"
 - id: lange
   author: Oskar Lange
   title: On the Economic Theory of Socialism
   scope: Focus on Lange's proposed price-adjustment mechanism and the role of public
     ownership.
+  guiding_questions:
+  - How does Lange's model of market socialism use shadow prices and trial-and-error adjustment by a Central Planning Board to replicate competitive efficiency?
+  - What advantages does Lange argue public ownership of capital provides over private capitalism regarding distribution and external social costs?
   url: "/reading-list/#oskar-lange--on-the-economic-theory-of-socialism"
 - id: nove
   author: Alec Nove
   title: The Economics of Feasible Socialism
   scope: Read the institutional proposal and Nove's criticism of comprehensive central
     planning.
+  guiding_questions:
+  - Why does Nove argue that comprehensive central planning inevitably leads to bureaucratic arbitrariness and consumer dissatisfaction?
+  - What mix of public utilities, socially owned enterprises, worker-managed cooperatives, and small private businesses does Nove propose for a "feasible" socialist economy?
   url: "/reading-list/#alec-nove--the-economics-of-feasible-socialism"
 - id: kornai
   author: János Kornai
   title: The Socialist System
   scope: Read selected chapters on the shortage economy, soft budget constraints,
     and bureaucratic coordination.
+  guiding_questions:
+  - What does Kornai mean by "soft budget constraints," and why do state socialist enterprises exhibit chronic resource-constrained suction and shortages?
+  - How does bureaucratic coordination differ systematically from market coordination in terms of power, incentives, and responsiveness to demand?
   url: "/reading-list/#jános-kornai--the-socialist-system"
 - id: schumpeter
   author: Joseph A. Schumpeter
   title: Capitalism, Socialism and Democracy
   scope: Read Parts II–IV on creative destruction, democracy, bureaucracy, and the
     viability of socialism.
+  guiding_questions:
+  - What does Schumpeter mean by "creative destruction," and why does he argue that textbook price competition is an inadequate description of capitalist dynamics?
+  - Why does Schumpeter predict that capitalism will decline not from economic failure, but from the alienation of intellectuals and the bureaucratization of enterprise?
   url: "/reading-list/#joseph-a-schumpeter--capitalism-socialism-and-democracy"
 lectures:
 - id: calculation-debate

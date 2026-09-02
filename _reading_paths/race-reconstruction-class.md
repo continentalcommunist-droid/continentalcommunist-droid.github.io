@@ -59,35 +59,53 @@ readings:
   title: Black Reconstruction in America
   scope: Read Chapters 1–7, 9, 14–17, and Du Bois's discussion of the public and psychological
     wage.
+  guiding_questions:
+  - How does Du Bois establish that the American Civil War was fundamentally a labor conflict rooted in chattel slavery as an integral component of world capitalism?
+  - How did Radical Reconstruction attempt to construct a genuine interracial democracy in the South, and why was it overthrown by capital and planter revanchism?
   url: "/reading-list/#w-e-b-du-bois--black-reconstruction-in-america"
 - id: reconstruction
   author: Eric Foner
   title: Reconstruction
   scope: Read selected chapters on emancipation, Radical Reconstruction, political
     economy, and counterrevolution.
+  guiding_questions:
+  - What was the relationship between legal emancipation, the unfulfilled struggle for land redistribution ("forty acres"), and the rise of the sharecropping system?
+  - How did Southern counterrevolution combine paramilitary terror with Northern industrial retreat to dismantle Reconstruction governments?
   url: "/reading-list/#eric-foner--reconstruction"
 - id: second-founding
   author: Eric Foner
   title: The Second Founding
   scope: Read the complete work on the Reconstruction Amendments and contested constitutional
     meaning.
+  guiding_questions:
+  - How did the Reconstruction Congress debate citizenship, civil rights, and political enfranchisement during the framing of the 13th, 14th, and 15th Amendments?
+  - How did late-19th-century Supreme Court decisions invert the Fourteenth Amendment to shield corporate monopolies while nullifying civil rights protections for Black citizens?
   url: "/reading-list/#eric-foner--the-second-founding"
 - id: jim-crow
   author: C. Vann Woodward
   title: The Strange Career of Jim Crow
   scope: Focus on the historical construction and consolidation of the Jim Crow order.
+  guiding_questions:
+  - Why does Woodward argue that legalized segregation was not an immediate or inevitable consequence of slavery's defeat, but a deliberately constructed regime of the 1890s and 1900s?
+  - How was racial disenfranchisement weaponized by Southern elites to break the threat of biracial Populist political insurgency?
   url: "/reading-list/#c-vann-woodward--the-strange-career-of-jim-crow"
 - id: racecraft
   author: Barbara J. Fields and Karen E. Fields
   title: Racecraft
   scope: Read the opening essays and track the difference between racism as practice
     and race as its explanation.
+  guiding_questions:
+  - What distinction do the authors make between racism as an objective social practice and "race" as an ideological mystification?
+  - How does the concept of "racecraft" explain the cognitive evasion where social inequality is mistakenly attributed to racial difference rather than to material practices?
   url: "/reading-list/#barbara-j-fields-and-karen-e-fields--racecraft"
 - id: fear-itself
   author: Ira Katznelson
   title: Fear Itself
   scope: Read selected chapters on Southern power, the New Deal coalition, labor policy,
     and racial exclusion.
+  guiding_questions:
+  - How did Southern segregationist Democrats in Congress exercise decisive leverage over New Deal welfare and labor legislation?
+  - Why were agricultural and domestic workers excluded from Social Security and the National Labor Relations Act, and what racialized structural consequences followed?
   url: "/reading-list/#ira-katznelson--fear-itself"
 lectures:
 - id: slavery-general-strike

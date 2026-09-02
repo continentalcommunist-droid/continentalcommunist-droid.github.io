@@ -50,18 +50,27 @@ readings:
   text: manifesto-of-the-communist-party
   scope: Read the complete text; focus on the historical account of capitalism before
     the immediate political program.
+  guiding_questions:
+  - How do Marx and Engels describe the historical emergence of the bourgeoisie as a revolutionary class, and what contradictions make capitalist production inherently unstable?
+  - How is the proletariat defined in relation to wage labor, capital, and the loss of independent means of subsistence?
   url: "/reading-list/#karl-marx-and-friedrich-engels--the-communist-manifesto"
 - id: socialism-scientific
   author: Friedrich Engels
   title: 'Socialism: Utopian and Scientific'
   scope: Read the complete text and note how Engels distinguishes moral schemes from
     historical analysis.
+  guiding_questions:
+  - What distinguishes utopian socialist schemes from the scientific materialist method developed by Marx and Engels?
+  - How does Engels explain the contradiction between socialized production and private capitalist appropriation, and why does this generate periodic economic crises?
   url: "/reading-list/#friedrich-engels--socialism-utopian-and-scientific"
 - id: wage-labour
   author: Karl Marx
   title: Wage Labour and Capital
   text: wage-labour-and-capital
   scope: Read the complete text; diagram the exchange between worker and employer.
+  guiding_questions:
+  - What is the difference between the worker selling their "labor" versus selling their "labor power" as a commodity?
+  - How does Marx show that wages and profits stand in an inverse relation to one another?
   url: "/reading-list/#karl-marx--wage-labour-and-capital"
 - id: value-price-profit
   author: Karl Marx
@@ -69,17 +78,26 @@ readings:
   text: value-price-and-profit
   scope: Read the complete text, paying special attention to wages, profit, and trade-union
     struggle.
+  guiding_questions:
+  - Why was Citizen Weston's argument that wage increases merely cause price increases incorrect according to Marx?
+  - How does Marx define surplus value, and why does the struggle over wages represent a fight over the division of the working day?
   url: "/reading-list/#karl-marx--value-price-and-profit"
 - id: brumaire
   author: Karl Marx
   title: The Eighteenth Brumaire of Louis Bonaparte
   scope: Read Parts I–III and VII as an example of materialist political analysis.
+  guiding_questions:
+  - How does Marx apply historical materialism to political events without reducing politics to a mechanical reflection of economics?
+  - Why was the French peasantry susceptible to Bonapartist authoritarianism, and how did the executive state gain relative autonomy from conflicting class factions?
   url: "/reading-list/#karl-marx--the-eighteenth-brumaire-of-louis-bonaparte"
 - id: gotha
   author: Karl Marx
   title: Critique of the Gotha Programme
   scope: Read the complete text; separate Marx's criticism of capitalism from his
     claims about transition.
+  guiding_questions:
+  - Why does Marx reject the Lassallean claim that "labor is the source of all wealth" and that society should provide an "undiminished proceeds of labor"?
+  - What differentiates the lower phase of communist society from the higher phase ("from each according to their ability, to each according to their needs")?
   url: "/reading-list/#karl-marx--critique-of-the-gotha-programme"
 lectures:
 - id: materialism-method

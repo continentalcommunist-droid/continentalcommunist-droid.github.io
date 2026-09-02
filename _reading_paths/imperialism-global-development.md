@@ -59,36 +59,54 @@ readings:
   title: Imperialism
   scope: Read Parts I and II selectively on finance, underconsumption, and overseas
     expansion.
+  guiding_questions:
+  - How does Hobson trace modern imperial expansion to domestic underconsumption and excess capital seeking profitable outlets abroad?
+  - What financial and industrial interests does Hobson identify as the primary beneficiaries and drivers of aggressive imperialist policy?
   url: "/reading-list/#j-a-hobson--imperialism"
 - id: lenin-imperialism
   author: V. I. Lenin
   title: Imperialism, the Highest Stage of Capitalism
   scope: Read the complete text and isolate each proposed mechanism rather than treating
     the label as one claim.
+  guiding_questions:
+  - What are the five core economic features of imperialism identified by Lenin, and why is finance capital distinct from earlier commercial or industrial capital?
+  - Why does Lenin argue that the territorial division of the world among capitalist powers leads inevitably to inter-imperialist war and uneven development?
   url: "/reading-list/#vladimir-lenin--imperialism-the-highest-stage-of-capitalism-1"
 - id: arrighi
   author: Giovanni Arrighi
   title: The Long Twentieth Century
   scope: Read the Introduction and selected chapters on systemic cycles of accumulation
     and financial expansion.
+  guiding_questions:
+  - What are Arrighi's four "systemic cycles of accumulation" (Genoese, Dutch, British, American), and how does each cycle alternate between material expansion and financialization?
+  - Why does a systemic phase of financial expansion signal the autumnal phase of a hegemonic power's global dominance?
   url: "/reading-list/#giovanni-arrighi--the-long-twentieth-century"
 - id: wallerstein
   author: Immanuel Wallerstein
   title: The Modern World-System
   scope: Read the theoretical introduction and selected historical chapters on core,
     periphery, and the interstate system.
+  guiding_questions:
+  - How does world-systems analysis differentiate the economic functions and labor regimes of the core, semi-periphery, and periphery?
+  - Why is the capitalist world-economy defined as a single axial division of labor integrated within a fragmented, multi-state geopolitical system?
   url: "/reading-list/#immanuel-wallerstein--the-modern-world-system"
 - id: gilpin
   author: Robert Gilpin
   title: Global Political Economy
   scope: Read selected chapters on trade, finance, multinational firms, states, and
     competing theoretical traditions.
+  guiding_questions:
+  - How do realist/mercantilist, liberal, and Marxist perspectives differ in explaining international trade, multinational corporations, and monetary regimes?
+  - What role does state hegemony play in establishing, maintaining, and eventually destabilizing an open international economic order?
   url: "/reading-list/#robert-gilpin--global-political-economy"
 - id: mao-china
   author: Maurice Meisner
   title: Mao's China and After
   scope: Read selected chapters on revolution, state formation, industrialization,
     reform, and changing class relations.
+  guiding_questions:
+  - What domestic and international conditions shaped the Chinese Communist Party's strategy of peasant-based rural mobilization and socialist state construction?
+  - How did the tensions between bureaucratic consolidation, rapid industrialization, and continuous mass mobilization manifest in the Great Leap Forward and Cultural Revolution?
   url: "/reading-list/#maurice-meisner--maos-china-and-after"
 lectures:
 - id: theories-imperialism

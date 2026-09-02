@@ -54,36 +54,54 @@ readings:
   title: Black Reconstruction in America
   scope: Read Chapters 1–7 and 17 to frame emancipation and Reconstruction as labor
     history.
+  guiding_questions:
+  - How does Du Bois analyze the enslaved Black workforce as a proletariat whose "general strike" broke the economic and military backbone of the Confederacy?
+  - What does Du Bois mean by the "public and psychological wage" paid to white workers, and how did it obstruct biracial working-class solidarity?
   url: "/reading-list/#w-e-b-du-bois--black-reconstruction-in-america"
 - id: populist-moment
   author: Lawrence Goodwyn
   title: The Populist Moment
   scope: Focus on cooperative institutions, political education, and the organizational
     culture of agrarian revolt.
+  guiding_questions:
+  - What was the "movement culture" of the Farmers' Alliance, and how did cooperative purchasing and the subtreasury plan attempt to break financial monopoly?
+  - How did the political absorption of Populism into the Democratic Party's silver campaign truncate its radical structural vision?
   url: "/reading-list/#lawrence-goodwyn--the-populist-moment"
 - id: debs
   author: Eugene V. Debs
   title: Selected Speeches and Writings
   scope: Read the Canton Speech plus selections on industrial unionism, democracy,
     and socialism.
+  guiding_questions:
+  - Why did Debs turn from craft unionism (American Railway Union) to industrial unionism and independent socialist electoral politics?
+  - In his Canton anti-war speech, how does Debs connect war to capitalist class interest, and what is his vision of socialist internationalism?
   url: "/reading-list/#eugene-v-debs--selected-speeches-and-writings"
 - id: house-labor
   author: David Montgomery
   title: The Fall of the House of Labor
   scope: Read the Introduction and selected chapters on workplace control, craft,
     and management.
+  guiding_questions:
+  - How did 19th-century craftsmen exercise autonomous workplace control and establish "the mutualism of the shop floor"?
+  - How did scientific management, Taylorism, and corporate welfare schemes strip workers of craft discretion and reorganize factory labor?
   url: "/reading-list/#david-montgomery--the-fall-of-the-house-of-labor"
 - id: we-shall-be-all
   author: Melvyn Dubofsky
   title: We Shall Be All
   scope: Follow the IWW's organizational model, social base, repression, and strategic
     limits.
+  guiding_questions:
+  - What organizational philosophy separated the Industrial Workers of the World (IWW) from the American Federation of Labor (AFL)?
+  - How did state repression (espionage acts, deportations, vigilante violence) and internal strategic disputes lead to the demise of the IWW?
   url: "/reading-list/#melvyn-dubofsky--we-shall-be-all"
 - id: state-union
   author: Nelson Lichtenstein
   title: State of the Union
   scope: Read the complete argument on labor's rise, institutionalization, and decline
     in the twentieth century.
+  guiding_questions:
+  - How did the New Deal and World War II institutionalize industrial unions within a framework of collective bargaining and labor law?
+  - Why did the postwar "labor-management accord" limit shop-floor democracy and leave unions vulnerable to deindustrialization and corporate offensive?
   url: "/reading-list/#nelson-lichtenstein--state-of-the-union"
 lectures:
 - id: emancipation-labor

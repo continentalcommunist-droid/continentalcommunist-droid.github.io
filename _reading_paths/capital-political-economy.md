@@ -52,12 +52,18 @@ readings:
   title: The Wealth of Nations
   scope: Read Book I, Chapters 1–8 and 10 to establish the classical political-economy
     background.
+  guiding_questions:
+  - How does Smith analyze the division of labor, and what does he identify as its economic causes and human limits?
+  - What does Smith mean by the distinction between value in use and value in exchange, and where does his labor theory of value encounter contradictions?
   url: "/reading-list/#adam-smith--the-wealth-of-nations"
 - id: ricardo
   author: David Ricardo
   title: On the Principles of Political Economy and Taxation
   scope: Read the Preface and Chapters 1, 5, 6, and 7 on value, wages, profit, and
     trade.
+  guiding_questions:
+  - How does Ricardo modify Smith's theory of value to argue that exchangeable value is determined by the quantity of labor embodied in commodities?
+  - How does Ricardo explain the inverse movement of profits and wages, and what role does agricultural land rent play in his model?
   url: "/reading-list/#david-ricardo--on-the-principles-of-political-economy-and-taxation"
 - id: capital-one
   author: Karl Marx
@@ -65,23 +71,36 @@ readings:
   text: capital-volume-one
   scope: Read Chapters 1, 4–10, 15, 25, and 26–32; use other chapters as reference
     on the first pass.
+  guiding_questions:
+  - How does Marx derive the value-form and money from the elementary relation between commodities?
+  - What is the distinction between absolute and relative surplus value, and how does the development of machinery transform the labor process?
+  - What constitutes the "general law of capitalist accumulation," and why does capital necessarily generate a relative surplus population?
   url: "/reading-list/#karl-marx--capital-volume-i"
 - id: capital-two
   author: Karl Marx
   title: Capital, Volume II
   scope: Read Parts I and III selectively, emphasizing turnover and social reproduction.
+  guiding_questions:
+  - What are the three circuits of capital (money capital, productive capital, commodity capital), and why must continuity be maintained across all three?
+  - How do the reproduction schemes (Department I for means of production, Department II for consumption goods) demonstrate the conditions and fragile balance required for simple and expanded reproduction?
   url: "/reading-list/#karl-marx--capital-volume-ii"
 - id: capital-three
   author: Karl Marx
   title: Capital, Volume III
   scope: Read Parts I, III, and V selectively on profit, crisis tendencies, interest,
     and credit.
+  guiding_questions:
+  - How does the transformation of surplus value into profit obscure the exploitative origin of capitalist wealth?
+  - What is the tendency of the rate of profit to fall, what counteracting factors modify its operation, and how does the credit system interact with crisis tendencies?
   url: "/reading-list/#karl-marx--capital-volume-iii"
 - id: grundrisse
   author: Karl Marx
   title: Grundrisse
   scope: Read the Introduction and the Fragment on Machines as a bridge to method
     and technological change.
+  guiding_questions:
+  - What methodological approach does Marx establish in the 1857 Introduction regarding "the method of political economy" moving from abstract to concrete?
+  - In the "Fragment on Machines," how does the development of fixed capital and the "general intellect" create a contradiction with labor time as the measure of value?
   url: "/reading-list/#karl-marx--grundrisse"
 lectures:
 - id: reading-capital

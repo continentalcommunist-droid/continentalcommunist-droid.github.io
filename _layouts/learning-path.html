@@ -187,6 +187,16 @@ layout: default
             </span>
           </label>
           <p>{{ reading.scope }}</p>
+          {% if reading.guiding_questions and reading.guiding_questions != empty %}
+          <div class="cc-reading-questions">
+            <span class="cc-reading-questions-label">Guiding questions:</span>
+            <ul>
+              {% for question in reading.guiding_questions %}
+              <li>{{ question }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
           {% if reading_text %}
           <a href="{{ reading_text.url | relative_url }}">Read on site <span aria-hidden="true">→</span></a>
           {% elsif reading.url contains '://' %}

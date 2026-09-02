@@ -58,36 +58,54 @@ readings:
   title: Fragment on Machines
   scope: Read the selected Grundrisse fragment on machinery, general intellect, and
     the social character of production.
+  guiding_questions:
+  - How does Marx explain the transformation of the tool from an instrument wielded by a living worker into an automated system that subsumes the worker?
+  - What does Marx mean when he argues that capital, by reducing necessary labor time to a minimum while positing labor time as the sole measure of wealth, creates a contradiction pointing toward its own dissolution?
   url: "/reading-list/#karl-marx--fragment-on-machines-in-the-grundrisse"
 - id: labor-monopoly
   author: Harry Braverman
   title: Labor and Monopoly Capital
   scope: Read Parts I and II on the separation of conception from execution and the
     transformation of skill.
+  guiding_questions:
+  - How does Braverman define the Taylorist principle of the "separation of conception from execution" in modern capitalist production?
+  - What is the process of deskilling, and why does Braverman argue it extends beyond industrial factory floors into clerical, service, and technical work?
   url: "/reading-list/#harry-braverman--labor-and-monopoly-capital"
 - id: forces-production
   author: David F. Noble
   title: Forces of Production
   scope: Focus on the social choices embedded in industrial automation and numerical
     control.
+  guiding_questions:
+  - How does Noble demonstrate that numerical control (N/C) automation in machine shops was chosen over record-playback systems to consolidate managerial control rather than for purely technical efficiency?
+  - What decisive role did military funding (U.S. Air Force) play in subsidizing and enforcing specific technological designs in American industry?
   url: "/reading-list/#david-f-noble--forces-of-production"
 - id: industrial-state
   author: John Kenneth Galbraith
   title: The New Industrial State
   scope: Read selected chapters on planning, the technostructure, and the requirements
     of large-scale production.
+  guiding_questions:
+  - What is the "technostructure," and why does Galbraith argue it replaced the individual entrepreneur in modern corporate planning systems?
+  - How do giant corporations manage consumer demand and insulate themselves from market price competition through long-range planning?
   url: "/reading-list/#john-kenneth-galbraith--the-new-industrial-state"
 - id: smart-machine
   author: Shoshana Zuboff
   title: In the Age of the Smart Machine
   scope: Compare automation that deskills with informatization that can expand knowledge
     and discretion.
+  guiding_questions:
+  - What is the fundamental difference between technology that merely automates (replaces human labor) and technology that informatizes (generates real-time reflective data about work)?
+  - How does workplace informatization disrupt traditional supervisory authority and create new imperatives for electronic surveillance?
   url: "/reading-list/#shoshana-zuboff--in-the-age-of-the-smart-machine"
 - id: second-machine-age
   author: Erik Brynjolfsson and Andrew McAfee
   title: The Second Machine Age
   scope: Read the core argument on digital technologies, productivity, skills, and
     distribution alongside the pathway's critical texts.
+  guiding_questions:
+  - What do the authors mean by the "exponential, digital, and recombinant" trajectory of modern computing and artificial intelligence?
+  - Why has rapid digital productivity growth coincided with increasing income inequality and wage stagnation for non-supervisory workers?
   url: "/reading-list/#erik-brynjolfsson-and-andrew-mcafee--the-second-machine-age"
 lectures:
 - id: machine-question

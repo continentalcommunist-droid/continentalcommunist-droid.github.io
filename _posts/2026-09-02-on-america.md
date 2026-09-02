@@ -27,7 +27,16 @@ reading_time: null
 image: /assets/images/uploads/240923-hasan-piker-vl-1024a-16c31c.jpg
 image_alt: ''
 featured: true
-references: []
+references:
+  - source: manifesto-of-the-communist-party
+    book_source: ''
+    custom_source: ''
+    custom_title: Manifesto of the Communist Party
+    custom_author: Karl Marx, Friedrich Engels
+    custom_url: ''
+    evidence_role: Direct evidence
+    locator: ''
+    note: Referenced throughout the piece.
 concepts: []
 people: []
 corrections: []
@@ -40,7 +49,7 @@ America is the land of the setting sun. The Occident, to use Latin. It is the we
 
 The ignorance of the United States at first appears puzzling. With the preponderance of literature now available to all, there is no longer an absence of the means of knowledge. The lack, rather, lies in an acute disassociation by the proponents of socialism from the scientific necessity therein.
 
-Scientific socialism was expounded by Karl Marx and Frederich Engels as a response to the utopian socialism of nineteenth century Europe. Many philosophers to whom they pay homage in their texts are nonetheless used by Marx in contrast to the Marxist project of dialectical materialism, rescuing such beliefs from the utopian, and often religious, foundations for such beliefs. By placing socialism on a scientific, or dialectical, foundation, rather than a religious or mystical foundation, they elevated the mode of inquiry therein to a modern system of thinking in which ideas can be challenged, improved, and sharpened.
+Scientific socialism was expounded by Karl Marx and Friedrich Engels as a response to the utopian socialism of nineteenth century Europe. Many philosophers to whom they pay homage in their texts are nonetheless used by Marx in contrast to the Marxist project of dialectical materialism, rescuing such beliefs from the utopian, and often religious, foundations for such beliefs. By placing socialism on a scientific, or dialectical, foundation, rather than a religious or mystical foundation, they elevated the mode of inquiry therein to a modern system of thinking in which ideas can be challenged, improved, and sharpened.
 
 In the Manifesto of the Communist Party, Marx speaks to this phenomenon. “Nothing is easier than to give Christian asceticism a Socialist tinge. Has not Christianity declaimed against private property, against marriage, against the State? Has it not preached in the place of these, charity and poverty, celibacy and mortification of the flesh, monastic life and Mother Church? Christian Socialism is but the holy water with which the priest consecrates the heart-burnings of the aristocrat.” 
 

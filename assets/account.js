@@ -122,7 +122,10 @@ function initializeAccount(accountRoot) {
     const form = accountRoot.querySelector("[data-profile-form]");
     const displayName = form.elements.display_name;
     const timezone = form.elements.timezone;
-    const fallbackName = (user.user_metadata || {}).display_name
+    const userMeta = user.user_metadata || {};
+    const fallbackName = userMeta.display_name
+      || userMeta.full_name
+      || userMeta.name
       || (user.email || "Learner").split("@")[0]
       || "Learner";
     const fallbackTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
@@ -567,12 +570,62 @@ function initializeAccount(accountRoot) {
           renderSession(session);
         }, 0);
       });
+
+      const searchParams = new URLSearchParams(window.location.search);
+      const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+      const oauthError = searchParams.get("error_description") || hashParams.get("error_description")
+        || searchParams.get("error") || hashParams.get("error");
+
+      if (oauthError && !result.data.session) {
+        announce(decodeURIComponent(oauthError).replace(/\+/g, " "), "error");
+      }
     } catch (error) {
       setHidden(unconfigured, false);
       setHidden(guest, true);
       announce("The account service could not be reached. Please try again later.", "error");
     }
   }
+
+  accountRoot.querySelectorAll("[data-google-auth]").forEach(function (button) {
+    button.addEventListener("click", async function (event) {
+      event.preventDefault();
+
+      if (!client) {
+        announce("The account service is initializing. Please try again in a moment.", "info");
+        return;
+      }
+
+      const allGoogleButtons = accountRoot.querySelectorAll("[data-google-auth]");
+      allGoogleButtons.forEach(function (btn) {
+        btn.disabled = true;
+      });
+      announce("Redirecting to Google…", "info");
+
+      try {
+        const response = await client.auth.signInWithOAuth({
+          provider: "google",
+          options: {
+            redirectTo: accountRedirectUrl()
+          }
+        });
+
+        if (response.error) {
+          allGoogleButtons.forEach(function (btn) {
+            btn.disabled = false;
+          });
+          announce(response.error.message, "error");
+        }
+      } catch (error) {
+        allGoogleButtons.forEach(function (btn) {
+          btn.disabled = false;
+        });
+        announce(
+          error && error.message ? error.message : "Google sign-in could not be initiated.",
+          "error"
+        );
+      }
+    });
+  });
 
   accountRoot.querySelector("[data-sign-in-form]").addEventListener("submit", async function (event) {
     event.preventDefault();

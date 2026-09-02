@@ -23,6 +23,7 @@ rights_basis: "explicit_cc_by_sa_2_0"
 rights_reviewed: "2026-09-01"
 rights: "W. Lough translation from Marx/Engels Selected Works; this MIA edition is licensed under Creative Commons Attribution-ShareAlike 2.0."
 translators: ["W. Lough"]
+source: "theses-on-feuerbach"
 imported: true
 ---
 

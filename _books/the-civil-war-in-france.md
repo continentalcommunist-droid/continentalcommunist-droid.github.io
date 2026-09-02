@@ -23,6 +23,7 @@ rights_basis: "public_domain_source_and_mia_cc_by_sa_2_0"
 rights_reviewed: "2026-09-01"
 rights: "English edition of 1871 is a public-domain source edition. MIA transcription and markup are reused under Creative Commons Attribution-ShareAlike 2.0."
 translators: []
+source: "the-civil-war-in-france"
 imported: true
 ---
 

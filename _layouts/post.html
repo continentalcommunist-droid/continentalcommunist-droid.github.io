@@ -121,8 +121,12 @@ layout: default
     {% if page.references and page.references != empty %}
     <div class="cc-source-list" aria-label="Article references">
       {% for reference in page.references %}
-        {% assign source = site.sources | where: "slug", reference.source | first %}
-        {% if source %}{% include source-card.html source=source reference=reference number=forloop.index %}{% endif %}
+        {% assign ref_slug = reference.source | default: reference.book_source | default: reference.custom_source %}
+        {% assign source = site.sources | where: "slug", ref_slug | first %}
+        {% if source == nil %}
+          {% assign source = site.books | where: "slug", ref_slug | first %}
+        {% endif %}
+        {% include source-card.html source=source reference=reference number=forloop.index %}
       {% endfor %}
     </div>
     {% else %}
@@ -203,18 +207,26 @@ layout: default
   },
   "references": [
     {% for reference in page.references %}
-      {% assign source = site.sources | where: "slug", reference.source | first %}
+      {% assign ref_slug = reference.source | default: reference.book_source | default: reference.custom_source %}
+      {% assign source = site.sources | where: "slug", ref_slug | first %}
+      {% if source == nil %}
+        {% assign source = site.books | where: "slug", ref_slug | first %}
+      {% endif %}
+      {% assign cite_title = source.title | default: reference.custom_title | default: reference.title | default: ref_slug %}
+      {% assign cite_authors = source.authors | default: reference.custom_author %}
+      {% assign cite_date = source.date | default: source.publication_year %}
+      {% assign cite_url = source.source_url | default: reference.custom_url | default: source.url %}
       {
         "kind": "source",
-        "cite_key": {{ source.cite_key | jsonify }},
-        "source_type": {{ source.source_type | jsonify }},
-        "title": {{ source.title | jsonify }},
-        "authors": {{ source.authors | jsonify }},
+        "cite_key": {{ source.cite_key | default: ref_slug | jsonify }},
+        "source_type": {{ source.source_type | default: source.text_type | default: "Book" | jsonify }},
+        "title": {{ cite_title | jsonify }},
+        "authors": {{ cite_authors | jsonify }},
         "organizational_author": {{ source.organizational_author | jsonify }},
         "publication": {{ source.publication | jsonify }},
         "publisher": {{ source.publisher | jsonify }},
-        "date": {{ source.date | date: "%Y-%m-%d" | jsonify }},
-        "url": {{ source.source_url | jsonify }},
+        "date": {{ cite_date | jsonify }},
+        "url": {{ cite_url | jsonify }},
         "doi": {{ source.doi | jsonify }},
         "isbn": {{ source.isbn | jsonify }},
         "access_date": {{ source.access_date | jsonify }},

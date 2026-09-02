@@ -148,6 +148,19 @@ collections:
             value_field: "{{slug}}"
             display_fields: [title, authors, organizational_author, date]
             search_fields: [title, authors, organizational_author, publication, doi, isbn]
+            required: false
+          - label: Primary Text
+            name: book_source
+            widget: relation
+            collection: books
+            value_field: "{{slug}}"
+            display_fields: [title, authors, publication_year]
+            search_fields: [title, authors]
+            required: false
+          - { label: Custom Source Identifier, name: custom_source, widget: string, required: false, hint: Citation key or slug if citing an external text. }
+          - { label: Custom Source Title, name: custom_title, widget: string, required: false, hint: Title or citation string if referencing an external text. }
+          - { label: Custom Source Author, name: custom_author, widget: string, required: false }
+          - { label: Custom Source URL, name: custom_url, widget: string, required: false }
           - { label: Evidence Role, name: evidence_role, widget: select, options: [Direct evidence, Primary context, Background / context, Counterevidence, Method / data, Further reading] }
           - { label: Pinpoint / Locator, name: locator, widget: string, required: false, hint: Page, chapter, section, timestamp, table, or dataset field. }
           - { label: Evidence Note, name: note, widget: text, hint: State what this source establishes and any important limitation. }
@@ -286,15 +299,36 @@ collections:
             display_fields: [title, authors, date]
             search_fields: [title, authors, publication]
             multiple: true
-      - label: Sources / References
-        name: sources
-        widget: relation
-        collection: sources
-        value_field: "{{slug}}"
-        display_fields: [title, authors, date]
-        search_fields: [title, authors, publication, doi]
-        multiple: true
+      - label: Structured References
+        name: references
+        widget: list
         required: false
+        summary: "{{fields.source}} — {{fields.evidence_role}}"
+        hint: Add normalized sources in citation order. Explain how each source supports, contextualizes, or challenges the briefing.
+        fields:
+          - label: Source Record
+            name: source
+            widget: relation
+            collection: sources
+            value_field: "{{slug}}"
+            display_fields: [title, authors, organizational_author, date]
+            search_fields: [title, authors, organizational_author, publication, doi, isbn]
+            required: false
+          - label: Primary Text
+            name: book_source
+            widget: relation
+            collection: books
+            value_field: "{{slug}}"
+            display_fields: [title, authors, publication_year]
+            search_fields: [title, authors]
+            required: false
+          - { label: Custom Source Identifier, name: custom_source, widget: string, required: false, hint: Citation key or slug if citing an external text. }
+          - { label: Custom Source Title, name: custom_title, widget: string, required: false, hint: Title or citation string if referencing an external text. }
+          - { label: Custom Source Author, name: custom_author, widget: string, required: false }
+          - { label: Custom Source URL, name: custom_url, widget: string, required: false }
+          - { label: Evidence Role, name: evidence_role, widget: select, options: [Direct evidence, Primary context, Background / context, Counterevidence, Method / data, Further reading] }
+          - { label: Pinpoint / Locator, name: locator, widget: string, required: false, hint: Page, chapter, section, timestamp, table, or dataset field. }
+          - { label: Evidence Note, name: note, widget: text, hint: State what this source establishes and any important limitation. }
       - { label: Editorial Stage, name: editorial_stage, widget: select, default: Draft, options: [Commissioned, Source plan, Draft, Developmental edit, Factual / citation check, Risk / legal review, Copy edit, Accessibility / metadata check, Ready to publish, Published / monitoring] }
       - { label: Brief, name: body, widget: richtext }
 

@@ -1,21 +1,33 @@
 {% assign source = include.source %}
 {% assign reference = include.reference %}
 {% assign number = include.number %}
+{% assign card_title = source.title | default: reference.custom_title | default: reference.title | default: reference.source %}
+{% assign card_url = source.source_url | default: reference.custom_url | default: reference.url %}
+{% assign card_type = source.source_type | default: source.text_type | default: "Source / Reference" %}
+{% assign card_date = source.date | default: source.publication_year %}
+{% assign card_author = nil %}
+{% if source.authors and source.authors != empty %}
+  {% assign card_author = source.authors | join: "; " %}
+{% elsif source.organizational_author %}
+  {% assign card_author = source.organizational_author %}
+{% elsif reference.custom_author %}
+  {% assign card_author = reference.custom_author %}
+{% endif %}
 <article class="cc-source-card" id="reference-{{ number }}" data-reference-card>
   <header>
     <div class="cc-source-number" aria-hidden="true">{{ number | prepend: "0" | slice: -2, 2 }}</div>
     <div>
       <div class="cc-source-badges">
-        <span>{{ source.source_type | default: "Source" }}</span>
+        <span>{{ card_type }}</span>
         {% if source.primary_source %}<span>Primary source</span>{% endif %}
         {% if reference.evidence_role %}<span>{{ reference.evidence_role }}</span>{% endif %}
       </div>
       <h3>
-        {% if source.source_url and source.source_url != empty %}<a href="{{ source.source_url }}" itemprop="citation">{{ source.title }}</a>{% else %}{{ source.title }}{% endif %}
+        {% if card_url and card_url != empty %}<a href="{{ card_url }}" itemprop="citation">{{ card_title }}</a>{% else %}{{ card_title }}{% endif %}
       </h3>
       <p class="cc-source-byline">
-        {% if source.authors and source.authors != empty %}{{ source.authors | join: "; " }}{% elsif source.organizational_author %}{{ source.organizational_author }}{% endif %}
-        {% if source.date and source.date != empty %}<span aria-hidden="true">·</span> {{ source.date | date: "%B %-d, %Y" }}{% endif %}
+        {% if card_author %}{{ card_author }}{% endif %}
+        {% if card_date and card_date != empty %}<span aria-hidden="true">·</span> {{ card_date }}{% endif %}
       </p>
     </div>
   </header>
@@ -29,9 +41,12 @@
     {% if source.doi and source.doi != empty %}<div><dt>DOI</dt><dd><a href="https://doi.org/{{ source.doi }}">{{ source.doi }}</a></dd></div>{% endif %}
     {% if source.isbn and source.isbn != empty %}<div><dt>ISBN</dt><dd>{{ source.isbn }}</dd></div>{% endif %}
     {% if source.access_date and source.access_date != empty %}<div><dt>Accessed</dt><dd>{{ source.access_date | date: "%B %-d, %Y" }}</dd></div>{% endif %}
+    {% if source.license_name and source.license_name != empty %}<div><dt>License</dt><dd>{{ source.license_name }}</dd></div>{% endif %}
   </dl>
 
   <footer>
-    <a href="{{ source.url | relative_url }}">Full source record <span aria-hidden="true">→</span></a>
+    {% if source.url %}<a href="{{ source.url | relative_url }}">Full record <span aria-hidden="true">→</span></a>
+    {% elsif card_url %}<a href="{{ card_url }}" rel="external noopener">External source <span aria-hidden="true">→</span></a>{% endif %}
   </footer>
 </article>
+

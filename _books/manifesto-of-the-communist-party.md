@@ -23,6 +23,7 @@ rights_basis: "explicit_cc_by_sa_2_0"
 rights_reviewed: "2026-09-01"
 rights: "Samuel Moore translation prepared with Friedrich Engels, 1888; this MIA edition is licensed under Creative Commons Attribution-ShareAlike 2.0."
 translators: ["Samuel Moore","Friedrich Engels"]
+source: "manifesto-of-the-communist-party"
 imported: true
 ---
 

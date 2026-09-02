@@ -30,6 +30,10 @@ references:
     evidence_role: Primary context
     locator: Passages on unequal property, creditor and debtor interests, and faction
     note: Madison's account supplies historical context for the relationship among unequal property, factions, and political parties; it does not by itself establish the article's contemporary argument.
+  - source: capital-volume-one
+    evidence_role: Direct evidence
+    locator: Chapter 24, Section 1
+    note: Marx's analysis of capitalist accumulation and the transformation of surplus-value into capital.
 concepts: []
 people: []
 corrections: []
@@ -52,4 +56,4 @@ Five minutes later, they complain about how “woke colleges” are teaching stu
 
 Science is at work in American politics. It is democracy. God has been sidelined, not forgotten, in favor of humanity. Yet we struggle to put food on the table. We struggle to sideline the very tribalism that religious _freedom_ is supposed to surpass.
 
-A revolution of scientific socialism has never been achieved in a first-world country. That is because we have not yet understood the development of American democracy. We can’t simply chant slogans from 1850 and topple the beast. We must apply a new lens, one that sees the breakthroughs of America yet stands against the deification of money capital as the last vestige of a divine right of kings. Scientific socialism is not in opposition to America. It is the final frontier in a country that found the end of its frontier two hundred years ago at the Pacific coast.
+A revolution of scientific socialism has never been achieved in a first-world country. That is because we have not yet understood the development of American democracy. We can’t simply chant slogans from 1850 and topple the beast. We must apply a new lens, one that sees the breakthroughs of America yet stands against the deification of money capital as the last vestige of a divine right of kings.{% include cite.html source="capital-volume-one" locator="Chapter 24" %} Scientific socialism is not in opposition to America. It is the final frontier in a country that found the end of its frontier two hundred years ago at the Pacific coast.

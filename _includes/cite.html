@@ -1,7 +1,8 @@
 {%- assign citation_number = nil -%}
 {%- for reference in page.references -%}
-  {%- if reference.source == include.source -%}
+  {%- assign ref_slug = reference.source | default: reference.book_source | default: reference.custom_source -%}
+  {%- if ref_slug == include.source -%}
     {%- assign citation_number = forloop.index -%}
   {%- endif -%}
 {%- endfor -%}
-{%- if citation_number -%}<sup class="cc-inline-citation"><a href="#reference-{{ citation_number }}" aria-label="Reference {{ citation_number }}">[{{ citation_number }}]</a></sup>{%- endif -%}
+{%- if citation_number -%}<sup class="cc-inline-citation"><a href="#reference-{{ citation_number }}" aria-label="Reference {{ citation_number }}{% if include.locator %} ({{ include.locator }}){% endif %}"{% if include.locator %} title="Reference {{ citation_number }}: {{ include.locator }}"{% endif %}>[{{ citation_number }}]</a></sup>{%- endif -%}

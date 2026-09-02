@@ -122,7 +122,15 @@ source_files.each do |path|
   sources[slug] = data
 end
 
-article_files = (ROOT / "_posts").glob("*.md").sort
+book_files = (ROOT / "_books").glob("*.md").sort
+books = {}
+book_files.each do |path|
+  data, = front_matter(path)
+  slug = path.basename(".md").to_s
+  books[slug] = data
+end
+
+article_files = ((ROOT / "_posts").glob("*.md") + (ROOT / "_briefs").glob("*.md")).sort
 reference_count = 0
 inline_count = 0
 
@@ -145,10 +153,20 @@ article_files.each do |path|
       next
     end
 
-    slug = reference["source"].to_s.strip
+    slug = (reference["source"] || reference["book_source"] || reference["custom_source"]).to_s.strip
     reference_count += 1
-    errors << "#{relative}: reference #{position} has no source" if slug.empty?
-    errors << "#{relative}: reference #{position} points to unknown source #{slug.inspect}" unless sources.key?(slug)
+    if slug.empty?
+      errors << "#{relative}: reference #{position} has no source or text identifier"
+      next
+    end
+
+    has_known_record = sources.key?(slug) || books.key?(slug)
+    has_custom_definition = !reference["custom_title"].to_s.strip.empty? || !reference["title"].to_s.strip.empty? || !reference["custom_source"].to_s.strip.empty?
+
+    unless has_known_record || has_custom_definition
+      errors << "#{relative}: reference #{position} points to unknown source #{slug.inspect}"
+    end
+
     errors << "#{relative}: source #{slug.inspect} is listed more than once" if referenced_slugs.include?(slug)
     referenced_slugs << slug
 
@@ -157,7 +175,7 @@ article_files.each do |path|
     errors << "#{relative}: reference #{position} requires an evidence note" if reference["note"].to_s.strip.empty?
   end
 
-  inline_slugs = body.scan(/{%\s*include\s+cite\.html\s+source=["']([^"']+)["']\s*%}/).flatten
+  inline_slugs = body.scan(/{%\s*include\s+cite\.html\b[^%]*\bsource=["']([^"']+)["'][^%]*%}/).flatten
   inline_count += inline_slugs.length
   inline_slugs.each do |slug|
     unless referenced_slugs.include?(slug)

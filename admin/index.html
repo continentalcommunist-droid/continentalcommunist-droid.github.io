@@ -20,11 +20,181 @@
     type="image/png"
     href="/assets/images/logo.png"
   >
+  <style>
+    .cc-editor-cite-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.1em 0.45em;
+      margin: 0 0.25em;
+      border-radius: 4px;
+      background: #e2e8f0;
+      color: #0f172a;
+      font-size: 0.85em;
+      font-weight: 600;
+      vertical-align: baseline;
+      border: 1px solid #cbd5e1;
+      line-height: 1.3;
+      user-select: none;
+    }
+    .cc-editor-cite-chip:hover {
+      background: #cbd5e1;
+      border-color: #94a3b8;
+    }
+  </style>
 </head>
 
 <body>
 
+  <datalist id="cc-known-sources">
+    <option value="federalist-number-10">The Federalist Number 10 (James Madison)</option>
+    <option value="capital-volume-one">Capital, Volume I (Karl Marx)</option>
+    <option value="manifesto-of-the-communist-party">Manifesto of the Communist Party (Marx & Engels)</option>
+    <option value="the-civil-war-in-france">The Civil War in France (Karl Marx)</option>
+    <option value="theses-on-feuerbach">Theses on Feuerbach (Karl Marx)</option>
+    <option value="value-price-and-profit">Value, Price and Profit (Karl Marx)</option>
+    <option value="wage-labour-and-capital">Wage Labour and Capital (Karl Marx)</option>
+  </datalist>
+
   <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var lastEditorSelection = "";
+      var activeCitedSection = "";
+
+      document.addEventListener("selectionchange", function () {
+        var sel = window.getSelection();
+        if (sel && sel.rangeCount > 0 && !sel.isCollapsed) {
+          var text = sel.toString().trim();
+          if (text.length > 0) {
+            var anchor = sel.anchorNode;
+            var el = anchor && anchor.nodeType === Node.ELEMENT_NODE ? anchor : anchor ? anchor.parentElement : null;
+            if (el && (el.closest('[contenteditable="true"]') || el.closest("textarea") || el.closest("[data-lexical-editor]"))) {
+              lastEditorSelection = text;
+            }
+          }
+        }
+      });
+
+      document.addEventListener("mousedown", function (event) {
+        var btn = event.target && event.target.closest("button, [role='button'], [role='menuitem']");
+        if (btn) {
+          var label = (btn.getAttribute("aria-label") || btn.textContent || "").toLowerCase();
+          if (label.indexOf("reference") !== -1 || label.indexOf("cite") !== -1) {
+            var currentSel = window.getSelection() ? window.getSelection().toString().trim() : "";
+            activeCitedSection = currentSel || lastEditorSelection || "";
+          }
+        }
+      }, true);
+
+      var observer = new MutationObserver(function () {
+        var dialog = document.querySelector("dialog[open], [role='dialog'], .sveltia-dialog");
+        if (!dialog) return;
+
+        var textInputs = dialog.querySelectorAll('input[name="text"], input[id*="text"], textarea[name="text"]');
+        textInputs.forEach(function (input) {
+          if (activeCitedSection && !input.value) {
+            input.value = activeCitedSection;
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+            input.dispatchEvent(new Event("change", { bubbles: true }));
+            activeCitedSection = "";
+          }
+        });
+
+        var sourceInputs = dialog.querySelectorAll('input[name="source"], input[id*="source"]');
+        sourceInputs.forEach(function (input) {
+          if (!input.getAttribute("list")) {
+            input.setAttribute("list", "cc-known-sources");
+            input.setAttribute("placeholder", "e.g. federalist-number-10, capital-volume-one, or any text");
+          }
+        });
+      });
+
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+
+      function createComponentDefinition(id, label) {
+        return {
+          id: id,
+          label: label,
+          icon: "format_quote",
+          trigger: "button",
+          fields: [
+            {
+              name: "text",
+              label: "Cited Section / Text in Article",
+              widget: "string",
+              required: false,
+              hint: "The specific section or sentence in the article being cited. Automatically populated if text was selected in the editor."
+            },
+            {
+              name: "source",
+              label: "Source Record / Text Slug",
+              widget: "string",
+              required: true,
+              hint: "Choose or type any text or source slug (e.g., federalist-number-10, capital-volume-one, etc.)."
+            },
+            {
+              name: "locator",
+              label: "Pinpoint / Section Locator",
+              widget: "string",
+              required: false,
+              hint: "Specific page, chapter, section, timestamp, or dataset field (e.g., Chapter 1, Section 3, p. 42)."
+            }
+          ],
+          pattern: /{%\s*include\s+cite\.html\b[^%]*?%}/,
+          fromBlock: function (match) {
+            var raw = Array.isArray(match) ? match[0] : String(match || "");
+            var sourceMatch = raw.match(/source=["']([^"']+)["']/);
+            var locatorMatch = raw.match(/locator=["']([^"']+)["']/);
+            return {
+              text: "",
+              source: sourceMatch ? sourceMatch[1] : "",
+              locator: locatorMatch ? locatorMatch[1] : ""
+            };
+          },
+          toBlock: function (data) {
+            var src = (data && data.source) ? String(data.source).trim() : "";
+            var loc = (data && data.locator && String(data.locator).trim())
+              ? ' locator="' + String(data.locator).trim() + '"'
+              : "";
+            var tag = '{% include cite.html source="' + src + '"' + loc + " %}";
+            if (data && data.text && String(data.text).trim()) {
+              return String(data.text).trim() + " " + tag;
+            }
+            return tag;
+          },
+          toPreview: function (data) {
+            var src = (data && data.source) ? String(data.source).trim() : "source";
+            var loc = (data && data.locator && String(data.locator).trim())
+              ? " : " + String(data.locator).trim()
+              : "";
+            return '<span class="cc-editor-cite-chip" title="Structured Reference: ' + src + loc + '">' +
+              '<span style="margin-right:3px;font-size:1.1em;opacity:0.7;">❝</span>' +
+              src + loc +
+              "</span>";
+          }
+        };
+      }
+
+      function initCMSComponents() {
+        if (typeof CMS !== "undefined" && CMS.registerEditorComponent) {
+          CMS.registerEditorComponent(createComponentDefinition("structured-reference", "Structured Reference"));
+          CMS.registerEditorComponent(createComponentDefinition("cite", "Cite"));
+        } else if (window.CMS && window.CMS.registerEditorComponent) {
+          window.CMS.registerEditorComponent(createComponentDefinition("structured-reference", "Structured Reference"));
+          window.CMS.registerEditorComponent(createComponentDefinition("cite", "Cite"));
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initCMSComponents);
+      } else {
+        initCMSComponents();
+      }
+    })();
+  </script>
 
 </body>
 </html>

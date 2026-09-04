@@ -10,6 +10,7 @@ section: analysis
 section_key: analysis
 author: Continental Communist
 editor: Continental Communist
+thinkers: []
 topics:
   - American Institutions
   - Democracy
@@ -18,19 +19,29 @@ region:
   - United States
 historical_period:
   - Contemporary (2008-present)
+reading_level: General
 languages:
   - English
-reading_level: General
 reading_time: 3
 image: ''
 image_alt: ''
-featured: true
+featured: false
 references:
   - source: federalist-number-10
+    book_source: ''
+    custom_source: ''
+    custom_title: ''
+    custom_author: ''
+    custom_url: ''
     evidence_role: Primary context
     locator: Passages on unequal property, creditor and debtor interests, and faction
     note: Madison's account supplies historical context for the relationship among unequal property, factions, and political parties; it does not by itself establish the article's contemporary argument.
   - source: capital-volume-one
+    book_source: ''
+    custom_source: ''
+    custom_title: ''
+    custom_author: ''
+    custom_url: ''
     evidence_role: Direct evidence
     locator: Chapter 24, Section 1
     note: Marx's analysis of capitalist accumulation and the transformation of surplus-value into capital.

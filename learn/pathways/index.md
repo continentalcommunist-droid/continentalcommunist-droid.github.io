@@ -13,4 +13,5 @@ topics:
   - American History
   - Labor
   - Technology
+updated: 2026-09-02
 ---

@@ -1,6 +1,6 @@
 # Search visibility and structured metadata
 
-The site owns its search metadata in `_includes/seo-meta.html` and `_includes/structured-data.html`. Do not add a second SEO plugin or a second canonical tag. Every public page receives one self-referencing absolute canonical, explicit robots metadata, social preview metadata, Organization and WebSite entities, and a page-specific structured data entity.
+The site owns its search metadata in `_includes/seo-meta.html` and `_includes/structured-data.html`. Do not add a second SEO plugin or a second canonical tag. Every public page receives one self-referencing absolute canonical, explicit robots metadata, social preview metadata, an Organization entity, and a page-specific structured data entity. The site-name `WebSite` entity appears only on the homepage.
 
 ## Branded-search strategy
 
@@ -26,23 +26,31 @@ Google does not guarantee indexing or a particular ranking. Judge this work thro
 
 Avoid paid links, bulk directory submissions, doorway pages, duplicate brand pages, and repetitions of the target phrase written only for crawlers. They do not solve the new-domain discovery problem and can undermine trust.
 
-## Content types
+## Content types and structured data schemas
 
-- Published articles use `schema_type: Article`.
+- Published articles use `schema_type: Article` and emit Open Graph article properties (`article:published_time`, `article:author`, `article:section`, `article:tag`).
 - Timely reported news uses `schema_type: NewsArticle` and `content_type: News`.
 - Briefings are always `NewsArticle`.
+- Learning pathways publish schema.org `LearningResource` entities detailing educational level, learning outcomes (`teaches`), and their guided-reading format. They are not marked as `Course` because they are self-guided pathways without an instructor-led roster.
+- Primary texts publish as `Book` and `Chapter` entities with author provenance and table-of-contents parts.
+- Normalized bibliographic sources publish as `CreativeWork`, `Book`, or `ScholarlyArticle` with persistent identifiers (DOI/ISBN).
 - Author and thinker records publish as `ProfilePage` documents whose `mainEntity` is a Person or Organization.
 - Topic records publish as `CollectionPage` hubs with a defined subject and a list of connected resources.
+- All non-root indexable pages emit schema.org `BreadcrumbList` JSON-LD to generate search engine breadcrumbs in SERP listings.
+- `WebSite` schema appears only on the homepage, as required for Google's site-name signal. Page templates reference the same publisher entity without emitting duplicate site-name nodes.
+- Registration-gated articles and text chapters declare `isAccessibleForFree: false` and identify `.cc-gated-body` as the restricted section so search engines do not mistake the client-side gate for cloaking.
 
 Every article author must resolve to a public `_people/` record. Featured images are optional, but an image requires `image_alt`. Never use the publisher logo as an article image merely to satisfy a metadata field.
 
 ## Sitemap policy
 
-`/sitemap.xml` lists canonical, indexable HTML pages and all public content records. It intentionally excludes the internal search interface, redirects, administration pages, and non-HTML utilities.
+`/sitemap.xml` lists canonical, indexable HTML pages and all public content records with accurate `lastmod` timestamps on all hub pages. It intentionally excludes the internal search interface, redirects, administration pages, and non-HTML utilities.
 
 `/news-sitemap.xml` lists only NewsArticle content published during the preceding two days. Older news remains in the general sitemap. An empty news sitemap is valid when no qualifying news has been published recently.
 
-`/robots.txt` permits public crawling, keeps the CMS interface out of the crawl queue, and advertises both sitemap URLs. Page-level `noindex` remains the authority for pages such as internal search; robots.txt is not used as a canonicalization tool.
+`/robots.txt` permits public HTML crawling, keeps the CMS interface and `/assets/library/` document files out of the crawl queue, and advertises both sitemap URLs. Page-level `noindex` remains the authority for HTML utilities such as internal search and the parameter-driven PDF reader; robots.txt is not used as a canonicalization tool.
+
+The indexable library catalog links to the noindex reader rather than directly to PDF files. The public Google index had no results for `site:continentalcommunist.com filetype:pdf` on 2026-09-04. Because GitHub Pages cannot add `X-Robots-Tag: noindex` response headers to PDFs, a strict long-term guarantee requires moving the documents behind authenticated private storage or a CDN/origin that can add that header. Until then, keep direct document URLs out of HTML, sitemaps, feeds, and external promotion; retain the robots exclusion; and use Search Console's Removals tool immediately if a document URL ever appears.
 
 ## Search Console handoff
 

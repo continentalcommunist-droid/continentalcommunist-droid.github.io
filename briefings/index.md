@@ -5,6 +5,9 @@ permalink: /briefings/
 section_key: briefings
 kicker: Follow events in context
 description: Concise updates designed to connect current events with history, evidence, and deeper analysis.
+updated: 2026-09-02
+robots: noindex, follow
+sitemap: false
 ---
 
 ## A briefing practice is being built

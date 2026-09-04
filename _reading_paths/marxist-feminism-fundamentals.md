@@ -17,8 +17,6 @@ region:
 - United States
 historical_period:
 - Multiple periods
-- 19th Century
-- Early 20th Century (1900-1945)
 languages:
 - English
 description: A materialist introduction to the relationship between gender oppression,

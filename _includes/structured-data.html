@@ -1,5 +1,11 @@
 {%- assign schema_canonical = page.canonical_url | default: page.url | absolute_url -%}
 {%- assign schema_description = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | normalize_whitespace | truncate: 300 -%}
+{%- if page.layout == 'source' -%}
+  {%- assign schema_source_authors = page.authors | join: ', ' -%}
+  {%- capture schema_description -%}Citation, edition, rights, and source metadata for {{ page.title }}{% if schema_source_authors != '' %} by {{ schema_source_authors }}{% endif %}.{%- endcapture -%}
+{%- elsif page.layout == 'person' and page.description == "A thinker and author represented in Continental Communist's guided learning pathways and controlled reference system." -%}
+  {%- capture schema_description -%}Explore where {{ page.name }} appears in Continental Communist's guided Marxist reading pathways, primary texts, and reference network.{%- endcapture -%}
+{%- endif -%}
 {%- assign schema_language = site.lang | default: 'en-US' -%}
 {%- assign schema_logo = site.publisher.logo | default: site.logo | absolute_url -%}
 {%- capture schema_organization_id -%}{{ site.url }}/#organization{%- endcapture -%}
@@ -21,6 +27,7 @@
   }
   </script>
 
+{%- if page.url == '/' -%}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,6 +41,7 @@
     "publisher": { "@id": {{ schema_organization_id | jsonify }} }
   }
   </script>
+{%- endif -%}
 
 {%- if page.layout == 'post' -%}
   {%- assign schema_article_type = page.schema_type | default: 'Article' -%}
@@ -66,7 +74,12 @@
     "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
     "dateModified": {{ schema_modified | date_to_xmlschema | jsonify }},
     "inLanguage": {{ schema_language | jsonify }},
-    "isAccessibleForFree": true,
+    "isAccessibleForFree": false,
+    "hasPart": {
+      "@type": "WebPageElement",
+      "isAccessibleForFree": false,
+      "cssSelector": ".cc-gated-body"
+    },
     "wordCount": {{ page.content | number_of_words }},
     "author": {
       "@type": {{ schema_author_type | jsonify }},
@@ -110,7 +123,7 @@
     "description": {{ schema_description | jsonify }},
     "datePublished": {{ page.publication_year | jsonify }},
     "inLanguage": "en",
-    "isAccessibleForFree": true,
+    "isAccessibleForFree": false,
     "author": [
       {%- for author_name in page.authors -%}
       { "@type": "Person", "name": {{ author_name | jsonify }} }{% unless forloop.last %},{% endunless %}
@@ -138,7 +151,12 @@
     "description": {{ schema_description | jsonify }},
     "position": {{ page.order }},
     "inLanguage": "en",
-    "isAccessibleForFree": true,
+    "isAccessibleForFree": false,
+    "hasPart": {
+      "@type": "WebPageElement",
+      "isAccessibleForFree": false,
+      "cssSelector": ".cc-gated-body"
+    },
     "author": [
       {%- for author_name in page.authors -%}
       { "@type": "Person", "name": {{ author_name | jsonify }} }{% unless forloop.last %},{% endunless %}
@@ -224,6 +242,60 @@
     }
   }
   </script>
+{%- elsif page.layout == 'learning-path' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "@id": {{ schema_canonical | append: '#learning-resource' | jsonify }},
+    "url": {{ schema_canonical | jsonify }},
+    "name": {{ page.title | jsonify }},
+    "description": {{ schema_description | jsonify }},
+    "inLanguage": {{ schema_language | jsonify }},
+    "isAccessibleForFree": true,
+    "publisher": { "@id": {{ schema_organization_id | jsonify }} },
+    "learningResourceType": "Guided reading pathway"{% if page.level and page.level != '' %},
+    "educationalLevel": {{ page.level | jsonify }}{% endif %}{% if page.outcomes and page.outcomes != empty %},
+    "teaches": {{ page.outcomes | jsonify }}{% endif %}{% if page.topics and page.topics != empty %},
+    "keywords": {{ page.topics | jsonify }}{% endif %}
+  }
+  </script>
+{%- elsif page.layout == 'source' -%}
+  {%- assign schema_source_type = 'CreativeWork' -%}
+  {%- if page.source_type == 'Book' -%}
+    {%- assign schema_source_type = 'Book' -%}
+  {%- elsif page.source_type == 'Journal article' or page.source_type == 'Article' -%}
+    {%- assign schema_source_type = 'ScholarlyArticle' -%}
+  {%- endif -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": {{ schema_source_type | jsonify }},
+    "@id": {{ schema_canonical | append: '#source' | jsonify }},
+    "url": {{ schema_canonical | jsonify }},
+    "name": {{ page.title | jsonify }},
+    "description": {{ schema_description | jsonify }},
+    "inLanguage": {{ page.language | default: 'English' | jsonify }},
+    "isAccessibleForFree": true{% if page.authors and page.authors != empty %},
+    "author": [
+      {%- for author_name in page.authors -%}
+      { "@type": "Person", "name": {{ author_name | jsonify }} }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]{% elsif page.organizational_author and page.organizational_author != '' %},
+    "author": {
+      "@type": "Organization",
+      "name": {{ page.organizational_author | jsonify }}
+    }{% endif %}{% if page.publisher and page.publisher != '' %},
+    "publisher": {
+      "@type": "Organization",
+      "name": {{ page.publisher | jsonify }}
+    }{% endif %}{% if page.date and page.date != '' %},
+    "datePublished": {{ page.date | date: "%Y-%m-%d" | jsonify }}{% endif %}{% if page.doi and page.doi != '' %},
+    "identifier": {{ page.doi | jsonify }}{% elsif page.isbn and page.isbn != '' %},
+    "isbn": {{ page.isbn | jsonify }}{% endif %}{% if page.source_url and page.source_url != '' %},
+    "sameAs": {{ page.source_url | jsonify }}{% endif %}
+  }
+  </script>
 {%- else -%}
   {%- assign schema_page_type = page.schema_page_type | default: 'WebPage' -%}
   {%- if page.layout == 'taxonomy' -%}
@@ -239,6 +311,175 @@
     "description": {{ schema_description | jsonify }},
     "inLanguage": {{ schema_language | jsonify }},
     "isPartOf": { "@id": {{ schema_website_id | jsonify }} }
+  }
+  </script>
+{%- endif -%}
+
+{%- if page.url != '/' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": {{ site.url | append: '/' | jsonify }}
+      }
+      {%- if page.layout == 'post' -%}
+        {%- assign bc_sec_name = page.section | default: 'analysis' | capitalize -%}
+        {%- assign bc_sec_path = '/' | append: page.section | default: 'analysis' | append: '/' -%}
+        {%- if page.collection == 'briefs' -%}
+          {%- assign bc_sec_name = 'Briefings' -%}
+          {%- assign bc_sec_path = '/briefings/' -%}
+        {%- endif -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ bc_sec_name | jsonify }},
+          "item": {{ bc_sec_path | absolute_url | jsonify }}
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+      {%- elsif page.layout == 'book' -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Library",
+          "item": {{ '/library/' | absolute_url | jsonify }}
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+      {%- elsif page.layout == 'text-chapter' -%}
+        {%- assign bc_parent_bk = site.books | where: 'slug', page.parent_text | first -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Library",
+          "item": {{ '/library/' | absolute_url | jsonify }}
+        }
+        {%- if bc_parent_bk -%}
+        ,{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ bc_parent_bk.title | jsonify }},
+          "item": {{ bc_parent_bk.url | absolute_url | jsonify }}
+        },{
+          "@type": "ListItem",
+          "position": 4,
+          "name": {{ page.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+        {%- else -%}
+        ,{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+        {%- endif -%}
+      {%- elsif page.layout == 'learning-path' -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Learn",
+          "item": {{ '/learn/' | absolute_url | jsonify }}
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Pathways",
+          "item": {{ '/learn/pathways/' | absolute_url | jsonify }}
+        },{
+          "@type": "ListItem",
+          "position": 4,
+          "name": {{ page.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+      {%- elsif page.layout == 'pathway-catalog' -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Learn",
+          "item": {{ '/learn/' | absolute_url | jsonify }}
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+      {%- elsif page.layout == 'source' -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Library",
+          "item": {{ '/library/' | absolute_url | jsonify }}
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+      {%- elsif page.layout == 'topic' -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": {{ '/topics/' | absolute_url | jsonify }}
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+      {%- elsif page.layout == 'taxonomy' -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ page.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+      {%- elsif page.layout == 'person' -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": {{ '/about/' | absolute_url | jsonify }}
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.name | default: page.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+      {%- elsif page.section_key and page.section_key != '' and page.url != '/learn/' and page.url != '/library/' and page.url != '/analysis/' and page.url != '/briefings/' and page.url != '/topics/' and page.url != '/multimedia/' and page.url != '/community/' -%}
+        {%- assign bc_sec_title = page.section_key | capitalize -%}
+        {%- assign bc_sec_url = '/' | append: page.section_key | append: '/' -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ bc_sec_title | jsonify }},
+          "item": {{ bc_sec_url | absolute_url | jsonify }}
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | default: site.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+      {%- else -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ page.title | default: site.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+      {%- endif -%}
+    ]
   }
   </script>
 {%- endif -%}

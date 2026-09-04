@@ -19,14 +19,14 @@ main:
       - id: reading-paths
         title: Reading Paths
         url: /learn/pathways/
-        description: Eight structured routes with levels, effort estimates, lecture guides, questions, glossaries, and progress tracking.
+        description: Twelve structured routes with levels, effort estimates, lecture guides, questions, glossaries, and progress tracking.
         status: Available
         target: /learn/pathways/
-        cta: Explore all eight pathways
+        cta: Explore all twelve pathways
       - id: glossary
         title: Glossary
         url: /learn/pathways/#pathway-glossaries
-        description: Forty-eight contextual definitions distributed across the eight learning pathways.
+        description: Contextual definitions distributed across twelve learning pathways.
         status: Available
         target: /learn/pathways/#pathway-glossaries
         cta: Browse pathway glossaries
@@ -151,7 +151,7 @@ main:
       - id: reading-list
         title: Reading List
         url: /reading-list/
-        description: The complete working bibliography, now connected to eight structured learning pathways.
+        description: The complete working bibliography, now connected to twelve structured learning pathways.
         status: Available
         target: /reading-list/
         cta: Open the reading list

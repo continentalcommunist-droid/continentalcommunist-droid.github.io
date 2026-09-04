@@ -5,6 +5,7 @@ permalink: /library/
 section_key: library
 kicker: Sources, Texts & Digital Archive
 description: Explore the comprehensive political economy digital library, primary-source collected works, rights-reviewed readers, and the working bibliography.
+updated: 2026-09-02
 ---
 
 ## Digital library & primary source repository
@@ -128,9 +129,26 @@ In addition to the PDF library, the primary-text reader hosts verified HTML edit
 
 ## Connect with learning pathways & bibliography {: #pathways}
 
-The library is closely integrated with the [eight structured learning pathways]({{ '/learn/pathways/' | relative_url }}) and the [working bibliography]({{ '/reading-list/' | relative_url }}). You can pair any text with lecture guides, pathway glossaries, and structured review questions.
+The library is closely integrated with the [twelve structured learning pathways]({{ '/learn/pathways/' | relative_url }}) and the [working bibliography]({{ '/reading-list/' | relative_url }}). You can pair any text with lecture guides, pathway glossaries, and structured review questions.
 
 <script id="cc-library-catalog-data" type="application/json">
-{{ site.data.economism_library | jsonify }}
+[
+  {%- for book in site.data.economism_library -%}
+  {
+    "id": {{ book.id | jsonify }},
+    "title": {{ book.title | jsonify }},
+    "authors": {{ book.authors | jsonify }},
+    "year": {{ book.year | jsonify }},
+    "publisher": {{ book.publisher | jsonify }},
+    "collection": {{ book.collection | jsonify }},
+    "category": {{ book.category | jsonify }},
+    "reading_level": {{ book.reading_level | jsonify }},
+    "description": {{ book.description | jsonify }},
+    "size_bytes": {{ book.size_bytes | jsonify }},
+    "size_mb": {{ book.size_mb | jsonify }},
+    "format": {{ book.format | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {%- endfor -%}
+]
 </script>
 <script src="{{ '/assets/library-catalog.js' | relative_url }}" defer></script>

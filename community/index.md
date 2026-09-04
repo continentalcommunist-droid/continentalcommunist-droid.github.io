@@ -5,6 +5,9 @@ permalink: /community/
 section_key: community
 kicker: Study and discussion
 description: A stage-gated space for reading groups, seminars, and serious good-faith disagreement.
+updated: 2026-09-02
+robots: noindex, follow
+sitemap: false
 ---
 
 ## Build the standards before opening the forum

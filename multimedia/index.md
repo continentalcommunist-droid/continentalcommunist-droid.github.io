@@ -5,6 +5,9 @@ permalink: /multimedia/
 section_key: multimedia
 kicker: Watch, listen, participate
 description: The future home for podcasts, lectures, interviews, event recordings, and visual explanation.
+updated: 2026-09-02
+robots: noindex, follow
+sitemap: false
 ---
 
 ## A deliberate expansion beyond text

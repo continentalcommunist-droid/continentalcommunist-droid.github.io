@@ -25,7 +25,7 @@ languages:
   - English
 reading_time: null
 image: /assets/images/uploads/240923-hasan-piker-vl-1024a-16c31c.jpg
-image_alt: ''
+image_alt: 'Political commentator Hasan Piker speaking on broadcast'
 featured: true
 references:
   - source: manifesto-of-the-communist-party
@@ -35,8 +35,8 @@ references:
     custom_author: Karl Marx, Friedrich Engels
     custom_url: ''
     evidence_role: Direct evidence
-    locator: ''
-    note: Referenced throughout the piece.
+    locator: Chapter III, sections on Christian Socialism and Bourgeois Socialism
+    note: The two quotations in this essay come from Chapter III of the Manifesto of the Communist Party.
 concepts: []
 people: []
 corrections: []
@@ -51,7 +51,7 @@ The ignorance of the United States at first appears puzzling. With the preponder
 
 Scientific socialism was expounded by Karl Marx and Friedrich Engels as a response to the utopian socialism of nineteenth century Europe. Many philosophers to whom they pay homage in their texts are nonetheless used by Marx in contrast to the Marxist project of dialectical materialism, rescuing such beliefs from the utopian, and often religious, foundations for such beliefs. By placing socialism on a scientific, or dialectical, foundation, rather than a religious or mystical foundation, they elevated the mode of inquiry therein to a modern system of thinking in which ideas can be challenged, improved, and sharpened.
 
-In the Manifesto of the Communist Party, Marx speaks to this phenomenon. “Nothing is easier than to give Christian asceticism a Socialist tinge. Has not Christianity declaimed against private property, against marriage, against the State? Has it not preached in the place of these, charity and poverty, celibacy and mortification of the flesh, monastic life and Mother Church? Christian Socialism is but the holy water with which the priest consecrates the heart-burnings of the aristocrat.” 
+In the Manifesto of the Communist Party, Marx speaks to this phenomenon. “Nothing is easier than to give Christian asceticism a Socialist tinge. Has not Christianity declaimed against private property, against marriage, against the State? Has it not preached in the place of these, charity and poverty, celibacy and mortification of the flesh, monastic life and Mother Church? Christian Socialism is but the holy water with which the priest consecrates the heart-burnings of the aristocrat.”{% include cite.html source="manifesto-of-the-communist-party" locator="Chapter III, Christian Socialism" %}
 
 Religion, whatever stripe, is not a pernicious evil to Marx. It is a reflex of humanity. Yet, it does not allow for the revolutionary necessity of socialist organizing to propagate when placed at the center of working class movements.
 
@@ -59,7 +59,7 @@ Money capital, likewise, is not as easily pinned down by Marx as capitalists wou
 
 However, when a self proclaimed champion of the American working class is found in a hack of Twitch to make six figures a month, it calls into question the willingness of this individual to meaningfully engage in the dangerous realities of revolutionary organizing. It does not mean they are evil, but it shines light on ulterior motives for their use of capitalist live-streaming technologies.
 
-Quoting again from the Communist Manifesto: "Bourgeois Socialism attains adequate expression when, and only when, it becomes a mere figure of speech... This is the last word and the only seriously meant word of bourgeois socialism. It is summed up in the phrase: the bourgeois is a bourgeois – for the benefit of the working class."
+Quoting again from the Communist Manifesto: "Bourgeois Socialism attains adequate expression when, and only when, it becomes a mere figure of speech... This is the last word and the only seriously meant word of bourgeois socialism. It is summed up in the phrase: the bourgeois is a bourgeois – for the benefit of the working class."{% include cite.html source="manifesto-of-the-communist-party" locator="Chapter III, Bourgeois Socialism" %}
 
 Working men have no nation. Communists are the voice of the workers of the world. The vanguard of the proletarian class to whom the future belongs. The communists of the American continent form the tip of the spear of the new world revolution. 
 

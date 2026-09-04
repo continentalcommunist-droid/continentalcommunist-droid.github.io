@@ -53,6 +53,11 @@ import {
 
   let isAuthenticated = false;
 
+  function fileUrlFor(book) {
+    if (!book || !Array.isArray(book.file_path_parts)) return "";
+    return "/" + book.file_path_parts.filter(Boolean).join("/");
+  }
+
   function checkLocalStorageToken() {
     try {
       for (let i = 0; i < window.localStorage.length; i++) {
@@ -106,16 +111,17 @@ import {
     const currentUrl = window.location.pathname + "?book=" + encodeURIComponent(book.id);
 
     if (isAuthenticated) {
+      const fileUrl = fileUrlFor(book);
       setHidden(authGateEl, true);
       setHidden(iframeEl, false);
-      if (iframeEl) iframeEl.src = book.file_url;
-      if (fallbackLinkEl) fallbackLinkEl.href = book.file_url;
+      if (iframeEl) iframeEl.src = fileUrl;
+      if (fallbackLinkEl) fallbackLinkEl.href = fileUrl;
       if (downloadLinkEl) {
-        downloadLinkEl.href = book.file_url;
+        downloadLinkEl.href = fileUrl;
         downloadLinkEl.removeAttribute("aria-disabled");
       }
       if (openTabLinkEl) {
-        openTabLinkEl.href = book.file_url;
+        openTabLinkEl.href = fileUrl;
         openTabLinkEl.removeAttribute("aria-disabled");
       }
     } else {

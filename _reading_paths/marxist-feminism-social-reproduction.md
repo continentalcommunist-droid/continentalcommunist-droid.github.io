@@ -14,10 +14,9 @@ thinkers:
 region:
 - Global
 - North America
-- Western Europe
+- Europe
 historical_period:
-- Post-WWII (1945-1990)
-- Contemporary (1990-present)
+- Multiple periods
 languages:
 - English
 description: Analyze how capitalism depends upon the unpaid reproduction of labor power,
@@ -25,6 +24,7 @@ description: Analyze how capitalism depends upon the unpaid reproduction of labo
   theory.
 topics:
 - Marxist Feminism
+- Social Reproduction
 - Political Economy
 - Labor
 - Value

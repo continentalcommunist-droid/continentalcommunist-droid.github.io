@@ -2,7 +2,9 @@
 layout: default
 title: Continental Communist
 description: Continental Communist is an independent publication offering Marxist education, materialist analysis, briefings, and primary-source study from an American perspective.
-updated: 2026-09-01
+image: /assets/images/logo.png
+image_alt: "Continental Communist logo"
+updated: 2026-09-02
 ---
 
 <div class="cc-hero cc-hero-image">

@@ -4,7 +4,10 @@ title: Reading List
 permalink: /reading-list/
 section_key: library
 section: library
-content_type: Bibliography
+description: A comprehensive working bibliography on scientific socialism, American political economy, labor history, democratic institutions, and technological change.
+image: /assets/images/uploads/figures-800.webp
+image_alt: "Portraits of Karl Marx, Friedrich Engels, W. E. B. Du Bois, Eugene V. Debs, and V. I. Lenin"
+updated: 2026-09-02
 topics:
   - Marxist Theory
   - Political Economy
@@ -23,7 +26,7 @@ The purpose of this list is therefore not merely to recommend books sympathetic 
   <div class="cc-section-kicker">Guided study</div>
   <h2 id="reading-pathways-title">Choose a learning pathway</h2>
   <p>
-    The bibliography now supports nine structured routes. Each one includes a
+    The bibliography now supports twelve structured routes. Each one includes a
     level, realistic effort estimate, prerequisites, introductions, scoped
     readings, written lecture guides, questions, a glossary, and private
     progress tracking with optional account sync.

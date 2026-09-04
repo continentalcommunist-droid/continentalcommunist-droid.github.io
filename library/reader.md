@@ -4,6 +4,10 @@ title: "Digital Library Reader"
 permalink: /library/reader/
 section_key: library
 description: "Read complete primary works and political economy treatises on site with search, chapter navigation, and study tools."
+updated: 2026-09-02
+robots: noindex, follow
+sitemap: false
+search_exclude: true
 ---
 
 <article class="cc-pdf-reader-page" data-pdf-reader>
@@ -37,10 +41,10 @@ description: "Read complete primary works and political economy treatises on sit
       <button type="button" class="cc-reader-btn" data-reader-copy-cite title="Copy citation format">
         <span aria-hidden="true">📋</span> Copy Citation
       </button>
-      <a href="#" target="_blank" rel="noopener noreferrer" class="cc-reader-btn cc-reader-btn-primary" data-reader-open-tab title="Open PDF in a dedicated browser tab">
+      <a href="#" target="_blank" rel="nofollow noopener noreferrer" class="cc-reader-btn cc-reader-btn-primary" data-reader-open-tab title="Open PDF in a dedicated browser tab">
         <span aria-hidden="true">↗</span> Open in New Tab
       </a>
-      <a href="#" download class="cc-reader-btn" data-reader-download-link title="Download PDF to your device">
+      <a href="#" download rel="nofollow" class="cc-reader-btn" data-reader-download-link title="Download PDF to your device">
         <span aria-hidden="true">↓</span> Download
       </a>
     </div>
@@ -117,7 +121,26 @@ description: "Read complete primary works and political economy treatises on sit
 </article>
 
 <script id="cc-library-catalog-data" type="application/json">
-{{ site.data.economism_library | jsonify }}
+[
+  {%- for book in site.data.economism_library -%}
+  {%- assign file_path_parts = book.file_url | split: '/' -%}
+  {
+    "id": {{ book.id | jsonify }},
+    "title": {{ book.title | jsonify }},
+    "authors": {{ book.authors | jsonify }},
+    "year": {{ book.year | jsonify }},
+    "publisher": {{ book.publisher | jsonify }},
+    "collection": {{ book.collection | jsonify }},
+    "category": {{ book.category | jsonify }},
+    "reading_level": {{ book.reading_level | jsonify }},
+    "description": {{ book.description | jsonify }},
+    "size_bytes": {{ book.size_bytes | jsonify }},
+    "size_mb": {{ book.size_mb | jsonify }},
+    "format": {{ book.format | jsonify }},
+    "file_path_parts": {{ file_path_parts | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {%- endfor -%}
+]
 </script>
 <script type="module" src="{{ '/assets/pdf-reader.js' | relative_url }}"></script>
 {% include learner-tools-assets.html %}

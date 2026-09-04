@@ -5,11 +5,12 @@ permalink: /learn/
 section_key: learn
 kicker: Structured education
 description: Build understanding step by step through guided reading, courses, concepts, and historical context.
+updated: 2026-09-02
 ---
 
-## Nine paths through one connected library
+## Twelve paths through one connected library
 
-The Reading List is now organized into nine guided pathways covering Marxist fundamentals, an intensive Marxist-Leninist core curriculum, political economy, American institutions, labor history, race and Reconstruction, markets and planning, technology, and global development.
+The Reading List is now organized into twelve guided pathways covering Marxist fundamentals, an intensive Marxist-Leninist core curriculum, political economy, Marxist feminism and social reproduction, American institutions, labor history, race and Reconstruction, markets and planning, technology, and global development.
 
 Each pathway includes a level, estimated effort, prerequisites, scoped readings, written lecture guides, discussion questions, a working glossary, and private progress tracking. An optional learner account synchronizes progress across devices; study without an account remains available.
 

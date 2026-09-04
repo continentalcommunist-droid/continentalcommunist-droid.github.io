@@ -132,7 +132,7 @@
                 '<span>Read On Site</span> ' +
                 '<span aria-hidden="true">→</span>' +
               '</a>' +
-              '<a href="' + escapeHtml(book.file_url) + '" download class="cc-btn-download-pdf" title="Download ' + escapeHtml(book.format) + ' (' + escapeHtml(book.size_mb) + ' MB)">' +
+              '<a href="' + readerUrl + '" rel="nofollow" class="cc-btn-download-pdf" title="Open the authenticated reader to download ' + escapeHtml(book.format) + ' (' + escapeHtml(book.size_mb) + ' MB)">' +
                 '<span>Download</span> ' +
                 '<span aria-hidden="true">↓</span>' +
               '</a>' +
@@ -170,7 +170,7 @@
           '<td class="cc-table-col-size">' + escapeHtml(book.size_mb) + ' MB</td>' +
           '<td class="cc-table-col-actions">' +
             '<a href="' + readerUrl + '" class="cc-table-btn-read">Read</a> ' +
-            '<a href="' + escapeHtml(book.file_url) + '" download class="cc-table-btn-dl" title="Download">↓</a>' +
+            '<a href="' + readerUrl + '" rel="nofollow" class="cc-table-btn-dl" title="Open reader to download">↓</a>' +
           '</td>' +
         '</tr>';
       })

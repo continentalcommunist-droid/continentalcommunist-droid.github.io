@@ -13,12 +13,10 @@ thinkers:
 - Karl Marx
 region:
 - Global
-- Global South
 - North America
-- Latin America
+- Latin America and the Caribbean
 historical_period:
-- Late 20th Century (1970-2000)
-- Contemporary (2000-present)
+- Multiple periods
 languages:
 - English
 description: Examine the international division of reproductive labor, global care chains,
@@ -26,6 +24,7 @@ description: Examine the international division of reproductive labor, global ca
   crisis of care.
 topics:
 - Marxist Feminism
+- Social Reproduction
 - Imperialism
 - International Political Economy
 - Labor

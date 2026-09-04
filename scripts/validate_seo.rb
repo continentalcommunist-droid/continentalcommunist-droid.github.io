@@ -127,13 +127,25 @@ robots_source = (ROOT / "robots.txt").read
 %w[sitemap.xml news-sitemap.xml].each do |filename|
   errors << "robots.txt: does not advertise #{filename}" unless robots_source.include?(filename)
 end
+unless robots_source.match?(%r{^Disallow:\s*/assets/library/\s*$})
+  errors << "robots.txt: must block the public document library from crawler access"
+end
 
 people = (ROOT / "_people").glob("*.md").to_h do |path|
   data = front_matter(path)
   [data["name"], [path, data]]
 end
 topics = (ROOT / "_topics").glob("*.md").map { |path| [path, front_matter(path)] }
-articles = [(ROOT / "_posts").glob("*.md"), (ROOT / "_briefs").glob("*.md")].flatten.sort
+article_paths = [(ROOT / "_posts").glob("*.md"), (ROOT / "_briefs").glob("*.md")]
+  .flatten
+  .sort
+article_paths.each do |path|
+  data = front_matter(path)
+  if data["editorial_stage"] == "Draft" && data["published"] != false
+    errors << "#{path.relative_path_from(ROOT)}: editorial drafts must set published: false"
+  end
+end
+articles = article_paths.reject { |path| front_matter(path)["published"] == false }
 
 articles.each do |path|
   data = front_matter(path)
@@ -192,6 +204,9 @@ begin
   sitemap_entries = xml_urls(BUILT_SITE / "sitemap.xml")
   sitemap_urls = sitemap_entries.map(&:first)
   errors << "sitemap.xml: contains duplicate URLs" unless sitemap_urls.uniq.length == sitemap_urls.length
+  if sitemap_urls.any? { |url| url.match?(%r{\.(?:pdf|epub)(?:\z|[?#])}i) }
+    errors << "sitemap.xml: must not list PDF or EPUB library files"
+  end
   if present?(verification_file) && sitemap_urls.include?("#{site_url}/#{verification_file}")
     errors << "sitemap.xml: must not list the Search Console verification utility"
   end
@@ -241,6 +256,16 @@ begin
     errors << "#{path.relative_path_from(ROOT)}: canonical is not self-referencing" unless metadata[:canonical].first == expected_url
     errors << "#{path.relative_path_from(ROOT)}: expected one robots directive" unless metadata[:robots].length == 1
     errors << "#{path.relative_path_from(ROOT)}: missing JSON-LD" if metadata[:schemas].empty?
+    if metadata[:html].match?(%r{/assets/library/[^\s"'<>]+\.(?:pdf|epub)(?:[?\#\s"'<>]|\z)}i)
+      errors << "#{path.relative_path_from(ROOT)}: exposes a crawlable document-library URL"
+    end
+
+    website_schema = schema_with_type(metadata[:schemas], "WebSite")
+    if expected_url == "#{site_url}/"
+      errors << "homepage: WebSite JSON-LD is missing" unless website_schema
+    elsif website_schema
+      errors << "#{path.relative_path_from(ROOT)}: WebSite JSON-LD belongs only on the homepage"
+    end
 
     if metadata[:robots].first.to_s.include?("noindex")
       errors << "#{path.relative_path_from(ROOT)}: noindex page appears in sitemap" if sitemap_urls.include?(expected_url)
@@ -265,7 +290,18 @@ begin
       author_path, = people[data["author"]]
       expected_author_url = "#{site_url}/people/#{author_path.basename('.md')}/"
       errors << "#{path.relative_path_from(ROOT)}: structured author URL is incorrect" unless article.dig("author", "url") == expected_author_url
+      errors << "#{path.relative_path_from(ROOT)}: registered content must set isAccessibleForFree to false" unless article["isAccessibleForFree"] == false
+      unless article.dig("hasPart", "cssSelector") == ".cc-gated-body"
+        errors << "#{path.relative_path_from(ROOT)}: registered content must identify the gated body"
+      end
     end
+  end
+
+  (ROOT / "_reading_paths").glob("*.md").sort.each do |path|
+    data = front_matter(path)
+    url = data["permalink"] || "/learn/pathways/#{path.basename('.md')}/"
+    resource = schema_with_type(html_metadata(built_path_for_url(site_url, "#{site_url}#{url}"))[:schemas], "LearningResource")
+    errors << "#{path.relative_path_from(ROOT)}: LearningResource JSON-LD is missing" unless resource
   end
 
   people.each_value do |path, data|

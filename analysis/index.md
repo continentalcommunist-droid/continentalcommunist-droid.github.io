@@ -5,6 +5,7 @@ permalink: /analysis/
 section_key: analysis
 kicker: Interpretation and argument
 description: Evidence-rich essays on American political economy, history, institutions, technology, labor, and the world system.
+updated: 2026-09-02
 ---
 
 ## Latest analysis

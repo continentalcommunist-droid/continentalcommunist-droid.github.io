@@ -5,6 +5,7 @@ permalink: /topics/
 section_key: topics
 kicker: Connected knowledge
 description: Browse durable subject hubs that will connect articles, lessons, texts, people, concepts, and briefings.
+updated: 2026-09-02
 ---
 
 ## From categories to connected subject hubs

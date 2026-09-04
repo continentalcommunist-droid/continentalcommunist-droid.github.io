@@ -23,7 +23,7 @@ languages:
 reading_time: null
 image: ''
 image_alt: ''
-featured: false
+featured: true
 references:
   - source: wage-labour-and-capital
     book_source: ''

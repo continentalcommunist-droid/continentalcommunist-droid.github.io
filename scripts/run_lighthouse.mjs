@@ -40,15 +40,18 @@ const mimeTypes = {
   ".jpg": "image/jpeg",
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
+  ".mjs": "text/javascript; charset=utf-8",
   ".png": "image/png",
   ".svg": "image/svg+xml",
   ".txt": "text/plain; charset=utf-8",
   ".webp": "image/webp",
   ".xml": "application/xml; charset=utf-8"
 };
-const compressibleExtensions = new Set([".css", ".html", ".js", ".json", ".svg", ".txt", ".xml"]);
+const compressibleExtensions = new Set([".css", ".html", ".js", ".json", ".mjs", ".svg", ".txt", ".xml"]);
 
 function median(values) {
+  if (!values.length || values.some((value) => !Number.isFinite(value))) return null;
+
   const sorted = [...values].sort((left, right) => left - right);
   const midpoint = Math.floor(sorted.length / 2);
   return sorted.length % 2 === 0
@@ -179,6 +182,10 @@ try {
 
     for (const [metric, policy] of Object.entries(thresholds)) {
       const value = aggregate[metric];
+      if (!Number.isFinite(value)) {
+        targetFailures.push(`${policy.label} unavailable`);
+        continue;
+      }
       if (policy.minimum !== undefined && value < policy.minimum) {
         targetFailures.push(`${policy.label} ${value.toFixed(3)} < ${policy.minimum}`);
       }
@@ -188,11 +195,23 @@ try {
     }
 
     const status = targetFailures.length === 0 ? "PASS" : "FAIL";
+    const performanceScore = Number.isFinite(aggregate.performanceScore)
+      ? Math.round(aggregate.performanceScore * 100)
+      : "unavailable";
+    const largestContentfulPaint = Number.isFinite(aggregate.largestContentfulPaintMs)
+      ? `${Math.round(aggregate.largestContentfulPaintMs)}ms`
+      : "unavailable";
+    const cumulativeLayoutShift = Number.isFinite(aggregate.cumulativeLayoutShift)
+      ? aggregate.cumulativeLayoutShift.toFixed(3)
+      : "unavailable";
+    const totalBlockingTime = Number.isFinite(aggregate.totalBlockingTimeMs)
+      ? `${Math.round(aggregate.totalBlockingTimeMs)}ms`
+      : "unavailable";
     console.log(
-      `${status} ${target.name}: score ${Math.round(aggregate.performanceScore * 100)}, ` +
-      `LCP ${Math.round(aggregate.largestContentfulPaintMs)}ms, ` +
-      `CLS ${aggregate.cumulativeLayoutShift.toFixed(3)}, ` +
-      `TBT ${Math.round(aggregate.totalBlockingTimeMs)}ms`
+      `${status} ${target.name}: score ${performanceScore}, ` +
+      `LCP ${largestContentfulPaint}, ` +
+      `CLS ${cumulativeLayoutShift}, ` +
+      `TBT ${totalBlockingTime}`
     );
 
     targetFailures.forEach((failure) => failures.push(`${target.name}: ${failure}`));

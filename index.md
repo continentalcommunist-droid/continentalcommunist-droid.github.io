@@ -11,8 +11,22 @@ updated: 2026-09-02
 
   <p class="cc-hero-eyebrow"><span aria-hidden="true"></span> Education. Analysis. Understanding.</p>
   <h1 class="cc-hero-title">
-    Continental<br>
-    <span>Communist</span>
+    <picture>
+      <source
+        type="image/webp"
+        srcset="{{ '/assets/images/continental-communist-wordmark-800.webp' | relative_url }} 800w, {{ '/assets/images/continental-communist-wordmark-1600.webp' | relative_url }} 1600w"
+        sizes="(max-width: 600px) calc(100vw - 82px), (max-width: 918px) calc(100vw - 118px), 800px"
+      >
+      <img
+        class="cc-hero-wordmark"
+        src="{{ '/assets/images/continental-communist-wordmark.png' | relative_url }}"
+        alt="Continental Communist"
+        width="1977"
+        height="795"
+        fetchpriority="high"
+        decoding="async"
+      >
+    </picture>
   </h1>
 
   <div class="cc-hero-copy">

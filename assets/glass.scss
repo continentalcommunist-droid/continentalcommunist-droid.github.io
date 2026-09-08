@@ -120,7 +120,7 @@ p { text-wrap: pretty; }
 }
 .site-header.is-scrolled { box-shadow: 0 12px 36px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.1); }
 
-/* A typographic masthead replaces the large raster title. */
+/* Homepage masthead. */
 .cc-hero-glass {
   position: relative;
   isolation: isolate;
@@ -155,16 +155,13 @@ p { text-wrap: pretty; }
   line-height: 1.5;
 }
 .cc-hero-eyebrow > span { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-bright); box-shadow: 0 0 14px rgba(255,173,186,.5); }
-.cc-hero-glass .cc-hero-title {
-  margin: 0;
-  color: #fff;
-  font-size: clamp(3.5rem, 8.5vw, 6.6rem);
-  font-weight: 650;
-  line-height: .98;
-  letter-spacing: -.065em;
-  text-align: center;
+.cc-hero-wordmark {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: 0 auto;
 }
-.cc-hero-title > span { color: #f4b7c1; }
 .cc-hero-copy { max-width: 670px; }
 .cc-hero-copy p { color: var(--text-body); font-size: 1.125rem; line-height: 1.65; }
 .cc-hero-links { gap: 12px; margin-top: 28px; }
@@ -435,7 +432,6 @@ table tr:nth-child(even) { background: #242730; }
   .wrapper { padding: 0 20px; }
   .page-content { padding-top: 26px; }
   .cc-hero-glass { padding: 42px 20px; gap: 24px; margin-bottom: 50px; border-radius: 28px; }
-  .cc-hero-glass .cc-hero-title { font-size: clamp(2.5rem, 10.3vw, 3.7rem); letter-spacing: -.065em; }
   .cc-hero-eyebrow { font-size: .8125rem; gap: 8px; padding: 7px 10px; }
   .cc-hero-copy p { font-size: 1rem; }
   .cc-hero-links { align-items: stretch; }
@@ -467,6 +463,5 @@ table tr:nth-child(even) { background: #242730; }
 @media (forced-colors: active) {
   :root { --glass-surface: Canvas; --border: ButtonText; --text: CanvasText; --text-muted: CanvasText; }
   .site-header, .cc-hero-glass, .cc-newsletter { background: Canvas; color: CanvasText; border-color: ButtonText; }
-  .cc-hero-title > span { color: CanvasText; }
   .cc-nav-link, button, input, select, textarea { border-color: ButtonText; }
 }

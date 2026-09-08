@@ -2160,10 +2160,6 @@ h3 {
 
 .cc-lesson-context-bar,
 .cc-reading-learning-context {
-  position: sticky;
-  top: 75px;
-  z-index: 30;
-
   display: grid;
 
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -2186,6 +2182,12 @@ h3 {
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.cc-reading-learning-context {
+  position: sticky;
+  top: 75px;
+  z-index: 30;
 }
 
 .cc-lesson-context-bar a,

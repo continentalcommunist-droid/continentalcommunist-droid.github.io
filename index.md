@@ -7,20 +7,12 @@ image_alt: "Continental Communist logo"
 updated: 2026-09-02
 ---
 
-<div class="cc-hero cc-hero-image">
+<div class="cc-hero cc-hero-glass">
 
+  <p class="cc-hero-eyebrow"><span aria-hidden="true"></span> Education. Analysis. Understanding.</p>
   <h1 class="cc-hero-title">
-    <img
-      srcset="{{ '/assets/images/title-800.webp' | relative_url }} 800w, {{ '/assets/images/title-1600.webp' | relative_url }} 1600w"
-      sizes="(max-width: 900px) 75vw, 675px"
-      src="{{ '/assets/images/title-800.webp' | relative_url }}"
-      alt="Continental Communist"
-      width="800"
-      height="699"
-      decoding="async"
-      fetchpriority="high"
-      class="cc-title-image"
-    >
+    Continental<br>
+    <span>Communist</span>
   </h1>
 
   <div class="cc-hero-copy">
@@ -29,8 +21,8 @@ updated: 2026-09-02
       perspective, organized around evidence, history, and serious study.
     </p>
     <div class="cc-hero-links">
-      <a href="{{ '/about/' | relative_url }}">About Continental Communist</a>
-      <a href="{{ '/analysis/' | relative_url }}">Read the latest analysis</a>
+      <a class="cc-button-primary" href="{{ '/analysis/' | relative_url }}">Read the latest analysis <span aria-hidden="true">↗</span></a>
+      <a href="{{ '/about/' | relative_url }}">About the publication <span aria-hidden="true">→</span></a>
     </div>
   </div>
 

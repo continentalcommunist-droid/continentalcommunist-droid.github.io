@@ -32,11 +32,11 @@
 .cc-account-message {
   margin-bottom: 28px;
   padding: 14px 18px;
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   border: 1px solid var(--border);
   border-left: 4px solid #777780;
   color: var(--text-body);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.55;
 }
 
@@ -59,7 +59,7 @@
   gap: 40px;
   align-items: end;
   padding: 30px;
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   border: 1px solid var(--border);
   border-left: 4px solid var(--accent);
 }
@@ -82,7 +82,7 @@
 }
 
 .cc-account-setup > a {
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-decoration: none;
@@ -113,7 +113,7 @@
   margin: 0 0 12px;
   padding-left: 22px;
   color: var(--text-muted);
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   line-height: 1.55;
 }
 
@@ -135,7 +135,7 @@
 .cc-account-panel {
   margin: 0;
   padding: 25px;
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   border: 1px solid var(--border);
 }
 
@@ -151,7 +151,7 @@
   display: block;
   margin: 16px 0 6px;
   color: var(--text-muted);
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -166,9 +166,9 @@
   background: #0d0d0f;
   color: var(--text);
   border: 1px solid #3a3a41;
-  border-radius: 2px;
+  border-radius: 12px;
   font: inherit;
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   line-height: 1.4;
 }
 
@@ -184,8 +184,8 @@
 .cc-account-panel small {
   display: block;
   margin-top: 7px;
-  color: #777780;
-  font-size: 0.67rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
   line-height: 1.45;
 }
 
@@ -197,10 +197,10 @@
   background: var(--accent);
   color: #fff;
   border: 1px solid var(--accent);
-  border-radius: 2px;
+  border-radius: 12px;
   cursor: pointer;
   font-family: var(--sans);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   line-height: 1.3;
@@ -213,7 +213,7 @@
 .cc-account-panel button:focus,
 .cc-auth-secondary-button:hover,
 .cc-auth-secondary-button:focus {
-  background: var(--accent-bright);
+  background: var(--accent-hover, #c52b43);
   border-color: var(--accent-bright);
 }
 
@@ -231,7 +231,7 @@
   background: transparent;
   color: var(--text-muted);
   border: 0;
-  font-size: 0.62rem;
+  font-size: 0.875rem;
   text-decoration: underline;
   text-decoration-color: var(--border);
   text-underline-offset: 4px;
@@ -254,10 +254,10 @@
   background: #18181b;
   color: var(--text);
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
   cursor: pointer;
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1.3;
@@ -287,7 +287,7 @@
   align-items: center;
   margin: 18px 0 16px;
   color: var(--text-muted);
-  font-size: 0.64rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -315,7 +315,7 @@
 
 .cc-auth-reset p {
   color: var(--text-muted);
-  font-size: 0.78rem;
+  font-size: 0.875rem;
 }
 
 .cc-auth-inline-actions,
@@ -343,7 +343,7 @@
 .cc-dashboard-heading p {
   margin: 0;
   color: var(--text-muted);
-  font-size: 0.78rem;
+  font-size: 0.875rem;
 }
 
 .cc-auth-secondary-button {
@@ -359,7 +359,7 @@
 
 .cc-account-panel-heading > span {
   color: var(--text-muted);
-  font-size: 0.64rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -391,14 +391,14 @@
   margin: 0;
   padding: 20px;
   color: var(--text-muted);
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 
 .cc-account-panel-link {
   display: inline-block;
   margin-top: 20px;
-  font-size: 0.67rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-decoration: none;
@@ -422,7 +422,7 @@
 .cc-dashboard-nav a {
   padding: 8px 12px;
   color: var(--text-muted);
-  font-size: 0.64rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.075em;
   text-decoration: none;
@@ -457,7 +457,7 @@
 .cc-dashboard-priority {
   padding: 23px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
 }
@@ -480,7 +480,7 @@
 
   color: var(--accent-bright);
 
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -511,7 +511,7 @@
 
   color: var(--text);
 
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-decoration: none;
@@ -573,7 +573,7 @@
 
   height: 100%;
 
-  background: var(--accent-bright);
+  background: var(--accent-hover, #c52b43);
 
   border-radius: inherit;
 }
@@ -602,14 +602,14 @@
 
   color: var(--text-muted);
 
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   line-height: 1.45;
 }
 
 .cc-dashboard-attention-row a {
   color: var(--text);
 
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-decoration: none;
@@ -632,7 +632,7 @@
 .cc-dashboard-stats > div {
   min-width: 0;
   padding: 18px;
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   border: 1px solid var(--border);
 }
 
@@ -650,7 +650,7 @@
 .cc-dashboard-stats span {
   margin-top: 8px;
   color: var(--text-muted);
-  font-size: 0.59rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   line-height: 1.4;
@@ -660,7 +660,7 @@
 .cc-dashboard-section {
   margin: 16px 0 0;
   padding: 28px;
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   border: 1px solid var(--border);
 }
 
@@ -680,7 +680,7 @@
 
 .cc-dashboard-section-heading > span {
   color: var(--text-muted);
-  font-size: 0.62rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-align: right;
@@ -736,8 +736,8 @@
 }
 
 .cc-dashboard-saved-meta {
-  color: #85858d;
-  font-size: 0.58rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.075em;
   text-transform: uppercase;
@@ -750,7 +750,7 @@
   background: transparent !important;
   color: var(--text-muted) !important;
   border: 0 !important;
-  font-size: 0.57rem !important;
+  font-size: 0.875rem !important;
   text-decoration: underline;
   text-decoration-color: var(--border);
   text-underline-offset: 3px;
@@ -771,8 +771,8 @@
   background: #0a0a0c;
   color: var(--text-body);
   border: 1px solid #34343a;
-  border-radius: 2px;
-  font: 0.8rem/1.55 var(--serif);
+  border-radius: 12px;
+  font: 0.875rem/1.55 var(--serif);
 }
 
 .cc-dashboard-note-text:focus {
@@ -816,7 +816,7 @@
   display: block;
   margin-bottom: 6px;
   color: var(--text);
-  font-size: 0.67rem;
+  font-size: 0.875rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
@@ -824,7 +824,7 @@
 .cc-account-privacy p {
   max-width: 840px;
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
 }
 
 @media screen and (max-width: 850px) {

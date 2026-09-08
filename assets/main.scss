@@ -6,7 +6,7 @@
 
 /* =========================================================
    Continental Communist
-   Dark Editorial Theme
+   Editorial structure · shared materials in glass.scss
    ========================================================= */
 
 :root {
@@ -230,7 +230,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--sans);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: 700;
 
   letter-spacing: 0.1em;
@@ -290,7 +290,7 @@ h3 {
   border-bottom: 2px solid transparent;
 
   font-family: var(--sans);
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 
@@ -323,7 +323,7 @@ h3 {
   margin: 0;
   padding: 9px 0;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
@@ -351,7 +351,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--sans);
-  font-size: 0.76rem;
+  font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.35;
 
@@ -519,7 +519,7 @@ h3 {
 .cc-hero-links a {
   color: var(--text);
 
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-decoration-color: var(--accent-bright);
@@ -560,7 +560,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -600,11 +600,11 @@ h3 {
   min-height: 235px;
   padding: 23px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   color: var(--text);
 
   border: 1px solid var(--border);
-  border-radius: 3px;
+  border-radius: 12px;
 
   text-decoration: none;
 
@@ -633,7 +633,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.64rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.15em;
 }
@@ -650,7 +650,7 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.55;
 }
 
@@ -659,7 +659,7 @@ h3 {
 
   color: var(--text);
 
-  font-size: 0.67rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -687,7 +687,7 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.69rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -729,7 +729,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -769,11 +769,11 @@ h3 {
   min-height: 230px;
   padding: 29px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
-  border-radius: 3px;
+  border-radius: 12px;
 
   scroll-margin-top: 110px;
 }
@@ -783,7 +783,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -811,7 +811,7 @@ h3 {
 
   color: var(--text);
 
-  font-size: 0.69rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 
@@ -883,7 +883,7 @@ h3 {
 .cc-empty-state {
   padding: 26px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border-left: 3px solid var(--accent);
 }
@@ -963,7 +963,7 @@ h3 {
 .cc-progress-privacy {
   padding: 22px 23px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border-left: 3px solid var(--accent);
 }
@@ -971,7 +971,7 @@ h3 {
 .cc-progress-privacy strong {
   color: var(--text);
 
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -980,7 +980,7 @@ h3 {
   margin-top: 8px;
 
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.55;
 }
 
@@ -999,11 +999,11 @@ h3 {
   min-height: 395px;
   padding: 27px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
-  border-radius: 3px;
+  border-radius: 12px;
 }
 
 .cc-pathway-card-topline {
@@ -1016,7 +1016,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1073,9 +1073,9 @@ h3 {
 .cc-pathway-card-facts dt {
   margin-bottom: 4px;
 
-  color: #777780;
+  color: var(--text-muted);
 
-  font-size: 0.61rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1086,7 +1086,7 @@ h3 {
 
   color: var(--text-body);
 
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   line-height: 1.45;
 }
 
@@ -1105,7 +1105,7 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -1138,7 +1138,7 @@ h3 {
 .cc-pathway-card-link {
   color: var(--text);
 
-  font-size: 0.69rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 
@@ -1191,7 +1191,7 @@ h3 {
 }
 
 .cc-reading-pathways .cc-pathway-card > p {
-  font-size: 0.86rem;
+  font-size: 0.875rem;
 }
 
 .cc-reading-pathways-note {
@@ -1200,7 +1200,7 @@ h3 {
   border-top: 1px solid var(--border);
 
   font-family: var(--sans) !important;
-  font-size: 0.72rem !important;
+  font-size: 0.875rem !important;
 }
 
 .cc-pathway-method,
@@ -1216,7 +1216,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.67rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1240,7 +1240,7 @@ h3 {
 .cc-pathway-method-grid article {
   padding: 24px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
 }
@@ -1248,7 +1248,7 @@ h3 {
 .cc-pathway-method-grid span {
   color: var(--accent-bright);
 
-  font-size: 0.64rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
@@ -1282,7 +1282,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1309,9 +1309,9 @@ h3 {
 .cc-learning-path-facts dt {
   margin-bottom: 5px;
 
-  color: #797981;
+  color: var(--text-muted);
 
-  font-size: 0.63rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1322,7 +1322,7 @@ h3 {
 
   color: var(--text);
 
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.5;
 }
@@ -1338,7 +1338,7 @@ h3 {
   margin-bottom: 68px;
   padding: 29px 31px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-left: 4px solid var(--accent);
@@ -1355,7 +1355,7 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.55;
 }
 
@@ -1363,7 +1363,7 @@ h3 {
   margin-left: 3px;
 
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
   text-decoration: none;
   white-space: nowrap;
@@ -1380,7 +1380,7 @@ h3 {
   background: var(--accent);
   color: #fff;
 
-  border-radius: 2px;
+  border-radius: 12px;
 
   font-size: 0.875rem;
   font-weight: 800;
@@ -1391,7 +1391,7 @@ h3 {
 
 .cc-path-continue:hover,
 .cc-path-continue:focus {
-  background: var(--accent-bright);
+  background: var(--accent-hover, #c52b43);
   color: #fff;
 }
 
@@ -1416,7 +1416,7 @@ h3 {
   cursor: pointer;
 
   font-family: var(--sans);
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-decoration: underline;
@@ -1433,7 +1433,7 @@ h3 {
 .cc-learning-noscript {
   padding: 14px 18px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border-left: 3px solid var(--accent);
 }
@@ -1520,7 +1520,7 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1568,7 +1568,7 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   line-height: 1.5;
 }
 
@@ -1608,7 +1608,7 @@ h3 {
 .cc-learning-overview aside {
   padding: 24px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border-top: 3px solid var(--accent);
 }
@@ -1633,7 +1633,7 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   line-height: 1.55;
 }
 
@@ -1703,7 +1703,7 @@ h3 {
 .cc-curriculum-stage {
   padding: 24px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
@@ -1719,7 +1719,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.63rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1751,7 +1751,7 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   line-height: 1.5;
 }
 
@@ -1806,7 +1806,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.1em;
 }
@@ -1828,14 +1828,14 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.76rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
 .cc-learning-checklist label small.cc-learning-assignment-meta {
   color: var(--accent-bright);
 
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1866,7 +1866,7 @@ h3 {
   display: block;
   margin-bottom: 6px;
   font-family: var(--sans);
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1882,7 +1882,7 @@ h3 {
 .cc-reading-questions li {
   margin-bottom: 4px;
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: var(--text-body, #d4d2cd);
 }
@@ -1896,7 +1896,7 @@ h3 {
 
   color: var(--text);
 
-  font-size: 0.67rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-decoration: none;
@@ -1910,7 +1910,7 @@ h3 {
 
 .cc-learning-checklist input:checked + div label strong,
 .cc-learning-checklist input:checked + div label small {
-  color: #707078;
+  color: var(--text-muted);
 
   text-decoration: line-through;
 }
@@ -1926,7 +1926,7 @@ h3 {
 .cc-lecture-card {
   padding: 24px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
@@ -1946,7 +1946,7 @@ h3 {
 
   cursor: pointer;
 
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   line-height: 1.4;
@@ -1958,7 +1958,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.64rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1983,13 +1983,13 @@ h3 {
 
   color: var(--text);
 
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
 .cc-lecture-card input:checked + label {
-  color: #707078;
+  color: var(--text-muted);
 
   text-decoration: line-through;
 }
@@ -2034,7 +2034,7 @@ h3 {
   color: var(--accent-bright);
 
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   content: "0" counter(discussion-question);
@@ -2051,7 +2051,7 @@ h3 {
   margin-top: 24px;
   padding: 18px 20px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border-left: 3px solid var(--accent);
 }
@@ -2061,13 +2061,13 @@ h3 {
 
   cursor: pointer;
 
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.5;
 }
 
 .cc-reflection-check input:checked + label {
-  color: #707078;
+  color: var(--text-muted);
 
   text-decoration: line-through;
 }
@@ -2089,7 +2089,7 @@ h3 {
 .cc-path-glossary dl > div {
   padding: 24px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 }
 
 .cc-path-glossary dt {
@@ -2126,7 +2126,7 @@ h3 {
 .cc-learning-next a {
   color: var(--text);
 
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-decoration: none;
@@ -2260,7 +2260,7 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -2289,7 +2289,7 @@ h3 {
   margin: 38px 0 66px;
   padding: 27px 29px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-left: 4px solid var(--accent);
@@ -2362,7 +2362,7 @@ h3 {
 .cc-lesson-objectives li {
   padding: 15px 18px 15px 46px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
 
@@ -2408,7 +2408,7 @@ h3 {
 
   border-radius: 50%;
 
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 850;
   letter-spacing: 0.08em;
   line-height: 48px;
@@ -2442,7 +2442,7 @@ h3 {
   margin-top: 25px;
   padding: 25px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
@@ -2474,7 +2474,7 @@ h3 {
   color: var(--text);
 
   border: 1px solid #424249;
-  border-radius: 2px;
+  border-radius: 12px;
 
   font: inherit;
   font-size: 0.92rem;
@@ -2539,7 +2539,7 @@ h3 {
   color: #fff;
 
   border: 1px solid var(--accent);
-  border-radius: 2px;
+  border-radius: 12px;
 
   cursor: pointer;
 
@@ -2554,7 +2554,7 @@ h3 {
 .cc-self-grade button:hover,
 .cc-self-grade button:focus-visible,
 .cc-self-grade button.is-selected {
-  background: var(--accent-bright);
+  background: var(--accent-hover, #c52b43);
   color: #fff;
 
   outline: 2px solid #fff;
@@ -2564,7 +2564,7 @@ h3 {
 .cc-lesson-form-footer span {
   color: var(--text-muted);
 
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   line-height: 1.45;
 }
 
@@ -2609,7 +2609,7 @@ h3 {
 .cc-assessment-source-pointer {
   padding: 13px 15px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border-left: 2px solid var(--accent);
 }
@@ -2654,7 +2654,7 @@ h3 {
   max-width: 850px;
   padding: 25px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-left: 4px solid var(--accent);
@@ -2663,7 +2663,7 @@ h3 {
 .cc-lesson-reading-card span {
   color: var(--accent-bright);
 
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2680,7 +2680,7 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.8rem;
+  font-size: 0.875rem;
 }
 
 .cc-lesson-reading-card a {
@@ -2693,7 +2693,7 @@ h3 {
   background: var(--accent);
   color: #fff;
 
-  border-radius: 2px;
+  border-radius: 12px;
 
   font-size: 0.875rem;
   font-weight: 800;
@@ -2705,7 +2705,7 @@ h3 {
 
 .cc-lesson-reading-card a:hover,
 .cc-lesson-reading-card a:focus {
-  background: var(--accent-bright);
+  background: var(--accent-hover, #c52b43);
   color: #fff;
 }
 
@@ -2744,7 +2744,7 @@ h3 {
   margin: 25px 0;
   padding: 20px 23px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   color: var(--text);
 
   border-left: 4px solid var(--accent);
@@ -2787,7 +2787,7 @@ h3 {
 
   content: "0" counter(worked-step);
 
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 850;
   letter-spacing: 0.08em;
 }
@@ -2819,7 +2819,7 @@ h3 {
   margin-top: 18px;
   padding: 29px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 4px solid var(--accent);
@@ -2901,7 +2901,7 @@ h3 {
 
   padding: 22px 24px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
 }
@@ -2916,7 +2916,7 @@ h3 {
 .cc-review-summary span {
   color: var(--text);
 
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -2933,7 +2933,7 @@ h3 {
   margin: -35px 0 64px;
   padding: 24px 26px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
 }
@@ -2962,7 +2962,7 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -2977,7 +2977,7 @@ h3 {
   color: var(--text);
 
   border: 1px solid #424249;
-  border-radius: 2px;
+  border-radius: 12px;
 
   font: 700 0.875rem/1 var(--sans);
 }
@@ -3016,12 +3016,12 @@ h3 {
 .cc-review-practice-heading > span {
   padding: 8px 11px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   color: var(--text-muted);
 
   border: 1px solid var(--border);
 
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -3051,7 +3051,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -3107,7 +3107,7 @@ h3 {
 
   padding: 23px 25px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
@@ -3118,7 +3118,7 @@ h3 {
 
   color: var(--text-muted);
 
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   line-height: 1.55;
 }
 
@@ -3163,7 +3163,7 @@ h3 {
 .cc-review-row span {
   color: var(--accent-bright);
 
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -3219,7 +3219,7 @@ h3 {
   color: var(--accent-bright);
 
   font-family: var(--sans);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.16em;
@@ -3267,11 +3267,11 @@ h3 {
 
   padding: 27px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
-  border-radius: 3px;
+  border-radius: 12px;
 
   transition:
     transform 0.18s ease,
@@ -3294,7 +3294,7 @@ h3 {
   color: var(--accent-bright);
 
   font-family: var(--sans);
-  font-size: 0.67rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.1em;
@@ -3340,7 +3340,7 @@ h3 {
   color: var(--text);
 
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.09em;
@@ -3375,7 +3375,7 @@ h3 {
   color: #20242d;
 
   border-top: 4px solid var(--accent);
-  border-radius: 3px;
+  border-radius: 12px;
 
   overflow: hidden;
 }
@@ -3390,7 +3390,7 @@ h3 {
   color: var(--accent);
 
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.16em;
@@ -3426,7 +3426,7 @@ h3 {
 
   color: #7a808b;
 
-  font-size: 0.76rem;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 
@@ -3474,7 +3474,7 @@ h3 {
   border-bottom: 3px solid var(--accent);
 
   font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.15em;
@@ -3493,7 +3493,7 @@ h3 {
   color: var(--accent-bright);
 
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.11em;
@@ -3547,7 +3547,7 @@ h3 {
   color: var(--text);
 
   font-family: var(--sans);
-  font-size: 0.76rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.08em;
@@ -3586,7 +3586,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--sans);
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 700;
 
   letter-spacing: 0.06em;
@@ -3680,7 +3680,7 @@ h3 {
   border-radius: 999px;
 
   font-family: var(--sans);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   line-height: 1.2;
@@ -3720,7 +3720,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--sans);
-  font-size: 0.62rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.08em;
@@ -3735,7 +3735,7 @@ h3 {
   color: var(--text);
 
   font-family: var(--sans);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: 700;
 
   line-height: 1.4;
@@ -3769,11 +3769,11 @@ h3 {
 .cc-topic-content-grid article {
   padding: 22px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 2px solid var(--accent);
-  border-radius: 3px;
+  border-radius: 12px;
 }
 
 .cc-post-related-grid article > div,
@@ -3782,7 +3782,7 @@ h3 {
   color: var(--accent-bright);
 
   font-family: var(--sans);
-  font-size: 0.64rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.08em;
@@ -3869,7 +3869,7 @@ h3 {
   color: var(--accent-bright);
 
   font-family: var(--sans);
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.07em;
@@ -3882,7 +3882,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--sans);
-  font-size: 0.76rem;
+  font-size: 0.875rem;
 }
 
 .cc-topic-context {
@@ -3927,11 +3927,11 @@ h3 {
 .cc-taxonomy-family {
   padding: 28px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
-  border-radius: 3px;
+  border-radius: 12px;
 }
 
 .cc-taxonomy-family header h2 {
@@ -3977,7 +3977,7 @@ h3 {
   color: var(--text);
 
   font-family: var(--sans);
-  font-size: 0.87rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   text-decoration: none;
@@ -3991,7 +3991,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--serif);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1.45;
 }
 
@@ -4016,10 +4016,10 @@ h3 {
   color: var(--text-muted);
 
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
 
   font-family: var(--sans);
-  font-size: 0.62rem;
+  font-size: 0.875rem;
   font-weight: 700;
 
   text-decoration: none;
@@ -4051,12 +4051,12 @@ h3 {
 
   padding: 13px 15px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   color: var(--text);
 
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
-  border-radius: 3px;
+  border-radius: 12px;
 
   text-decoration: none;
 }
@@ -4068,7 +4068,7 @@ h3 {
 
 .cc-topic-connection-grid a strong {
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
 }
 
 .cc-topic-connection-grid a span {
@@ -4077,7 +4077,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--sans);
-  font-size: 0.61rem;
+  font-size: 0.875rem;
   font-weight: 700;
 
   letter-spacing: 0.06em;
@@ -4099,7 +4099,7 @@ h3 {
 
   padding: 20px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   color: var(--text-muted);
 
   border-left: 3px solid var(--accent);
@@ -4134,15 +4134,15 @@ h3 {
 
   padding: 8px 11px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   color: var(--text);
 
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
-  border-radius: 2px;
+  border-radius: 12px;
 
   font-family: var(--sans);
-  font-size: 0.71rem;
+  font-size: 0.875rem;
   font-weight: 800;
   text-decoration: none;
 }
@@ -4232,7 +4232,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--sans);
-  font-size: 0.62rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -4250,11 +4250,11 @@ h3 {
 .cc-citation-panel {
   padding: 23px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 2px solid var(--accent);
-  border-radius: 3px;
+  border-radius: 12px;
 }
 
 .cc-citation-panel h2,
@@ -4270,7 +4270,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--serif);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.55;
 }
 
@@ -4295,12 +4295,12 @@ h3 {
   color: var(--text);
 
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
 
   cursor: pointer;
 
   font-family: var(--sans);
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -4326,7 +4326,7 @@ h3 {
   color: var(--accent-bright) !important;
 
   font-family: var(--sans) !important;
-  font-size: 0.64rem !important;
+  font-size: 0.875rem !important;
   font-weight: 800;
 }
 
@@ -4341,11 +4341,11 @@ h3 {
 .cc-source-card {
   padding: 25px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
-  border-radius: 3px;
+  border-radius: 12px;
 
   scroll-margin-top: 92px;
 }
@@ -4364,7 +4364,7 @@ h3 {
   color: var(--accent-bright);
 
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 900;
   letter-spacing: 0.1em;
 }
@@ -4386,7 +4386,7 @@ h3 {
   border-radius: 999px;
 
   font-family: var(--sans);
-  font-size: 0.56rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -4412,7 +4412,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--sans);
-  font-size: 0.73rem;
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
@@ -4449,7 +4449,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--sans);
-  font-size: 0.57rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -4462,7 +4462,7 @@ h3 {
   color: var(--text);
 
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.45;
 }
@@ -4475,7 +4475,7 @@ h3 {
   color: var(--accent-bright);
 
   font-family: var(--sans);
-  font-size: 0.67rem;
+  font-size: 0.875rem;
   font-weight: 800;
   text-decoration: none;
 }
@@ -4484,7 +4484,7 @@ h3 {
   margin-top: 25px;
   padding: 22px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border-left: 3px solid var(--accent);
 }
@@ -4502,7 +4502,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--serif);
-  font-size: 0.83rem;
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 
@@ -4541,7 +4541,7 @@ h3 {
   color: var(--accent-bright) !important;
 
   font-family: var(--sans) !important;
-  font-size: 0.78rem !important;
+  font-size: 0.875rem !important;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -4587,7 +4587,7 @@ h3 {
   margin: 0;
   padding: 24px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border-left: 3px solid var(--accent);
 
@@ -4647,7 +4647,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -4684,7 +4684,7 @@ h3 {
 .cc-text-provenance {
   padding: 24px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border-top: 3px solid var(--accent);
 }
@@ -4695,7 +4695,7 @@ h3 {
   color: var(--text-muted);
 
   font-family: var(--serif);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 
@@ -4748,7 +4748,7 @@ h3 {
 
   color: var(--accent-bright);
 
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -4789,7 +4789,7 @@ h3 {
 
   gap: 16px;
 
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -4853,11 +4853,11 @@ h3 {
   margin: 2rem 0;
   padding: 16px 18px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   color: var(--text-muted);
 
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 
@@ -4899,7 +4899,7 @@ h3 {
 
   padding: 18px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   text-decoration: none;
 }
@@ -4911,7 +4911,7 @@ h3 {
 .cc-text-pagination span {
   color: var(--accent-bright);
 
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -4922,7 +4922,7 @@ h3 {
 
   color: var(--text);
 
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.4;
 }
 
@@ -4973,7 +4973,7 @@ blockquote {
   margin: 2.5rem 0;
   padding: 20px 28px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   color: #c8c6c1;
 
   border-left: 4px solid var(--accent);
@@ -5009,11 +5009,11 @@ hr {
 
 pre,
 code {
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   color: #efefef;
 
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 pre {
@@ -5045,7 +5045,7 @@ pre {
   color: var(--accent-bright);
 
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.15em;
@@ -5082,11 +5082,11 @@ pre {
 
   width: 100%;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
-  border-radius: 3px;
+  border-radius: 12px;
 
   transition:
     border-color 0.15s ease,
@@ -5129,7 +5129,7 @@ pre {
 }
 
 .cc-search-input::placeholder {
-  color: #77777f;
+  color: var(--text-muted);
 }
 
 .cc-search-clear {
@@ -5146,7 +5146,7 @@ pre {
   cursor: pointer;
 
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.07em;
@@ -5161,10 +5161,10 @@ pre {
 .cc-search-help {
   margin-top: 10px;
 
-  color: #77777f;
+  color: var(--text-muted);
 
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
 }
 
 .cc-search-help kbd {
@@ -5178,10 +5178,10 @@ pre {
   color: var(--text-muted);
 
   border: 1px solid var(--border);
-  border-radius: 3px;
+  border-radius: 12px;
 
   font-family: var(--sans);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 700;
 
   line-height: 1.5;
@@ -5204,11 +5204,11 @@ pre {
 .cc-search-facets {
   align-self: start;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
-  border-radius: 3px;
+  border-radius: 12px;
 }
 
 .cc-search-facets-heading {
@@ -5226,7 +5226,7 @@ pre {
 .cc-search-facets-heading h2 {
   margin: 0;
 
-  font-size: 0.82rem;
+  font-size: 0.875rem;
 
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -5243,7 +5243,7 @@ pre {
   cursor: pointer;
 
   font-family: var(--sans);
-  font-size: 0.64rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.04em;
@@ -5256,7 +5256,7 @@ pre {
 }
 
 .cc-search-clear-filters:disabled {
-  color: #66666d;
+  color: var(--text-muted);
 
   cursor: default;
 }
@@ -5283,7 +5283,7 @@ pre {
   cursor: pointer;
 
   font-family: var(--sans);
-  font-size: 0.73rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.04em;
@@ -5355,12 +5355,12 @@ pre {
 
   padding: 7px 8px;
 
-  border-radius: 3px;
+  border-radius: 12px;
 
   cursor: pointer;
 
   font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 
   line-height: 1.35;
 }
@@ -5383,9 +5383,9 @@ pre {
 }
 
 .cc-search-facet-count {
-  color: #74747c;
+  color: var(--text-muted);
 
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-variant-numeric: tabular-nums;
 }
 
@@ -5402,7 +5402,7 @@ pre {
   color: var(--text-muted);
 
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
 }
 
 .cc-search-results-column {
@@ -5420,7 +5420,7 @@ pre {
   border-bottom: 3px solid var(--accent);
 
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.11em;
@@ -5447,7 +5447,7 @@ pre {
   color: var(--text-muted);
 
   font-family: var(--sans);
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.06em;
@@ -5471,7 +5471,7 @@ pre {
   cursor: pointer;
 
   font-family: var(--sans);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
@@ -5501,7 +5501,7 @@ pre {
   color: var(--accent-bright);
 
   font-family: var(--sans);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.1em;
@@ -5509,7 +5509,7 @@ pre {
 }
 
 .cc-search-result-separator {
-  color: #55555c;
+  color: var(--text-muted);
 }
 
 .cc-search-result-date {
@@ -5570,10 +5570,10 @@ pre {
   color: var(--text-muted);
 
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
 
   font-family: var(--sans);
-  font-size: 0.64rem;
+  font-size: 0.875rem;
   font-weight: 700;
 
   line-height: 1.25;
@@ -5587,7 +5587,7 @@ pre {
   color: var(--text);
 
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.08em;
@@ -5630,12 +5630,12 @@ pre {
   color: white;
 
   border: 0;
-  border-radius: 3px;
+  border-radius: 12px;
 
   cursor: pointer;
 
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 800;
 
   letter-spacing: 0.07em;
@@ -5644,19 +5644,19 @@ pre {
 
 .cc-search-reset:hover,
 .cc-search-reset:focus {
-  background: var(--accent-bright);
+  background: var(--accent-hover, #c52b43);
 }
 
 .cc-search-noscript {
   margin-top: 28px;
   padding: 16px;
 
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 
   border-left: 3px solid var(--accent);
 
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 0.875rem;
 }
 
 
@@ -5714,7 +5714,7 @@ pre {
 
   margin: 8px 0 0;
 
-  font-size: 0.83rem;
+  font-size: 0.875rem;
   line-height: 1.55;
 }
 
@@ -5731,7 +5731,7 @@ pre {
 .cc-footer-nav a {
   color: var(--text-muted);
 
-  font-size: 0.71rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 
@@ -5753,11 +5753,11 @@ pre {
 
   padding-top: 22px;
 
-  color: #707078;
+  color: var(--text-muted);
 
   border-top: 1px solid var(--border);
 
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -6113,10 +6113,10 @@ pre {
 
     padding: 8px 0;
 
-    background: var(--bg-elevated);
+    background: var(--glass-surface, var(--bg-elevated));
 
     border: 1px solid var(--border);
-    border-radius: 3px;
+    border-radius: 12px;
 
     text-align: right;
   }
@@ -6449,11 +6449,11 @@ pre {
 
     overflow-y: auto;
 
-    background: var(--bg-elevated);
+    background: var(--glass-surface, var(--bg-elevated));
 
     border: 1px solid var(--border);
     border-top: 3px solid var(--accent);
-    border-radius: 3px;
+    border-radius: 12px;
 
     box-shadow: 0 18px 38px rgba(0, 0, 0, 0.48);
   }
@@ -6479,7 +6479,7 @@ pre {
 
     border-bottom: 0;
 
-    font-size: 0.75rem;
+    font-size: 0.875rem;
   }
 
   .cc-nav-item:hover > .cc-nav-link,
@@ -6513,7 +6513,7 @@ pre {
   .cc-nav-submenu a {
     padding: 5px 18px 5px 30px;
 
-    font-size: 0.72rem;
+    font-size: 0.875rem;
     font-weight: 600;
   }
 
@@ -6812,11 +6812,11 @@ pre {
 
 .cc-metric-card {
   padding: 24px 20px;
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
   text-align: center;
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .cc-metric-num {
@@ -6830,7 +6830,7 @@ pre {
 
 .cc-metric-label {
   margin-top: 8px;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
@@ -6853,9 +6853,9 @@ pre {
 .cc-catalog-search-input {
   width: 100%;
   padding: 16px 20px;
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
   color: var(--text);
   font-family: var(--sans);
   font-size: 1.05rem;
@@ -6889,10 +6889,10 @@ pre {
   padding: 8px 14px;
   background: var(--bg-soft);
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
   color: var(--text-muted);
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -6921,7 +6921,7 @@ pre {
 }
 
 .cc-catalog-count-badge {
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
@@ -6935,12 +6935,12 @@ pre {
 
 .cc-catalog-select {
   padding: 8px 12px;
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
   color: var(--text);
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
 }
@@ -6953,7 +6953,7 @@ pre {
 .cc-catalog-view-toggle-group {
   display: flex;
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -6963,7 +6963,7 @@ pre {
   border: none;
   color: var(--text-muted);
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -6974,7 +6974,7 @@ pre {
 }
 
 .cc-view-toggle-btn.active {
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   color: var(--accent-bright);
 }
 
@@ -6989,10 +6989,10 @@ pre {
 .cc-book-card {
   display: flex;
   flex-direction: column;
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
-  border-radius: 2px;
+  border-radius: 12px;
   overflow: hidden;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -7011,7 +7011,7 @@ pre {
 }
 
 .cc-book-cover-kicker {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -7034,7 +7034,7 @@ pre {
 
 .cc-book-cover-author {
   font-family: var(--serif);
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--text-muted);
   font-style: italic;
 }
@@ -7064,7 +7064,7 @@ pre {
 }
 
 .cc-book-tag-cat {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -7072,18 +7072,18 @@ pre {
   background: var(--bg-soft);
   border: 1px solid var(--border);
   color: var(--text-muted);
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .cc-book-tag-year,
 .cc-book-tag-size {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 600;
   padding: 2px 6px;
   background: var(--bg);
   border: 1px solid var(--border);
   color: var(--text-muted);
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .cc-book-card-title {
@@ -7102,7 +7102,7 @@ pre {
 }
 
 .cc-book-card-author {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--accent-bright);
   text-transform: uppercase;
@@ -7141,19 +7141,19 @@ pre {
   background: var(--accent);
   color: #ffffff !important;
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   text-decoration: none !important;
-  border-radius: 2px;
+  border-radius: 12px;
   flex-grow: 1;
   transition: background-color 0.2s ease;
 }
 
 .cc-btn-read-onsite:hover,
 .cc-btn-read-onsite:focus {
-  background: var(--accent-bright);
+  background: var(--accent-hover, #c52b43);
 }
 
 .cc-btn-download-pdf {
@@ -7166,10 +7166,10 @@ pre {
   border: 1px solid var(--border);
   color: var(--text) !important;
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none !important;
-  border-radius: 2px;
+  border-radius: 12px;
   transition: all 0.2s ease;
 }
 
@@ -7184,7 +7184,7 @@ pre {
   margin-top: 24px;
   overflow-x: auto;
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .cc-catalog-table {
@@ -7201,7 +7201,7 @@ pre {
   color: var(--text);
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   letter-spacing: 0.05em;
   border-bottom: 1px solid var(--border);
 }
@@ -7213,7 +7213,7 @@ pre {
 }
 
 .cc-catalog-table tr:hover td {
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
 }
 
 .cc-table-link {
@@ -7227,19 +7227,19 @@ pre {
 
 .cc-table-desc-mobile {
   display: none;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   color: var(--text-muted);
   margin-top: 4px;
 }
 
 .cc-table-cat-badge {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   padding: 2px 6px;
   background: var(--bg-soft);
   border: 1px solid var(--border);
   color: var(--text-muted);
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .cc-table-btn-read {
@@ -7247,11 +7247,11 @@ pre {
   padding: 4px 10px;
   background: var(--accent);
   color: #ffffff !important;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none !important;
-  border-radius: 2px;
+  border-radius: 12px;
   margin-right: 6px;
 }
 
@@ -7261,18 +7261,18 @@ pre {
   background: var(--bg-soft);
   border: 1px solid var(--border);
   color: var(--text) !important;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: bold;
   text-decoration: none !important;
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .cc-catalog-empty {
   padding: 48px 24px;
   text-align: center;
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
   color: var(--text-muted);
   margin-top: 24px;
 }
@@ -7312,10 +7312,10 @@ pre {
   flex-wrap: wrap;
   gap: 16px;
   padding: 16px 20px;
-  background: var(--bg-elevated);
+  background: var(--glass-surface, var(--bg-elevated));
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
-  border-radius: 2px;
+  border-radius: 12px;
   margin-bottom: 20px;
 }
 
@@ -7328,7 +7328,7 @@ pre {
 }
 
 .cc-reader-label {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
@@ -7341,10 +7341,10 @@ pre {
   padding: 8px 12px;
   background: var(--bg-soft);
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
   color: var(--text);
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   cursor: pointer;
 }
 
@@ -7367,10 +7367,10 @@ pre {
   padding: 8px 14px;
   background: var(--bg-soft);
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
   color: var(--text) !important;
   font-family: var(--sans);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none !important;
   cursor: pointer;
@@ -7391,16 +7391,16 @@ pre {
 
 .cc-reader-btn-primary:hover,
 .cc-reader-btn-primary:focus {
-  background: var(--accent-bright);
+  background: var(--accent-hover, #c52b43);
 }
 
 .cc-reader-cite-status {
   padding: 8px 16px;
   background: rgba(198, 40, 40, 0.15);
   border: 1px solid var(--accent);
-  border-radius: 2px;
+  border-radius: 12px;
   color: var(--text);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   margin: -10px 0 16px;
 }
 
@@ -7410,7 +7410,7 @@ pre {
   min-height: 600px;
   background: #000000;
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
   margin-bottom: 48px;
@@ -7532,7 +7532,7 @@ pre {
   padding: 34px 28px;
   background: var(--bg-elevated, #121214);
   border: 1px solid var(--border, #29292e);
-  border-radius: 2px;
+  border-radius: 12px;
   text-align: center;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
@@ -7553,7 +7553,7 @@ pre {
 .cc-reading-gate-desc {
   max-width: 480px;
   margin: 0 auto 22px;
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   line-height: 1.55;
   color: var(--text-body, #d4d2cd);
 }
@@ -7578,10 +7578,10 @@ pre {
   background: #18181b;
   color: var(--text, #f1f0ec);
   border: 1px solid var(--border, #29292e);
-  border-radius: 2px;
+  border-radius: 12px;
   cursor: pointer;
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1.3;
@@ -7607,7 +7607,7 @@ pre {
   align-items: center;
   margin: 6px 0;
   color: var(--text-muted);
-  font-size: 0.62rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -7634,9 +7634,9 @@ pre {
   background: var(--accent, #c62828);
   color: #fff;
   border: 1px solid var(--accent, #c62828);
-  border-radius: 2px;
+  border-radius: 12px;
   font-family: var(--sans);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   line-height: 1.3;
@@ -7648,7 +7648,7 @@ pre {
 
 .cc-reading-gate-email-link:hover,
 .cc-reading-gate-email-link:focus {
-  background: var(--accent-bright, #ef4444);
+  background: var(--accent-hover, #c52b43);
   border-color: var(--accent-bright, #ef4444);
   color: #fff;
 }
@@ -7657,7 +7657,7 @@ pre {
   margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid var(--border, #29292e);
-  font-size: 0.74rem;
+  font-size: 0.875rem;
 }
 
 .cc-reading-gate-footer a {
@@ -7677,7 +7677,7 @@ pre {
   margin-bottom: 22px;
   background: rgba(198, 40, 40, 0.08);
   border-left: 3px solid var(--accent);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: var(--text-body);
 }

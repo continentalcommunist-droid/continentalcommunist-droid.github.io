@@ -12,6 +12,7 @@
     "validate:texts": "node scripts/validate_text_library.mjs",
     "validate:learner": "ruby scripts/validate_learner_platform.rb",
     "validate:learning-schema": "ruby scripts/validate_learning_schema.rb",
+    "test:lessons": "node --test scripts/test_lessons.mjs",
     "performance:ci": "node scripts/run_lighthouse.mjs",
     "performance:crux": "ruby scripts/check_crux.rb",
     "validate:formatting": "ruby scripts/validate_formatting.rb"

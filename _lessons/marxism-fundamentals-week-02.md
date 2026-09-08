@@ -16,7 +16,7 @@ lesson_id: cc.lesson.marxism-fundamentals.week-02
 stage_id: cc.stage.marxism-fundamentals.method
 order: 2
 week: 2
-estimated_minutes: 52
+estimated_minutes: 58
 reading_level: Introductory
 topics:
 - Marxist Theory
@@ -70,6 +70,34 @@ worked_example:
     text: "Housing is produced through interdependent social labor, while access and surplus remain governed by private property and payment."
   - label: Turn the ideal into a strategy
     text: "A materialist proposal specifies how organization, resources, and political power can change those relations over time."
+faded_example:
+  item_id: cc.item.marxism-fundamentals.week-02.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "In a hypothetical region, campaigners propose a publicly controlled textile network. They say writing fair allocation rules is enough to make it succeed."
+  provided_steps:
+  - label: Identify the desired arrangement
+    text: "The campaign wants clothing production coordinated around shared needs. That describes a goal, but does not yet explain how people could establish and sustain it."
+  - label: Map the existing relations
+    text: "In this scenario, many workers coordinate spinning, weaving, transport, and sales, while separate private firms own the equipment, arrange credit, and control the proceeds."
+  completion_steps:
+  - id: locate-contradiction
+    label: Locate the contradiction
+    prompt: "How does this textile network illustrate social production alongside private appropriation?"
+    model_answer: "Clothing depends on coordinated work across many workplaces and services. Yet private firms control the assets and appropriate the results, so the social character of production does not itself give producers collective control."
+  - id: identify-agents
+    label: Identify agents and opposition
+    prompt: "Which organized groups could carry the proposal forward, and whose power or interests could obstruct it?"
+    model_answer: "Textile and transport workers, users, and public bodies could organize support and supply practical knowledge. Owners and lenders could resist losing control. The proposal needs evidence of the supporters' organization and capacity, not just their possible interest."
+  - id: outline-transition
+    label: Turn the aim into a strategy
+    prompt: "Identify two concrete changes needed to move from fair rules to a functioning network."
+    model_answer: "A strategy must explain how an organized coalition obtains control of equipment and financing, and how workers and users coordinate supplies and decisions. It must account for opposition and material resources as well as allocation rules."
+  feedback_points:
+  - "Distinguishes collective production from who controls its results."
+  - "Names agents with practical capacities and a source of opposition."
+  - "Explains a change in power or resources needed to realize the goal."
+  source_pointer: "Revisit the final section of Socialism: Utopian and Scientific, tracing social production, capitalist appropriation, and the possibility of conscious social control."
 application:
   item_id: cc.item.marxism-fundamentals.week-02.application-01
   concept_id: cc.concept.socialized-production

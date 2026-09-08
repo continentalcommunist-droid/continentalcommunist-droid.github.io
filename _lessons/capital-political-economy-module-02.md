@@ -16,7 +16,7 @@ lesson_id: cc.lesson.capital-political-economy.week-02
 stage_id: cc.stage.capital-political-economy.classical-foundations
 order: 2
 week: 2
-estimated_minutes: 75
+estimated_minutes: 81
 reading_minutes: 38
 reading_level: Intermediate
 topics:
@@ -72,6 +72,34 @@ worked_example:
     text: "Ricardo's international result assumes capital and labor are less mobile across borders than goods."
   - label: Separate aggregate gain from distribution
     text: "A favorable exchange ratio does not determine which workers, owners, regions, or states capture the benefit."
+faded_example:
+  item_id: cc.item.capital-political-economy.week-02.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "Two hypothetical cabinet factories use the same labor per identical cabinet, but one pays higher wages; its cabinets must therefore have greater value."
+  provided_steps:
+  - label: "Count labor beyond assembly"
+    text: "Assume both factories require the same direct labor and the same past labor embodied in timber, tools, and machinery per cabinet."
+  - label: "State the comparison conditions"
+    text: "For this first comparison, also hold capital durability, production time, output prices, and all non-wage costs equal."
+  completion_steps:
+  - id: distinguish-labor-and-wages
+    label: "Distinguish labor quantity from its payment"
+    prompt: "Does the wage difference establish a difference in relative value in Ricardo's framework?"
+    model_answer: "No. A higher payment for the same quantity of labor is not a larger quantity of labor required for production. Under these conditions, the wage difference alone does not establish a higher relative value for the cabinet."
+  - id: trace-distribution
+    label: "Trace the distributional change"
+    prompt: "With the stated prices and costs fixed, what happens to profit where wages rise?"
+    model_answer: "A larger wage payment leaves a smaller remainder as profit from the same output. This is an inverse distributional movement under the stated assumptions, not proof that wages determine commodity value."
+  - id: test-capital-assumptions
+    label: "Relax one assumption"
+    prompt: "Which difference in production could complicate the comparison, and why?"
+    model_answer: "If one factory uses longer-lived machinery or must wait longer before sale, its capital composition or production time differs. Ricardo treats such differences as qualifications to a simple comparison of labor quantities."
+  feedback_points:
+  - "Distinguishes the quantity of labor from the wage paid for it."
+  - "Explains the wage-profit movement while stating what remains fixed."
+  - "Names a capital or time difference and explains why it matters."
+  source_pointer: "Return to Principles, Chapter 1 on labor, machinery, and production time, then Chapters 5–6 on wages and profits."
 application:
   item_id: cc.item.capital-political-economy.week-02.application-01
   concept_id: cc.concept.wage-profit-relation

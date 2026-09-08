@@ -2449,6 +2449,7 @@ h3 {
 }
 
 .cc-lesson-response > label,
+.cc-faded-step > label,
 .cc-lesson-response legend {
   display: block;
 
@@ -2570,6 +2571,28 @@ h3 {
 
 .cc-assessment-prompt {
   margin: 0 0 22px;
+}
+
+.cc-faded-step {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.cc-faded-step > p {
+  color: var(--text-body);
+  font-family: var(--serif);
+  line-height: 1.65;
+}
+
+.cc-faded-next {
+  margin: 24px 0 0;
+}
+
+.cc-faded-next a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 .cc-assessment-feedback {

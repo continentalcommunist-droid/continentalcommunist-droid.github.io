@@ -16,7 +16,7 @@ lesson_id: cc.lesson.marxism-fundamentals.week-05
 stage_id: cc.stage.marxism-fundamentals.political-state
 order: 5
 week: 5
-estimated_minutes: 60
+estimated_minutes: 66
 reading_level: Introductory
 topics:
 - Historical Materialism
@@ -71,6 +71,35 @@ worked_example:
     text: "Rejecting one project may defend property values, political legitimacy, or a different development strategy within the same order."
   - label: State the limit
     text: "The decision shows institutional mediation, but one conflict cannot establish that the state is detached from class relations."
+faded_example:
+  item_id: cc.item.marxism-fundamentals.week-05.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "A hypothetical government limits risky bank lending after manufacturers support the rule and bank owners oppose it. A commentator says the state is simply obeying business as a whole."
+  provided_steps:
+  - label: Separate the class fractions
+    text: "In this scenario, manufacturers seek predictable credit for production, while bank owners defend profitable lending practices. Their shared position as owners does not erase conflicting immediate interests."
+  - label: Identify inherited institutions
+    text: "An existing banking law gives a public commission authority to set lending rules. Hearings, appointments, and enforcement powers shape how the dispute becomes a government decision."
+  completion_steps:
+  - id: examine-representation
+    label: Examine representation and alliances
+    prompt: "What evidence would show how these interests became a winning political coalition?"
+    model_answer: "Examine lobbying, commission appointments, hearing testimony, and alliances with workers or depositors. Also trace how arguments about stability gained support. These connections explain political representation rather than assuming owners' preferences enter government directly."
+  - id: test-wider-order
+    label: Test what the policy reproduces
+    prompt: "How could restricting one group of owners still help sustain the wider class order?"
+    model_answer: "The restriction could stabilize credit, protect other firms, or restore confidence while preserving private ownership and wage labor. Those are hypotheses to test through the rule's effects, not conclusions established by its stated purpose alone."
+  - id: qualify-autonomy
+    label: Explain relative autonomy
+    prompt: "Write a conclusion that recognizes state decision-making without calling the state neutral or treating business as unified."
+    model_answer: "The commission can act against some bank owners through its legal powers and political alliances. Its capacity to choose among conflicting interests is compatible with sustaining capitalist relations. Whether that happened here requires evidence about the coalition and effects."
+  feedback_points:
+  - "Distinguishes manufacturers and banks as fractions with conflicting interests."
+  - "Connects institutions and public arguments to coalition formation."
+  - "Explains a possible benefit to the wider order without assuming it is proven."
+  - "Distinguishes relative autonomy from political neutrality."
+  source_pointer: "Compare the class fractions and changing political alliances in Parts I–III of The Eighteenth Brumaire with Part VII's account of executive power."
 application:
   item_id: cc.item.marxism-fundamentals.week-05.application-01
   concept_id: cc.concept.class-coalition

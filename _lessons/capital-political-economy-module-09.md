@@ -16,7 +16,7 @@ lesson_id: cc.lesson.capital-political-economy.week-09
 stage_id: cc.stage.capital-political-economy.circulation
 order: 9
 week: 9
-estimated_minutes: 85
+estimated_minutes: 91
 reading_minutes: 45
 reading_level: Intermediate
 topics:
@@ -72,6 +72,34 @@ worked_example:
     text: "Different fixed capital, inventory speed, credit terms, and risks shape observed rates and margins."
   - label: Specify the evidence gap
     text: "Firm accounts alone cannot reconstruct the total value and surplus relations across the chain."
+faded_example:
+  item_id: cc.item.capital-political-economy.week-09.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "Automating a hypothetical foundry must lower its profit rate permanently, regardless of what happens to surplus value or input values."
+  provided_steps:
+  - label: "Define the initial value relation"
+    text: "For a simplified period, assume total advanced c = 80 and v = 20, with s = 20 produced and realized. Abstract from price redistribution and turnover differences."
+  - label: "Isolate the initial change"
+    text: "Automation raises advanced c to 180. First hold v = 20 and s = 20 unchanged; later changes will be tested separately."
+  completion_steps:
+  - id: compare-profit-rates
+    label: "Compare the two profit rates"
+    prompt: "Calculate the initial and changed rates using total capital advanced."
+    model_answer: "The initial rate is 20/(80 + 20) = 20%. With automation and the stated constants, it becomes 20/(180 + 20) = 10%. The larger total-capital denominator lowers the rate in this particular comparison."
+  - id: retain-surplus-origin
+    label: "Retain the origin of surplus"
+    prompt: "What happens to the rate of surplus value, and what does that tell you about the profit form?"
+    model_answer: "The surplus-value rate stays s/v = 20/20 = 100%. Relating the same surplus to a larger total capital changes the profit rate without changing this exploitation measure; the profit form can obscure the distinct role of living labor."
+  - id: test-counteracting-change
+    label: "Test a counteracting change"
+    prompt: "If s later rises to 40 while c = 180 and v = 20, does the initial fall establish a permanent result?"
+    model_answer: "No. The profit rate would return to 40/200 = 20%. A higher surplus-value rate can counteract the larger denominator; cheaper means of production can also matter. The tendency must be analyzed with its counteracting conditions, not treated as an unconditional prediction."
+  feedback_points:
+  - "Calculates profit using c + v and surplus value using v."
+  - "States the assumptions that produce the initial fall from 20% to 10%."
+  - "Uses the changed surplus figure to test the permanent-fall claim."
+  source_pointer: "Revisit Capital, Volume III, Part I on surplus value and profit, then Part III on the falling-rate tendency and counteracting factors."
 application:
   item_id: cc.item.capital-political-economy.week-09.application-01
   concept_id: cc.concept.credit

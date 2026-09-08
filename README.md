@@ -96,6 +96,8 @@ The retention-oriented lesson pilot now spans the introductory Marxism Fundament
 npm run validate:learning-schema
 ```
 
+All 16 guided lessons now bridge worked and independent analysis with a partially completed example: learners fill three missing steps before revealing model completions and feedback. These private guided responses are saved separately from independent checkpoint ratings and scheduled review. After building, run `npm run test:lessons` for browser checks covering feedback gating, restoration, rating revisions, storage failure, and narrow-screen reflow.
+
 ## Sveltia CMS content model
 
 The editor at `/admin/` uses Sveltia CMS with GitHub's simple workflow. Entry edits and media uploads commit directly to `main`, avoiding the extra pull-request and issue-label permissions that caused saves to end with GitHub's “Resource not accessible by personal access token” response after the content commit had already been created.

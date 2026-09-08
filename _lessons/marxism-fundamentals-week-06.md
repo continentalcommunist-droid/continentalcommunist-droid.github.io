@@ -16,7 +16,7 @@ lesson_id: cc.lesson.marxism-fundamentals.week-06
 stage_id: cc.stage.marxism-fundamentals.transition
 order: 6
 week: 6
-estimated_minutes: 62
+estimated_minutes: 68
 reading_level: Introductory
 topics:
 - Marxist Theory
@@ -71,6 +71,35 @@ worked_example:
     text: "Markets, debt, skills, technical capacity, and legal institutions do not disappear merely because ownership changes."
   - label: State the transition question
     text: "The cooperative matters, but the form and sufficiency of distribution depend on wider transformations in production and social provision."
+faded_example:
+  item_id: cc.item.marxism-fundamentals.week-06.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "A hypothetical farming federation ends private ownership of its land and allocates individual harvest shares by hours worked. Its council says adopting distribution by need next year will by itself complete the transition to communism."
+  provided_steps:
+  - label: Start from production and nature
+    text: "The harvest depends on soil, water, seeds, equipment, and coordinated labor. Labor is essential, but natural conditions also supply material wealth and constrain what can be distributed."
+  - label: Account for common provision
+    text: "In this scenario, the federation first reserves seed, replaces equipment, and provides for shared services and people unable to work. Individual shares come from what remains."
+  completion_steps:
+  - id: test-equal-right
+    label: Test the equal contribution rule
+    prompt: "Why can equal harvest shares for equal hours still produce unequal outcomes for individuals?"
+    model_answer: "People differ in health, ability to work, household size, and need. The same hours-based rule can therefore leave them with unequal means relative to their needs. Formal equality does not remove the inherited limits Marx discusses for the lower phase."
+  - id: identify-material-conditions
+    label: Identify conditions for a higher phase
+    prompt: "What must change besides the council's distribution rule before provision according to need can be sustained?"
+    model_answer: "Sustainable provision requires adequate production, shared skills and resources, and transformed social relations, including overcoming a constraining division of labor. Announcing a new rule or date does not create those capacities."
+  - id: assess-transition
+    label: Assess the transition claim
+    prompt: "Give one concrete next step and one reason this federation's ownership change cannot alone establish a completed social transition."
+    model_answer: "Workers and users could plan harvest reserves and common services together, testing needs against ecological and productive capacity. Collective land ownership changes control, but access to machinery, wider exchange relations, and political institutions still shape what the federation can achieve."
+  feedback_points:
+  - "Explains unequal needs or capacities under an equal hours-based rule."
+  - "Connects provision by need to changed productive and social capacities."
+  - "Includes nature or common provision when assessing available resources."
+  - "Treats the phases as conditional social relations rather than a calendar or ownership label."
+  source_pointer: "Revisit Part I of Critique of the Gotha Programme on nature and material wealth, deductions from the social product, equal right, and the conditions for a higher phase."
 application:
   item_id: cc.item.marxism-fundamentals.week-06.application-01
   concept_id: cc.concept.distribution

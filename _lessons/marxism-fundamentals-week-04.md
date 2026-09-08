@@ -16,7 +16,7 @@ lesson_id: cc.lesson.marxism-fundamentals.week-04
 stage_id: cc.stage.marxism-fundamentals.wage-struggle
 order: 4
 week: 4
-estimated_minutes: 58
+estimated_minutes: 64
 reading_level: Introductory
 topics:
 - Political Economy
@@ -70,6 +70,35 @@ worked_example:
     text: "Changes in workers' spending can shift demand among sectors instead of producing one uniform price movement."
   - label: State the strategic limit
     text: "The wage gain matters, but recurring pressure over the division of the working day remains while the wage relation persists."
+faded_example:
+  item_id: cc.item.marxism-fundamentals.week-04.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "In a hypothetical workshop, an eight-hour day adds $240 of new value. A bargaining gain raises the wage from $120 to $150. A manager says this requires every selling price to rise by 25%."
+  provided_steps:
+  - label: Set the simplified assumptions
+    text: "For this exercise, assume steady new value of $30 per hour, unchanged hours and productivity, and wages equal to the value of labor power before and after the gain. New value excludes the value of used materials and equipment."
+  - label: Diagram the starting division
+    text: "Before the gain, four hours reproduce the $120 value of labor power. The other four hours produce $120 of surplus value."
+  completion_steps:
+  - id: redraw-working-day
+    label: Redraw the working day
+    prompt: "With the wage now $150 and the assumptions unchanged, identify necessary labor time, surplus labor time, and surplus value."
+    model_answer: "At $30 per hour, five hours reproduce $150. Three hours remain as surplus labor, producing $90 of surplus value. The wage gain changes the division of the same $240 of new value."
+  - id: test-price-claim
+    label: Test the price claim
+    prompt: "Why does the 25% wage increase fail to establish a necessary 25% price increase?"
+    model_answer: "The example already shows a possible reduction of surplus value from $120 to $90. Wages are only part of total costs, and competition, demand, and market power affect prices. A wage percentage does not dictate an equal price percentage."
+  - id: assess-struggle
+    label: Assess the gain and its limit
+    prompt: "What have workers gained, and what source of future conflict remains?"
+    model_answer: "Workers receive a larger share of new value and, if living costs are unchanged, can buy more. The firm still controls production and appropriates surplus labor, so bargaining over wages, hours, and work conditions remains necessary."
+  feedback_points:
+  - "Gets five necessary hours, three surplus hours, and $90 of surplus value under the stated assumptions."
+  - "Recognizes distribution between wages and surplus as one possible adjustment."
+  - "Avoids treating the wage percentage as an automatic price rule."
+  - "Names a material gain and an ongoing conflict within the wage relation."
+  source_pointer: "Revisit the answer to Weston on wages and prices, Parts 7–11 on necessary and surplus labor, and the final discussion of trade-union struggle."
 application:
   item_id: cc.item.marxism-fundamentals.week-04.application-01
   concept_id: cc.concept.wage-struggle

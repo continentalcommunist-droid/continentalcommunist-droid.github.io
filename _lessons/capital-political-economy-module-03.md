@@ -16,7 +16,7 @@ lesson_id: cc.lesson.capital-political-economy.week-03
 stage_id: cc.stage.capital-political-economy.value-form
 order: 3
 week: 3
-estimated_minutes: 78
+estimated_minutes: 84
 reading_minutes: 40
 reading_level: Intermediate
 topics:
@@ -72,6 +72,34 @@ worked_example:
     text: "Exchange relates this private labor to the total social division of labor through prices and sale."
   - label: Preserve the distinction
     text: "A buyer may still pay more for craft qualities, scarcity, or reputation; that concrete price does not erase the analytical distinction."
+faded_example:
+  item_id: cc.item.capital-political-economy.week-03.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "In a hypothetical blanket market, the exchange ratio between blankets and shoes is simply a natural relation between the two objects."
+  provided_steps:
+  - label: "Identify distinct use values"
+    text: "Blankets provide warmth and shoes protect feet. These material uses explain their usefulness, not the quantitative ratio in which they exchange."
+  - label: "Identify private production"
+    text: "Different producers organize weaving and shoemaking separately, and bring their products into relation through exchange."
+  completion_steps:
+  - id: identify-social-measure
+    label: "Identify the social measure"
+    prompt: "How can different useful labors become comparable in Marx's account?"
+    model_answer: "Exchange relates the products as expressions of abstract human labor. Their value is measured by socially necessary labor time under normal conditions, not by the distinct qualities of weaving and shoemaking or each producer's private hours."
+  - id: separate-value-and-ratio
+    label: "Separate value from its expression"
+    prompt: "What is the exchange ratio, and why should it not be treated as a physical property?"
+    model_answer: "The ratio is an exchange-value expression of a social relation. It can change while the blankets and shoes retain the same material uses; it is not a natural quantity contained visibly in either object."
+  - id: recover-producer-relations
+    label: "Explain the fetishistic appearance"
+    prompt: "What relation among people appears here as a relation among things?"
+    model_answer: "The allocation and comparison of independently performed labors confront producers through the exchange relations of their products. That appearance is socially effective: it helps govern their production decisions even though it looks like a property of things."
+  feedback_points:
+  - "Separates material usefulness from the exchange ratio."
+  - "Connects abstract labor to a social standard rather than private effort."
+  - "Explains fetishism through relations among producers and their products."
+  source_pointer: "Revisit Capital, Volume I, Chapter 1, Sections 1–2 on value and labor, Section 3 on the value form, and Section 4 on fetishism."
 application:
   item_id: cc.item.capital-political-economy.week-03.application-01
   concept_id: cc.concept.commodity-fetishism

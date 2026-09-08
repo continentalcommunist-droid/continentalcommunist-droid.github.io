@@ -1,0 +1,61 @@
+{% assign example = include.example %}
+<blockquote class="cc-worked-claim">{{ example.claim | escape }}</blockquote>
+
+<ol class="cc-worked-example">
+  {% for step in example.provided_steps %}
+  <li>
+    <h3>{{ step.label | escape }}</h3>
+    <p>{{ step.text | escape }}</p>
+  </li>
+  {% endfor %}
+</ol>
+
+<form class="cc-lesson-response cc-faded-example" data-faded-example data-item-key="{{ example.item_id }}" aria-labelledby="lesson-guided-title">
+  <p id="lesson-guided-help">Complete all {{ example.completion_steps.size }} steps and choose your confidence to reveal feedback. This guided practice stays separate from your two independent checkpoint ratings.</p>
+  {% for step in example.completion_steps %}
+  {% assign step_number = example.provided_steps.size | plus: forloop.index %}
+  <div class="cc-faded-step">
+    <label for="lesson-guided-{{ step.id }}">{{ step_number }}. {{ step.label | escape }}</label>
+    <p id="lesson-guided-{{ step.id }}-prompt">{{ step.prompt | escape }}</p>
+    <textarea
+      id="lesson-guided-{{ step.id }}"
+      rows="4"
+      minlength="{{ example.min_length }}"
+      maxlength="2000"
+      aria-describedby="lesson-guided-{{ step.id }}-prompt"
+      data-faded-response="{{ step.id }}"
+      required
+    ></textarea>
+  </div>
+  {% endfor %}
+
+  <fieldset>
+    <legend>How confident are you in these steps?</legend>
+    <label><input type="radio" name="lesson-guided-confidence" value="low" required> Low</label>
+    <label><input type="radio" name="lesson-guided-confidence" value="medium"> Medium</label>
+    <label><input type="radio" name="lesson-guided-confidence" value="high"> High</label>
+  </fieldset>
+
+  <div class="cc-lesson-form-footer">
+    <button type="submit" aria-controls="lesson-guided-feedback" aria-expanded="false" data-faded-reveal>Compare the missing steps</button>
+    <span data-faded-status role="status" aria-live="polite">Your responses stay in this browser.</span>
+  </div>
+
+  <section id="lesson-guided-feedback" class="cc-assessment-feedback" data-faded-feedback hidden tabindex="-1" aria-label="Guided practice feedback">
+    <div class="cc-section-kicker">Compare your reasoning</div>
+    {% for step in example.completion_steps %}
+    {% assign step_number = example.provided_steps.size | plus: forloop.index %}
+    <h3>{{ step_number }}. {{ step.label | escape }}</h3>
+    <p>{{ step.model_answer | escape }}</p>
+    {% endfor %}
+    <h3>Check your analysis</h3>
+    <ul>
+      {% for point in example.feedback_points %}
+      <li>{{ point | escape }}</li>
+      {% endfor %}
+    </ul>
+    <p class="cc-assessment-source-pointer">{{ example.source_pointer | escape }}</p>
+    <p>Different wording can make the same argument. Use the comparison to revise a missing connection, then apply the method to the next case.</p>
+  </section>
+  <p class="cc-faded-next"><a href="#lesson-application-title">Continue to independent application →</a></p>
+</form>

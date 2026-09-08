@@ -16,7 +16,7 @@ lesson_id: cc.lesson.capital-political-economy.week-04
 stage_id: cc.stage.capital-political-economy.production
 order: 4
 week: 4
-estimated_minutes: 82
+estimated_minutes: 88
 reading_minutes: 42
 reading_level: Intermediate
 topics:
@@ -72,6 +72,34 @@ worked_example:
     text: "Living labor both replaces the wage advanced for labor power and can continue producing beyond that equivalent."
   - label: Complete the circuit
     text: "Sale realizes the value and surplus produced, but successful sale is not identical to their origin."
+faded_example:
+  item_id: cc.item.capital-political-economy.week-04.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "A hypothetical garment employer pays the agreed daily value of labor power, so no surplus value can arise from the eight-hour shift."
+  provided_steps:
+  - label: "Identify the purchased commodity"
+    text: "The employer purchases the worker's capacity to labor for the day, not a pre-existing quantity of finished garments or new value."
+  - label: "State the social and numerical conditions"
+    text: "The worker is legally free to contract but lacks independent access to tools and subsistence. Assume three hours of normal labor reproduce the daily value of labor power."
+  completion_steps:
+  - id: track-input-value
+    label: "Track the means of production"
+    prompt: "How do cloth and consumed equipment enter the value of the garments?"
+    model_answer: "Their existing value transfers to the garments as the inputs are consumed. This transferred value must be distinguished from the new value created by living labor during the shift."
+  - id: divide-new-value
+    label: "Locate the surplus"
+    prompt: "How is the eight-hour shift divided under the stated assumptions?"
+    model_answer: "Three hours produce the equivalent of the daily value of labor power; the remaining five hours constitute surplus labor. Paying labor power at its value therefore remains compatible with producing surplus value."
+  - id: complete-capital-circuit
+    label: "Connect production to circulation"
+    prompt: "What role does selling the garments play, and why is this a capital circuit?"
+    model_answer: "The employer advances money to obtain inputs and labor power, organizes production, and seeks an expanded money return. Sale realizes the produced value and surplus; exchange itself did not create the five hours of surplus labor."
+  feedback_points:
+  - "Distinguishes labor power from the value its use creates."
+  - "Separates transferred input value from three hours of necessary and five hours of surplus labor."
+  - "Locates surplus production before sale while explaining why sale remains necessary."
+  source_pointer: "Return to Capital, Volume I, Chapters 4–5 on the capital circuit and exchange, Chapter 6 on labor power, and Chapter 7 on valorization."
 application:
   item_id: cc.item.capital-political-economy.week-04.application-01
   concept_id: cc.concept.labor-power

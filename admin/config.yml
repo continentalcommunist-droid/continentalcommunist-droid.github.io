@@ -569,6 +569,33 @@ collections:
             fields:
               - { label: Label, name: label, widget: string }
               - { label: Explanation, name: text, widget: text }
+      - label: Partially Completed Example
+        name: faded_example
+        widget: object
+        hint: "Bridge the worked example and independent application with a distinct hypothetical case. Guided responses are private and do not count toward independent mastery."
+        fields:
+          - { label: Stable Item ID, name: item_id, widget: string, hint: "Format: cc.item.<pathway-slug>.week-<two-digit-week>.faded-01. Never rename after publishing." }
+          - { label: Estimated Minutes, name: estimated_minutes, widget: number, value_type: int, min: 1, default: 6 }
+          - { label: Minimum Characters Per Step, name: min_length, widget: number, value_type: int, min: 1, max: 2000, default: 30 }
+          - { label: Hypothetical Claim, name: claim, widget: text }
+          - label: Supplied Opening Steps
+            name: provided_steps
+            widget: list
+            min: 1
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Explanation, name: text, widget: text }
+          - label: Learner Completion Steps
+            name: completion_steps
+            widget: list
+            min: 1
+            fields:
+              - { label: Stable Step Key, name: id, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Use a unique lowercase key with hyphens; never rename after publishing.'] }
+              - { label: Label, name: label, widget: string }
+              - { label: Prompt, name: prompt, widget: text }
+              - { label: Model Completion, name: model_answer, widget: text }
+          - { label: Feedback Points, name: feedback_points, widget: list, min: 1 }
+          - { label: Source Pointer, name: source_pointer, widget: text }
       - label: Independent Application
         name: application
         widget: object

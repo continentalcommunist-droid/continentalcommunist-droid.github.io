@@ -16,7 +16,7 @@ lesson_id: cc.lesson.capital-political-economy.week-08
 stage_id: cc.stage.capital-political-economy.circulation
 order: 8
 week: 8
-estimated_minutes: 82
+estimated_minutes: 88
 reading_minutes: 42
 reading_level: Intermediate
 topics:
@@ -72,6 +72,34 @@ worked_example:
     text: "Port delays, unsold stock, supplier failure, or credit withdrawal can stop renewal despite successful production."
   - label: Connect firms socially
     text: "The company's continuity depends on synchronized replacement across transport, materials, consumer-goods, and finance sectors."
+faded_example:
+  item_id: cc.item.capital-political-economy.week-08.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "A hypothetical economy increases machinery output while reducing workers' consumption goods, so rising investment guarantees balanced reproduction."
+  provided_steps:
+  - label: "Distinguish the departments"
+    text: "Machinery belongs to Department I, which produces means of production. Workers' consumption goods belong to Department II, which produces means of consumption."
+  - label: "Map one cross-department link"
+    text: "Machine producers purchase inputs and labor power; their workers need consumption goods. Consumption-goods producers in turn need replacement machinery and materials."
+  completion_steps:
+  - id: identify-material-proportions
+    label: "Identify the missing condition"
+    prompt: "Why does a rise in investment alone fail to establish that both departments can reproduce?"
+    model_answer: "Reproduction requires the right use values in suitable quantities, not only a larger monetary total. Extra machinery does not directly replace food or other consumption goods needed to reproduce labor power; the changed outputs may be disproportionate."
+  - id: trace-circuit-interruption
+    label: "Trace a possible interruption"
+    prompt: "If consumption-goods firms cannot use all the extra machines, what happens along the machine producers' circuit?"
+    model_answer: "Unsold machines remain commodity capital instead of returning as money. The delay can tie up advances and obstruct renewed purchases of inputs and labor power, even though production of the machines was completed."
+  - id: test-coordination
+    label: "Specify what to check"
+    prompt: "What information would establish whether this investment pattern can continue?"
+    model_answer: "Compare actual replacement and expansion needs, available consumption goods, household purchasing power, inventories, and the timing of sales and payments. Credit may bridge a payment delay but cannot itself supply missing material goods or ensure proportional outputs."
+  feedback_points:
+  - "Identifies material interdependence between the two departments."
+  - "Traces unsold output from commodity capital to a blocked money return and renewal."
+  - "Names quantities and timing needed to evaluate reproduction rather than using investment totals alone."
+  source_pointer: "Return to Capital, Volume II, Part I on the circuits and Part III on the material and value conditions of simple and expanded reproduction."
 application:
   item_id: cc.item.capital-political-economy.week-08.application-01
   concept_id: cc.concept.social-reproduction

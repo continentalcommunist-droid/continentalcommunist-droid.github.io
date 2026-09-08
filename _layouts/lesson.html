@@ -94,6 +94,7 @@ layout: default
   <noscript>
     <p class="cc-learning-noscript">JavaScript is required to save responses, reveal feedback after an attempt, and schedule review. The reading remains available without it.</p>
   </noscript>
+  <p class="cc-learning-noscript" data-lesson-storage-status role="status" aria-live="polite" hidden></p>
 
   <section class="cc-lesson-activity" aria-labelledby="lesson-warmup-title">
     <div class="cc-lesson-activity-number" aria-hidden="true">01</div>
@@ -162,8 +163,20 @@ layout: default
     </div>
   </section>
 
-  <section class="cc-lesson-activity" aria-labelledby="lesson-application-title">
+  {% if lesson.faded_example %}
+  <section class="cc-lesson-activity" aria-labelledby="lesson-guided-title">
     <div class="cc-lesson-activity-number" aria-hidden="true">05</div>
+    <div class="cc-lesson-activity-body">
+      <div class="cc-section-kicker">Guided practice · {{ lesson.faded_example.estimated_minutes }} minutes</div>
+      <h2 id="lesson-guided-title">Complete the missing steps.</h2>
+      <p>The opening steps are supplied. Finish the analysis in your own words, then compare your reasoning before trying the independent case.</p>
+      {% include lesson-faded-example.html example=lesson.faded_example %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="cc-lesson-activity" aria-labelledby="lesson-application-title">
+    <div class="cc-lesson-activity-number" aria-hidden="true">{% if lesson.faded_example %}06{% else %}05{% endif %}</div>
     <div class="cc-lesson-activity-body">
       <div class="cc-section-kicker">Independent application · 10 minutes</div>
       <h2 id="lesson-application-title">Apply the structure to a new case.</h2>

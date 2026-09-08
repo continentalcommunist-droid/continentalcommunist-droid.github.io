@@ -16,7 +16,7 @@ lesson_id: cc.lesson.marxism-fundamentals.week-03
 stage_id: cc.stage.marxism-fundamentals.wage-relation
 order: 3
 week: 3
-estimated_minutes: 55
+estimated_minutes: 61
 reading_level: Introductory
 topics:
 - Political Economy
@@ -70,6 +70,34 @@ worked_example:
     text: "If the shift adds more value than wages and other costs, the remainder can appear as profit after sale."
   - label: State the relation
     text: "The wage exchange can be contractually equal while preserving the worker's need to sell labor power and capital's control over production."
+faded_example:
+  item_id: cc.item.marxism-fundamentals.week-03.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "A hypothetical furniture firm pays carpenters for each table completed. A manager claims this means the carpenters sell their own goods and the wage relation has ended."
+  provided_steps:
+  - label: Establish ownership and control
+    text: "In this scenario, the firm supplies wood and tools, sets the work schedule, owns the completed tables, and sells them to customers."
+  - label: Identify the payment arrangement
+    text: "The piece rate sets how the firm calculates workers' pay. It does not transfer ownership of the tools or tables to the carpenters."
+  completion_steps:
+  - id: distinguish-capacity-activity
+    label: Distinguish capacity from activity
+    prompt: "Identify labor power and labor in this case. What does the firm obtain from the carpenters?"
+    model_answer: "Labor power is the carpenters' capacity to work, made available to the firm under the employment arrangement. Labor is their actual cutting, assembling, and finishing. Counting completed tables to calculate pay does not erase that distinction."
+  - id: separate-wage-value
+    label: Separate wages from value produced
+    prompt: "Does paying for every completed table establish that wages equal all the new value workers produce? Explain."
+    model_answer: "No. The piece rate measures pay by output; it does not prove that the wage equals the new value created. Analysis must distinguish workers' new value from the value of wood and equipment transferred into the tables."
+  - id: trace-renewal
+    label: Trace how the relation is renewed
+    prompt: "Explain how the next round of production could reproduce capital and workers' dependence on wages."
+    model_answer: "The firm retains control of the workshop and product and can use sale proceeds to renew production and accumulate any realized surplus. Carpenters who still lack independent access to means of production must keep selling their labor power for income."
+  feedback_points:
+  - "Names labor power as capacity and labor as its actual use."
+  - "Does not infer payment for all new value from the piece rate."
+  - "Connects continued wage dependence to control of the means of production."
+  source_pointer: "Revisit 'What Are Wages?' on forms of wage payment and 'Relation of Wage Labour to Capital' on how the exchange renews the relation between workers and capital."
 application:
   item_id: cc.item.marxism-fundamentals.week-03.application-01
   concept_id: cc.concept.wage

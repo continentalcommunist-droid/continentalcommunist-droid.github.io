@@ -16,7 +16,7 @@ lesson_id: cc.lesson.capital-political-economy.week-01
 stage_id: cc.stage.capital-political-economy.classical-foundations
 order: 1
 week: 1
-estimated_minutes: 72
+estimated_minutes: 78
 reading_minutes: 35
 reading_level: Intermediate
 topics:
@@ -72,6 +72,34 @@ worked_example:
     text: "Replaceability, unemployment, legal rules, and workers' ability to organize affect who captures the gain."
   - label: State the conditional conclusion
     text: "Specialization can enlarge social wealth while its benefits and burdens remain institutionally contested."
+faded_example:
+  item_id: cc.item.capital-political-economy.week-01.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "In a hypothetical soap workshop, specialization raises daily output, so the workshop no longer depends on anyone outside it."
+  provided_steps:
+  - label: "Identify the technical gain"
+    text: "Repeated tasks and dedicated cutting equipment let the same workers produce more bars each day."
+  - label: "Identify usefulness"
+    text: "The soap cleans clothing; this use value does not itself specify the price at which the bars exchange."
+  completion_steps:
+  - id: map-exchange-dependence
+    label: "Map dependence on exchange"
+    prompt: "What must the specialized workshop obtain and sell outside its own walls?"
+    model_answer: "It must exchange for oils, equipment, packaging, and workers' means of subsistence, then find buyers for its larger output. Specialization deepens dependence on suppliers, transport, and the extent of the market."
+  - id: separate-price-and-labor
+    label: "Interpret the selling price"
+    prompt: "Would a higher selling price establish that more labor was required per bar? Explain."
+    model_answer: "No. Required labor per bar has fallen in this case, while market price may change with demand and supply. Smith's labor measures address value and exchange; one observed price is not a direct record of individual effort or usefulness."
+  - id: locate-bargaining-power
+    label: "Identify who controls the gain"
+    prompt: "What would determine whether increased output improves workers' position?"
+    model_answer: "Ownership, wage bargaining, alternative employment, and workers' organization shape the distribution of the gain. Greater technical productivity neither ends exchange dependence nor establishes equal power."
+  feedback_points:
+  - "Names both purchased inputs and a market for increased output."
+  - "Keeps usefulness, labor required, and observed price distinct."
+  - "Connects distribution to ownership and bargaining rather than output alone."
+  source_pointer: "Revisit Wealth of Nations, Book I, Chapters 1–3 on specialization and market extent, Chapters 4–7 on value and price, and Chapter 8 on wages."
 application:
   item_id: cc.item.capital-political-economy.week-01.application-01
   concept_id: cc.concept.exchange-value

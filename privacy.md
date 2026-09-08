@@ -27,7 +27,7 @@ When you explore the site and study learning pathways without creating an accoun
 - We do not require registration, email addresses, or personal identifiers.
 - You can freely access pathway overviews, syllabi, lesson activities, lecture guides, discussion questions, timelines, and glossary references.
 - If you check off completed steps in learning pathways, this progress is stored directly in your browser's local storage (`localStorage`). This data stays on your machine and is never transmitted to our servers or third parties.
-- In the retention lesson pilot, warm-up responses, retrieval and application responses, confidence judgments, self-assessments, scheduled review dates, daily review limit, text-free review history, and mastery estimates are also stored only in your browser. They are not synchronized to your account or sent to an analytics service.
+- In the retention lesson pilot, warm-up responses, guided-example responses, retrieval and application responses, confidence judgments, self-assessments, scheduled review dates, daily review limit, text-free review history, and mastery estimates are also stored only in your browser. Guided examples are stored separately and do not count toward independent recall estimates. These records are not synchronized to your account or sent to an analytics service.
 - You can clear your local progress at any time through your browser settings.
 
 ### 2. Learner Accounts

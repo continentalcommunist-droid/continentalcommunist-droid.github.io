@@ -99,6 +99,53 @@ ROOT.glob("_lessons/*.md").sort.each do |path|
   errors << "#{path}: duplicate item_id #{warmup_item_id.inspect}" if item_ids.key?(warmup_item_id)
   item_ids[warmup_item_id] = path
 
+  example = data["faded_example"]
+  if !example.is_a?(Hash)
+    errors << "#{path}: faded_example is required for guided lessons"
+  else
+    example_id = example["item_id"].to_s
+    expected_prefix = lesson_id.sub("cc.lesson.", "cc.item.") + "."
+    errors << "#{path}: faded_example has invalid item_id #{example_id.inspect}" unless example_id.match?(ITEM_PATTERN) && example_id.start_with?(expected_prefix)
+    errors << "#{path}: duplicate item_id #{example_id.inspect}" if item_ids.key?(example_id)
+    item_ids[example_id] = path
+
+    %w[claim source_pointer].each do |field|
+      errors << "#{path}: faded_example requires #{field}" if example[field].to_s.strip.empty?
+    end
+    minimum = example["min_length"]
+    minutes = example["estimated_minutes"]
+    errors << "#{path}: faded_example min_length must be an integer from 1 to 2000" unless minimum.is_a?(Integer) && (1..2000).cover?(minimum)
+    errors << "#{path}: faded_example estimated_minutes must be a positive integer" unless minutes.is_a?(Integer) && minutes.positive?
+    points = example["feedback_points"]
+    errors << "#{path}: faded_example requires nonblank feedback_points" unless points.is_a?(Array) && !points.empty? && points.all? { |point| point.is_a?(String) && !point.strip.empty? }
+
+    %w[provided_steps completion_steps].each do |field|
+      steps = example[field]
+      if !steps.is_a?(Array) || steps.empty?
+        errors << "#{path}: faded_example requires #{field}"
+        next
+      end
+      step_ids = Set.new
+      steps.each_with_index do |step, index|
+        label = "#{path}: faded_example #{field} step #{index + 1}"
+        unless step.is_a?(Hash)
+          errors << "#{label} must be an object"
+          next
+        end
+        fields = field == "provided_steps" ? %w[label text] : %w[label prompt model_answer]
+        fields.each do |key|
+          errors << "#{label} requires #{key}" if step[key].to_s.strip.empty?
+        end
+        next unless field == "completion_steps"
+
+        step_id = step["id"].to_s
+        errors << "#{label} has invalid step id #{step_id.inspect}" unless step_id.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/)
+        errors << "#{label} repeats step id #{step_id.inspect}" if step_ids.include?(step_id)
+        step_ids << step_id
+      end
+    end
+  end
+
   %w[checkpoint application].each do |field|
     item = data[field] || {}
     item_id = item["item_id"].to_s

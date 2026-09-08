@@ -11,6 +11,7 @@ identifiers:
 learning_state:
   completion: Records whether an assigned activity was finished.
   attempt: Records a learner's private response, confidence, and self-assessment.
+  guided_practice: Stores partially completed example responses and confidence separately from independent attempts; never contributes to mastery estimates or scheduled review.
   review: Records when an item should return, its stability and difficulty, the learner's daily workload preference, and a private text-free review history.
   interleaving: Uses explicit concept-confusion sets to vary related due items across lessons and pathways.
 

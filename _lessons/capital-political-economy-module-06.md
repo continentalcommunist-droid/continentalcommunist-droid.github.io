@@ -16,7 +16,7 @@ lesson_id: cc.lesson.capital-political-economy.week-06
 stage_id: cc.stage.capital-political-economy.production
 order: 6
 week: 6
-estimated_minutes: 86
+estimated_minutes: 92
 reading_minutes: 46
 reading_level: Intermediate
 topics:
@@ -72,6 +72,34 @@ worked_example:
     text: "One firm may displace workers while lower costs and expanded output change employment elsewhere in the industry."
   - label: Recover the contested alternative
     text: "Shorter hours are technically possible but depend on ownership, bargaining power, regulation, and collective priorities."
+faded_example:
+  item_id: cc.item.capital-political-economy.week-06.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "In a hypothetical economy, generalized milling machinery halves the value of flour, so it must also halve necessary labor time."
+  provided_steps:
+  - label: "Locate flour in the consumption bundle"
+    text: "Assume flour initially accounts for one fifth of the value of workers' customary subsistence bundle. The bundle's quantities and every other component's value stay fixed."
+  - label: "Fix the starting working day"
+    text: "Before the change, necessary labor takes four hours of an eight-hour day. Assume the lower bundle value fully lowers the value of labor power."
+  completion_steps:
+  - id: calculate-bundle-change
+    label: "Calculate the whole-bundle change"
+    prompt: "How much does the bundle's value fall, and what becomes of necessary labor time?"
+    model_answer: "Halving one fifth of the bundle reduces its total value by one tenth, or 10%. Necessary labor therefore falls from four hours to 3.6 hours, not to two hours."
+  - id: identify-relative-surplus
+    label: "Trace surplus labor"
+    prompt: "With the total working day fixed, how does surplus labor change and which mechanism is this?"
+    model_answer: "Surplus labor rises from four to 4.4 hours as necessary labor contracts. This is relative surplus value: the working day stays eight hours while cheaper customary means of subsistence alter its division."
+  - id: explain-contested-use
+    label: "Separate capacity from its use"
+    prompt: "Why does this productivity gain not guarantee shorter shifts or lighter work in the mills?"
+    model_answer: "Management can use machinery to increase throughput, reduce staffing, or intensify monitoring. Shorter shifts and control over pace depend on how the labor process is organized and contested; they do not follow automatically from the machine's capacity."
+  feedback_points:
+  - "Applies the flour saving to its share of the whole subsistence bundle."
+  - "Keeps the eight-hour day fixed and identifies 3.6 necessary and 4.4 surplus hours."
+  - "Distinguishes technical labor saving from the organization of work."
+  source_pointer: "Return to Capital, Volume I, Chapter 15, especially machinery as a means of producing surplus value and its effects on employment, the working day, and intensity."
 application:
   item_id: cc.item.capital-political-economy.week-06.application-01
   concept_id: cc.concept.labor-process

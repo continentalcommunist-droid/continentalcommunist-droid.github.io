@@ -33,7 +33,7 @@ export function adaptiveSchedule(attempt, grade) {
 
 export function masteryScore(attempt, now) {
   const grade = attempt.lastReviewGrade || attempt.selfGrade;
-  const confidence = attempt.lastReviewConfidence || attempt.confidence;
+  const confidence = attempt.lastReviewConfidence || attempt.gradedConfidence || attempt.confidence;
   const base = grade === "solid" ? 0.84 : grade === "developing" ? 0.62 : 0.34;
   const reviewGain = Math.min(0.08, Number(attempt.reviewCount || 0) * 0.02);
   const confidenceChange = confidence === "high" ? 0.03 : confidence === "low" ? -0.05 : 0;

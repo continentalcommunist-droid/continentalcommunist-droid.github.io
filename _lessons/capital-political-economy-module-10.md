@@ -16,7 +16,7 @@ lesson_id: cc.lesson.capital-political-economy.week-10
 stage_id: cc.stage.capital-political-economy.method
 order: 10
 week: 10
-estimated_minutes: 88
+estimated_minutes: 94
 reading_minutes: 42
 reading_level: Intermediate
 topics:
@@ -72,6 +72,34 @@ worked_example:
     text: "The system can reduce task time while budgets, staffing, prices, and competitive pressures continue to organize work through monetary measures."
   - label: Reconstruct the concrete
     text: "Technology is one determination within a system of labor, knowledge, property, institutions, circulation, and social need."
+faded_example:
+  item_id: cc.item.capital-political-economy.week-10.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "A hypothetical paper mill installs automated sorting, so technology by itself guarantees profitable growth."
+  provided_steps:
+  - label: "Begin with simple relations"
+    text: "The mill sells paper as a commodity and buys labor power and inputs. Distinguish producing usable paper from realizing value through its sale."
+  - label: "Locate embodied social knowledge"
+    text: "Its sorting equipment incorporates accumulated engineering and collective experience as fixed capital. The equipment's existence does not yet explain its ownership or use."
+  completion_steps:
+  - id: connect-production-and-control
+    label: "Add labor and control"
+    prompt: "Which relations must be added to explain what the equipment does in production?"
+    model_answer: "Identify who operates, maintains, and corrects the sorting process; who sets pace and staffing; and who owns the equipment and its design rights. Technical capacity becomes an actual labor process through these relations, with contested effects on hours, skill, and output."
+  - id: connect-circulation-and-finance
+    label: "Add circulation and finance"
+    prompt: "Suppose the equipment is debt-financed and paper remains unsold for months. How does this change the account?"
+    model_answer: "Debt payments and tied-up commodity capital can obstruct renewal despite faster sorting. Profitability depends on sales, turnover, input costs, financing terms, and competition as well as production; the machine cannot independently guarantee an expanded money return."
+  - id: form-testable-synthesis
+    label: "Reconstruct a testable explanation"
+    prompt: "State a connected explanation and one finding that would force you to revise it."
+    model_answer: "Automation may reduce sorting time, while staffing decisions determine labor use and sales timing determines whether output finances debt and renewal. If measured total labor per usable ton does not fall because maintenance and rework rise, the predicted productivity gain must be revised before attributing growth to the machine."
+  feedback_points:
+  - "Connects abstract categories to specific labor, property, and control relations."
+  - "Explains how production, sale, turnover, and debt affect one another."
+  - "Names evidence that could revise a causal claim rather than merely add description."
+  source_pointer: "Return to the Grundrisse, the 1857 Introduction on the method of political economy and the Fragment on Machines on fixed capital, social knowledge, and labor time."
 application:
   item_id: cc.item.capital-political-economy.week-10.application-01
   concept_id: cc.concept.general-intellect

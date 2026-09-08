@@ -16,7 +16,7 @@ lesson_id: cc.lesson.capital-political-economy.week-07
 stage_id: cc.stage.capital-political-economy.accumulation
 order: 7
 week: 7
-estimated_minutes: 90
+estimated_minutes: 96
 reading_minutes: 50
 reading_level: Intermediate
 topics:
@@ -72,6 +72,34 @@ worked_example:
     text: "A ready labor supply can shape wages, schedules, turnover policies, and workers' willingness to resist."
   - label: Specify evidence
     text: "Compare employment, output, hours, job tenure, applications, wages, and displacement over time rather than rely on one net number."
+faded_example:
+  item_id: cc.item.capital-political-economy.week-07.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "In a hypothetical town, an investor's saving alone explains how a new factory acquires its workforce."
+  provided_steps:
+  - label: "Trace access to tools"
+    text: "The town transfers its shared workshops and tools to the investor. Two hundred craftspeople lose their former access to independent production."
+  - label: "Record new employment"
+    text: "The investor expands production and hires sixty of those craftspeople. Assume the others are seeking paid work and currently have no alternative means of subsistence."
+  completion_steps:
+  - id: explain-social-separation
+    label: "Explain how workers become available"
+    prompt: "What does a story about saving miss about the formation of this workforce?"
+    model_answer: "The transfer separates producers from tools and independent subsistence, making the sale of labor power necessary. The relevant process is the production of a property and labor relation, not simply the accumulation of money by a thrifty owner."
+  - id: connect-jobs-and-surplus
+    label: "Connect hiring to surplus population"
+    prompt: "Can sixty new factory jobs coexist with a relative surplus population in this case?"
+    model_answer: "Yes. Capital absorbs sixty workers while 140 of the displaced craftspeople remain available for work. The surplus is relative to capital's current demand, so expanding factory employment does not establish that everyone separated from production is absorbed."
+  - id: test-mechanism-and-period
+    label: "Test the explanation"
+    prompt: "What evidence would distinguish this mechanism from a temporary demand downturn or a voluntary move?"
+    model_answer: "Examine the transfer terms, prior tool-access rights, ability to continue independent production, job-seeking records, and timing of displacement. Compare demand and hiring before and after the transfer, and investigate resistance or alternative livelihoods rather than infer the mechanism from unemployment alone."
+  feedback_points:
+  - "Connects the change in property access to dependence on wage work."
+  - "Allows capital to hire workers while a larger available workforce remains."
+  - "Names evidence about separation and timing, not only a head count of unemployed people."
+  source_pointer: "Revisit Capital, Volume I, Chapter 25 on labor demand and relative surplus population, then Chapters 26–28 on separation, property, and coercion."
 application:
   item_id: cc.item.capital-political-economy.week-07.application-01
   concept_id: cc.concept.primitive-accumulation

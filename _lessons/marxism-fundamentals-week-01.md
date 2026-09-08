@@ -16,7 +16,7 @@ lesson_id: cc.lesson.marxism-fundamentals.week-01
 stage_id: cc.stage.marxism-fundamentals.method
 order: 1
 week: 1
-estimated_minutes: 50
+estimated_minutes: 56
 reading_level: Introductory
 topics:
 - Marxist Theory
@@ -68,6 +68,34 @@ worked_example:
     text: "Comparable closures may produce resignation, migration, or division rather than confrontation."
   - label: State the limit
     text: "The closure changes pressures and possibilities; it does not by itself determine one political response."
+faded_example:
+  item_id: cc.item.marxism-fundamentals.week-01.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "In a hypothetical town, larger printing workshops replace small shops and employ more wage workers. An observer claims that a workers' party must now form."
+  provided_steps:
+  - label: Identify the material change
+    text: "Production brings more workers together under owners who control the presses, premises, and sale of printed goods."
+  - label: Map the changing positions
+    text: "Workshop owners gain control over larger businesses; employees depend on wages; former small proprietors may seek work or defend their remaining shops."
+  completion_steps:
+  - id: trace-mediation
+    label: Trace the political mediation
+    prompt: "Name two organizations, institutions, or ideas you would examine to explain whether shared working conditions become a political party."
+    model_answer: "I would examine workers' associations and electoral rules, along with organizing traditions and political arguments. These shape whether shared pressures become a durable alliance, another form of action, or no organization."
+  - id: test-counterevidence
+    label: Test the causal claim
+    prompt: "What comparison or evidence could challenge the claim that larger workshops necessarily produce a workers' party?"
+    model_answer: "Compare towns with similar workshops but different political outcomes. If a party forms only where workers organize across shops, organization helps explain the outcome that workshop size alone cannot."
+  - id: qualify-conclusion
+    label: State a limited conclusion
+    prompt: "Rewrite the observer's claim so it connects material conditions to political possibilities without guaranteeing an outcome."
+    model_answer: "Larger workshops can create shared pressures and opportunities for workers to organize. Whether a party forms depends on institutions, alliances, ideas, and collective action; the production change does not settle the result."
+  feedback_points:
+  - "Connects a named institution or organization to how workers act."
+  - "Proposes evidence that could weaken the explanation, not only confirm it."
+  - "Describes changed possibilities without predicting an automatic political outcome."
+  source_pointer: "Revisit Chapter I's movement from modern industry and the world market to workers' organization and political struggle. Track the steps connecting production to collective action."
 application:
   item_id: cc.item.marxism-fundamentals.week-01.application-01
   concept_id: cc.concept.historical-materialism

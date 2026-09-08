@@ -266,7 +266,7 @@ import { adaptiveSchedule, buildInterleavedQueue } from "./retention-model.mjs";
           ...item,
           dueAt: attempt.dueAt,
           selfGrade: attempt.lastReviewGrade || attempt.selfGrade,
-          confidence: attempt.lastReviewConfidence || attempt.confidence,
+          confidence: attempt.lastReviewConfidence || attempt.gradedConfidence || attempt.confidence,
           difficulty: attempt.difficulty,
           anchor: itemId.includes("application")
             ? "lesson-application-title"

@@ -16,7 +16,7 @@ lesson_id: cc.lesson.capital-political-economy.week-05
 stage_id: cc.stage.capital-political-economy.production
 order: 5
 week: 5
-estimated_minutes: 84
+estimated_minutes: 90
 reading_minutes: 44
 reading_level: Intermediate
 topics:
@@ -72,6 +72,34 @@ worked_example:
     text: "The calculation requires a value relation; observed wages, sales, and accounting profit do not reveal it directly."
   - label: Identify the conflict
     text: "Extending the shift to twelve hours while necessary labor remains five raises surplus labor to seven and the rate to 140%."
+faded_example:
+  item_id: cc.item.capital-political-economy.week-05.faded-01
+  estimated_minutes: 6
+  min_length: 30
+  claim: "A hypothetical print shop transfers 600 value units from inputs, advances 150 for labor power, and produces 150 of surplus; its rate of surplus value is 20%."
+  provided_steps:
+  - label: "Keep the components separate"
+    text: "Treat the stated figures as value magnitudes: c = 600, v = 150, and s = 150. The finished output contains 900 value units."
+  - label: "Identify new value"
+    text: "Living labor adds 300 units: 150 replace the labor-power advance and 150 form surplus. The 600 units from inputs are transferred value."
+  completion_steps:
+  - id: choose-surplus-denominator
+    label: "Choose the correct denominator"
+    prompt: "Calculate the rate of surplus value and explain what the claimed 20% instead compares."
+    model_answer: "The rate of surplus value is s/v = 150/150 = 100%. The claimed 20% uses 150/(600 + 150), relating surplus to total capital in a profit-rate form instead of comparing surplus with necessary labor."
+  - id: explain-constant-capital
+    label: "Explain the role of the press"
+    prompt: "Why call the consumed press value constant when the press is essential to making useful books?"
+    model_answer: "Constant describes its role in value formation: the consumed means of production transfer existing value. The press contributes to useful production without becoming the source of the additional 300 units of new value."
+  - id: identify-working-day-conflict
+    label: "Connect the ratio to the working day"
+    prompt: "Would the wage agreement alone fix how long or intensely this workforce can work? Identify a limit to investigate."
+    model_answer: "The contract does not settle the competing claims over the use and preservation of labor power. Legal limits, collective organization, breaks, fatigue, and health can shape the actual working day and constrain employer demands."
+  feedback_points:
+  - "Uses v, rather than c + v or total output, as the surplus-value denominator."
+  - "Acknowledges the press's useful role while distinguishing value transfer from new value."
+  - "Names a concrete social or physical constraint on the use of labor power."
+  source_pointer: "Revisit Capital, Volume I, Chapters 8–9 on constant capital and the surplus-value rate, then Chapter 10 on the contested working day."
 application:
   item_id: cc.item.capital-political-economy.week-05.application-01
   concept_id: cc.concept.absolute-surplus-value

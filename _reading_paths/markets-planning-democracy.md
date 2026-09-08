@@ -27,6 +27,8 @@ topics:
 - Socialist Democracy
 - Political Economy
 slug: markets-planning-democracy
+pathway_id: cc.pathway.markets-planning-democracy
+schema_version: 1
 number: '06'
 level: Advanced
 effort: 8 weeks · 5–6 hours per week

@@ -27,6 +27,8 @@ topics:
 - Socialism
 - Unions
 slug: labor-socialist-history
+pathway_id: cc.pathway.labor-socialist-history
+schema_version: 1
 number: '04'
 level: General
 effort: 8 weeks · 4–5 hours per week

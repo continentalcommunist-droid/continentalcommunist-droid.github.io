@@ -11,18 +11,20 @@ main:
         status: Available
         target: /learn/pathways/marxism-fundamentals/
         cta: Begin Marxism Fundamentals
-      - id: courses
-        title: Courses
-        url: /learn/#courses
-        description: Structured sequences that connect lessons, texts, concepts, and contemporary examples.
-        status: Planned
-      - id: reading-paths
-        title: Reading Paths
+      - id: pathways
+        title: Pathways
         url: /learn/pathways/
-        description: Twelve structured routes with levels, effort estimates, lecture guides, questions, glossaries, and progress tracking.
+        description: Twelve structured routes with levels, effort estimates, lessons, readings, questions, glossaries, and progress tracking.
         status: Available
         target: /learn/pathways/
         cta: Explore all twelve pathways
+      - id: review
+        title: Review
+        url: /learn/review/
+        description: Return to concepts after a delay and strengthen what you can explain without the source open.
+        status: Pilot
+        target: /learn/review/
+        cta: Open review center
       - id: glossary
         title: Glossary
         url: /learn/pathways/#pathway-glossaries

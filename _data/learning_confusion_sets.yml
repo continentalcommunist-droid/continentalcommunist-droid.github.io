@@ -1,0 +1,47 @@
+- id: cc.confusion.labor-power-value-wage
+  title: Labor, labor power, value, and wage
+  concept_ids:
+  - cc.concept.labor-power
+  - cc.concept.wage
+  - cc.concept.value
+  - cc.concept.surplus-value
+  cue: "Identify whether the case concerns a capacity sold, labor performed, socially validated value, or the price paid for labor power."
+- id: cc.confusion.use-exchange-value
+  title: Use value, exchange value, and value
+  concept_ids:
+  - cc.concept.use-value
+  - cc.concept.exchange-value
+  - cc.concept.commodity
+  - cc.concept.socially-necessary-labor-time
+  cue: "Separate usefulness, the quantitative exchange relation, and the social labor represented through that relation."
+- id: cc.confusion.absolute-relative-surplus
+  title: Absolute and relative surplus value
+  concept_ids:
+  - cc.concept.absolute-surplus-value
+  - cc.concept.relative-surplus-value
+  - cc.concept.surplus-value
+  cue: "Ask whether surplus labor expands through a longer working day or through a reduction of necessary labor time."
+- id: cc.confusion.production-realization-profit
+  title: Production, realization, and profit
+  concept_ids:
+  - cc.concept.surplus-value
+  - cc.concept.circuit-of-capital
+  - cc.concept.turnover-time
+  - cc.concept.rate-of-profit
+  - cc.concept.credit
+  cue: "Locate where new value is produced, where it is realized through sale, and how it appears or is distributed as profit and interest."
+- id: cc.confusion.machinery-social-knowledge
+  title: Machinery, productivity, and social knowledge
+  concept_ids:
+  - cc.concept.machinery
+  - cc.concept.relative-surplus-value
+  - cc.concept.fixed-capital
+  - cc.concept.general-intellect
+  cue: "Distinguish a technology's capacity from its ownership, capitalist employment, and embodiment of accumulated social knowledge."
+- id: cc.confusion.materialism-state-power
+  title: Material conditions, class coalitions, and state autonomy
+  concept_ids:
+  - cc.concept.historical-materialism
+  - cc.concept.class-coalition
+  - cc.concept.relative-autonomy
+  cue: "Trace material constraints, organized social forces, and institutional mediation without treating the state as either neutral or a direct puppet."

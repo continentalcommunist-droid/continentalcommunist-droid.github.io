@@ -22,9 +22,12 @@ topics:
 - Historical Materialism
 - Political Economy
 slug: marxism-fundamentals
+pathway_id: cc.pathway.marxism-fundamentals
+schema_version: 1
 number: '01'
 level: Introductory
 effort: 6 weeks · 3–4 hours per week
+lesson_unit: Week
 prerequisite_summary: No prior study required
 prerequisites:
 - No prior knowledge of Marxism or economics is assumed.

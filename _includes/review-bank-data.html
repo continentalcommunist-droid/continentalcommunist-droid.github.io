@@ -1,0 +1,33 @@
+<script id="cc-review-bank-data" type="application/json">
+[
+  {% assign cc_review_lessons = site.lessons | sort: "order" %}
+  {% assign cc_review_first = true %}
+  {% for cc_lesson in cc_review_lessons %}
+    {% assign cc_pathway = site.reading_paths | where: "slug", cc_lesson.pathway | first %}
+    {% assign cc_items = "checkpoint,application" | split: "," %}
+    {% for cc_item_name in cc_items %}
+      {% assign cc_item = cc_lesson[cc_item_name] %}
+      {% if cc_item and cc_item.item_id %}
+        {% unless cc_review_first %},{% endunless %}
+        {
+          "itemId": {{ cc_item.item_id | jsonify }},
+          "conceptId": {{ cc_item.concept_id | jsonify }},
+          "pathwayId": {{ cc_lesson.pathway_id | jsonify }},
+          "pathwayTitle": {{ cc_pathway.title | jsonify }},
+          "lessonId": {{ cc_lesson.lesson_id | jsonify }},
+          "lessonTitle": {{ cc_lesson.title | jsonify }},
+          "lessonUrl": {{ cc_lesson.url | relative_url | jsonify }},
+          "prompt": {{ cc_item.prompt | jsonify }},
+          "modelAnswer": {{ cc_item.model_answer | jsonify }},
+          "feedbackPoints": {{ cc_item.feedback_points | jsonify }},
+          "sourcePointer": {{ cc_item.source_pointer | jsonify }}
+        }
+        {% assign cc_review_first = false %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+]
+</script>
+<script id="cc-review-confusion-data" type="application/json">
+{{ site.data.learning_confusion_sets | jsonify }}
+</script>

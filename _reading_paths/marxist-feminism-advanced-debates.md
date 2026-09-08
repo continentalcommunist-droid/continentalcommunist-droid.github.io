@@ -27,9 +27,10 @@ topics:
 - Social Reproduction
 - Imperialism
 - International Political Economy
-- Labor
 - Value
 slug: marxist-feminism-advanced-debates
+pathway_id: cc.pathway.marxist-feminism-advanced-debates
+schema_version: 1
 number: '12'
 level: Advanced
 effort: 6 weeks · 5–6 hours per week

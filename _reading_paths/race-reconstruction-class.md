@@ -29,6 +29,8 @@ topics:
 - Labor
 - American History
 slug: race-reconstruction-class
+pathway_id: cc.pathway.race-reconstruction-class
+schema_version: 1
 number: '05'
 level: Intermediate
 effort: 7 weeks · 4–5 hours per week

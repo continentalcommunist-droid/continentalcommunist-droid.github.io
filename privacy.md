@@ -4,7 +4,7 @@ title: Privacy Policy
 description: Privacy policy and data practices for Continental Communist, detailing our commitment to privacy, learner accounts, local storage, and third-party services.
 permalink: /privacy/
 schema_page_type: WebPage
-updated: 2026-09-02
+updated: 2026-09-08
 ---
 
 **Continental Communist is an independent publication dedicated to education, political economy, and materialist analysis. We believe privacy and intellectual freedom are essential conditions for independent study.**
@@ -15,7 +15,7 @@ This Privacy Policy explains what information is collected when you visit [conti
 
 1. **Free and open curriculum.** All learning pathways, lecture guides, discussion prompts, syllabi, bibliographies, and reference glossaries are 100% free and open without requiring an account. Reading full published analytical articles and accessing on-site digital library books requires creating a free learner account.
 2. **No surveillance advertising.** We do not sell user data, run third-party advertising networks, deploy tracking pixels, or monetize your reading habits.
-3. **Private by design.** Educational progress and personal notes belong to the learner. Features that track pathway completion store data locally on your device by default. Cloud synchronization is entirely optional.
+3. **Private by design.** Educational progress, retrieval responses, confidence judgments, review schedules, and personal notes belong to the learner. The retention lesson pilot stores its learning record locally on your device. Cloud synchronization is entirely optional and currently applies only to pathway completion, bookmarks, and private notes.
 4. **Owner-only database policies.** When you choose to create a learner account, strict row-level security policies ensure your records, bookmarks, and private study notes can only be accessed by you.
 
 ## Information We Collect
@@ -25,8 +25,9 @@ This Privacy Policy explains what information is collected when you visit [conti
 When you explore the site and study learning pathways without creating an account:
 
 - We do not require registration, email addresses, or personal identifiers.
-- You can freely access course overviews, syllabi, lecture guides, discussion questions, timelines, and glossary references.
+- You can freely access pathway overviews, syllabi, lesson activities, lecture guides, discussion questions, timelines, and glossary references.
 - If you check off completed steps in learning pathways, this progress is stored directly in your browser's local storage (`localStorage`). This data stays on your machine and is never transmitted to our servers or third parties.
+- In the retention lesson pilot, warm-up responses, retrieval and application responses, confidence judgments, self-assessments, scheduled review dates, daily review limit, text-free review history, and mastery estimates are also stored only in your browser. They are not synchronized to your account or sent to an analytics service.
 - You can clear your local progress at any time through your browser settings.
 
 ### 2. Learner Accounts
@@ -65,7 +66,7 @@ We do not use third-party analytics trackers, behavioral ad cookies, or cross-si
 
 ## Cookies and Browser Storage
 
-- **Essential Cookies and Local Storage:** We use local browser storage and session cookies solely for essential functionality: preserving your login session when you sign in, remembering active pathway progress, and caching your study preferences.
+- **Essential Cookies and Local Storage:** We use local browser storage and session cookies solely for essential functionality: preserving your login session when you sign in, remembering active pathway progress, saving private pilot-lesson responses and review dates on your device, computing local mastery estimates, retaining a text-free review history, and caching your study preferences.
 - **No Advertising Cookies:** We do not set any tracking, targeting, or advertising cookies.
 
 ## Your Rights and Data Control

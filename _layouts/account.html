@@ -197,11 +197,54 @@ layout: default
     </div>
 
     <nav class="cc-dashboard-nav" aria-label="Learner dashboard sections">
+      <a href="#study-today">Today</a>
       <a href="#study-progress">Pathways</a>
-      <a href="#bookmarks">Bookmarks</a>
-      <a href="#private-notes">Private notes</a>
+      <a href="#saved-material">Saved</a>
       <a href="#account-settings">Account</a>
     </nav>
+
+    <section class="cc-dashboard-focus" id="study-today" aria-labelledby="study-today-title">
+      <div class="cc-dashboard-section-heading">
+        <div>
+          <div class="cc-section-kicker">This device</div>
+          <h3 id="study-today-title">Study today</h3>
+        </div>
+        <span>Responses and mastery estimates stay in this browser</span>
+      </div>
+
+      <div class="cc-dashboard-priority-grid">
+        <article class="cc-dashboard-priority">
+          <div class="cc-section-kicker">Due reviews</div>
+          <strong data-dashboard-due-count>0</strong>
+          <h4 data-dashboard-due-title>Nothing due right now</h4>
+          <p data-dashboard-due-detail>Your review queue will fill after you rate lesson checkpoints.</p>
+          <a href="{{ '/learn/review/' | relative_url }}" data-dashboard-review-link>Open review →</a>
+        </article>
+
+        <article class="cc-dashboard-priority">
+          <div class="cc-section-kicker">Continue</div>
+          <span class="cc-dashboard-priority-label" data-dashboard-continue-pathway>Guided pathways</span>
+          <h4 data-dashboard-continue-title>Choose a pathway to begin</h4>
+          <p data-dashboard-continue-detail>Your most recently active guided lesson will appear here.</p>
+          <a href="{{ '/learn/pathways/' | relative_url }}" data-dashboard-continue-link>Browse pathways →</a>
+        </article>
+      </div>
+
+      <div class="cc-dashboard-insight-grid">
+        <section class="cc-dashboard-insight" aria-labelledby="dashboard-mastery-title">
+          <div class="cc-section-kicker">Mastery estimate</div>
+          <h4 id="dashboard-mastery-title">Concepts to strengthen</h4>
+          <p class="cc-dashboard-insight-note">Estimated from self-grades, confidence, spacing, and review history—not a test score.</p>
+          <div data-dashboard-mastery-list></div>
+        </section>
+
+        <section class="cc-dashboard-insight" aria-labelledby="dashboard-attention-title">
+          <div class="cc-section-kicker">Needs attention</div>
+          <h4 id="dashboard-attention-title">Recent difficulty or low confidence</h4>
+          <div data-dashboard-attention-list></div>
+        </section>
+      </div>
+    </section>
 
     <div class="cc-dashboard-stats" aria-label="Learning summary">
       <div><strong data-stat-active-pathways>—</strong><span>Active pathways</span></div>
@@ -317,7 +360,8 @@ layout: default
       zone, pathway enrollments, completed step identifiers, bookmarks, and
       notes you deliberately save. It does not collect browsing history or
       create public profile data. Database policies restrict every learner
-      record, bookmark, and note to its owner.
+      record, bookmark, and note to its owner. Retrieval responses, confidence,
+      review history, and mastery estimates shown above remain only in this browser.
       Read our full <a href="{{ '/privacy/' | relative_url }}">Privacy Policy</a>.
     </p>
   </aside>
@@ -325,5 +369,7 @@ layout: default
 
 {% include supabase-config.html %}
 {% include pathway-catalog-data.html %}
+{% include learning-dashboard-data.html %}
 <script type="module" src="{{ '/assets/account.js' | relative_url }}"></script>
 <script type="module" src="{{ '/assets/learning-progress.js' | relative_url }}"></script>
+<script type="module" src="{{ '/assets/dashboard-retention.js' | relative_url }}"></script>

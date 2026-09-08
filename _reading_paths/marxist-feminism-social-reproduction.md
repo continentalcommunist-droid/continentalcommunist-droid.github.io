@@ -29,6 +29,8 @@ topics:
 - Labor
 - Value
 slug: marxist-feminism-social-reproduction
+pathway_id: cc.pathway.marxist-feminism-social-reproduction
+schema_version: 1
 number: '11'
 level: Intermediate
 effort: 6 weeks · 4–5 hours per week

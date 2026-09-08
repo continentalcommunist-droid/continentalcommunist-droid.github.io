@@ -29,6 +29,8 @@ topics:
 - Constitutional History
 - New Deal
 slug: american-capitalism-state
+pathway_id: cc.pathway.american-capitalism-state
+schema_version: 1
 number: '03'
 level: Intermediate
 effort: 8 weeks · 4–5 hours per week

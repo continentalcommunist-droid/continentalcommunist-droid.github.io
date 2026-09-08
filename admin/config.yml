@@ -387,7 +387,7 @@ collections:
         search_fields: [title, description]
         multiple: true
         required: false
-      - label: Reading Paths
+      - label: Pathways
         name: reading_paths
         widget: relation
         collection: reading_paths
@@ -439,11 +439,22 @@ collections:
     identifier_field: title
     sortable_fields: [course, order, title]
     fields:
-      - { label: Layout, name: layout, widget: hidden, default: page }
+      - { label: Layout, name: layout, widget: hidden, default: lesson }
       - { label: Content Type, name: content_type, widget: hidden, default: Lesson }
       - { label: Section Key, name: section_key, widget: hidden, default: learn }
+      - { label: Schema Version, name: schema_version, widget: hidden, default: 1 }
       - { label: Title, name: title, widget: string }
       - { label: Summary, name: description, widget: text }
+      - label: Pathway
+        name: pathway
+        widget: relation
+        collection: reading_paths
+        value_field: slug
+        display_fields: [title, level]
+        search_fields: [title, description]
+      - { label: Stable Pathway ID, name: pathway_id, widget: string, hint: "Format: cc.pathway.<pathway-slug>. Never rename after publishing." }
+      - { label: Stable Lesson ID, name: lesson_id, widget: string, hint: "Format: cc.lesson.<pathway-slug>.week-<two-digit-week>. Never rename after publishing." }
+      - { label: Stable Stage ID, name: stage_id, widget: string, hint: "Format: cc.stage.<pathway-slug>.<stage-slug>." }
       - label: Course
         name: course
         widget: relation
@@ -451,8 +462,11 @@ collections:
         value_field: "{{slug}}"
         display_fields: [title]
         search_fields: [title, description]
+        required: false
       - { label: Order, name: order, widget: number, value_type: int, min: 1 }
+      - { label: Week, name: week, widget: number, value_type: int, min: 1 }
       - { label: Estimated Minutes, name: estimated_minutes, widget: number, value_type: int, min: 1 }
+      - { label: Scoped Reading Minutes, name: reading_minutes, widget: number, value_type: int, min: 1, default: 20 }
       - { label: Difficulty, name: reading_level, widget: select, default: General, options: [Introductory, General, Intermediate, Advanced, Academic / Technical] }
       - { label: Regions, name: region, widget: select, multiple: true, required: false, options: [United States, North America, Latin America and the Caribbean, Europe, Africa, Middle East and North Africa, South Asia, East and Southeast Asia, Global] }
       - { label: Historical Periods, name: historical_period, widget: select, multiple: true, required: false, options: [Pre-1800, 1800-1865, Reconstruction and Gilded Age (1865-1900), Progressive Era and World War I (1900-1919), Interwar and New Deal (1919-1945), Cold War (1945-1991), Post-Cold War (1991-2008), Contemporary (2008-present), Multiple periods] }
@@ -501,6 +515,8 @@ collections:
         search_fields: [title, summary, aliases]
         multiple: true
         required: false
+      - { label: Stable Concept IDs, name: concept_ids, widget: list, hint: "Example: cc.concept.historical-materialism" }
+      - { label: Concept Summary, name: concepts_label, widget: string, hint: "Short plain-language label shown in the lesson facts." }
       - label: Topics
         name: topics
         widget: relation
@@ -511,12 +527,78 @@ collections:
         multiple: true
         min: 1
         max: 5
+      - { label: Learning Objectives, name: objectives, widget: list }
+      - label: Warm-up
+        name: warmup
+        widget: object
+        fields:
+          - { label: Stable Item ID, name: item_id, widget: string }
+          - { label: Prompt, name: prompt, widget: text }
+      - label: Primary Reading
+        name: primary_reading
+        widget: object
+        fields:
+          - { label: Stable Activity ID, name: activity_id, widget: string }
+          - { label: Existing Progress Item, name: progress_item, widget: string, hint: "Example: reading:manifesto" }
+          - { label: Title, name: title, widget: string }
+          - { label: Work, name: work, widget: string }
+          - { label: Authors, name: authors, widget: string }
+          - { label: URL, name: url, widget: string }
+          - { label: Completion Label, name: completion_label, widget: string, required: false, hint: "Optional short label for the completion checkbox." }
+          - { label: Scope, name: scope, widget: text }
+          - { label: Guiding Question, name: guiding_question, widget: text }
+      - label: Retrieval Checkpoint
+        name: checkpoint
+        widget: object
+        fields:
+          - { label: Stable Item ID, name: item_id, widget: string }
+          - { label: Stable Concept ID, name: concept_id, widget: string }
+          - { label: Minimum Characters, name: min_length, widget: number, value_type: int, min: 1, default: 40 }
+          - { label: Prompt, name: prompt, widget: text }
+          - { label: Model Explanation, name: model_answer, widget: text }
+          - { label: Feedback Points, name: feedback_points, widget: list }
+          - { label: Source Pointer, name: source_pointer, widget: text }
+      - label: Worked Example
+        name: worked_example
+        widget: object
+        fields:
+          - { label: Claim, name: claim, widget: text }
+          - label: Steps
+            name: steps
+            widget: list
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Explanation, name: text, widget: text }
+      - label: Independent Application
+        name: application
+        widget: object
+        fields:
+          - { label: Stable Item ID, name: item_id, widget: string }
+          - { label: Stable Concept ID, name: concept_id, widget: string }
+          - { label: Minimum Characters, name: min_length, widget: number, value_type: int, min: 1, default: 40 }
+          - { label: Prompt, name: prompt, widget: text }
+          - { label: Model Explanation, name: model_answer, widget: text }
+          - { label: Feedback Points, name: feedback_points, widget: list }
+          - { label: Source Pointer, name: source_pointer, widget: text }
+      - label: Next Step
+        name: next_step
+        widget: object
+        fields:
+          - { label: Label, name: label, widget: string }
+          - { label: URL, name: url, widget: string }
+      - label: Previous Step
+        name: previous_step
+        widget: object
+        required: false
+        fields:
+          - { label: Label, name: label, widget: string }
+          - { label: URL, name: url, widget: string }
       - { label: Review Questions, name: questions, widget: list, required: false }
       - { label: Lesson, name: body, widget: richtext }
 
   - name: reading_paths
-    label: Reading Paths
-    label_singular: Reading Path
+    label: Pathways
+    label_singular: Pathway
     icon: route
     folder: /_reading_paths
     create: true
@@ -557,6 +639,7 @@ collections:
       - { label: Historical Periods, name: historical_period, widget: select, multiple: true, required: false, options: [Pre-1800, 1800-1865, Reconstruction and Gilded Age (1865-1900), Progressive Era and World War I (1900-1919), Interwar and New Deal (1919-1945), Cold War (1945-1991), Post-Cold War (1991-2008), Contemporary (2008-present), Multiple periods] }
       - { label: Languages, name: languages, widget: select, multiple: true, default: [English], options: [English, Spanish] }
       - { label: Estimated Effort, name: effort, widget: string }
+      - { label: Lesson Unit, name: lesson_unit, widget: select, default: Week, options: [Week, Module] }
       - { label: Prerequisite Summary, name: prerequisite_summary, widget: string }
       - { label: Prerequisites, name: prerequisites, widget: list }
       - { label: Description, name: description, widget: text }

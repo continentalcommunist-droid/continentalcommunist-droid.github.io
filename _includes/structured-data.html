@@ -260,6 +260,31 @@
     "keywords": {{ page.topics | jsonify }}{% endif %}
   }
   </script>
+{%- elsif page.layout == 'lesson' -%}
+  {%- assign schema_lesson_pathway = site.reading_paths | where: 'slug', page.pathway | first -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "@id": {{ schema_canonical | append: '#learning-resource' | jsonify }},
+    "url": {{ schema_canonical | jsonify }},
+    "name": {{ page.title | jsonify }},
+    "description": {{ schema_description | jsonify }},
+    "inLanguage": {{ schema_language | jsonify }},
+    "isAccessibleForFree": true,
+    "publisher": { "@id": {{ schema_organization_id | jsonify }} },
+    "learningResourceType": "Lesson",
+    "educationalLevel": {{ page.reading_level | jsonify }},
+    "timeRequired": {{ page.estimated_minutes | prepend: 'PT' | append: 'M' | jsonify }},
+    "teaches": {{ page.objectives | jsonify }}{% if schema_lesson_pathway %},
+    "isPartOf": {
+      "@type": "LearningResource",
+      "name": {{ schema_lesson_pathway.title | jsonify }},
+      "url": {{ schema_lesson_pathway.url | absolute_url | jsonify }}
+    }{% endif %}{% if page.topics and page.topics != empty %},
+    "keywords": {{ page.topics | jsonify }}{% endif %}
+  }
+  </script>
 {%- elsif page.layout == 'source' -%}
   {%- assign schema_source_type = 'CreativeWork' -%}
   {%- if page.source_type == 'Book' -%}
@@ -402,6 +427,39 @@
           "name": {{ page.title | jsonify }},
           "item": {{ schema_canonical | jsonify }}
         }
+      {%- elsif page.layout == 'lesson' -%}
+        {%- assign bc_lesson_pathway = site.reading_paths | where: 'slug', page.pathway | first -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Learn",
+          "item": {{ '/learn/' | absolute_url | jsonify }}
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Pathways",
+          "item": {{ '/learn/pathways/' | absolute_url | jsonify }}
+        }
+        {%- if bc_lesson_pathway -%}
+        ,{
+          "@type": "ListItem",
+          "position": 4,
+          "name": {{ bc_lesson_pathway.title | jsonify }},
+          "item": {{ bc_lesson_pathway.url | absolute_url | jsonify }}
+        },{
+          "@type": "ListItem",
+          "position": 5,
+          "name": {{ page.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+        {%- else -%}
+        ,{
+          "@type": "ListItem",
+          "position": 4,
+          "name": {{ page.title | jsonify }},
+          "item": {{ schema_canonical | jsonify }}
+        }
+        {%- endif -%}
       {%- elsif page.layout == 'pathway-catalog' -%}
         ,{
           "@type": "ListItem",

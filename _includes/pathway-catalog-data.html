@@ -3,10 +3,12 @@
   {% assign cc_sorted_pathways = site.reading_paths | sort: "number" %}
   {% for cc_pathway in cc_sorted_pathways %}
     {% assign cc_pathway_total = cc_pathway.readings.size | plus: cc_pathway.lectures.size | plus: 1 %}
+    {% assign cc_pathway_lessons = site.lessons | where: "pathway", cc_pathway.slug | sort: "order" %}
     {
       "slug": {{ cc_pathway.slug | jsonify }},
       "title": {{ cc_pathway.title | jsonify }},
       "url": {{ '/learn/pathways/' | append: cc_pathway.slug | append: '/' | relative_url | jsonify }},
+      "continueUrl": {% if cc_pathway_lessons and cc_pathway_lessons != empty %}{{ cc_pathway_lessons.first.url | relative_url | jsonify }}{% else %}{{ '/learn/pathways/' | append: cc_pathway.slug | append: '/' | relative_url | jsonify }}{% endif %},
       "totalSteps": {{ cc_pathway_total | jsonify }}
     }{% unless forloop.last %},{% endunless %}
   {% endfor %}

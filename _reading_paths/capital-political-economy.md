@@ -24,9 +24,12 @@ topics:
 - Value
 - Finance
 slug: capital-political-economy
+pathway_id: cc.pathway.capital-political-economy
+schema_version: 1
 number: '02'
 level: Intermediate
 effort: 10 weeks · 5–7 hours per week
+lesson_unit: Module
 prerequisite_summary: Marxism Fundamentals or equivalent
 prerequisites:
 - Complete Marxism Fundamentals or be comfortable with labor power, surplus value,
@@ -67,15 +70,54 @@ readings:
   url: "/reading-list/#david-ricardo--on-the-principles-of-political-economy-and-taxation"
 - id: capital-one
   author: Karl Marx
-  title: Capital, Volume I
+  title: 'Capital, Volume I: Commodities'
   text: capital-volume-one
-  scope: Read Chapters 1, 4–10, 15, 25, and 26–32; use other chapters as reference
-    on the first pass.
+  scope: Read Chapter 1 closely, treating its sections as one argument from the commodity
+    to value and the fetishism of commodities.
   guiding_questions:
   - How does Marx derive the value-form and money from the elementary relation between commodities?
-  - What is the distinction between absolute and relative surplus value, and how does the development of machinery transform the labor process?
-  - What constitutes the "general law of capitalist accumulation," and why does capital necessarily generate a relative surplus population?
+  - Why does the social relation among producers appear as a relation among things?
   url: "/reading-list/#karl-marx--capital-volume-i"
+- id: capital-one-transformation
+  author: Karl Marx
+  title: 'Capital, Volume I: The Transformation of Money into Capital'
+  text: capital-volume-one
+  scope: Read Chapters 4–7 on the general formula for capital, labor power, the labor
+    process, and the production of surplus value.
+  guiding_questions:
+  - Why can surplus value neither arise from circulation alone nor arise without circulation?
+  - Which historical conditions make labor power available as a commodity?
+  url: "/library/texts/capital-volume-one/chapter-04/"
+- id: capital-one-working-day
+  author: Karl Marx
+  title: 'Capital, Volume I: Constant Capital, Surplus Value, and the Working Day'
+  text: capital-volume-one
+  scope: Read Chapters 8–10; diagram constant capital, variable capital, necessary labor,
+    surplus labor, and the struggle over the working day.
+  guiding_questions:
+  - Why does only living labor create new value in Marx's account?
+  - How does class struggle enter the determination of the working day's limits?
+  url: "/library/texts/capital-volume-one/chapter-08/"
+- id: capital-one-machinery
+  author: Karl Marx
+  title: 'Capital, Volume I: Machinery and Relative Surplus Value'
+  text: capital-volume-one
+  scope: Read Chapter 15 with attention to productivity, labor displacement, work intensity,
+    and the difference between the technical potential and capitalist use of machinery.
+  guiding_questions:
+  - How can machinery reduce necessary labor time while lengthening or intensifying work?
+  - Why does Marx distinguish machinery itself from its capitalist employment?
+  url: "/library/texts/capital-volume-one/chapter-15/"
+- id: capital-one-accumulation
+  author: Karl Marx
+  title: 'Capital, Volume I: Accumulation and Expropriation'
+  text: capital-volume-one
+  scope: Read Chapters 25–32 on accumulation, the relative surplus population, primitive
+    accumulation, and the historical separation of producers from means of production.
+  guiding_questions:
+  - Why can accumulation increase both productive wealth and insecurity for workers?
+  - What historical processes created the social conditions presupposed by wage labor?
+  url: "/library/texts/capital-volume-one/chapter-25/"
 - id: capital-two
   author: Karl Marx
   title: Capital, Volume II

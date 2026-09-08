@@ -1,0 +1,53 @@
+<form
+  class="cc-lesson-response cc-lesson-assessment"
+  data-lesson-assessment
+  data-item-key="{{ include.item.item_id }}"
+  data-concept-key="{{ include.item.concept_id }}"
+>
+  <p class="cc-assessment-prompt">{{ include.item.prompt }}</p>
+
+  <label for="{{ include.input_id }}">Your response</label>
+  <textarea
+    id="{{ include.input_id }}"
+    rows="6"
+    minlength="{{ include.item.min_length | default: 40 }}"
+    maxlength="4000"
+    data-assessment-response
+    required
+  ></textarea>
+
+  <fieldset data-assessment-confidence>
+    <legend>How confident are you?</legend>
+    <label><input type="radio" name="{{ include.confidence_name }}" value="low" required> Low</label>
+    <label><input type="radio" name="{{ include.confidence_name }}" value="medium"> Medium</label>
+    <label><input type="radio" name="{{ include.confidence_name }}" value="high"> High</label>
+  </fieldset>
+
+  <div class="cc-lesson-form-footer">
+    <button type="submit" data-reveal-feedback>Reveal explanatory feedback</button>
+    <span data-assessment-status role="status" aria-live="polite">Feedback unlocks after an attempt.</span>
+  </div>
+
+  <section class="cc-assessment-feedback" data-assessment-feedback hidden tabindex="-1">
+    <div class="cc-section-kicker">Compare, then judge</div>
+    <h3>Model explanation</h3>
+    <p>{{ include.item.model_answer }}</p>
+
+    <h3>Look for these parts</h3>
+    <ul>
+      {% for point in include.item.feedback_points %}
+      <li>{{ point }}</li>
+      {% endfor %}
+    </ul>
+
+    <p class="cc-assessment-source-pointer">{{ include.item.source_pointer }}</p>
+
+    <fieldset class="cc-self-grade" data-self-grade-group>
+      <legend>How well did your answer explain the idea?</legend>
+      <button type="button" data-self-grade="again" aria-pressed="false">Needs another pass</button>
+      <button type="button" data-self-grade="developing" aria-pressed="false">Developing</button>
+      <button type="button" data-self-grade="solid" aria-pressed="false">Solid</button>
+    </fieldset>
+    <p class="cc-review-schedule" data-review-status role="status" aria-live="polite"></p>
+  </section>
+</form>

@@ -29,6 +29,8 @@ topics:
 - Artificial Intelligence
 - Labor
 slug: technology-automation-ai
+pathway_id: cc.pathway.technology-automation-ai
+schema_version: 1
 number: '07'
 level: Intermediate
 effort: 6 weeks · 4–5 hours per week

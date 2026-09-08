@@ -27,6 +27,8 @@ topics:
 - Labor
 - Marxist Theory
 slug: marxist-feminism-fundamentals
+pathway_id: cc.pathway.marxist-feminism-fundamentals
+schema_version: 1
 number: '10'
 level: Introductory
 effort: 6 weeks · 3–4 hours per week

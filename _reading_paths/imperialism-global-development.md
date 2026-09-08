@@ -27,6 +27,8 @@ topics:
 - Development
 - Finance
 slug: imperialism-global-development
+pathway_id: cc.pathway.imperialism-global-development
+schema_version: 1
 number: '08'
 level: Advanced
 effort: 8 weeks · 5–6 hours per week

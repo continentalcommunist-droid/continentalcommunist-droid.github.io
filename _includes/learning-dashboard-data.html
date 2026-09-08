@@ -1,0 +1,17 @@
+<script id="cc-learning-dashboard-data" type="application/json">
+[
+  {% assign cc_dashboard_lessons = site.lessons | sort: "order" %}
+  {% for cc_lesson in cc_dashboard_lessons %}
+    {% assign cc_pathway = site.reading_paths | where: "slug", cc_lesson.pathway | first %}
+    {
+      "lessonId": {{ cc_lesson.lesson_id | jsonify }},
+      "lessonTitle": {{ cc_lesson.title | jsonify }},
+      "lessonUrl": {{ cc_lesson.url | relative_url | jsonify }},
+      "pathwayId": {{ cc_lesson.pathway_id | jsonify }},
+      "pathwayTitle": {{ cc_pathway.title | jsonify }},
+      "unitLabel": {{ cc_pathway.lesson_unit | default: "Week" | jsonify }},
+      "unitNumber": {{ cc_lesson.week | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+</script>

@@ -181,7 +181,7 @@ function initializeAccount(accountRoot) {
     const percent = total > 0 ? Math.round((count / total) * 100) : 0;
 
     article.className = "cc-dashboard-pathway";
-    link.href = pathway.url;
+    link.href = pathway.continueUrl || pathway.url;
     link.textContent = pathway.title;
     heading.appendChild(link);
 

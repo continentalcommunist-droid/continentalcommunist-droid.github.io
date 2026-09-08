@@ -25,6 +25,8 @@ topics:
 - Imperialism
 - Socialism
 slug: marxist-leninist-core-curriculum
+pathway_id: cc.pathway.marxist-leninist-core-curriculum
+schema_version: 1
 number: '09'
 level: Advanced
 effort: 24 weeks · 6–8 hours per week

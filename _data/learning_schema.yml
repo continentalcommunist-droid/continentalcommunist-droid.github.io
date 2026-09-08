@@ -1,0 +1,38 @@
+version: 1
+
+identifiers:
+  pathway: "cc.pathway.<pathway-slug>"
+  stage: "cc.stage.<pathway-slug>.<stage-slug>"
+  lesson: "cc.lesson.<pathway-slug>.week-<two-digit-week>"
+  activity: "cc.activity.<pathway-slug>.week-<two-digit-week>.<activity-slug>"
+  concept: "cc.concept.<concept-slug>"
+  item: "cc.item.<pathway-slug>.week-<two-digit-week>.<item-slug>"
+
+learning_state:
+  completion: Records whether an assigned activity was finished.
+  attempt: Records a learner's private response, confidence, and self-assessment.
+  review: Records when an item should return, its stability and difficulty, the learner's daily workload preference, and a private text-free review history.
+  interleaving: Uses explicit concept-confusion sets to vary related due items across lessons and pathways.
+
+telemetry:
+  enabled: false
+  consent: explicit_opt_in
+  raw_retention_days: 30
+  events:
+    pathway_started: [pathway_id]
+    lesson_started: [pathway_id, lesson_id]
+    reading_completed: [pathway_id, lesson_id, activity_id]
+    retrieval_attempted: [pathway_id, lesson_id, item_id, concept_id, attempt_number]
+    retrieval_graded: [pathway_id, lesson_id, item_id, concept_id, score_band, confidence]
+    feedback_viewed: [pathway_id, lesson_id, item_id]
+    review_scheduled: [item_id, concept_id, due_bucket]
+    review_completed: [item_id, concept_id, lateness_bucket, score_band]
+    lesson_completed: [pathway_id, lesson_id]
+  prohibited_fields:
+  - response_text
+  - note_body
+  - quotation_text
+  - copied_text
+  - full_url
+  - dom_path
+  - search_query

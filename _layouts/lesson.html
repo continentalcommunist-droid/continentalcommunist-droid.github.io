@@ -1,0 +1,202 @@
+---
+layout: default
+---
+
+{% assign lesson = page %}
+{% assign pathway = site.reading_paths | where: "slug", lesson.pathway | first %}
+{% assign pathway_lessons = site.lessons | where: "pathway", lesson.pathway | sort: "order" %}
+{% assign lesson_total = pathway_lessons.size %}
+{% assign lesson_unit = pathway.lesson_unit | default: "Week" %}
+{% assign pathway_total = pathway.readings.size | plus: pathway.lectures.size | plus: 1 %}
+
+<article
+  class="cc-lesson"
+  data-retention-lesson
+  data-lesson-key="{{ lesson.lesson_id }}"
+  data-learning-path="{{ lesson.pathway }}"
+  data-total-steps="{{ pathway_total }}"
+>
+  <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ '/learn/' | relative_url }}">Learn</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ '/learn/pathways/' | relative_url }}">Pathways</a>
+    <span aria-hidden="true">/</span>
+    {% if pathway %}
+    <a href="{{ pathway.url | relative_url }}">{{ pathway.title }}</a>
+    <span aria-hidden="true">/</span>
+    {% endif %}
+    <span aria-current="page">{{ lesson_unit }} {{ lesson.week }}</span>
+  </nav>
+
+  <nav class="cc-lesson-context-bar" aria-label="Lesson context">
+    <a href="{{ pathway.url | relative_url }}">← {{ pathway.title }}</a>
+    <span>{{ lesson_unit }} {{ lesson.week }} of {{ lesson_total }}</span>
+    <a href="{{ '/learn/review/' | relative_url }}">Review center</a>
+  </nav>
+
+  <header class="cc-lesson-header">
+    <div class="cc-section-kicker">{{ pathway.title }} · {{ lesson_unit }} {{ lesson.week }}</div>
+    <h1>{{ lesson.title }}</h1>
+    <p>{{ lesson.description }}</p>
+
+    <dl class="cc-lesson-facts">
+      <div>
+        <dt>Time</dt>
+        <dd>About {{ lesson.estimated_minutes }} minutes</dd>
+      </div>
+      <div>
+        <dt>Activities</dt>
+        <dd>Read, retrieve, compare, apply</dd>
+      </div>
+      <div>
+        <dt>Concepts</dt>
+        <dd>{{ lesson.concepts_label }}</dd>
+      </div>
+    </dl>
+  </header>
+
+  {% include learner-tools.html %}
+
+  <section class="cc-lesson-state" aria-labelledby="lesson-state-title">
+    <div>
+      <div class="cc-section-kicker">Learning state</div>
+      <h2 id="lesson-state-title">Completion and recall are different.</h2>
+      <p>Completion records what you finished. Recall records what you attempted from memory and when it should return for review.</p>
+    </div>
+    <dl>
+      <div>
+        <dt>Pathway completion</dt>
+        <dd><span data-progress-count>0 of {{ pathway_total }} steps</span></dd>
+      </div>
+      <div>
+        <dt>Checkpoints rated</dt>
+        <dd data-lesson-mastery-count>0 of 2</dd>
+      </div>
+      <div>
+        <dt>Next review</dt>
+        <dd data-next-review>Not scheduled</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="cc-lesson-objectives" aria-labelledby="lesson-objectives-title">
+    <div class="cc-section-kicker">Purpose</div>
+    <h2 id="lesson-objectives-title">By the end of this lesson, you should be able to:</h2>
+    <ul>
+      {% for objective in lesson.objectives %}
+      <li>{{ objective }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <noscript>
+    <p class="cc-learning-noscript">JavaScript is required to save responses, reveal feedback after an attempt, and schedule review. The reading remains available without it.</p>
+  </noscript>
+
+  <section class="cc-lesson-activity" aria-labelledby="lesson-warmup-title">
+    <div class="cc-lesson-activity-number" aria-hidden="true">01</div>
+    <div class="cc-lesson-activity-body">
+      <div class="cc-section-kicker">Start from memory · 3 minutes</div>
+      <h2 id="lesson-warmup-title">Commit to a first explanation.</h2>
+      <p>{{ lesson.warmup.prompt }}</p>
+
+      <form class="cc-lesson-response" data-warmup-form data-item-key="{{ lesson.warmup.item_id }}">
+        <label for="lesson-warmup-response">Your first thought</label>
+        <textarea id="lesson-warmup-response" rows="4" maxlength="1200" data-warmup-response required></textarea>
+        <div class="cc-lesson-form-footer">
+          <button type="submit">Save first thought</button>
+          <span data-warmup-status role="status" aria-live="polite">Saved only in this browser.</span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="cc-lesson-activity" aria-labelledby="lesson-reading-title">
+    <div class="cc-lesson-activity-number" aria-hidden="true">02</div>
+    <div class="cc-lesson-activity-body">
+      <div class="cc-section-kicker">Scoped reading · {{ lesson.reading_minutes | default: 20 }} minutes</div>
+      <h2 id="lesson-reading-title">Follow the causal sequence.</h2>
+
+      <article class="cc-lesson-reading-card">
+        <div>
+          <span>{{ lesson.primary_reading.work }}</span>
+          <h3>{{ lesson.primary_reading.title }}</h3>
+          <p>{{ lesson.primary_reading.authors }}</p>
+        </div>
+        <a href="{{ lesson.primary_reading.url | relative_url }}">Open the reading <span aria-hidden="true">→</span></a>
+      </article>
+
+      <div class="cc-lesson-reading-scope">
+        <h3>Read with a scope</h3>
+        <p>{{ lesson.primary_reading.scope }}</p>
+        <p><strong>Keep one question in view:</strong> {{ lesson.primary_reading.guiding_question }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cc-lesson-activity" aria-labelledby="lesson-retrieval-title">
+    <div class="cc-lesson-activity-number" aria-hidden="true">03</div>
+    <div class="cc-lesson-activity-body">
+      <div class="cc-section-kicker">Closed-book retrieval · 7 minutes</div>
+      <h2 id="lesson-retrieval-title">Explain the method without the source.</h2>
+      {% include lesson-assessment.html item=lesson.checkpoint input_id="lesson-retrieval-response" confidence_name="lesson-retrieval-confidence" %}
+    </div>
+  </section>
+
+  <section class="cc-lesson-activity" aria-labelledby="lesson-example-title">
+    <div class="cc-lesson-activity-number" aria-hidden="true">04</div>
+    <div class="cc-lesson-activity-body">
+      <div class="cc-section-kicker">Worked example · 8 minutes</div>
+      <h2 id="lesson-example-title">Watch the analytical operation.</h2>
+      <blockquote class="cc-worked-claim">{{ lesson.worked_example.claim }}</blockquote>
+      <ol class="cc-worked-example">
+        {% for step in lesson.worked_example.steps %}
+        <li>
+          <h3>{{ step.label }}</h3>
+          <p>{{ step.text }}</p>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+
+  <section class="cc-lesson-activity" aria-labelledby="lesson-application-title">
+    <div class="cc-lesson-activity-number" aria-hidden="true">05</div>
+    <div class="cc-lesson-activity-body">
+      <div class="cc-section-kicker">Independent application · 10 minutes</div>
+      <h2 id="lesson-application-title">Apply the structure to a new case.</h2>
+      {% include lesson-assessment.html item=lesson.application input_id="lesson-application-response" confidence_name="lesson-application-confidence" %}
+    </div>
+  </section>
+
+  <section class="cc-lesson-finish" aria-labelledby="lesson-finish-title">
+    <div>
+      <div class="cc-section-kicker">Finish the learning cycle</div>
+      <h2 id="lesson-finish-title">Rate both checkpoints, then record this pathway step.</h2>
+      <p data-lesson-finish-help>Your responses and review schedule remain in this browser. Signed-in pathway completion still synchronizes across devices.</p>
+    </div>
+    <div class="cc-lesson-finish-action">
+      <input
+        id="lesson-primary-reading-complete"
+        type="checkbox"
+        data-progress-item="{{ lesson.primary_reading.progress_item }}"
+        data-lesson-completion
+        disabled
+      >
+      <label for="lesson-primary-reading-complete">{{ lesson.primary_reading.completion_label | default: lesson.primary_reading.title }} complete</label>
+    </div>
+  </section>
+
+  <nav class="cc-learning-next" aria-label="Continue learning">
+    <a rel="prev" href="{{ lesson.previous_step.url | default: pathway.url | relative_url }}">← {{ lesson.previous_step.label | default: pathway.title }}</a>
+    <a class="cc-learning-next-map" href="{{ pathway.url | relative_url }}">Pathway map</a>
+    <a rel="next" href="{{ lesson.next_step.url | relative_url }}">{{ lesson.next_step.label }} →</a>
+  </nav>
+</article>
+
+{% include learner-tools-assets.html %}
+{% include pathway-catalog-data.html %}
+<script type="module" src="{{ '/assets/lesson.js' | relative_url }}"></script>
+<script type="module" src="{{ '/assets/learning-progress.js' | relative_url }}"></script>

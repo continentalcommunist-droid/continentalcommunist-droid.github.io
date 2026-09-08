@@ -4,6 +4,8 @@ layout: default
 
 {% assign pathway = page %}
 {% assign pathway_total = pathway.readings.size | plus: pathway.lectures.size | plus: 1 %}
+{% assign pathway_lessons = site.lessons | where: "pathway", pathway.slug | sort: "order" %}
+{% assign lesson_unit = pathway.lesson_unit | default: "Week" %}
 
 <article
   class="cc-learning-path"
@@ -52,6 +54,11 @@ layout: default
         <span data-progress-storage>Progress saved privately in this browser.</span>
         <a href="{{ '/account/' | relative_url }}" data-progress-account-link>Sign in to sync</a>.
       </p>
+      {% if pathway_lessons and pathway_lessons != empty %}
+      <a class="cc-path-continue" href="{{ pathway_lessons.first.url | relative_url }}">
+        Continue with {{ lesson_unit }} {{ pathway_lessons.first.week }} <span aria-hidden="true">→</span>
+      </a>
+      {% endif %}
     </div>
 
     <div class="cc-path-progress-control">
@@ -78,6 +85,37 @@ layout: default
   <noscript>
     <p class="cc-learning-noscript">Enable JavaScript to save pathway progress in this browser.</p>
   </noscript>
+
+  {% if pathway_lessons and pathway_lessons != empty %}
+  <section class="cc-path-lesson-map" aria-labelledby="path-lesson-map-title">
+    <div class="cc-section-kicker">Guided pathway</div>
+    <div class="cc-path-lesson-map-heading">
+      <div>
+        <h2 id="path-lesson-map-title">Build the method one {{ lesson_unit | downcase }} at a time.</h2>
+        <p>Each lesson gives you one immediate next step: retrieve first, read with a scope, compare your explanation, apply the method, and schedule the concept to return.</p>
+      </div>
+      <a href="{{ '/learn/review/' | relative_url }}">Open review center →</a>
+    </div>
+
+    <div class="cc-path-lesson-grid">
+      {% for lesson in pathway_lessons %}
+      <article class="cc-path-lesson-card">
+        <div class="cc-path-lesson-card-meta">
+          <span>{{ lesson_unit }} {{ lesson.week }}</span>
+          <span>About {{ lesson.estimated_minutes }} min</span>
+        </div>
+        <h3><a href="{{ lesson.url | relative_url }}">{{ lesson.title }}</a></h3>
+        <p>{{ lesson.description }}</p>
+        <div class="cc-path-lesson-card-footer">
+          <span>Read · Retrieve · Apply</span>
+          <a href="{{ lesson.url | relative_url }}">Begin lesson →</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="cc-path-pilot-note">The full syllabus remains below as a reference. The guided lessons turn each assigned reading into an attempt-first learning cycle with delayed review.</p>
+  </section>
+  {% endif %}
 
   <section class="cc-learning-overview" aria-labelledby="path-introduction-title">
     <div>
@@ -197,7 +235,9 @@ layout: default
             </ul>
           </div>
           {% endif %}
-          {% if reading_text %}
+          {% if reading.url contains '/library/texts/' %}
+          <a href="{{ reading.url | relative_url }}">Read assigned section <span aria-hidden="true">→</span></a>
+          {% elsif reading_text %}
           <a href="{{ reading_text.url | relative_url }}">Read on site <span aria-hidden="true">→</span></a>
           {% elsif reading.url contains '://' %}
           <a href="{{ reading.url }}" rel="external">Open assigned text <span aria-hidden="true">↗</span></a>

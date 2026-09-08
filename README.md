@@ -90,6 +90,12 @@ Each pathway includes a level, estimated effort, prerequisites, an introduction,
 
 Completion state is managed by `assets/learning-progress.js` and stored locally in the visitor's browser. Progress does not require an account and is not transmitted to the site.
 
+The retention-oriented lesson pilot now spans the introductory Marxism Fundamentals pathway and the intermediate Capital and Political Economy pathway. It separates completion from learning state, requires a response and confidence judgment before explanatory feedback, provides worked examples and independent applications, and schedules private browser-only follow-up review. The review center adds explicit concept-confusion sets, interleaved daily queues, workload limits, and a text-free history; the dashboard prioritizes due work, continuation, and local mastery estimates. Stable learning IDs and the disabled-by-default telemetry contract are documented in `docs/retention-learning-foundation.md`. Validate the content model with:
+
+```sh
+npm run validate:learning-schema
+```
+
 ## Sveltia CMS content model
 
 The editor at `/admin/` uses Sveltia CMS with GitHub's simple workflow. Entry edits and media uploads commit directly to `main`, avoiding the extra pull-request and issue-label permissions that caused saves to end with GitHub's “Resource not accessible by personal access token” response after the content commit had already been created.

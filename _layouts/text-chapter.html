@@ -8,6 +8,7 @@ layout: default
 {% assign next_order = page.order | plus: 1 %}
 {% assign previous_section = text_sections | where: "order", previous_order | first %}
 {% assign next_section = text_sections | where: "order", next_order | first %}
+{% assign learning_context = site.data.learning_contexts | where: "source_url", page.url | first %}
 
 <article class="cc-text-page">
   <nav class="cc-breadcrumbs" aria-label="Breadcrumb">
@@ -27,6 +28,14 @@ layout: default
   </header>
 
   {% include learner-tools.html %}
+
+  {% if learning_context %}
+  <nav class="cc-reading-learning-context" aria-label="Learning context">
+    <a href="{{ learning_context.lesson_url | relative_url }}">← Back to {{ learning_context.lesson_title }}</a>
+    <span>{{ learning_context.position }}</span>
+    <a href="{{ learning_context.lesson_url | relative_url }}#lesson-retrieval-title">Check understanding →</a>
+  </nav>
+  {% endif %}
 
   <aside class="cc-text-provenance" aria-labelledby="section-provenance-title">
     <div>

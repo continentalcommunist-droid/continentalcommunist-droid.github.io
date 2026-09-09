@@ -148,7 +148,7 @@ async function assertReflow(page, route) {
       .slice(0, 5).map(element => `${element.tagName}.${element.className}`)
   }));
   assert.ok(dimensions.width <= dimensions.viewport + 1,
-    `${route} overflows at 320px: ${JSON.stringify(dimensions)}`);
+    `${route} overflows at ${dimensions.viewport}px: ${JSON.stringify(dimensions)}`);
 }
 
 test("all sixteen built lessons have three gated guided responses and reflow at 320px", {timeout: 60000}, async t => {
@@ -304,4 +304,11 @@ test("storage write failure keeps guided feedback and checkpoint grading usable 
   await summary(page, "2 of 2", false);
   assert.equal(await page.$eval("[data-next-review]", element => element.textContent), "Not saved");
   assert.equal(await page.evaluate(key => localStorage.getItem(key), KEY), null);
+});
+
+test('long pathway breadcrumb fits a narrow viewport with scrollbar space', {timeout: 30000}, async t => {
+  const page = await isolatedPage(t);
+  await page.setViewport({width: 305, height: 900, deviceScaleFactor: 1});
+  await visit(page, LESSONS[6]);
+  await assertReflow(page, LESSONS[6]);
 });

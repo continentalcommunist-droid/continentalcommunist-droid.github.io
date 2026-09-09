@@ -130,7 +130,8 @@ async function checkLayout(page, width, height) {
   assert.equal(size.height, height);
 }
 
-test('home background renders, pauses, resizes, and leaves navigation usable', {timeout: 30000}, async t => {
+// Software WebGL on GPU-less CI runners needs more time than a local GPU.
+test('home background renders, pauses, resizes, and leaves navigation usable', {timeout: 90000}, async t => {
   const page = await openPage(t);
   await page.setViewport({width: 1440, height: 1000});
   await page.goto(origin, {waitUntil: 'load'});
@@ -150,6 +151,9 @@ test('home background renders, pauses, resizes, and leaves navigation usable', {
   assert.equal(await draws(page), frozen, 'Pause actually stops rendering');
   await page.click('[data-background-toggle]');
   await page.waitForFunction(count => window.terminalDraws > count, {}, frozen);
+  // Pause after proving resume, so software-rendered screenshots/resizes do not
+  // compete with continuous shader frames on GitHub's shared runners.
+  await page.click('[data-background-toggle]');
   await checkLayout(page, 390, 844);
   await page.screenshot({path: path.join(ROOT, 'tmp/background/mobile.png')});
   await checkLayout(page, 320, 1000);

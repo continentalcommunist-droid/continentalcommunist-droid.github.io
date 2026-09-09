@@ -18,6 +18,19 @@ reduced transparency, increased contrast, forced colors, and unavailable WebGL
 use the static background. After building, `npm run test:background` checks
 rendering, pause/resume, responsive navigation, and WebGL/accessibility fallbacks.
 
+## Site cursor
+
+The shared public-page head loads `assets/target-cursor-loader.js` and its CSS.
+On the first mouse movement, eligible fine-pointer devices load the GSAP-backed
+React Bits TargetCursor effect. Links, buttons, summaries, and enabled
+checkbox/radio labels use the targeting brackets; text editing, disabled controls,
+embedded content, touch, keyboard navigation, and accessibility preferences keep
+the native cursor. The CMS editor and instant redirect stubs keep native controls.
+Edit `scripts/cursor/target-cursor.js`, then run `npm run build:cursor` and commit
+the generated `assets/target-cursor.js`. `npm run build` also rebuilds it.
+After building, run `npm run test:cursor` for layout coverage, pointer tracking,
+moving targets, clicks, input fields, preference changes, and loading fallbacks.
+
 ## Performance release gate
 
 Every pull request and push to `main` builds the production site and measures eight representative page types three times with mobile Lighthouse. The median result for every page must pass the Core Web Vitals-aligned thresholds and resource budgets before release. A separate weekly and per-change check evaluates Chrome UX Report field data when an API key is configured.

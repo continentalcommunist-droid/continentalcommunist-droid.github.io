@@ -6,7 +6,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "npm run build:background && ruby scripts/validate_learning_schema.rb && ruby scripts/build_site.rb build",
+    "build": "npm run build:background && npm run build:cursor && ruby scripts/validate_learning_schema.rb && ruby scripts/build_site.rb build",
     "import:marx": "node scripts/import_mia_texts.mjs",
     "check:marx-import": "node scripts/import_mia_texts.mjs --check",
     "validate:texts": "node scripts/validate_text_library.mjs",
@@ -17,7 +17,9 @@
     "performance:crux": "ruby scripts/check_crux.rb",
     "validate:formatting": "ruby scripts/validate_formatting.rb",
     "build:background": "node scripts/build_background.mjs",
-    "test:background": "node --test scripts/test_background.mjs"
+    "test:background": "node --test scripts/test_background.mjs",
+    "build:cursor": "node scripts/build_cursor.mjs",
+    "test:cursor": "node --test scripts/test_cursor.mjs"
   },
   "devDependencies": {
     "cheerio": "^1.1.2",
@@ -26,6 +28,7 @@
     "lighthouse": "13.4.1"
   },
   "dependencies": {
+    "gsap": "3.15.0",
     "ogl": "1.0.11"
   }
 }

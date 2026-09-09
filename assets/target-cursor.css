@@ -1,0 +1,51 @@
+/* TargetCursor by React Bits; license: /assets/licenses/react-bits.txt */
+.target-cursor-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+  mix-blend-mode: difference;
+  overflow: hidden;
+}
+.target-cursor-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+.target-cursor-wrapper.is-visible { visibility: visible; }
+.target-cursor-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+.target-cursor-corner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border: 3px solid #fff;
+  will-change: transform;
+}
+.target-cursor-corner.corner-tl { transform: translate(-150%, -150%); border-right: none; border-bottom: none; }
+.target-cursor-corner.corner-tr { transform: translate(50%, -150%); border-left: none; border-bottom: none; }
+.target-cursor-corner.corner-br { transform: translate(50%, 50%); border-left: none; border-top: none; }
+.target-cursor-corner.corner-bl { transform: translate(-150%, 50%); border-right: none; border-top: none; }
+@media (any-hover: hover) and (any-pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none) and (prefers-contrast: no-preference) {
+  html.cc-target-cursor-active, html.cc-target-cursor-active * { cursor: none !important; }
+}
+@media (prefers-reduced-motion: reduce), (forced-colors: active), (prefers-contrast: more), (prefers-contrast: less), (any-hover: none) {
+  .target-cursor-layer { display: none !important; }
+}
+@media print { .target-cursor-layer { display: none !important; } }

@@ -54,6 +54,9 @@ jobs:
       - name: Verify home background and accessible fallbacks
         run: npm run test:background
 
+      - name: Verify site cursor and native pointer fallbacks
+        run: npm run test:cursor
+
       - name: Verify lesson practice and local recovery
         run: npm run test:lessons
 

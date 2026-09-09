@@ -705,6 +705,8 @@ h3 {
 }
 
 .cc-breadcrumbs a {
+  max-width: 100%;
+  overflow-wrap: anywhere;
   color: var(--text-muted);
 
   text-decoration: none;

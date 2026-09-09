@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
   {%- include head.html -%}
-  <body>
+  <body{% if page.home_background == 'faulty-terminal' %} class="cc-home"{% endif %}>
+    {%- if page.home_background == 'faulty-terminal' %}
+    <div class="cc-home-background" data-faulty-terminal aria-hidden="true"></div>
+    {%- endif %}
     <a class="cc-skip-link" href="#main-content">Skip to content</a>
     {%- include header.html -%}
     <main id="main-content" class="page-content" aria-label="Content" tabindex="-1">

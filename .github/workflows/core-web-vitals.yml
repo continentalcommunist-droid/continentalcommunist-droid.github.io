@@ -51,6 +51,9 @@ jobs:
       - name: Validate document formatting
         run: npm run validate:formatting
 
+      - name: Verify home background and accessible fallbacks
+        run: npm run test:background
+
       - name: Verify lesson practice and local recovery
         run: npm run test:lessons
 

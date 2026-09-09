@@ -2,6 +2,22 @@
 
 The Jekyll source for [continentalcommunist.com](https://www.continentalcommunist.com/).
 
+## Home background
+
+The home page adapts the supplied React Bits FaultyTerminal shaders to Jekyll
+using OGL, with no React runtime. The editable source is
+`scripts/background/faulty-terminal.js`; `npm run build:background` bundles it
+into `assets/faulty-terminal.js`. Commit the bundle alongside source changes so
+the native GitHub Pages Jekyll build can publish it without running Node.
+`npm run build` also rebuilds the bundle. Attribution and license notices are
+in `assets/licenses/`.
+
+The effect loads only on the home page, caps rendering at 30 frames per second
+and 720,000 pixels, and stops when paused or the page is hidden. Reduced motion,
+reduced transparency, increased contrast, forced colors, and unavailable WebGL
+use the static background. After building, `npm run test:background` checks
+rendering, pause/resume, responsive navigation, and WebGL/accessibility fallbacks.
+
 ## Performance release gate
 
 Every pull request and push to `main` builds the production site and measures eight representative page types three times with mobile Lighthouse. The median result for every page must pass the Core Web Vitals-aligned thresholds and resource budgets before release. A separate weekly and per-change check evaluates Chrome UX Report field data when an API key is configured.

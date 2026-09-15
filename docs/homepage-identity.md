@@ -49,7 +49,7 @@ remain controlled by the newsletter provider.
 ## Release validation
 
 - Production build passed.
-- Five background/homepage browser checks and four cursor checks passed,
+- Seven background/homepage browser checks and four cursor checks passed,
   including scroll geometry, 320–1440px layouts, navigation, measured cursor
   rotation, pointer reflections, reduced motion, reduced transparency, increased
   contrast, forced colors, unavailable WebGL and JavaScript-disabled navigation.
@@ -57,3 +57,33 @@ remain controlled by the newsletter provider.
 - Mobile Lighthouse (median of three runs): 99/100 performance, 1.96s largest
   contentful paint, 0.000 cumulative layout shift and 0ms total blocking time.
 - Desktop, mobile and scrolled-section screenshots were visually reviewed.
+
+## Follow-up: homepage scroll sequence
+
+- The original hero panel and artwork shrink gradually as the visitor scrolls,
+  with a small relative movement of the wordmark to add depth. The effect reverses
+  at the same pace when scrolling upward. Desktop contraction is capped at 16%;
+  mobile contraction is capped at 6% to keep text and controls comfortable.
+- A stable outer stage preserves the hero's layout space. Shrinking the panel
+  does not pull content upward, change the scrollbar range or cause scroll jumps.
+- Cards, section labels, descriptions and article rows rise into place based on
+  their viewport position, with staggered grid entrances. Nothing fades out or
+  becomes inaccessible while waiting for an animation.
+- A compact glass navigator follows below the main header, links to all four
+  homepage sections, marks the current section and shows progress within it.
+  Native anchor links scroll smoothly and retain their URL and history behavior.
+  Anchor headings stay stationary so they land below both navigation bars.
+- Glass reflections shift gently with section progress; existing mouse
+  reflections take priority while the pointer is over a panel.
+- Decorative motion follows the browser's motion preference. Reduced motion
+  and forced colors keep the layout stationary; without JavaScript, content and
+  section links remain available. Keyboard focus restores a stationary,
+  full-size hero, and scaled mobile controls remain at least 44px tall.
+- `assets/home-scroll.js` loads only on the homepage. It caches layout coordinates
+  on size changes, updates only changed values in scroll-triggered animation
+  frames and does no continuous work when scrolling stops or the tab is hidden.
+  The terminal renderer, hero image assets and sitewide cursor are unchanged.
+
+Browser checks cover progressive shrinking, reverse scrolling, stable layout,
+cursor targeting on the scaled hero, mobile touch targets, section entrances,
+anchor alignment, active-section tracking and preference changes at runtime.

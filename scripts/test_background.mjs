@@ -204,7 +204,7 @@ test('homepage header contracts without shifting content and stays usable across
   const geometry = () => page.evaluate(() => {
     const header = document.querySelector('.site-header').getBoundingClientRect();
     return {width: header.width, height: header.height, top: header.top,
-      heroTop: document.querySelector('.cc-hero').getBoundingClientRect().top + scrollY};
+      heroTop: document.querySelector('.cc-hero-stage').getBoundingClientRect().top + scrollY};
   });
   const expanded = await geometry();
   await page.evaluate(() => scrollTo(0, 600));
@@ -247,14 +247,14 @@ test('homepage header contracts without shifting content and stays usable across
   await visual.goto(origin, {waitUntil: 'load'});
   await ready(visual);
   await visual.click('[data-background-toggle]');
-  await visual.$eval('#platform-title', el => el.scrollIntoView());
+  await visual.$eval('#platform-title', el => el.scrollIntoView({behavior: 'instant'}));
   await visual.mouse.move(0, 0);
   await delay(550);
   await visual.screenshot({path: path.join(ROOT, 'tmp/background/home-scrolled.png')});
-  await visual.$eval('#featured-title', el => el.scrollIntoView());
+  await visual.$eval('#featured-title', el => el.scrollIntoView({behavior: 'instant'}));
   await delay(100);
   await visual.screenshot({path: path.join(ROOT, 'tmp/background/home-featured.png')});
-  await visual.$eval('#latest-title', el => el.scrollIntoView());
+  await visual.$eval('#latest-title', el => el.scrollIntoView({behavior: 'instant'}));
   await delay(100);
   await visual.screenshot({path: path.join(ROOT, 'tmp/background/home-latest.png')});
 });
@@ -304,4 +304,110 @@ test('liquid panels reflect pointer movement and honor accessibility preferences
   await noJS.click('label[for="nav-trigger"]');
   await noJS.click('#primary-navigation a[href="/learn/"]');
   await noJS.waitForFunction(() => location.pathname === '/learn/');
+});
+
+test('hero recedes progressively, reverses on return, and preserves usable controls', {timeout: 30000}, async t => {
+  const page = await openPage(t);
+  await page.setViewport({width: 1440, height: 1000});
+  await page.goto(origin, {waitUntil: 'load'});
+  await ready(page);
+  await page.click('[data-background-toggle]');
+  const scroll = async y => {
+    await page.evaluate(top => scrollTo({top, behavior: 'instant'}), y);
+    await delay(100);
+  };
+  const geometry = () => page.evaluate(() => {
+    const hero = document.querySelector('.cc-hero').getBoundingClientRect();
+    const stage = document.querySelector('.cc-hero-stage');
+    return {width: hero.width, height: hero.height,
+      image: document.querySelector('.cc-hero-wordmark').getBoundingClientRect().width,
+      stage: stage.offsetHeight, platform: document.querySelector('.cc-platform').offsetTop};
+  });
+  await scroll(0);
+  const initial = await geometry();
+  await scroll(250);
+  const midway = await geometry();
+  assert.ok(midway.width < initial.width * .98 && midway.width > initial.width * .9, 'Hero shrinks with scroll distance');
+  assert.ok(midway.height < initial.height && midway.image < initial.image, 'Panel and original artwork both recede');
+  assert.equal(midway.stage, initial.stage, 'Hero retains its layout space');
+  assert.equal(midway.platform, initial.platform, 'Following content never jumps');
+  await page.mouse.move(0, 0);
+  await page.screenshot({path: path.join(ROOT, 'tmp/background/hero-mid-scroll.png')});
+  await scroll(480);
+  assert.ok((await geometry()).width < midway.width, 'Further scroll continues the contraction');
+  const settled = await geometry();
+  await delay(250);
+  assert.deepEqual(await geometry(), settled, 'The page is still when the visitor stops scrolling');
+  await scroll(250);
+  await page.hover('.cc-button-primary');
+  await page.waitForFunction(() => document.querySelector('.target-cursor-wrapper')?.classList.contains('is-targeting'));
+  await page.waitForFunction(() => {
+    const target = document.querySelector('.cc-button-primary').getBoundingClientRect();
+    const corner = document.querySelector('.target-cursor-corner').getBoundingClientRect();
+    return Math.abs(corner.left - (target.left - 3)) < 2 && Math.abs(corner.top - (target.top - 3)) < 2;
+  });
+  await scroll(0);
+  assert.deepEqual(await geometry(), initial, 'Returning to the top restores full-size artwork');
+
+  await page.setViewport({width: 390, height: 844, isMobile: true, hasTouch: true});
+  await scroll(0);
+  const mobile = await geometry();
+  await scroll(280);
+  const mobileScroll = await geometry();
+  assert.ok(mobileScroll.width < mobile.width && mobileScroll.width >= mobile.width * .94, 'Mobile uses a restrained contraction');
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  assert.equal(await page.$eval('.cc-button-primary', link => {
+    const rect = link.getBoundingClientRect();
+    return rect.height >= 44 && document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2)?.closest('a') === link;
+  }), true, 'Shrunken mobile CTA remains a reachable 44px target');
+  await page.screenshot({path: path.join(ROOT, 'tmp/background/hero-mobile-scroll.png')});
+});
+
+test('section entrances and navigation follow scroll, with motion and no-script fallbacks', {timeout: 30000}, async t => {
+  const page = await openPage(t, {webgl: false});
+  await page.setViewport({width: 1440, height: 1000});
+  await page.goto(origin, {waitUntil: 'load'});
+  const shift = () => page.$eval('.cc-featured-card', card => Number.parseFloat(card.style.getPropertyValue('--reveal-shift')));
+  assert.ok(await shift() > 0, 'Cards below the viewport are positioned for entrance');
+  await page.$eval('.cc-scroll-nav a[href="#featured-title"]', link => link.click());
+  await page.waitForFunction(() => {
+    const heading = document.querySelector('#featured-title').getBoundingClientRect();
+    return location.hash === '#featured-title' && heading.top > 150 && heading.top < 200 &&
+      document.querySelector('.cc-scroll-nav a[aria-current]')?.hash === '#featured-title';
+  });
+  await delay(200);
+  await delay(500);
+  assert.equal(await shift(), 0, 'Entered cards settle in their normal readable position');
+  assert.equal(await page.$eval('#featured-title', heading => {
+    const bounds = heading.getBoundingClientRect();
+    return bounds.top >= document.querySelector('.cc-scroll-nav').getBoundingClientRect().bottom + 12 && bounds.top < 200;
+  }), true, 'Settled anchor heading remains fully below both navigation bars');
+  assert.equal(await page.$eval('.cc-scroll-nav', nav => {
+    const rect = nav.getBoundingClientRect();
+    return rect.top >= 80 && rect.bottom < 160;
+  }), true, 'Section navigator stays below the compact main header');
+  await page.evaluate(() => scrollBy({top: 180, behavior: 'instant'}));
+  await delay(100);
+  assert.ok(await page.$eval('.cc-scroll-nav a[href="#featured-title"]', link => Number(link.style.getPropertyValue('--section-progress'))) > 0);
+  await page.$eval('.cc-scroll-nav a[href="#latest-title"]', link => link.click());
+  await page.waitForFunction(() => document.querySelector('.cc-scroll-nav a[aria-current]')?.hash === '#latest-title');
+
+  await page.emulateMediaFeatures([{name: 'prefers-reduced-motion', value: 'reduce'}]);
+  await page.evaluate(() => scrollTo({top: 250, behavior: 'instant'}));
+  await delay(100);
+  assert.equal(await page.$eval('.cc-hero', hero => getComputedStyle(hero).transform), 'none');
+  assert.equal(await page.$eval('.cc-featured-card', card => getComputedStyle(card).translate), 'none');
+  assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior), 'auto');
+  await page.emulateMediaFeatures([{name: 'prefers-reduced-motion', value: 'no-preference'}]);
+  await delay(100);
+  assert.notEqual(await page.$eval('.cc-hero', hero => getComputedStyle(hero).transform), 'none', 'Motion preference changes take effect immediately');
+
+  const noJS = await openPage(t);
+  await noJS.setViewport({width: 320, height: 900});
+  await noJS.setJavaScriptEnabled(false);
+  await noJS.goto(origin, {waitUntil: 'load'});
+  assert.equal(await noJS.$eval('.cc-hero', hero => getComputedStyle(hero).transform), 'none');
+  await noJS.click('.cc-scroll-nav a[href="#featured-title"]');
+  assert.equal(await noJS.evaluate(() => location.hash), '#featured-title', 'Section links work without JavaScript');
+  assert.equal(await noJS.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
 });

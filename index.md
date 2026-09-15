@@ -8,6 +8,7 @@ image_alt: "Continental Communist logo"
 updated: 2026-09-15
 ---
 
+<div class="cc-hero-stage">
 <div class="cc-hero cc-hero-glass cc-liquid-panel">
 
   <div class="cc-hero-meta"><span>Independent publication</span><span>An American perspective</span></div>
@@ -50,6 +51,14 @@ updated: 2026-09-15
 
 </div>
 
+</div>
+
+<nav class="cc-scroll-nav cc-liquid-panel" aria-label="On this page">
+  <a href="#platform-title"><span aria-hidden="true">01</span> Platform</a>
+  <a href="#featured-title"><span aria-hidden="true">02</span> Featured</a>
+  <a href="#newsletter-title"><span aria-hidden="true">03</span> Newsletter</a>
+  <a href="#latest-title"><span aria-hidden="true">04</span> Latest</a>
+</nav>
 
 <section class="cc-platform" aria-labelledby="platform-title">
   <div class="cc-platform-heading">

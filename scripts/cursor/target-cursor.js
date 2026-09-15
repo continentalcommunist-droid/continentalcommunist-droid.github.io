@@ -53,7 +53,7 @@ export function mountTargetCursor() {
     x: gsap.quickTo(corner, 'x', {duration: 0.2, ease: 'power2.out'}),
     y: gsap.quickTo(corner, 'y', {duration: 0.2, ease: 'power2.out'})
   }));
-  const spin = gsap.to(cursor, {rotation: '+=360', duration: 2, repeat: -1, ease: 'none', paused: true});
+  const spin = gsap.to(cursor, {rotation: '+=360', duration: 16, repeat: -1, ease: 'none', paused: true});
 
   function targetFor(element) {
     if (!(element instanceof Element) || element.closest(NATIVE)) return null;

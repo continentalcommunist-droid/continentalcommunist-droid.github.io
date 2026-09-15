@@ -5,12 +5,12 @@ title: Continental Communist
 description: Continental Communist is an independent publication offering Marxist education, materialist analysis, briefings, and primary-source study from an American perspective.
 image: /assets/images/logo.png
 image_alt: "Continental Communist logo"
-updated: 2026-09-02
+updated: 2026-09-15
 ---
 
-<div class="cc-hero cc-hero-glass">
+<div class="cc-hero cc-hero-glass cc-liquid-panel">
 
-  <button class="cc-background-toggle" type="button" data-background-toggle hidden>Pause background</button>
+  <div class="cc-hero-meta"><span>Independent publication</span><span>An American perspective</span></div>
 
   <p class="cc-hero-eyebrow"><span aria-hidden="true"></span> Education. Analysis. Understanding.</p>
   <h1 class="cc-hero-title">
@@ -43,13 +43,18 @@ updated: 2026-09-02
     </div>
   </div>
 
+  <div class="cc-hero-footer">
+    <a class="cc-explore-link" href="#platform-title">Explore the platform <span aria-hidden="true">↓</span></a>
+    <button class="cc-background-toggle" type="button" data-background-toggle hidden>Pause background</button>
+  </div>
+
 </div>
 
 
 <section class="cc-platform" aria-labelledby="platform-title">
   <div class="cc-platform-heading">
     <div>
-      <div class="cc-platform-kicker">EXPLORE THE PLATFORM</div>
+      <div class="cc-platform-kicker"><span class="cc-section-index" aria-hidden="true">01 /</span> EXPLORE THE PLATFORM</div>
       <h2 id="platform-title">Choose your path.</h2>
     </div>
 
@@ -61,8 +66,11 @@ updated: 2026-09-02
 
   <div class="cc-platform-grid">
     {% for item in site.data.navigation.main %}
-    <a class="cc-platform-card" href="{{ item.url | relative_url }}">
-      <span class="cc-platform-card-number">0{{ forloop.index }}</span>
+    <a class="cc-platform-card cc-liquid-panel" href="{{ item.url | relative_url }}">
+      <div class="cc-platform-card-top">
+        <span class="cc-platform-card-number">0{{ forloop.index }}</span>
+        {% include platform-icon.html key=item.key %}
+      </div>
       <h3>{{ item.title }}</h3>
       <p>{{ item.description }}</p>
       <span class="cc-platform-card-link">Explore <span aria-hidden="true">→</span></span>
@@ -73,6 +81,7 @@ updated: 2026-09-02
 
 
 {% assign featured_posts = site.posts | where: "featured", true %}
+{% if featured_posts.size == 0 %}{% assign featured_posts = site.posts %}{% endif %}
 
 <section class="cc-featured" aria-labelledby="featured-title">
 
@@ -80,7 +89,7 @@ updated: 2026-09-02
 
     <div>
       <div class="cc-featured-kicker">
-        SELECTED WRITING
+        <span class="cc-section-index" aria-hidden="true">02 /</span> SELECTED WRITING
       </div>
 
       <h2 id="featured-title">
@@ -97,11 +106,9 @@ updated: 2026-09-02
 
   <div class="cc-featured-grid">
 
-    {% if featured_posts.size > 0 %}
-
       {% for post in featured_posts limit: 3 %}
 
-      <article class="cc-featured-card">
+      <article class="cc-featured-card cc-liquid-panel">
 
         <div class="cc-featured-card-date">
           {{ post.date | date: "%B %-d, %Y" }}
@@ -130,54 +137,18 @@ updated: 2026-09-02
       </article>
 
       {% endfor %}
-
-    {% else %}
-
-      {% for post in site.posts limit: 3 %}
-
-      <article class="cc-featured-card">
-
-        <div class="cc-featured-card-date">
-          {{ post.date | date: "%B %-d, %Y" }}
-        </div>
-
-        <h3>
-          <a href="{{ post.url | relative_url }}">
-            {{ post.title }}
-          </a>
-        </h3>
-
-        {% if post.excerpt %}
-        <div class="cc-featured-card-excerpt">
-          {{ post.excerpt | strip_html | truncate: 190 }}
-        </div>
-        {% endif %}
-
-        <a
-          class="cc-featured-card-link"
-          href="{{ post.url | relative_url }}"
-          aria-label="Read {{ post.title }}"
-        >
-          Read article →
-        </a>
-
-      </article>
-
-      {% endfor %}
-
-    {% endif %}
 
   </div>
 
 </section>
 
 
-<section class="cc-newsletter" id="newsletter" aria-labelledby="newsletter-title">
+<section class="cc-newsletter cc-liquid-panel" id="newsletter" aria-labelledby="newsletter-title">
 
   <div class="cc-newsletter-copy">
 
     <div class="cc-newsletter-kicker">
-      THE NEWSLETTER
+      <span class="cc-section-index" aria-hidden="true">03 /</span> THE NEWSLETTER
     </div>
 
     <h2 id="newsletter-title">
@@ -210,10 +181,16 @@ updated: 2026-09-02
 </section>
 
 
-<div class="cc-section-heading">
-  Latest
-</div>
+<section class="cc-latest" aria-labelledby="latest-title">
+  <div class="cc-featured-heading">
+    <div>
+      <div class="cc-featured-kicker"><span class="cc-section-index" aria-hidden="true">04 /</span> THE PUBLICATION</div>
+      <h2 id="latest-title">Latest writing.</h2>
+    </div>
+    <a class="cc-archive-link" href="{{ '/analysis/' | relative_url }}">Explore analysis <span aria-hidden="true">↗</span></a>
+  </div>
 
+<div class="cc-latest-list cc-liquid-panel">
 {% for post in site.posts %}
 
 <article class="cc-article-card">
@@ -222,11 +199,11 @@ updated: 2026-09-02
     {{ post.date | date: "%B %-d, %Y" }}
   </div>
 
-  <h2>
+  <h3>
     <a href="{{ post.url | relative_url }}">
       {{ post.title }}
     </a>
-  </h2>
+  </h3>
 
   {% if post.excerpt %}
   <div class="cc-excerpt">
@@ -241,3 +218,5 @@ updated: 2026-09-02
 </article>
 
 {% endfor %}
+</div>
+</section>

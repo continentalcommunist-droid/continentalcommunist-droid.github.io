@@ -6,7 +6,9 @@
     <div class="cc-home-background" data-faulty-terminal aria-hidden="true"></div>
     {%- endif %}
     <a class="cc-skip-link" href="#main-content">Skip to content</a>
+    {%- if page.home_background == 'faulty-terminal' %}<div class="cc-header-dock">{% endif -%}
     {%- include header.html -%}
+    {%- if page.home_background == 'faulty-terminal' %}</div>{% endif -%}
     <main id="main-content" class="page-content" aria-label="Content" tabindex="-1">
       <div class="wrapper">{{ content }}</div>
     </main>

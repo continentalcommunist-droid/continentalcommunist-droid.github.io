@@ -134,9 +134,16 @@ test('spinning cursor locks to real controls, follows moving bounds, and preserv
   assert.equal(await page.$eval('.cc-header-search', link => getComputedStyle(link).cursor), 'none');
   await page.mouse.move(5, 300);
   await delay(350);
-  const before = await page.$eval('.target-cursor-wrapper', cursor => cursor.style.transform);
-  await delay(150);
-  assert.notEqual(await page.$eval('.target-cursor-wrapper', cursor => cursor.style.transform), before, 'Cursor spins away from targets');
+  const rotation = () => page.$eval('.target-cursor-wrapper', cursor => {
+    const matrix = new DOMMatrix(getComputedStyle(cursor).transform);
+    return {angle: Math.atan2(matrix.b, matrix.a) * 180 / Math.PI, time: performance.now()};
+  });
+  const before = await rotation();
+  await delay(300);
+  const after = await rotation();
+  const degreesPerSecond = ((after.angle - before.angle + 360) % 360) * 1000 / (after.time - before.time);
+  assert.ok(degreesPerSecond > 10 && degreesPerSecond < 40,
+    `Idle rotation remains slow and continuous (${degreesPerSecond.toFixed(1)} degrees/second)`);
   await page.evaluate(() => {
     const area = document.createElement('div');
     area.id = 'cursor-fixture';

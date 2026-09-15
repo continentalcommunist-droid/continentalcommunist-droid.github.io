@@ -196,3 +196,112 @@ test('unavailable and lost WebGL preserve the static home page', {timeout: 30000
   await page.waitForFunction(() => !document.querySelector('[data-faulty-terminal] canvas'));
   assert.equal(await page.$eval('[data-background-toggle]', button => button.hidden), true);
 });
+
+test('homepage header contracts without shifting content and stays usable across widths', {timeout: 30000}, async t => {
+  const page = await openPage(t, {webgl: false});
+  await page.setViewport({width: 1440, height: 1000});
+  await page.goto(origin, {waitUntil: 'load'});
+  const geometry = () => page.evaluate(() => {
+    const header = document.querySelector('.site-header').getBoundingClientRect();
+    return {width: header.width, height: header.height, top: header.top,
+      heroTop: document.querySelector('.cc-hero').getBoundingClientRect().top + scrollY};
+  });
+  const expanded = await geometry();
+  await page.evaluate(() => scrollTo(0, 600));
+  await delay(550);
+  const compact = await geometry();
+  assert.ok(compact.width < expanded.width - 100, 'Header visibly contracts in width');
+  assert.ok(compact.height < expanded.height - 15, `Header visibly contracts in height: ${JSON.stringify({expanded, compact})}`);
+  assert.ok(compact.top >= 0 && compact.top < 20, 'Navigation stays on screen');
+  assert.equal(compact.heroTop, expanded.heroTop, 'Contraction never shifts document content');
+  assert.ok(await page.$eval('.site-header', header => Number(header.style.getPropertyValue('--page-progress')) > 0));
+  await page.hover('.cc-nav-link[href="/learn/"]');
+  assert.equal(await page.$eval('.cc-nav-submenu', menu => getComputedStyle(menu).display), 'block');
+  await page.mouse.move(0, 0);
+
+  for (const width of [1280, 1151, 1100, 1001, 1000, 768, 600, 390, 320]) {
+    await page.setViewport({width, height: 1000});
+    await delay(500);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `${width}px does not overflow`);
+    assert.equal(await page.$eval('.cc-header-account', control => {
+      const rect = control.getBoundingClientRect();
+      return rect.width >= 44 && rect.height >= 44 &&
+        document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2)?.closest('a') === control;
+    }), true, `${width}px compact header retains usable controls`);
+  }
+  await page.click('label[for="nav-trigger"]');
+  assert.equal(await page.$eval('#nav-trigger', input => input.getAttribute('aria-expanded')), 'true');
+  await page.keyboard.press('Escape');
+  assert.equal(await page.$eval('#nav-trigger', input => !input.checked && document.activeElement === input), true);
+  await page.evaluate(() => scrollTo(0, 0));
+  await delay(550);
+  assert.equal(await page.$eval('.site-header', header => header.classList.contains('is-scrolled')), false);
+  assert.equal(await page.$eval('.site-header', header => Number(header.style.getPropertyValue('--page-progress'))), 0);
+  await page.setViewport({width: 1440, height: 1000});
+  await delay(550);
+  assert.deepEqual(await geometry(), expanded, 'Returning to the top restores the original geometry');
+
+  // Keep reviewable captures of the material over the real, paused background.
+  const visual = await openPage(t);
+  await visual.setViewport({width: 1440, height: 1000});
+  await visual.goto(origin, {waitUntil: 'load'});
+  await ready(visual);
+  await visual.click('[data-background-toggle]');
+  await visual.$eval('#platform-title', el => el.scrollIntoView());
+  await visual.mouse.move(0, 0);
+  await delay(550);
+  await visual.screenshot({path: path.join(ROOT, 'tmp/background/home-scrolled.png')});
+  await visual.$eval('#featured-title', el => el.scrollIntoView());
+  await delay(100);
+  await visual.screenshot({path: path.join(ROOT, 'tmp/background/home-featured.png')});
+  await visual.$eval('#latest-title', el => el.scrollIntoView());
+  await delay(100);
+  await visual.screenshot({path: path.join(ROOT, 'tmp/background/home-latest.png')});
+});
+
+test('liquid panels reflect pointer movement and honor accessibility preferences', {timeout: 30000}, async t => {
+  const page = await openPage(t, {webgl: false});
+  await page.setViewport({width: 1440, height: 1000});
+  await page.goto(origin, {waitUntil: 'load'});
+  const material = () => page.$eval('.cc-hero-glass', panel => {
+    const style = getComputedStyle(panel);
+    return {filter: style.backdropFilter, background: style.backgroundColor,
+      reflection: panel.style.getPropertyValue('--glass-x')};
+  });
+  assert.notEqual((await material()).filter, 'none', 'Glass filters actual background pixels');
+  assert.match((await material()).background, /rgba\(/, 'Background remains translucent');
+  await page.mouse.move(250, 210);
+  await delay(80);
+  const firstReflection = (await material()).reflection;
+  await page.mouse.move(350, 210);
+  await delay(80);
+  assert.notEqual((await material()).reflection, firstReflection, 'Reflection follows the pointer');
+  const client = await page.createCDPSession();
+  for (const feature of [
+    {name: 'prefers-reduced-transparency', value: 'reduce'},
+    {name: 'prefers-contrast', value: 'more'},
+    {name: 'forced-colors', value: 'active'}
+  ]) {
+    await client.send('Emulation.setEmulatedMedia', {features: [feature]});
+    await delay(80);
+    assert.equal((await material()).filter, 'none', `${feature.name} removes backdrop filtering`);
+    assert.equal((await material()).reflection, '', `${feature.name} clears reflections`);
+    await page.mouse.move(360, 230);
+    await delay(80);
+    assert.equal((await material()).reflection, '', `${feature.name} prevents pointer effects`);
+  }
+  await client.send('Emulation.setEmulatedMedia', {features: [{name: 'prefers-reduced-motion', value: 'reduce'}]});
+  await page.evaluate(() => scrollTo(0, 600));
+  await delay(80);
+  assert.equal(await page.$eval('.site-header', header => getComputedStyle(header).transitionDuration), '0s');
+  await page.mouse.move(500, 250);
+  assert.equal((await material()).reflection, '', 'Reduced motion disables pointer reflections');
+
+  const noJS = await openPage(t);
+  await noJS.setViewport({width: 390, height: 844});
+  await noJS.setJavaScriptEnabled(false);
+  await noJS.goto(origin, {waitUntil: 'load'});
+  await noJS.click('label[for="nav-trigger"]');
+  await noJS.click('#primary-navigation a[href="/learn/"]');
+  await noJS.waitForFunction(() => location.pathname === '/learn/');
+});

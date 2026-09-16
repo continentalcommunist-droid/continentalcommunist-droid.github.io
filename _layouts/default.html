@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
   {%- include head.html -%}
-  <body class="cc-site{% if page.home_background == 'faulty-terminal' %} cc-home{% else %} cc-interior{% endif %}">
-    <div class="cc-site-background" data-faulty-terminal aria-hidden="true"></div>
+  <body{% if page.home_background == 'faulty-terminal' %} class="cc-home"{% endif %}>
+    {%- if page.home_background == 'faulty-terminal' %}
+    <div class="cc-home-background" data-faulty-terminal aria-hidden="true"></div>
+    {%- endif %}
     <a class="cc-skip-link" href="#main-content">Skip to content</a>
-    <div class="cc-header-dock">
+    {%- if page.home_background == 'faulty-terminal' %}<div class="cc-header-dock">{% endif -%}
     {%- include header.html -%}
-    </div>
+    {%- if page.home_background == 'faulty-terminal' %}</div>{% endif -%}
     <main id="main-content" class="page-content" aria-label="Content" tabindex="-1">
-      {% unless page.home_background == 'faulty-terminal' %}
-      <div class="wrapper cc-page-controls">
-        <button class="cc-background-toggle" type="button" data-background-toggle hidden>Pause background</button>
-      </div>
-      {% endunless %}
-      <div class="wrapper{% unless page.home_background == 'faulty-terminal' %} cc-content-surface{% endunless %}">{{ content }}</div>
+      <div class="wrapper">{{ content }}</div>
     </main>
     {%- include footer.html -%}
   </body>

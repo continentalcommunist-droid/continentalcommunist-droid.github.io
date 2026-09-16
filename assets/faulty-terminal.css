@@ -1,6 +1,6 @@
-/* Sitewide decorative layer; gradients remain the no-WebGL fallback. */
-.cc-site { isolation: isolate; }
-.cc-site-background {
+/* Home-only decorative layer; the existing gradients are the no-WebGL fallback. */
+.cc-home { isolation: isolate; }
+.cc-home-background {
   position: fixed;
   inset: 0;
   z-index: -1;
@@ -8,16 +8,15 @@
   pointer-events: none;
   opacity: 0;
 }
-.cc-site-background.is-ready { opacity: .24; }
-.cc-interior .cc-site-background.is-ready { opacity: .18; }
-.cc-site-background canvas { display: block; width: 100%; height: 100%; }
-.cc-site-background::after {
+.cc-home-background.is-ready { opacity: .24; }
+.cc-home-background canvas { display: block; width: 100%; height: 100%; }
+.cc-home-background::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, transparent, rgba(16,17,22,.4));
 }
-.cc-home:has(.cc-site-background.is-ready) .cc-hero-glass {
+.cc-home:has(.cc-home-background.is-ready) .cc-hero-glass {
   background: radial-gradient(ellipse at 50% 120%, rgba(163,44,66,.2), transparent 68%), rgba(20,22,29,.76);
 }
 .cc-background-toggle {
@@ -39,9 +38,9 @@
   .cc-home .cc-hero-glass { padding-bottom: 70px; }
 }
 @media (prefers-reduced-motion: reduce), (forced-colors: active), (prefers-contrast: more), (prefers-reduced-transparency: reduce) {
-  .cc-site-background, .cc-background-toggle { display: none !important; }
-  .cc-home:has(.cc-site-background.is-ready) .cc-hero-glass { background: var(--bg-elevated); }
+  .cc-home-background, .cc-background-toggle { display: none !important; }
+  .cc-home:has(.cc-home-background.is-ready) .cc-hero-glass { background: var(--bg-elevated); }
 }
 @media print {
-  .cc-site-background, .cc-background-toggle { display: none !important; }
+  .cc-home-background, .cc-background-toggle { display: none !important; }
 }

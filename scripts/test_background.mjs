@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
 import {createReadStream} from "node:fs";
-import {mkdir, mkdtemp, readFile, readdir, realpath, rm, stat} from "node:fs/promises";
+import {mkdir, mkdtemp, readFile, realpath, rm, stat} from "node:fs/promises";
 import http from "node:http";
 import os from "node:os";
 import path from "node:path";
@@ -84,19 +84,10 @@ async function openPage(t, {reduced = false, webgl = true} = {}) {
   t.after(() => context.close());
   const page = await context.newPage();
   const errors = [];
-  const blockedImports = new Set();
-  page.on('pageerror', error => {
-    // The account SDK is deliberately offline in these visual checks. Exclude
-    // only the exact import failure produced by our own request interception;
-    // local script errors and every other exception must still fail the test.
-    if (!blockedImports.has(error.message)) errors.push(error.message);
-  });
-  t.after(() => assert.deepEqual(errors, [], 'No unexpected browser errors'));
+  page.on('pageerror', error => errors.push(error.message));
+  t.after(() => assert.deepEqual(errors, [], 'No uncaught browser errors'));
   await page.setRequestInterception(true);
   page.on('request', request => {
-    if (/^https:\/\/cdn\.jsdelivr\.net\/npm\/@supabase\/supabase-js@[\d.]+\/\+esm$/.test(request.url())) {
-      blockedImports.add(`Failed to fetch dynamically imported module: ${request.url()}`);
-    }
     void (request.url().startsWith(`${origin}/`) ? request.continue() : request.abort('blockedbyclient')).catch(() => {});
   });
   await page.emulateMediaFeatures([{name: 'prefers-reduced-motion', value: reduced ? 'reduce' : 'no-preference'}]);
@@ -170,9 +161,8 @@ test('home background renders, pauses, resizes, and leaves navigation usable', {
   assert.equal(await page.$eval('#nav-trigger', input => input.checked), true);
   await page.click('#primary-navigation a[href="/learn/"]');
   await page.waitForFunction(() => location.pathname === '/learn/');
-  await ready(page);
-  assert.equal(await paused(page), true, 'Background pause follows navigation to other pages');
-  assert.equal(await page.evaluate(() => performance.getEntriesByType('resource').some(entry => entry.name.includes('home-scroll'))), false, 'Hero choreography remains home-only');
+  assert.equal(await page.$('[data-faulty-terminal]'), null);
+  assert.equal(await page.evaluate(() => performance.getEntriesByType('resource').some(entry => entry.name.includes('faulty-terminal'))), false, 'Other pages do not load the effect');
 });
 
 test('reduced motion disables WebGL initially and when changed at runtime', {timeout: 30000}, async t => {
@@ -420,133 +410,4 @@ test('section entrances and navigation follow scroll, with motion and no-script 
   await noJS.click('.cc-scroll-nav a[href="#featured-title"]');
   assert.equal(await noJS.evaluate(() => location.hash), '#featured-title', 'Section links work without JavaScript');
   assert.equal(await noJS.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
-});
-
-test('every public layout includes shared identity, one background and one pause control', async () => {
-  const files = (await readdir(SITE, {recursive: true})).filter(file => file.endsWith('.html'));
-  let checked = 0;
-  for (const file of files) {
-    const html = await readFile(path.join(SITE, file), 'utf8');
-    if (!html.includes('id="main-content"')) continue; // CMS, redirects and verification documents have no site chrome.
-    assert.equal((html.match(/data-faulty-terminal/g) || []).length, 1, file);
-    assert.equal((html.match(/data-background-toggle/g) || []).length, 1, file);
-    assert.equal((html.match(/href="\/assets\/identity.css"/g) || []).length, 1, file);
-    assert.equal((html.match(/src="\/assets\/faulty-terminal.js"/g) || []).length, 1, file);
-    assert.equal((html.match(/class="cc-header-dock"/g) || []).length, 1, file);
-    if (file !== 'index.html') {
-      assert.ok(html.includes('cc-content-surface'), `${file} protects its text`);
-      assert.ok(!html.includes('/assets/home-scroll.js'), `${file} does not animate long-form reading`);
-    }
-    checked++;
-  }
-  assert.ok(checked >= 190, 'All rendered public page families are covered');
-});
-
-test('sitewide background, compact header and readable surfaces work across page families', {timeout: 120000}, async t => {
-  const page = await openPage(t);
-  const routes = [
-    ['analysis', '/analysis/'], ['article', '/2026/09/04/on-gig-work/'],
-    ['pathways', '/reading-list/'], ['pathway', '/learn/pathways/marxism-fundamentals/'],
-    ['lesson', '/learn/pathways/capital-political-economy/module-01/'],
-    ['text', '/library/texts/capital-volume-one/chapter-01/'], ['library', '/library/'],
-    ['account', '/account/'], ['topic', '/topics/democracy/'], ['search', '/search/'],
-    ['about', '/about/'], ['404', '/404.html']
-  ];
-  await mkdir(path.join(ROOT, 'tmp/sitewide'), {recursive: true});
-  for (const [name, route] of routes) {
-    await page.setViewport({width: 1440, height: 1000});
-    // Let deferred account and catalog modules settle before changing viewports
-    // or navigating again; external services are deliberately blocked in this suite.
-    await page.goto(`${origin}${route}`, {waitUntil: 'networkidle0'});
-    await ready(page);
-    if (await paused(page)) await page.click('[data-background-toggle]');
-    const initialDraws = await draws(page);
-    await page.waitForFunction(count => window.terminalDraws > count, {}, initialDraws);
-    await page.click('[data-background-toggle]');
-    const readability = await page.$eval('.cc-content-surface', surface => {
-      const style = getComputedStyle(surface);
-      const parse = value => value.match(/[\d.]+/g).map(Number);
-      const floor = parse(style.backgroundColor);
-      const alpha = floor[3] ?? 1;
-      // A white scene is harsher than this dark terminal and gives a conservative contrast bound.
-      const background = floor.slice(0, 3).map(channel => channel * alpha + 255 * (1 - alpha));
-      const luminance = rgb => rgb.map(value => {
-        const v = value / 255;
-        return v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4;
-      }).reduce((sum, v, i) => sum + v * [.2126, .7152, .0722][i], 0);
-      const sample = surface.querySelector('p');
-      const color = sample ? getComputedStyle(sample).color : style.color;
-      const ratio = (luminance(parse(color)) + .05) / (luminance(background) + .05);
-      return {alpha, ratio, filter: style.backdropFilter};
-    });
-    assert.ok(readability.alpha >= .9 && readability.ratio >= 4.5, `${route} protects text contrast: ${JSON.stringify(readability)}`);
-    assert.equal(readability.filter, 'none', 'Long reading surfaces avoid expensive full-document blur');
-    await page.mouse.move(0, 0);
-    await page.screenshot({path: path.join(ROOT, `tmp/sitewide/${name}-desktop.png`)});
-    const surfaceTop = await page.$eval('.cc-content-surface', surface => surface.getBoundingClientRect().top + scrollY);
-    const expanded = await page.$eval('.site-header', header => header.getBoundingClientRect().height);
-    await page.evaluate(() => scrollTo({top: 400, behavior: 'instant'}));
-    await delay(500);
-    const scrolled = await page.evaluate(() => scrollY > 72);
-    const currentHeight = await page.$eval('.site-header', header => header.getBoundingClientRect().height);
-    if (scrolled) assert.ok(currentHeight < expanded, `${route} header contracts`);
-    else assert.equal(currentHeight, expanded, `${route} keeps its expanded header when the page is too short to scroll`);
-    assert.equal(await page.$eval('.cc-content-surface', surface => surface.getBoundingClientRect().top + scrollY), surfaceTop, `${route} content does not shift`);
-    for (const width of [390, 320]) {
-      await page.setViewport({width, height: 900});
-      await delay(150);
-      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `${route} fits ${width}px`);
-    }
-    await page.evaluate(() => scrollTo({top: 0, behavior: 'instant'}));
-    await delay(500);
-    await page.screenshot({path: path.join(ROOT, `tmp/sitewide/${name}-mobile.png`)});
-    await page.click('label[for="nav-trigger"]');
-    assert.equal(await page.$eval('#nav-trigger', toggle => toggle.checked), true);
-    await page.keyboard.press('Escape');
-    assert.equal(await page.$eval('#nav-trigger', toggle => !toggle.checked), true);
-  }
-});
-
-test('pause persists across pages and storage or WebGL failures remain usable', {timeout: 30000}, async t => {
-  const page = await openPage(t);
-  await page.goto(`${origin}/about/`, {waitUntil: 'load'});
-  await ready(page);
-  await page.click('[data-background-toggle]');
-  await page.goto(`${origin}/search/`, {waitUntil: 'load'});
-  await ready(page);
-  assert.equal(await paused(page), true);
-  await delay(150);
-  const frozen = await draws(page);
-  await delay(200);
-  assert.equal(await draws(page), frozen, 'Pause still stops rendering after navigation');
-  await page.click('[data-background-toggle]');
-  await page.waitForFunction(count => window.terminalDraws > count, {}, frozen);
-  await page.goto(`${origin}/about/`, {waitUntil: 'load'});
-  await ready(page);
-  assert.equal(await paused(page), false, 'Resuming is also remembered');
-
-  const client = await page.createCDPSession();
-  for (const feature of [
-    {name: 'prefers-reduced-motion', value: 'reduce'},
-    {name: 'prefers-reduced-transparency', value: 'reduce'},
-    {name: 'prefers-contrast', value: 'more'},
-    {name: 'forced-colors', value: 'active'}
-  ]) {
-    await client.send('Emulation.setEmulatedMedia', {features: [feature]});
-    await page.waitForFunction(() => !document.querySelector('[data-faulty-terminal] canvas'));
-    assert.equal(await page.$eval('.cc-page-controls', controls => getComputedStyle(controls).display), 'none');
-  }
-
-  const noStorage = await openPage(t);
-  await noStorage.evaluateOnNewDocument(() => {
-    Object.defineProperty(window, 'sessionStorage', {get() { throw new DOMException('Unavailable', 'SecurityError'); }});
-  });
-  await noStorage.goto(`${origin}/about/`, {waitUntil: 'load'});
-  await ready(noStorage);
-  await noStorage.click('[data-background-toggle]');
-  assert.equal(await paused(noStorage), true, 'Storage failure never prevents pausing');
-  const noWebGL = await openPage(t, {webgl: false});
-  await noWebGL.goto(`${origin}/about/`, {waitUntil: 'load'});
-  assert.equal(await noWebGL.$('[data-faulty-terminal] canvas'), null);
-  assert.ok(await noWebGL.$('.cc-content-surface h1'), 'Text remains available without a renderer');
 });

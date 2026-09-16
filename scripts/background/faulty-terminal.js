@@ -1,5 +1,5 @@
 /*! FaultyTerminal shader by David Haz / React Bits.
- * Adapted for this Jekyll site. See /assets/licenses/react-bits.txt.
+ * Adapted for this Jekyll home page. See /assets/licenses/react-bits.txt.
  * OGL is released under the Unlicense; see /assets/licenses/ogl.txt.
  */
 import { Renderer, Program, Mesh, Triangle } from "ogl";
@@ -232,15 +232,6 @@ if (container && toggle) {
   let failed = false;
   let pageActive = true;
 
-  // Preserve the visitor's choice across navigation in this tab. Storage is
-  // optional: privacy settings and full quotas must not prevent local pausing.
-  const pauseKey = 'cc-background-paused';
-  const restorePause = () => {
-    try { paused = sessionStorage.getItem(pauseKey) === 'true'; } catch { /* Keep the in-memory choice. */ }
-    toggle.textContent = paused ? 'Resume background' : 'Pause background';
-  };
-  restorePause();
-
   function createEffect() {
     const canvas = document.createElement('canvas');
     const attributes = { alpha: false, depth: false, antialias: false, powerPreference: 'low-power' };
@@ -390,7 +381,6 @@ if (container && toggle) {
 
   toggle.addEventListener('click', () => {
     paused = !paused;
-    try { sessionStorage.setItem(pauseKey, String(paused)); } catch { /* Pausing still works without storage. */ }
     toggle.textContent = paused ? 'Resume background' : 'Pause background';
     sync();
   });
@@ -398,7 +388,7 @@ if (container && toggle) {
   document.addEventListener('visibilitychange', sync);
   window.addEventListener('pagehide', () => { pageActive = false; sync(); });
   window.addEventListener('pageshow', event => {
-    if (event.persisted) { pageActive = true; failed = false; restorePause(); sync(); }
+    if (event.persisted) { pageActive = true; failed = false; sync(); }
   });
 
   // Let the masthead image and initial page render finish before compiling WebGL.

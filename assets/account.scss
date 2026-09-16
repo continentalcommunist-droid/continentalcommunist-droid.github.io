@@ -856,10 +856,8 @@
 
   .cc-account-setup,
   .cc-auth-forms {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 1fr;
   }
-
-  .cc-account-setup > a { white-space: normal; }
 
   .cc-account-setup {
     gap: 22px;

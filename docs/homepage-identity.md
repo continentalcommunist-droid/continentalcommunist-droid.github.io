@@ -30,11 +30,10 @@
 
 ## Implementation notes
 
-`assets/home.scss` is loaded only on the homepage. The shared header and material
-rules now live in `assets/identity.scss`, as described in the sitewide follow-up
-below. The shared interaction script preserves its existing menu handling;
-scroll updates are coalesced into animation frames, and the header uses separate
-enter/exit thresholds to prevent flicker.
+`assets/home.scss` is loaded only on the homepage. Other reading and learning
+pages retain their existing styles. The shared interaction script preserves its
+existing menu handling; homepage scroll updates are coalesced into animation
+frames, and the header uses separate enter/exit thresholds to prevent flicker.
 
 The glass is a CSS approximation of a liquid optical surface: it filters the
 actual scene behind each panel, with simulated edge reflections. It does not
@@ -88,34 +87,3 @@ remain controlled by the newsletter provider.
 Browser checks cover progressive shrinking, reverse scrolling, stable layout,
 cursor targeting on the scaled hero, mobile touch targets, section entrances,
 anchor alignment, active-section tracking and preference changes at runtime.
-
-## Follow-up: sitewide identity
-
-- Every public layout now includes the contracting header, publication name,
-  page-progress line and animated terminal background. The CMS and redirect
-  documents retain their own layouts.
-- Shared glass cards use the same reflective rims and filtered backdrop as the
-  homepage. Section labels and heading accents carry the crimson, graphite and
-  cool silver palette through articles, learning pages, the library and search.
-- Interior pages use a quieter background (18% opacity) and a 94% opaque dark
-  reading surface. Long documents avoid a full-page backdrop blur. Text remains
-  stationary, and the homepage's hero choreography stays on the homepage.
-- One pause button appears above each interior reading surface. Its choice
-  persists between pages in the current tab; unavailable storage never prevents
-  pausing. Motion, transparency, contrast and forced-color preferences retain
-  their static fallbacks.
-- Mobile account setup links wrap within the narrower reading surface.
-- The original hero image, homepage scroll sequence, terminal shader and cursor
-  behavior remain intact.
-
-Sitewide validation includes all 200 generated public layouts and browser checks
-across 12 page families at desktop, 390px and 320px widths. Reading-surface
-contrast is checked against a conservative white background, alongside header
-geometry, navigation, pause persistence, storage failure and accessibility
-preferences. Four cursor checks, six lesson checks, formatting and SEO validation
-also pass. Browser checks isolate external services and do not exercise signed-in
-account flows.
-
-Mobile Lighthouse medians across eight representative page types range from
-98–100 performance, with 1.55–2.26s largest contentful paint, at most 0.026
-cumulative layout shift and 0ms total blocking time. All release budgets pass.

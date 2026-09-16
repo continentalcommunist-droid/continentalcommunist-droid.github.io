@@ -1,0 +1,229 @@
+---
+---
+
+$identity-panels: ".cc-liquid-panel, .cc-hub-card, .cc-pathway-card, .cc-book-card, .cc-source-card, .cc-taxonomy-family, .cc-metric-card, .cc-curriculum-stage, .cc-lecture-card, .cc-auth-card, .cc-account-panel, .cc-dashboard-focus, .cc-dashboard-priority, .cc-dashboard-section, .cc-search-facets, .cc-lesson-reading-card, .cc-review-controls, .cc-review-practice, .cc-citation-panel, .cc-text-provenance";
+
+/* Shared publication identity. Solid materials are the fallback; text and
+   native controls stay separate from decorative reflections. */
+.cc-site {
+  --home-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --panel-tint: rgba(22, 25, 34, .52);
+  --panel-material: #20232c;
+  --panel-blur: 12px;
+  --panel-edge: rgba(222, 233, 255, .24);
+  --panel-shadow: 0 24px 60px -30px rgba(0, 0, 0, .85),
+    inset 0 1px 0 rgba(255, 255, 255, .18),
+    inset 0 -1px 0 rgba(179, 202, 242, .08);
+}
+
+/* A fixed-height sticky dock lets the header contract without moving content. */
+.cc-header-dock {
+  position: sticky;
+  top: 12px;
+  z-index: 1000;
+  height: 88px;
+  width: calc(100% - 32px);
+  max-width: 1244px;
+  margin: 16px auto 0;
+  pointer-events: none;
+}
+.cc-site .site-header {
+  position: relative;
+  top: 0;
+  width: 100%;
+  max-width: 1244px;
+  min-height: 86px;
+  margin: 0 auto;
+  border-radius: 26px;
+  pointer-events: auto;
+  transition: max-width .45s var(--motion), min-height .45s var(--motion),
+    border-radius .45s var(--motion), box-shadow .45s var(--motion);
+}
+.cc-site .site-header .cc-header-inner {
+  min-height: 86px;
+  gap: 12px;
+  transition: min-height .45s var(--motion);
+}
+.cc-site .site-header .site-logo {
+  height: 84px;
+  gap: 10px;
+  transition: height .45s var(--motion);
+}
+.cc-header-brand {
+  font-size: .75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  color: var(--text-body);
+}
+.cc-header-brand strong { color: var(--text); font-weight: 750; }
+.cc-site .site-header .site-nav { line-height: 1.5; }
+.cc-site .site-header.is-scrolled {
+  max-width: 1100px;
+  min-height: 64px;
+  border-radius: 22px;
+  box-shadow: 0 18px 54px rgba(0, 0, 0, .48), inset 0 1px 0 rgba(255, 255, 255, .24);
+}
+.cc-site .site-header.is-scrolled .cc-header-inner { min-height: 64px; }
+.cc-site .site-header.is-scrolled .site-logo { height: 62px; }
+.cc-header-progress {
+  position: absolute;
+  bottom: 0;
+  left: 24px;
+  width: calc(100% - 48px);
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #ca354f, #ffb6c5 72%, #d0e4ff);
+  transform: scaleX(var(--page-progress, 0));
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* The material filters actual background pixels. A separate masked rim catches
+   light around the curved edge; neither layer filters or covers the content. */
+.cc-site :is(#{$identity-panels}),
+.cc-site .cc-hero-glass.cc-liquid-panel,
+.cc-site .site-header {
+  isolation: isolate;
+  border: 1px solid var(--panel-edge);
+  background: var(--panel-material);
+  box-shadow: var(--panel-shadow);
+}
+.cc-site :is(#{$identity-panels}) { position: relative; }
+.cc-site :is(#{$identity-panels})::before,
+.cc-site .site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(480px circle at var(--glass-x, 15%) var(--glass-y, var(--scroll-light-y, 0%)), rgba(216, 233, 255, .11), transparent 70%),
+    linear-gradient(var(--glass-angle, var(--scroll-angle, 115deg)), rgba(255, 255, 255, .055), transparent 38%, transparent 72%, rgba(177, 198, 234, .045));
+}
+.cc-site :is(#{$identity-panels})::after,
+.cc-site .site-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(var(--glass-angle, var(--scroll-angle, 115deg)), rgba(255, 255, 255, .62),
+    rgba(192, 217, 255, .09) 24%, transparent 46%, rgba(230, 182, 195, .32) 78%, rgba(255, 255, 255, .5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .cc-site :is(#{$identity-panels}), .cc-site .site-header {
+    --panel-material: var(--panel-tint);
+    -webkit-backdrop-filter: blur(var(--panel-blur)) saturate(165%) brightness(1.08);
+    backdrop-filter: blur(var(--panel-blur)) saturate(165%) brightness(1.08);
+  }
+  .cc-site .site-header { --panel-tint: rgba(20, 23, 31, .66); --panel-blur: 20px; }
+}
+
+/* Interior pages use a stable reading floor. It deliberately has no backdrop
+   filter: long documents and nested cards must not allocate a page-sized blur. */
+.cc-interior { --panel-tint: rgba(25, 29, 39, .76); }
+.cc-interior .page-content { padding-top: 16px; }
+.cc-content-surface {
+  width: calc(100% - 32px);
+  padding: 32px;
+  border: 1px solid rgba(211, 226, 251, .22);
+  border-radius: 32px;
+  background: rgba(16, 19, 27, .94);
+  box-shadow: var(--panel-shadow);
+}
+.cc-page-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  margin-bottom: 16px;
+}
+.cc-interior .cc-background-toggle {
+  position: static;
+  min-height: 44px;
+  padding: 8px 16px;
+  background: #20232c;
+  font-size: .75rem;
+}
+.cc-site :is(.cc-section-kicker, .cc-hub-kicker, .cc-search-kicker, .cc-pathway-card-kicker) {
+  color: var(--accent-bright);
+  font-family: var(--home-mono);
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .09em;
+  line-height: 1.6;
+}
+.cc-site :is(.cc-hub-header, .cc-pathway-catalog-header, .cc-learning-path-header,
+  .cc-reader-header, .cc-book-header, .cc-text-header, .cc-topic-header,
+  .cc-person-header, .cc-taxonomy-header, .cc-source-page-header, .cc-post-header,
+  .cc-account-header, .cc-lesson-header, .cc-review-header) {
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(210, 224, 248, .22);
+  background-image: linear-gradient(90deg, var(--accent-bright), #d0e4ff);
+  background-size: 64px 2px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+}
+.cc-interior :is(.post-content, .cc-imported-text, .cc-lesson-activity-body) {
+  color: var(--text-body);
+  text-shadow: none;
+}
+.cc-interior .cc-breadcrumbs { flex-wrap: wrap; }
+.cc-site .site-footer { border-top: 1px solid rgba(210, 224, 248, .18); background: rgba(15, 18, 25, .96); }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .cc-interior :is(.cc-hub-card, .cc-pathway-card, .cc-book-card, .cc-source-card):hover {
+    border-color: rgba(224, 235, 255, .55);
+    box-shadow: var(--panel-shadow), 0 16px 36px -24px rgba(152, 183, 234, .3);
+  }
+}
+@media (min-width: 1001px) and (max-width: 1150px) {
+  .cc-header-brand { display: none; }
+}
+@media (max-width: 1000px) {
+  .cc-header-dock { top: 8px; width: calc(100% - 24px); height: 72px; margin-top: 8px; }
+  .cc-site .site-header, .cc-site .site-header .cc-header-inner { min-height: 70px; }
+  .cc-site .site-header .site-logo { height: 68px; }
+  .cc-site .site-header.is-scrolled { max-width: calc(100% - 16px); }
+}
+@media (max-width: 600px) {
+  .cc-content-surface { width: calc(100% - 24px); padding: 24px 16px; border-radius: 24px; }
+  .cc-page-controls { padding: 0 16px; margin-bottom: 12px; }
+}
+@media (max-width: 360px) {
+  .cc-header-brand { font-size: .625rem; }
+  .cc-site .site-header .site-logo { gap: 4px; }
+  .cc-site .site-header .cc-header-inner { gap: 4px; padding: 0 8px; }
+  .cc-site .site-header .cc-header-actions { gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce), (prefers-reduced-transparency: reduce), (prefers-contrast: more), (forced-colors: active) {
+  .cc-page-controls { display: none; }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more), (forced-colors: active) {
+  .cc-site :is(#{$identity-panels}), .cc-site .cc-hero-glass.cc-liquid-panel, .cc-site .site-header, .cc-content-surface {
+    background: #20232c;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: #828a9a;
+  }
+  .cc-site :is(#{$identity-panels})::before, .cc-site :is(#{$identity-panels})::after,
+  .cc-site .site-header::before, .cc-site .site-header::after { display: none; }
+}
+@media (forced-colors: active) {
+  .cc-site :is(#{$identity-panels}), .cc-site .cc-hero-glass.cc-liquid-panel, .cc-site .site-header, .cc-content-surface { background: Canvas; border-color: ButtonText; }
+  .cc-header-progress { background: Highlight; }
+  .cc-site .cc-platform-card p { color: CanvasText; }
+  .cc-site :is(.cc-section-kicker, .cc-hub-kicker, .cc-search-kicker) { color: CanvasText; }
+}
+@media print {
+  .cc-header-dock, .cc-page-controls { display: none; }
+  .cc-site :is(#{$identity-panels}), .cc-content-surface { backdrop-filter: none; -webkit-backdrop-filter: none; background: #fff; box-shadow: none; }
+}

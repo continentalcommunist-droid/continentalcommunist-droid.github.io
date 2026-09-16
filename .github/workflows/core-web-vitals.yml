@@ -51,7 +51,7 @@ jobs:
       - name: Validate document formatting
         run: npm run validate:formatting
 
-      - name: Verify home background and accessible fallbacks
+      - name: Verify sitewide background, header and accessible fallbacks
         run: npm run test:background
 
       - name: Verify site cursor and native pointer fallbacks

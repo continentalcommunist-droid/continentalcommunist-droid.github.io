@@ -2,9 +2,9 @@
 
 The Jekyll source for [continentalcommunist.com](https://www.continentalcommunist.com/).
 
-## Home background
+## Shared visual identity and background
 
-The home page adapts the supplied React Bits FaultyTerminal shaders to Jekyll
+The public site adapts the supplied React Bits FaultyTerminal shaders to Jekyll
 using OGL, with no React runtime. The editable source is
 `scripts/background/faulty-terminal.js`; `npm run build:background` bundles it
 into `assets/faulty-terminal.js`. Commit the bundle alongside source changes so
@@ -12,11 +12,20 @@ the native GitHub Pages Jekyll build can publish it without running Node.
 `npm run build` also rebuilds the bundle. Attribution and license notices are
 in `assets/licenses/`.
 
-The effect loads only on the home page, caps rendering at 30 frames per second
-and 720,000 pixels, and stops when paused or the page is hidden. Reduced motion,
+The effect loads through the shared public layout, caps rendering at 30 frames
+per second and 720,000 pixels, and stops when paused or the page is hidden. The
+pause choice persists between pages in the current tab. Reduced motion,
 reduced transparency, increased contrast, forced colors, and unavailable WebGL
 use the static background. After building, `npm run test:background` checks
-rendering, pause/resume, responsive navigation, and WebGL/accessibility fallbacks.
+rendering, pause/resume across navigation, responsive headers, reading contrast,
+homepage scroll behavior, and WebGL/accessibility fallbacks.
+
+`assets/identity.scss` defines the shared contracting header, page-progress line,
+reflective glass cards and section accents. Interior pages use a quieter animated
+background and a 94% opaque reading surface, without a full-document backdrop
+blur. `assets/home.scss` and `assets/home-scroll.js` retain the homepage's unique
+hero and scroll sequence. See `docs/homepage-identity.md` for the design plan and
+release validation.
 
 ## Site cursor
 

@@ -18,38 +18,35 @@
   });
   const desktop = window.matchMedia('(min-width: 1001px)');
   desktop.addEventListener('change', closeMenu);
-  const home = document.body.classList.contains('cc-home');
   let scrollRange = 1;
   let scheduled = false;
   const updateHeader = () => {
     const y = Math.max(0, window.scrollY);
     // Separate thresholds prevent flicker near the compact-header boundary.
-    const threshold = home ? (header.classList.contains('is-scrolled') ? 24 : 72) : 16;
+    const threshold = header.classList.contains('is-scrolled') ? 24 : 72;
     header.classList.toggle('is-scrolled', y > threshold);
-    if (home) header.style.setProperty('--page-progress', Math.min(1, y / scrollRange));
+    header.style.setProperty('--page-progress', Math.min(1, y / scrollRange));
     scheduled = false;
   };
   const scheduleHeader = () => {
     if (!scheduled) { scheduled = true; requestAnimationFrame(updateHeader); }
   };
   window.addEventListener('scroll', scheduleHeader, { passive: true });
-  if (home) {
-    const measurePage = () => {
-      scrollRange = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      scheduleHeader();
-    };
-    window.addEventListener('resize', measurePage, { passive: true });
-    window.addEventListener('pageshow', measurePage);
-    if ('ResizeObserver' in window) new ResizeObserver(measurePage).observe(document.body);
-    measurePage();
-  }
+  const measurePage = () => {
+    scrollRange = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    scheduleHeader();
+  };
+  window.addEventListener('resize', measurePage, { passive: true });
+  window.addEventListener('pageshow', measurePage);
+  if ('ResizeObserver' in window) new ResizeObserver(measurePage).observe(document.body);
+  measurePage();
   updateHeader();
   syncMenu();
 
   // Reflected light follows precise pointers only; touch and reduced-motion
   // visitors receive the same materials without continuous pointer updates.
   const reflectedLight = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (prefers-reduced-transparency: no-preference) and (prefers-contrast: no-preference) and (forced-colors: none)');
-  document.querySelectorAll('.cc-liquid-panel, .cc-home .site-header, .cc-platform-card, .cc-featured-card').forEach((card) => {
+  document.querySelectorAll('.cc-liquid-panel, .site-header, .cc-platform-card, .cc-featured-card, .cc-hub-card, .cc-pathway-card, .cc-taxonomy-family, .cc-auth-card, .cc-account-panel, .cc-source-card, .cc-lesson-reading-card').forEach((card) => {
     let frame = null;
     let pointer;
     const resetLight = () => {

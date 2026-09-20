@@ -1,22 +1,27 @@
 ---
 layout: post
-title: On Gig Work
-description: The position of the communists on the nature of capitalism in the twenty first century, expressed through an analysis of the gig economy.
+title: 'The Gig Economy: A Marxist Analysis of Wages and Work'
+permalink: /2026/09/04/on-gig-work/
+description: An essay applying Marx's analysis of wages and competition to app-based work, including Uber and DoorDash.
 date: 2026-09-04
-updated: ''
+updated: 2026-09-20
 content_type: Analysis
 schema_type: Article
 section: analysis
 section_key: analysis
 author: Continental Communist
 editor: ''
-thinkers: []
+thinkers:
+  - Karl Marx
 topics:
-  - Automation
-  - Artificial Intelligence
+  - Labor
   - Capital
-region: []
-historical_period: []
+  - Technology
+  - Automation
+region:
+  - United States
+historical_period:
+  - Contemporary (2008-present)
 reading_level: General
 languages:
   - English
@@ -32,8 +37,8 @@ references:
     custom_author: ''
     custom_url: ''
     evidence_role: Direct evidence
-    locator: ''
-    note: Referenced throughout the text.
+    locator: Chapter IX, Effect of Capitalist Competition on the Capitalist Class, the Middle Class and the Working Class
+    note: Documents Marx's arguments about competition, wages, and machinery. The application to Uber and DoorDash is the author's interpretation, not a measurement of present-day driver earnings.
 concepts: []
 people: []
 corrections: []
@@ -42,10 +47,22 @@ editorial_stage: Ready to publish
 ai_assistance: ''
 ---
 
-When analyzing the capitalist countries, not much has changed in the century and a half since Marx deduced the class basis upon which the workers are exploited. However, certain additions to his analysis can and frankly must be rendered if we are to reach the great masses of working people in twenty-first century America. Above all else, Marx’s analysis of the increase of machine productivity leading to 1. A greater division of labor and as a result 2. A lower wage for the workers is best seen through gig-economy jobs such as DoorDash and Uber.
+This essay examines the gig economy through Marx's analysis of wages, competition, and machinery. It focuses on app-based delivery and ride work, with DoorDash and Uber as the examples under discussion.
 
-First, technology is the root of the issue at present discussed (see the previous article, “On Artificial Intelligence, for more). Experience shows the devastating effects of such technologies as artificial intelligence on the working class. Yet this exploitation takes on a curious magnitude when expressed through the capitalistic mode of production. Marx explains in Wage, Labor, and Capital, that , “The labourer seeks to maintain the total of his wages for a given time by performing more labour, either by working a great number of hours, or by accomplishing more in the same number of hours. Thus, urged on by want, he himself multiplies the disastrous effects of division of labour. The result is: the more he works, the less wages he receives. And for this simple reason: the more he works, the more he competes against his fellow workmen, the more he compels them to compete against him, and to offer themselves on the same wretched conditions as he does; so that, in the last analysis, he competes against himself as a member of the working class.” The effect of flexible hours and the supposed “freedom” afforded by such gig work is in fact explained by this as the fraud which it has always been! By their freedom to choose the hours spent laboring for the capitalist, the workers are in fact in a brutal competition to work more, in turn driving down wages and allowing only the most cutthroat worker to survive.
+## Wages and competition in Marx's account
 
-The worker who delivers food does so on the basis of a transaction whereby his labor-power is sold to the capitalist. Yet strangely enough, this is facilitated without any material exchange occurring between him and the capitalist. No traditional social relationship characterizes this buying and selling of labor. Despite such a curiosity, the capitalist seems disinclined to fully remove the human laborer from his role in the production. That is, despite the digital facilitation of their relationship, the relationship of capitalist and worker persists. Marx explains that, “If the whole class of the wage-labourer were to be annihilated by machinery, how terrible that would be for capital, which, without wage-labour, ceases to be capital!”
+In chapter IX of *Wage Labour and Capital*, Marx argues that an increasing division of labor and the use of machinery can intensify competition among workers. He describes workers attempting to maintain their earnings by working longer or completing more work in the same time, thereby increasing competition with other workers.{% include cite.html source="wage-labour-and-capital" locator="Chapter IX, discussion of division of labor and competition among workers" %}
 
-Despite the capitalist propaganda on machine automation and reflexive horror workers experience as a result, we must remember the necessity of living capital in the capitalist process. It is by the workers’ hands alone that profit can be realized, yet those same hands can free us from our bonds. This is the goal of the Communists, the only party truly representing the American working class.
+The author's interpretation reads flexibility in gig work through this argument, distinguishing the choice of when to work from the economic pressures surrounding that choice. Applying the framework to a particular platform requires evidence about pay, expenses, time, and working arrangements.
+
+## Platform mediation and the labor relationship
+
+Platform mediation introduces a further question: how does an app-mediated transaction relate to Marx's distinction between labor and capital? The analysis here concerns that economic relationship. Legal employment status is a separate matter that this essay does not determine.
+
+The related essay [Artificial Intelligence and Work: A Marxist Analysis]({{ '/2026/09/03/on-artificial-intelligence/' | relative_url }}) considers machinery and ownership. Here, the focus is the organization of work through a platform and its relationship to the labor being performed.
+
+## Machinery and the continuing role of labor
+
+Later in chapter IX, Marx challenges the claim that workers displaced by machinery will necessarily find equally paid replacement work. He also frames capital as dependent on wage labor, including in his hypothetical discussion of machinery replacing the whole wage-laboring class.{% include cite.html source="wage-labour-and-capital" locator="Chapter IX, discussion of machinery, displacement, and replacement employment" %}
+
+This account places the relationship between machinery and living labor at the center of the comparison with gig work. The [Wage Labour and Capital reading edition]({{ '/library/texts/wage-labour-and-capital/' | relative_url }}) provides the full argument, and the [Technology, Automation, and Artificial Intelligence pathway]({{ '/learn/pathways/technology-automation-ai/' | relative_url }}) places it alongside later studies of work and technology.

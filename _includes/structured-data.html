@@ -104,9 +104,21 @@
       "caption": {{ page.image_alt | jsonify }}{% endif %}
     }{% endif %}{% if page.references and page.references != empty %},
     "citation": [
+      {%- assign schema_citation_count = 0 -%}
       {%- for reference in page.references -%}
-        {%- capture schema_citation_url -%}/library/sources/{{ reference.source }}/{%- endcapture -%}
-        {{ schema_citation_url | absolute_url | jsonify }}{% unless forloop.last %},{% endunless %}
+        {%- assign schema_ref_slug = reference.source | default: reference.book_source | default: reference.custom_source -%}
+        {%- assign schema_ref_record = site.sources | where: 'slug', schema_ref_slug | first -%}
+        {%- if schema_ref_record == nil -%}
+          {%- assign schema_ref_record = site.books | where: 'slug', schema_ref_slug | first -%}
+        {%- endif -%}
+        {%- assign schema_citation_url = reference.custom_url -%}
+        {%- if schema_ref_record -%}
+          {%- assign schema_citation_url = schema_ref_record.url | absolute_url -%}
+        {%- endif -%}
+        {%- if schema_citation_url and schema_citation_url != '' -%}
+          {% if schema_citation_count > 0 %},{% endif %}{{ schema_citation_url | jsonify }}
+          {%- assign schema_citation_count = schema_citation_count | plus: 1 -%}
+        {%- endif -%}
       {%- endfor -%}
     ]{% endif %}
   }

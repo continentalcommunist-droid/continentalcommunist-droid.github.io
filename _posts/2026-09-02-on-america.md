@@ -1,9 +1,10 @@
 ---
 layout: post
-title: On America
-description: A discussion of the American socialist movement through a scientific socialist lens.
+title: Scientific Socialism and the American Left
+permalink: /2026/09/02/on-america/
+description: An essay applying Marx and Engels to American socialist discourse, scientific socialism, and online political commentary.
 date: 2026-09-02
-updated: ''
+updated: 2026-09-20
 content_type: Analysis
 schema_type: Article
 section: analysis
@@ -12,6 +13,7 @@ author: Continental Communist
 editor: Continental Communist
 thinkers:
   - Karl Marx
+  - Friedrich Engels
 topics:
   - American History
   - Marxist Theory
@@ -36,7 +38,14 @@ references:
     custom_url: ''
     evidence_role: Direct evidence
     locator: Chapter III, sections on Christian Socialism and Bourgeois Socialism
-    note: The two quotations in this essay come from Chapter III of the Manifesto of the Communist Party.
+    note: Documents Marx and Engels' critiques of Christian and bourgeois socialism. Applying those categories to contemporary commentary is the author's interpretation.
+  - source: socialism-utopian-and-scientific
+    custom_title: 'Socialism: Utopian and Scientific'
+    custom_author: Friedrich Engels
+    custom_url: https://www.marxists.org/archive/marx/works/1880/soc-utop/index.htm
+    evidence_role: Primary context
+    locator: Chapters II and III
+    note: First published in 1880. Engels' account of historical materialism and scientific socialism provides the terminology used in this essay.
 concepts: []
 people: []
 corrections: []
@@ -45,22 +54,22 @@ editorial_stage: Ready to publish
 ai_assistance: ''
 ---
 
-America is the land of the setting sun. The Occident, to use Latin. It is the westernmost empire in modern history. Yet with the sun, it appears our freedom has come here to die. The continental working class has not as of yet fully understood its historic purpose. The foremost proponents of our socialist cause are gamers and Instagram influencers. 
+Scientific socialism provides the framework for this essay's discussion of the American left and online political commentary. Its central question is how political language connects to an analysis of class, ownership, and organization.
 
-The ignorance of the United States at first appears puzzling. With the preponderance of literature now available to all, there is no longer an absence of the means of knowledge. The lack, rather, lies in an acute disassociation by the proponents of socialism from the scientific necessity therein.
+## Scientific socialism and utopian socialism
 
-Scientific socialism was expounded by Karl Marx and Friedrich Engels as a response to the utopian socialism of nineteenth century Europe. Many philosophers to whom they pay homage in their texts are nonetheless used by Marx in contrast to the Marxist project of dialectical materialism, rescuing such beliefs from the utopian, and often religious, foundations for such beliefs. By placing socialism on a scientific, or dialectical, foundation, rather than a religious or mystical foundation, they elevated the mode of inquiry therein to a modern system of thinking in which ideas can be challenged, improved, and sharpened.
+In *Socialism: Utopian and Scientific*, Engels contrasts earlier socialist projects with an explanation grounded in historical development, class relations, and the organization of production. He identifies the materialist conception of history and Marx's account of surplus value as the foundations of scientific socialism. [Read chapter II](https://www.marxists.org/archive/marx/works/1880/soc-utop/ch02.htm).
 
-In the Manifesto of the Communist Party, Marx speaks to this phenomenon. “Nothing is easier than to give Christian asceticism a Socialist tinge. Has not Christianity declaimed against private property, against marriage, against the State? Has it not preached in the place of these, charity and poverty, celibacy and mortification of the flesh, monastic life and Mother Church? Christian Socialism is but the holy water with which the priest consecrates the heart-burnings of the aristocrat.”{% include cite.html source="manifesto-of-the-communist-party" locator="Chapter III, Christian Socialism" %}
+The author's interpretation applies this distinction to American socialist discourse: access to political literature and visibility online are different questions from the content of a movement's analysis. The connection between theoretical study and political practice is the concern here.
 
-Religion, whatever stripe, is not a pernicious evil to Marx. It is a reflex of humanity. Yet, it does not allow for the revolutionary necessity of socialist organizing to propagate when placed at the center of working class movements.
+## Marx and Engels on socialist rhetoric
 
-Money capital, likewise, is not as easily pinned down by Marx as capitalists would have you believe. It is the natural outgrowth of a society, the medium of exchange of commodities whereby use-value takes on a universal equivalent. 
+Chapter III of the *Manifesto of the Communist Party* examines several nineteenth-century socialist traditions. In the discussion of feudal socialism, Marx and Engels criticize the use of Christian asceticism to express aristocratic grievances. Their subject in this passage is the relationship between religious language and a particular class position.{% include cite.html source="manifesto-of-the-communist-party" locator="Chapter III, section 1(a), Feudal Socialism" %}
 
-However, when a self proclaimed champion of the American working class is found in a hack of Twitch to make six figures a month, it calls into question the willingness of this individual to meaningfully engage in the dangerous realities of revolutionary organizing. It does not mean they are evil, but it shines light on ulterior motives for their use of capitalist live-streaming technologies.
+In their discussion of bourgeois socialism, they describe reform proposals intended to retain bourgeois society while removing its conflicts. Their concluding formulation is: "the bourgeois is a bourgeois — for the benefit of the working class."{% include cite.html source="manifesto-of-the-communist-party" locator="Chapter III, section 2, Conservative or Bourgeois Socialism" %}
 
-Quoting again from the Communist Manifesto: "Bourgeois Socialism attains adequate expression when, and only when, it becomes a mere figure of speech... This is the last word and the only seriously meant word of bourgeois socialism. It is summed up in the phrase: the bourgeois is a bourgeois – for the benefit of the working class."{% include cite.html source="manifesto-of-the-communist-party" locator="Chapter III, Bourgeois Socialism" %}
+## Applying the argument to online commentary
 
-Working men have no nation. Communists are the voice of the workers of the world. The vanguard of the proletarian class to whom the future belongs. The communists of the American continent form the tip of the spear of the new world revolution. 
+Applied to online commentary, these passages prompt a question about the relationship between socialist language and its account of ownership, class relations, and organization. That comparison is an interpretation of historical texts; claims about a particular commentator or platform would require separate evidence.
 
-E vinculis occidentis, stella rubra oritur. From the chains of the setting sun, a red star rises.
+The [Communist Manifesto reading edition]({{ '/library/texts/manifesto-of-the-communist-party/' | relative_url }}) contains the cited passages. The [Marxism Fundamentals reading pathway]({{ '/learn/pathways/marxism-fundamentals/' | relative_url }}) places them alongside Engels' account of scientific socialism and Marx's writings on wages and political institutions.

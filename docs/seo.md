@@ -2,13 +2,13 @@
 
 The site owns its search metadata in `_includes/seo-meta.html` and `_includes/structured-data.html`. Do not add a second SEO plugin or a second canonical tag. Every public page receives one self-referencing absolute canonical, explicit robots metadata, social preview metadata, an Organization entity, and a page-specific structured data entity. The site-name `WebSite` entity appears only on the homepage.
 
-## Branded-search strategy
+## Publication identity and discovery
 
-The primary near-term search objective is for the official homepage to appear for the exact query `continental communist`. The baseline on 2026-09-01 found no result from this domain for either the exact-name query or a `site:continentalcommunist.com` query. The domain and repository were only established days earlier, so discovery and indexing—not keyword repetition—is the first constraint.
+The current acquisition plan introduces American left politics, analysis, and education on the homepage while preserving the publication's name and Marxist identity. See the [September 20 strategy](seo-strategy.md) and [dated keyword worksheet](keyword-research-2026-09-20.md) for page ownership, research limitations, and measurement. Exact publication-name discovery remains part of the site's identity; the September 1 public-search observations are historical, not a current performance baseline.
 
 The implementation establishes one consistent entity and preferred site name:
 
-- The homepage uses `Continental Communist` in its visible `h1`, HTML title, Open Graph title, page description, internal link text, Organization JSON-LD, and WebSite JSON-LD.
+- The homepage uses `Continental Communist` in its visible `h1`, HTML title, Open Graph title, internal link text, Organization JSON-LD, and WebSite JSON-LD. Its description explains the site's subjects and educational resources.
 - `continentalcommunist.com` is supplied as the WebSite `alternateName`, giving Google a domain fallback while keeping the publication name primary.
 - The homepage, About page, editorial profile, articles, topics, and learning pathways cross-link with descriptive HTML anchors that crawlers can follow.
 - HTTP and apex-domain variants redirect permanently to the canonical `https://www.continentalcommunist.com/` origin.
@@ -39,6 +39,8 @@ Avoid paid links, bulk directory submissions, doorway pages, duplicate brand pag
 - All non-root indexable pages emit schema.org `BreadcrumbList` JSON-LD to generate search engine breadcrumbs in SERP listings.
 - `WebSite` schema appears only on the homepage, as required for Google's site-name signal. Page templates reference the same publisher entity without emitting duplicate site-name nodes.
 - Registration-gated articles and text chapters declare `isAccessibleForFree: false` and identify `.cc-gated-body` as the restricted section so search engines do not mistake the client-side gate for cloaking.
+- Public search guides use the existing `page` layout and WebPage metadata, with `search_guide: true`, a stable `/learn/guides/` permalink, description, and reviewed date. They are linked from the homepage and Learn and remain outside the article registration gate.
+- Article citation JSON-LD resolves normalized source/book records or an explicit custom source URL, matching the supported editorial reference fields.
 
 Every article author must resolve to a public `_people/` record. Featured images are optional, but an image requires `image_alt`. Never use the publisher logo as an article image merely to satisfy a metadata field.
 
@@ -78,7 +80,7 @@ Do not rename, remove, redirect, or add page markup to the verification file. It
 Build the site, then run:
 
 ```sh
-ruby scripts/validate_seo.rb
+npm run validate:seo
 ```
 
-The validator checks canonical URLs, crawl directives, JSON-LD syntax and entity types, author and topic resolution, sitemap integrity, news eligibility, CMS fields, and both the source and generated Search Console verification file.
+The validator checks canonical URLs, crawl directives, JSON-LD syntax and entity types, author and topic resolution, sitemap integrity, news eligibility, CMS fields, the source and generated Search Console verification file, and public-guide discovery/access. The release workflow runs it after the build, along with formatting, taxonomy, and citation validation.

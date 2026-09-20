@@ -16,6 +16,7 @@
     "performance:ci": "node scripts/run_lighthouse.mjs",
     "performance:crux": "ruby scripts/check_crux.rb",
     "validate:formatting": "ruby scripts/validate_formatting.rb",
+    "validate:seo": "ruby scripts/validate_seo.rb",
     "build:background": "node scripts/build_background.mjs",
     "test:background": "node --test scripts/test_background.mjs",
     "build:cursor": "node scripts/build_cursor.mjs",

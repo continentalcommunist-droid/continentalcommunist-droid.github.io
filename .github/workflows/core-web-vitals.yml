@@ -51,6 +51,14 @@ jobs:
       - name: Validate document formatting
         run: npm run validate:formatting
 
+      - name: Validate search metadata and crawlability
+        run: npm run validate:seo
+
+      - name: Validate taxonomy and citations
+        run: |
+          ruby scripts/validate_taxonomy.rb
+          ruby scripts/validate_citations.rb
+
       - name: Verify home background and accessible fallbacks
         run: npm run test:background
 

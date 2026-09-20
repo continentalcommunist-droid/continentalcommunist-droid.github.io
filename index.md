@@ -2,10 +2,10 @@
 layout: default
 home_background: faulty-terminal
 title: Continental Communist
-description: Continental Communist is an independent publication offering Marxist education, materialist analysis, briefings, and primary-source study from an American perspective.
+description: Explore American left politics, labor, technology, and socialist thought through independent analysis, Marxist education, and primary-source reading.
 image: /assets/images/logo.png
 image_alt: "Continental Communist logo"
-updated: 2026-09-15
+updated: 2026-09-20
 ---
 
 <div class="cc-hero-stage">
@@ -34,13 +34,14 @@ updated: 2026-09-15
   </h1>
 
   <div class="cc-hero-copy">
+    <p class="cc-hero-scope">American left politics, analysis, and education</p>
     <p>
-      Independent Marxist education and materialist analysis from an American
-      perspective, organized around evidence, history, and serious study.
+      Explore American politics, labor, technology, and socialist thought
+      through independent essays and Marxist education.
     </p>
     <div class="cc-hero-links">
-      <a class="cc-button-primary" href="{{ '/analysis/' | relative_url }}">Read the latest analysis <span aria-hidden="true">↗</span></a>
-      <a href="{{ '/about/' | relative_url }}">About the publication <span aria-hidden="true">→</span></a>
+      <a class="cc-button-primary" href="{{ '/analysis/' | relative_url }}">Explore the analysis <span aria-hidden="true">↗</span></a>
+      <a href="{{ '/learn/' | relative_url }}">Start learning <span aria-hidden="true">→</span></a>
     </div>
   </div>
 
@@ -64,12 +65,12 @@ updated: 2026-09-15
   <div class="cc-platform-heading">
     <div>
       <div class="cc-platform-kicker"><span class="cc-section-index" aria-hidden="true">01 /</span> EXPLORE THE PLATFORM</div>
-      <h2 id="platform-title">Choose your path.</h2>
+      <h2 id="platform-title">Explore politics, history, and ideas.</h2>
     </div>
 
     <p>
-      Learn systematically, interpret events, follow the evidence,
-      and go deeper through one connected knowledge base.
+      Read essays on work and American politics, explore progressive and
+      socialist terminology, or follow a guided Marxist reading pathway.
     </p>
   </div>
 
@@ -86,6 +87,33 @@ updated: 2026-09-15
     </a>
     {% endfor %}
   </div>
+
+  <div class="cc-subject-links" aria-label="Explore subjects">
+    <span>Browse by subject</span>
+    <a href="{{ '/topics/socialism/' | relative_url }}">Socialism</a>
+    <a href="{{ '/topics/labor/' | relative_url }}">Labor and politics</a>
+    <a href="{{ '/topics/artificial-intelligence/' | relative_url }}">Artificial intelligence</a>
+    <a href="{{ '/topics/american-history/' | relative_url }}">American history</a>
+  </div>
+
+  {% assign public_guides = site.pages | where: 'search_guide', true | sort: 'title' %}
+  {% if public_guides.size > 0 %}
+  <section class="cc-home-guides" aria-labelledby="guides-title">
+    <div class="cc-home-guides-heading">
+      <h3 id="guides-title">Understand the terminology.</h3>
+      <p>Public guides to political terms, organizations, and people, with sources and dates for further reading. No account required.</p>
+    </div>
+    <div class="cc-home-guides-grid">
+      {% for guide in public_guides %}
+      <article class="cc-home-guide cc-liquid-panel">
+        <h4><a href="{{ guide.url | relative_url }}">{{ guide.title }}</a></h4>
+        <p>{{ guide.description }}</p>
+        <a class="cc-home-guide-link" href="{{ guide.url | relative_url }}" aria-label="Read {{ guide.title }}">Read guide <span aria-hidden="true">→</span></a>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
 </section>
 
 
@@ -102,12 +130,13 @@ updated: 2026-09-15
       </div>
 
       <h2 id="featured-title">
-        Featured
+        Work, technology, and ideas.
       </h2>
     </div>
 
     <p>
-      Selected essays and analysis from Continental Communist.
+      Read the publication's Marxist analysis of artificial intelligence,
+      the gig economy, and socialist discourse in America.
     </p>
 
   </div>
@@ -129,9 +158,9 @@ updated: 2026-09-15
           </a>
         </h3>
 
-        {% if post.excerpt %}
+        {% if post.description or post.excerpt %}
         <div class="cc-featured-card-excerpt">
-          {{ post.excerpt | strip_html | truncate: 190 }}
+          {{ post.description | default: post.excerpt | strip_html }}
         </div>
         {% endif %}
 
@@ -214,9 +243,9 @@ updated: 2026-09-15
     </a>
   </h3>
 
-  {% if post.excerpt %}
+  {% if post.description or post.excerpt %}
   <div class="cc-excerpt">
-    {{ post.excerpt }}
+    <p>{{ post.description | default: post.excerpt | strip_html }}</p>
   </div>
   {% endif %}
 

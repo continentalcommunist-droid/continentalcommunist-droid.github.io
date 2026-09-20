@@ -1,9 +1,10 @@
 ---
 layout: post
-title: On Artificial Intelligence
-description: The Communist position on artificial intelligence.
+title: 'Artificial Intelligence and Work: A Marxist Analysis'
+permalink: /2026/09/03/on-artificial-intelligence/
+description: A Marxist analysis of artificial intelligence, ownership, machine productivity, and work, drawing on Marx and Engels.
 date: 2026-09-03
-updated: ''
+updated: 2026-09-20
 content_type: Analysis
 schema_type: Article
 section: analysis
@@ -12,9 +13,12 @@ author: Continental Communist
 editor: ''
 thinkers:
   - Karl Marx
+  - Friedrich Engels
 topics:
-  - Capital
   - Artificial Intelligence
+  - Labor
+  - Capital
+  - Automation
 region: []
 historical_period:
   - Contemporary (2008-present)
@@ -33,17 +37,21 @@ references:
     custom_author: ''
     custom_url: ''
     evidence_role: Direct evidence
-    locator: ''
-    note: Referenced in text.
-  - source: ''
+    locator: Chapter XV, section 3(b), Prolongation of the Working-Day
+    note: Documents Marx's argument about machinery and working time. It is historical theoretical context, not evidence measuring current AI employment effects.
+  - source: socialism-utopian-and-scientific
     book_source: ''
     custom_source: ''
     custom_title: 'Socialism: Utopian and Scientific'
     custom_author: Friedrich Engels
-    custom_url: ''
-    evidence_role: Direct evidence
-    locator: ''
-    note: Referenced in text.
+    custom_url: https://www.marxists.org/archive/marx/works/1880/soc-utop/index.htm
+    evidence_role: Primary context
+    locator: Chapter III, discussion of machinery and wage labor
+    note: First published in 1880. Documents Engels' account of machinery under capitalist production; the application to contemporary AI is interpretive.
+  - source: manifesto-of-the-communist-party
+    evidence_role: Primary context
+    locator: Chapter I, Bourgeois and Proletarians
+    note: Source for the discussion of professional wage labor and continual changes in the instruments of production.
 concepts: []
 people: []
 corrections: []
@@ -52,14 +60,24 @@ editorial_stage: Ready to publish
 ai_assistance: ''
 ---
 
-When analyzing the effects of artificial intelligence, there is not much to be said other than its illustration of the pure capitalist inclination toward machine productivity at the expense of the worker. Marx himself lays out how capitalism makes profane all that is holy, that it makes all professions into simply a means of acquiring yet more capital. He discusses how doctors, lawyers, and all workers of society are seen by the capitalist as mere commodities whose labor can thus produce for him more money.
+This essay examines artificial intelligence through Marx and Engels' accounts of machinery, ownership, and wage labor. Its focus is the relationship between technical capacity and the organization of work.
 
-Yet to Marx, this is not enough. The capitalist, in order to preserve his status of domination over his workers, must constantly revolutionize the means of production which he owns and which he sets his workers’ labor to use on. Artificial intelligence, a means by which data, largely stolen from the very workers the capitalists derive their wealth from by pirating digital texts, are put through algorithms and churned back for consumption by the workers like a literary human centipede.
+## Machinery, professional work, and ownership
 
-Friedrich Engels, expounding the thoughts of Marx in “Socialism: Utopian and Scientific”, proposes that, “machinery becomes the most powerful weapon in the war of capital against the working-class; that the instruments of labor constantly tear the means of subsistence out of the hands of the laborer; that the very product of the worker is turned into an instrument for his subjugation.” The parallel between this late nineteenth century analysis and modern technological capitalism is clear.
+In chapter I of the *Manifesto of the Communist Party*, Marx and Engels describe professions including medicine and law becoming forms of paid wage labor. They also describe continual changes in the instruments of production as a characteristic of bourgeois society.{% include cite.html source="manifesto-of-the-communist-party" locator="Chapter I, passages on professional wage labor and revolutionizing production" %}
 
-The most powerful weapon currently in the hands of the ruling class are the machines required for participation in the capitalist system. Today, the use of digital and internet devices are required for such participation, and the rug has been pulled. The workers were led to their slaughter, brought online over the past three decades, where their every word, every minute of their labor, was stored until the day that the machines could reproduce the worker.
+The author's interpretation extends their account to a question about AI and capitalism: how does the ownership of a productive system affect the position of the people whose work it reorganizes?
 
-In Capital, Marx explains that, “the most powerful instrument for shortening labor time, becomes the most unfailing means for placing every moment of the laborer's time and that of his family at the disposal of the capitalist for the purpose of expanding the value of his capital.” Every word expressed in our twenty-first century medium of communication, every line of code written, it is all turned by capitalist machines as a weapon upon the very workers who built the internet.
+## Engels on machinery and labor
 
-The capitalists, in their quests toward bourgeois utopia - a world without workers - forgot one thing. The workers are workers by their humanity, and as such, their potential to reshape the world. The workers will only retain their humanity by revolution against this capitalist class in order to form a better, more just world. This is the goal of the Communists.
+In chapter III of *Socialism: Utopian and Scientific*, Engels argues that competition compels industrial capitalists to improve machinery and that mechanization can displace workers. He presents the use of workers' products against their own livelihoods as a contradiction of capitalist production. [Read chapter III](https://www.marxists.org/archive/marx/works/1880/soc-utop/ch03.htm).
+
+Engels connects changes in machinery to changes in employment and workers' bargaining position. Those relationships provide the points of comparison with AI in this reading.
+
+## Productivity and working time
+
+In *Capital*, chapter XV, section 3(b), Marx discusses a tension between machinery's capacity to reduce necessary working time and its use to prolong the working day. His analysis concerns the relationship between technical capacity and the conditions under which machinery is employed.{% include cite.html source="capital-volume-one" locator="Chapter XV, section 3(b), Prolongation of the Working-Day" %}
+
+Marx's discussion distinguishes what machinery makes technically possible from the conditions of its use. Applied to AI, that distinction organizes the inquiry around ownership, working time, and control over production. Establishing the effects of a particular system would still require evidence about its workplace use and the tasks and people involved.
+
+For a related application to platform-mediated work, read [The Gig Economy: A Marxist Analysis of Wages and Work]({{ '/2026/09/04/on-gig-work/' | relative_url }}). The [Technology, Automation, and Artificial Intelligence pathway]({{ '/learn/pathways/technology-automation-ai/' | relative_url }}) provides a longer reading sequence, including sources on skill, management, ownership, and automation.

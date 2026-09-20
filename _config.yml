@@ -1,6 +1,6 @@
 title: Continental Communist
-tagline: American Marxist education and analysis
-description: Continental Communist is an independent publication offering Marxist education, materialist analysis, briefings, and primary-source study from an American perspective.
+tagline: American Left Politics & Analysis
+description: Explore American left politics, labor, technology, and socialist thought through independent analysis, Marxist education, and primary-source reading.
 url: "https://www.continentalcommunist.com"
 baseurl: ""
 lang: en-US
@@ -13,7 +13,7 @@ publisher:
   type: Organization
   url: https://www.continentalcommunist.com
   logo: /assets/images/logo.png
-  description: Continental Communist is an independent American publication for Marxist education, materialist analysis, and evidence-led study.
+  description: Continental Communist is an independent publication covering American left politics, labor, technology, and socialist thought through analysis and Marxist education.
   alternate_names:
     - continentalcommunist.com
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require "date"
+require "cgi"
 require "json"
 require "pathname"
 require "rexml/document"
@@ -347,7 +348,10 @@ begin
   organization_schema = schema_with_type(homepage_metadata[:schemas], publisher["type"])
 
   errors << "homepage: title must start with the publication name" unless homepage_title.start_with?(config["title"].to_s)
-  errors << "homepage: description must name the publication" unless homepage_description.include?(config["title"].to_s)
+  expected_home_description = front_matter(ROOT / "index.md")["description"].to_s
+  unless CGI.unescapeHTML(homepage_description) == expected_home_description
+    errors << "homepage: description must match the public homepage metadata"
+  end
   unless homepage_description.length.between?(80, 180)
     errors << "homepage: description must be between 80 and 180 characters"
   end
@@ -370,6 +374,37 @@ begin
   homepage_sitemap_entry = sitemap_entries.find { |url, _element| url == "#{site_url}/" }
   homepage_lastmod = homepage_sitemap_entry&.last&.elements&.find { |element| element.name == "lastmod" }
   errors << "sitemap.xml: homepage must carry an accurate lastmod" unless present?(homepage_lastmod&.text)
+
+  # Discovery guides use the public page layout; article registration must not
+  # accidentally spread to these search-entry pages during template changes.
+  search_items = JSON.parse((BUILT_SITE / "search.json").read)
+  learn_html = (BUILT_SITE / "learn/index.html").read
+  (ROOT / "learn/guides").glob("*.md").each do |path|
+    data = front_matter(path)
+    next unless data["search_guide"] == true
+
+    relative = path.relative_path_from(ROOT)
+    url = data["permalink"].to_s
+    errors << "#{relative}: public guide must use layout: page" unless data["layout"] == "page"
+    unless url.match?(%r{\A/learn/guides/[a-z0-9-]+/\z})
+      errors << "#{relative}: public guide needs a stable /learn/guides/ permalink"
+      next
+    end
+    %w[title description updated].each do |field|
+      errors << "#{relative}: missing #{field}" unless present?(data[field])
+    end
+    guide = html_metadata(built_path_for_url(site_url, "#{site_url}#{url}"))
+    if guide[:html].match?(/data-gated-content|class=["'][^"']*cc-gated-body/)
+      errors << "#{relative}: public guide must be readable without registration"
+    end
+    errors << "#{relative}: missing from sitemap" unless sitemap_urls.include?("#{site_url}#{url}")
+    unless search_items.any? { |item| item["url"] == url && item["title"] == data["title"] }
+      errors << "#{relative}: missing from on-site search"
+    end
+    { "homepage" => homepage, "Learn" => learn_html }.each do |label, html|
+      errors << "#{relative}: missing incoming link from #{label}" unless html.include?("href=\"#{url}\"")
+    end
+  end
 
   about_metadata = html_metadata(BUILT_SITE / "about/index.html")
   errors << "about: AboutPage JSON-LD is missing" unless schema_with_type(about_metadata[:schemas], "AboutPage")

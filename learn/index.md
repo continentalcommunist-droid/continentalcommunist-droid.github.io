@@ -4,9 +4,18 @@ title: Learn
 permalink: /learn/
 section_key: learn
 kicker: Structured education
-description: Build understanding step by step through pathways, retrieval practice, concepts, and historical context.
-updated: 2026-09-08
+description: Explore public guides to American political terminology, people, and organizations, alongside structured pathways, concepts, and historical context.
+updated: 2026-09-20
 ---
+
+## Public guides to American politics
+
+These introductory guides explain terminology, organizational history, and biography with linked sources. Each is fully readable without an account.
+
+- [Democratic Socialism: Meaning, History, and Terminology]({{ '/learn/guides/democratic-socialism/' | relative_url }}) — definitions, historical usage, and distinctions from social democracy.
+- [Progressive and Liberal: Meanings in American Politics]({{ '/learn/guides/progressive-vs-liberal/' | relative_url }}) — historical roots and overlapping contemporary usage.
+- [What Is the Democratic Socialists of America?]({{ '/learn/guides/democratic-socialists-of-america/' | relative_url }}) — the organization, its history, structure, and stated positions.
+- [Who Is Zohran Mamdani? Background and Political Career]({{ '/learn/guides/zohran-mamdani/' | relative_url }}) — a sourced biography and dated career timeline.
 
 ## Twelve pathways through one connected library
 
